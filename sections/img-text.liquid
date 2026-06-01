@@ -1,0 +1,342 @@
+{% style %}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.section_bg_color }};
+  padding-top: {{ section.settings.desktop_padding_top }}px;
+  padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+}
+
+.section-{{ section.id }} .img-text-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: stretch;
+}
+
+.section-{{ section.id }} .img-text__img {
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.section-{{ section.id }} .img-text__img img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.section-{{ section.id }} .img-text__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: self-start;
+}
+
+.section-{{ section.id }} .img-text__content-head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.section-{{ section.id }} .img-text_tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0px;
+  color: {{ section.settings.tag_text_color }};
+  background-color: {{ section.settings.tag_bg_color }};
+  width: fit-content;
+}
+
+.section-{{ section.id }} .tag_icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-{{ section.id }} .img-text__content-title {
+  color: {{ section.settings.heading_color }};
+}
+
+.section-{{ section.id }} .img-text_description {
+    color: {{ section.settings.description_color }};
+    margin-top: 6px;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+}
+
+.section-{{ section.id }} .img-text_btn {
+  background-color: {{ section.settings.button_bg_color }};
+  color: {{ section.settings.button_text_color }};
+  border: 1px solid var(--Deep-Navy, #1A2744);
+}
+
+.section-{{ section.id }} .img-text_btn_mob {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  .section-{{ section.id }} .img-text-wrapper {
+    gap: 24px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .section-{{ section.id }} .img-text_btn_desk {
+    display: none;
+  }
+
+  .section-{{ section.id }} .img-text_btn_mob {
+    display: inline-flex;
+    margin-top: 24px;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .img-text__content-head {
+    gap: 16px;
+    align-items: center;
+}
+
+.section-{{ section.id }} .img-text__content-title {
+    text-align: center;
+    padding: 0 25px;
+}
+
+.section-{{ section.id }} .img-text_description {
+    text-align: center;
+}
+
+.section-{{ section.id }} .img-text__img {
+    border-radius: 8px;
+}
+
+}
+{% endstyle %}
+
+<section class="img-text-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="img-text-wrapper">
+
+      <div class="img-text__img-wrapper">
+
+        {% if section.settings.image != blank %}
+          <div class="img-text__img">
+            {{
+              section.settings.image
+              | image_url: width: 1600
+              | image_tag:
+                widths: '50,100,150,200,300,400,500,600,800,1000,1200,1400,1600',
+                loading: 'lazy',
+                alt: "image"
+            }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+          <a
+            href="{{ section.settings.button_link }}"
+            class="img-text_btn btn_btn img-text_btn_mob"
+          >
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+
+      </div>
+
+      <div class="img-text__content">
+
+        <div class="img-text__content-head">
+
+          {% if section.settings.tag_text != blank %}
+            <div class="img-text_tag tag_tag">
+
+              {% if section.settings.tag_icon != blank %}
+                <div class="tag_icon">
+                  {{
+                    section.settings.tag_icon
+                    | image_url: width: 400
+                    | image_tag:
+                      widths: '200,400',
+                      loading: 'lazy',
+                      alt: 'tag icon'
+                  }}
+                </div>
+              {% endif %}
+
+              <span class="tag_text">{{ section.settings.tag_text }}</span>
+            </div>
+          {% endif %}
+
+          {% if section.settings.heading != blank %}
+            <h2 class="img-text__content-title title_title">
+              {{
+                section.settings.heading
+                | replace: '<p>', ''
+                | replace: '</p>', ''
+              }}
+            </h2>
+          {% endif %}
+
+          {% if section.settings.description != blank %}
+            <div class="img-text_description">
+              {{ 
+                section.settings.description
+                | replace: '<p>', ''
+                | replace: '</p>', ''
+             }}
+            </div>
+          {% endif %}
+
+        </div>
+
+        {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+          <a
+            href="{{ section.settings.button_link }}"
+            class="img-text_btn btn_btn img-text_btn_desk"
+          >
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Image With Text",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "tag_icon",
+      "label": "Tag Icon"
+    },
+    {
+      "type": "text",
+      "id": "tag_text",
+      "label": "Tag Text"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "description",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "tag_bg_color",
+      "label": "Tag Background",
+      "default": "#F5F5F5"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "Tag Text Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image With Text",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,1017 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "featured_collection_TJ3xzC": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "description": "<h2><strong>JUST DROPPED - Wholesale Prices & Free Shipping On 6 Pack Cases (30% off)<\/strong><\/h2>",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "bulk-evoo",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "73200434-1baa-44d4-ab6e-b0fc54ce191d": {
+      "type": "image-with-text",
+      "blocks": {
+        "f7aa8fa8-6f62-4b2b-aed2-7cd812eac707": {
+          "type": "heading",
+          "settings": {
+            "heading": "HOW DAVID HEALED FROM CROHNS DISEASE NATURALLY WITH THE HELP OF OLIVE OIL",
+            "heading_size": "h2"
+          }
+        },
+        "5cf7b958-3a4f-4b0f-bd16-262cd7d85191": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Zimms Organics founder, David Zimmerman almost died from internal bleeding, losing 8 pints (70% of blood in his body) of blood due to an ulcer. Shortly after, he was diagnosed with Crohn's disease. Doctors said he would be on medication for the rest of his life, but that wasn't part of his plan. Now he's been off medication for over 6 years with zero flare ups or hospital visits. Learn more about how olive oil helped David heal.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "9d6efa6e-3ca4-495b-8068-60b9d9dfc8d7": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "shopify:\/\/pages\/about",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "f7aa8fa8-6f62-4b2b-aed2-7cd812eac707",
+        "5cf7b958-3a4f-4b0f-bd16-262cd7d85191",
+        "9d6efa6e-3ca4-495b-8068-60b9d9dfc8d7"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/BCAM0287_1.jpg",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "featured_collection_8BzrLD": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "NEW POUR SPOUTS - now without any plastic",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "accessories",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "featured-collection-0": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "SHOP ZIMMS ORGANICS",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "frontpage",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "full_width": true,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": true,
+        "color_scheme": "background-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "enable_quick_add": true,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "image_with_text_7maNCk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_VD6r6p": {
+          "type": "heading",
+          "settings": {
+            "heading": "INTRODUCING HEAL+",
+            "heading_size": "h1"
+          }
+        },
+        "text_f4hhP3": {
+          "type": "text",
+          "settings": {
+            "text": "<p>HEAL+ contains 100% organic Koroneiki olives, the varietal that helped me get off medication from Crohn's disease. HEAL+ is also our highest polyphenol EVOO yet at <strong>660 mg \/ kg.<\/strong><\/p><p>HEAL+ is super bright, peppery, spicy and packs a serious kick. The high polyphenols provide more antioxidants and health benefits, which is why HEAL+ is best consumed by itself in a shot daily.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_Qix6ak": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "shopify:\/\/products\/healplus-organic-extra-virgin-olive-oil-400ml",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_VD6r6p",
+        "text_f4hhP3",
+        "button_Qix6ak"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/IMG_6581.jpg",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "rich-text": {
+      "type": "rich-text",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>INTRODUCING ZIMMS ORGANICS<\/p>"
+          }
+        },
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "What Sets Zimms Organics Apart?",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "text",
+        "heading"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "accent-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "multicolumn-1": {
+      "type": "multicolumn",
+      "blocks": {
+        "column-0": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Asset_38_4x_49ddfc19-8c44-4f17-a7cb-2467517d5e10.png",
+            "title": "Grown In California",
+            "text": "<p>All our olives are grown and produced in California<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Asset_36_4x_c63ad538-2800-440d-b5eb-3a19f0e0f94b.png",
+            "title": "Single Origin",
+            "text": "<p>We only use single origin olive for all of our EVOO<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column-2": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Asset_37_4x_d49bc492-11be-4cb8-9d7b-11f48bcfb7c1.png",
+            "title": "Single Varietal",
+            "text": "<p>We only use single varietal olives for all of our EVOO<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column-3": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Asset_35_4x_466092e2-8526-4cc7-af0c-01210a95d2b4.png",
+            "title": "Certified Organic",
+            "text": "<p>We only work with farms that are certified USDA Organic<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column-0",
+        "column-1",
+        "column-2",
+        "column-3"
+      ],
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 56,
+        "padding_bottom": 24
+      }
+    },
+    "eb37db64-1181-4585-8663-718148ca1d8a": {
+      "type": "multicolumn",
+      "blocks": {
+        "template--17736425308440__eb37db64-1181-4585-8663-718148ca1d8a-1675696967f9fe1e2d-0": {
+          "type": "column",
+          "settings": {
+            "title": "Best Healing Olive Oil",
+            "text": "<p>I’ve been using this product for about a month now and I feel less bloated, more energy, and I even feel smaller around my waist line. Love this product. Recommend it 100%<br\/><br\/>- Patricia<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--17736425308440__eb37db64-1181-4585-8663-718148ca1d8a-1675696967f9fe1e2d-1": {
+          "type": "column",
+          "settings": {
+            "title": "Cooking With Zimms Organics Oils",
+            "text": "<p>I have now cooked several dishes with the olive oil and it is excellent. It is very smooth, blends easily into the dish being prepared, and does not distort the taste of the food, as some other olive oils do. Also purchased the gold colored spout, which makes pouring and storing handy. All the items are well worth their price.<br\/><br\/>- Steven<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "template--17736425308440__eb37db64-1181-4585-8663-718148ca1d8a-1675696967f9fe1e2d-2": {
+          "type": "column",
+          "settings": {
+            "title": "Helping Me Heal",
+            "text": "<p>I have struggled with chronic IBS-C and other debilitating digestive issues (vomiting, gas, burning\/scratching in abdomen, etc). After trying every laxative, home therapy, and emergency room tactic under the sun, this stuff is a miracle. However, since I began using this product a couple of months ago, my constipation and the accompanying symptoms have abated significantly. I surge with gratitude. Even though the company has a separate oil for cooking, I use this to cook and it does the medical and culinary jobs most wonderfully :)<\/p><p>- Courtney S.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--17736425308440__eb37db64-1181-4585-8663-718148ca1d8a-1675696967f9fe1e2d-0",
+        "template--17736425308440__eb37db64-1181-4585-8663-718148ca1d8a-1675696967f9fe1e2d-1",
+        "template--17736425308440__eb37db64-1181-4585-8663-718148ca1d8a-1675696967f9fe1e2d-2"
+      ],
+      "settings": {
+        "title": "REVIEWS",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "background-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_bgYBVk": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_KXRWy9": {
+          "type": "heading",
+          "settings": {
+            "heading": "SUBSCRIBE & SAVE 25%",
+            "heading_size": "h1"
+          }
+        },
+        "text_mTiAxM": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Never run out of EVOO again.<\/p><p>Head over to the COOK or HEAL large bottle product pages and check out the subscription options. You'll save 25% on any subscription and you can cancel any time! Subscriptions can be scheduled for every 15 or 30 days.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button_HHAw97": {
+          "type": "button",
+          "settings": {
+            "button_label": "Subscribe",
+            "button_link": "shopify:\/\/collections\/frontpage",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_KXRWy9",
+        "text_mTiAxM",
+        "button_HHAw97"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/HEAL_dinner.jpg",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide-0": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/mrTCF384.jpg",
+            "heading": "OLIVE OIL FOR YOUR HEALTH & WELLNESS",
+            "heading_size": "h2",
+            "subheading": "David Zimmerman started Zimms Organics after overcoming a debilitating Crohn's disease diagnosis which put him in and out of hospitals for years. High quality organic extra virgin olive oil helped him heal, and he's been off western meds since 2018.",
+            "button_label": "David's Story",
+            "link": "shopify:\/\/pages\/about",
+            "button_style_secondary": false,
+            "box_align": "bottom-left",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 30,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "left"
+          }
+        },
+        "slide_yHNkki": {
+          "type": "slide",
+          "settings": {
+            "heading": "Image slide",
+            "heading_size": "h1",
+            "subheading": "Tell your brand's story through images",
+            "button_label": "Button label",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 0,
+            "color_scheme": "background-1",
+            "text_alignment_mobile": "center"
+          }
+        },
+        "slide-1": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "heading": "Slideshow",
+            "heading_size": "h1",
+            "subheading": "Introduce a product or collection you'd like to highlight.",
+            "button_label": "Shop now",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-right",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 10,
+            "color_scheme": "background-2",
+            "text_alignment_mobile": "left"
+          }
+        },
+        "slide-2": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "heading": "Slideshow",
+            "heading_size": "h1",
+            "subheading": "Introduce a product or collection you'd like to highlight.",
+            "button_label": "Shop now",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-center",
+            "show_text_box": true,
+            "text_alignment": "center",
+            "image_overlay_opacity": 10,
+            "color_scheme": "background-2",
+            "text_alignment_mobile": "left"
+          }
+        }
+      },
+      "block_order": [
+        "slide-0",
+        "slide_yHNkki",
+        "slide-1",
+        "slide-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "adapt_image",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": "Slideshow about our brand"
+      }
+    },
+    "0aef810c-7bfb-4a00-9381-63707226bf22": {
+      "type": "image-with-text",
+      "blocks": {
+        "0a79b969-959a-41ae-986c-10b4bb4fdab6": {
+          "type": "heading",
+          "settings": {
+            "heading": "SIP GLASS",
+            "heading_size": "h0"
+          }
+        },
+        "3d77f08c-72a2-495c-bb63-b1fe45e32189": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Enjoy a shot of HEAL EVOO as part of your morning routine using our custom designed Sip Glass, which holds exactly 1 tablespoon. Click the link below for our specific EVOO shot guide.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "abed9397-3af6-40c1-871e-10abebbad690": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "shopify:\/\/blogs\/news\/how-to-take-a-proper-evoo-shot-1",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "0a79b969-959a-41ae-986c-10b4bb4fdab6",
+        "3d77f08c-72a2-495c-bb63-b1fe45e32189",
+        "abed9397-3af6-40c1-871e-10abebbad690"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/ZIMMS-Kodo-FINALS-5_77c2b493-2072-42c7-b9eb-2a7c2cd3c4f4.jpg",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-1",
+        "color_scheme": "scheme-4",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "b5f9fc59-06cf-4e6a-a309-62c21b93eb2e": {
+      "type": "image-banner",
+      "blocks": {
+        "template--17736425308440__b5f9fc59-06cf-4e6a-a309-62c21b93eb2e-1675651486fc3edf5d-0": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "Image banner",
+            "heading_size": "h1"
+          }
+        },
+        "template--17736425308440__b5f9fc59-06cf-4e6a-a309-62c21b93eb2e-1675651486fc3edf5d-1": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "body"
+          }
+        },
+        "template--17736425308440__b5f9fc59-06cf-4e6a-a309-62c21b93eb2e-1675651486fc3edf5d-2": {
+          "type": "buttons",
+          "disabled": true,
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--17736425308440__b5f9fc59-06cf-4e6a-a309-62c21b93eb2e-1675651486fc3edf5d-0",
+        "template--17736425308440__b5f9fc59-06cf-4e6a-a309-62c21b93eb2e-1675651486fc3edf5d-1",
+        "template--17736425308440__b5f9fc59-06cf-4e6a-a309-62c21b93eb2e-1675651486fc3edf5d-2"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Asset_94.png",
+        "image_overlay_opacity": 0,
+        "image_height": "small",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": true
+      }
+    },
+    "image-with-text-1": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "EXPLORE HEAL",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our health and wellness inspired EVOO. Best enjoyed by the spoonful or drizzled on your favorite foods. A bright and peppery mouth feel that also handles well cooked in heat.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "shopify:\/\/collections",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Screenshot_2023-03-08_at_9.26.03_PM.png",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "image-with-text-0": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "EXPLORE COOK",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Our cooking inspired EVOO. A well-rounded flavor profile that perfectly enhances any dish. Enjoy cooking in heat or as a finishing oil.<\/p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Learn More",
+            "button_link": "shopify:\/\/collections",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/Screenshot_2023-03-08_at_9.25.17_PM.png",
+        "height": "large",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "867a3b69-393c-4985-b325-565039b34207": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--17736425308440__867a3b69-393c-4985-b325-565039b34207-16774523806d659655-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Why Organic Is Important",
+            "heading_size": "h1"
+          }
+        },
+        "template--17736425308440__867a3b69-393c-4985-b325-565039b34207-16774523806d659655-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>I know that choosing what to eat is super confusing these days, and there is a ton of conflicting information out there. It’s unfair to the consumer, we shouldn’t have to do all this research out of mistrust for the food systems. At least you know when you see the Certified by the CCOF and Organic Stamp on your food, you can find solace knowing that the food you're eating is safe and clean. That means no pesticides in the soil for at least 3 years.<br\/><br\/>Zimms Organic EVOO is made of one ingredient. Olives. And these olives are always grown organically, from a small family farm in California and are single origin and single varietal. <\/p>",
+            "text_style": "body"
+          }
+        },
+        "template--17736425308440__867a3b69-393c-4985-b325-565039b34207-16774523806d659655-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read Full Post",
+            "button_link": "shopify:\/\/blogs\/news\/why-organic-is-important",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "template--17736425308440__867a3b69-393c-4985-b325-565039b34207-16774523806d659655-0",
+        "template--17736425308440__867a3b69-393c-4985-b325-565039b34207-16774523806d659655-1",
+        "template--17736425308440__867a3b69-393c-4985-b325-565039b34207-16774523806d659655-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/gabriel-jimenez-jin4W1HqgL4-unsplash.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "0dbb173b-fc0f-4f68-98f1-25b31e7e5053": {
+      "type": "image-with-text",
+      "blocks": {
+        "template--17736425308440__0dbb173b-fc0f-4f68-98f1-25b31e7e5053-16774523806d659655-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Single Origin & Single Varietal",
+            "heading_size": "h1"
+          }
+        },
+        "template--17736425308440__0dbb173b-fc0f-4f68-98f1-25b31e7e5053-16774523806d659655-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Zimms Organics solely sources organic extra virgin olive oil (EVOO) from California. Each product is single varietal and single origin. <\/p><p><strong>What does this mean?<\/strong><\/p><p>Each product comes from one farm and one varietal of olive. COOK, HEAL and HEAL+ all come from the certified organic and family farms in California. COOK is made from 100% organic arbequina olives from Central California. HEAL and HEAL+ come from the same farm in Northern California. HEAL is 100% arbequina and HEAL+ is 100% koroneiki.<\/p><p>David personally vetted numerous farms in the U.S. by speaking with their owners, tasting their oil and requesting lab tests and polyphenol tests for their EVOO’s. After much research, he found a farm that checked all the boxes of:<\/p><p>• Certified organic<br\/>• Single origin<br\/>• Single varietal<br\/>• Offered multiple varietals<br\/>• High polyphenol levels (above 330mg\/kg)<br\/>• Delicious and unique flavor profiles<br\/>• Genuinely good people to work with<\/p>",
+            "text_style": "body"
+          }
+        },
+        "template--17736425308440__0dbb173b-fc0f-4f68-98f1-25b31e7e5053-16774523806d659655-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Read Full Post",
+            "button_link": "shopify:\/\/blogs\/news\/single-origin-single-varietal",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "template--17736425308440__0dbb173b-fc0f-4f68-98f1-25b31e7e5053-16774523806d659655-0",
+        "template--17736425308440__0dbb173b-fc0f-4f68-98f1-25b31e7e5053-16774523806d659655-1",
+        "template--17736425308440__0dbb173b-fc0f-4f68-98f1-25b31e7e5053-16774523806d659655-2"
+      ],
+      "settings": {
+        "image": "shopify:\/\/shop_images\/tal-surasky--UdUbiQN1dU-unsplash.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "scheme-3",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "featured-blog": {
+      "type": "featured-blog",
+      "settings": {
+        "heading": "BLOG POSTS",
+        "heading_size": "h2",
+        "blog": "news",
+        "post_limit": 3,
+        "columns_desktop": 3,
+        "color_scheme": "background-2",
+        "show_image": true,
+        "show_date": true,
+        "show_author": false,
+        "show_view_all": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "17092415442499de14": {
+      "type": "apps",
+      "blocks": {
+        "instafeed_app_block_hCwLrQ": {
+          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "settings": {
+            "title": "Follow us on Instagram @zimmsorganics",
+            "title_color": "",
+            "title_size_v2": 0,
+            "alignment": "center",
+            "instafeed_margin_top": 0,
+            "instafeed_margin_bottom": 0,
+            "instafeed_margin_sides": 0,
+            "show_instagram_link": false,
+            "link_alignment": "left",
+            "link_color": "#000000",
+            "background_color": "",
+            "feed_id": "",
+            "html_area": ""
+          }
+        }
+      },
+      "block_order": [
+        "instafeed_app_block_hCwLrQ"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1677457655990d79f1": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "multicolumn_ChxMUH": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_gWGiyU": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_z4izjn": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/sony_bcg.png",
+            "title": "Great for Corporate Gifts",
+            "text": "<p>Trusted by BCG and Sony Music for corporate gifting<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_H7nQPJ": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_gWGiyU",
+        "column_z4izjn",
+        "column_H7nQPJ"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 1,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "Click for corporate gifting info",
+        "button_link": "",
+        "color_scheme": "scheme-3bf9105f-5e9c-4bc5-b3fd-338e636c3f2b",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_czTjyy": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_Tg67gr": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/Erewhon_svg_38c9c305-cd86-49ca-a819-e358aeebc8d9.png",
+            "title": "Featured in all Erewhon stores",
+            "text": "<p>You can find Zimms Organics on the shelves of all Erewhon stores in Los Angeles. Many more coming soon<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_JRfGVR": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_yeMhXi": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_Tg67gr",
+        "column_JRfGVR",
+        "column_yeMhXi"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "Zimms Wholesale",
+        "button_link": "",
+        "color_scheme": "scheme-3bf9105f-5e9c-4bc5-b3fd-338e636c3f2b",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "multicolumn_Er9tnA": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_YRkrLK": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/cbglogos.png",
+            "title": "As seen in:",
+            "text": "<p>GQ, thingtesting, CPGD<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_R6gWaR": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_mTRRgJ": {
+          "type": "column",
+          "disabled": true,
+          "settings": {
+            "title": "Column",
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_YRkrLK",
+        "column_R6gWaR",
+        "column_mTRRgJ"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h2",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 1,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "Button label",
+        "button_link": "",
+        "color_scheme": "scheme-3bf9105f-5e9c-4bc5-b3fd-338e636c3f2b",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "featured_collection_TJ3xzC",
+    "73200434-1baa-44d4-ab6e-b0fc54ce191d",
+    "featured-collection-0",
+    "featured_collection_8BzrLD",
+    "image_with_text_7maNCk",
+    "rich-text",
+    "multicolumn-1",
+    "eb37db64-1181-4585-8663-718148ca1d8a",
+    "image_with_text_bgYBVk",
+    "slideshow",
+    "0aef810c-7bfb-4a00-9381-63707226bf22",
+    "b5f9fc59-06cf-4e6a-a309-62c21b93eb2e",
+    "image-with-text-1",
+    "image-with-text-0",
+    "867a3b69-393c-4985-b325-565039b34207",
+    "0dbb173b-fc0f-4f68-98f1-25b31e7e5053",
+    "featured-blog",
+    "17092415442499de14",
+    "1677457655990d79f1",
+    "multicolumn_ChxMUH",
+    "multicolumn_czTjyy",
+    "multicolumn_Er9tnA"
+  ]
+}

@@ -1,0 +1,191 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "custom_footer_w7GU3g": {
+      "type": "custom-footer",
+      "blocks": {
+        "menu_column_EQkMiD": {
+          "type": "menu_column",
+          "settings": {
+            "menu_title": "Products",
+            "menu": "products"
+          }
+        },
+        "menu_column_a9HBzY": {
+          "type": "menu_column",
+          "settings": {
+            "menu_title": "About",
+            "menu": "about"
+          }
+        },
+        "menu_column_HhUag9": {
+          "type": "menu_column",
+          "settings": {
+            "menu_title": "Inquire",
+            "menu": "inquire"
+          }
+        },
+        "menu_column_9CtNK7": {
+          "type": "menu_column",
+          "settings": {
+            "menu_title": "Help",
+            "menu": "help"
+          }
+        },
+        "menu_column_MtjhbY": {
+          "type": "menu_column",
+          "settings": {
+            "menu_title": "Social",
+            "menu": "social"
+          }
+        },
+        "menu_column_Habq6K": {
+          "type": "menu_column",
+          "settings": {
+            "menu_title": "Legal",
+            "menu": "legal"
+          }
+        }
+      },
+      "block_order": [
+        "menu_column_EQkMiD",
+        "menu_column_a9HBzY",
+        "menu_column_HhUag9",
+        "menu_column_9CtNK7",
+        "menu_column_MtjhbY",
+        "menu_column_Habq6K"
+      ],
+      "name": "Zims Footer",
+      "settings": {
+        "logo": "shopify://shop_images/image_51.png",
+        "store_title": "",
+        "footer_heading": "",
+        "footer_subtitle": "<p>Empowering people to be healthier through natural, organic and quality food.</p>",
+        "newsletter_title": "Stay up to date on our news, education and offers",
+        "newsletter_placeholder": "info@.com",
+        "newsletter_btn_text": "Subscribe",
+        "copyright_text": "Copyright © 2026 ZIMMS ORGANICS. All rights reserved.",
+        "bg_color": "#f3f3ec",
+        "heading_color": "#1a2744",
+        "text_color": "#1a2744",
+        "menu_title_color": "#1a2744",
+        "menu_link_color": "#1a2744",
+        "newsletter_input_color": "#1a2744",
+        "newsletter_btn_bg": "#1a2744",
+        "newsletter_btn_text_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 40,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 20
+      }
+    },
+    "custom_liquid_BBpHeY": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<script>\nwindow.ALBSS = {\n    event_key: '39e94be1-beae-4cfc-b9c9-782858af5386'\n};\n</script>\n<script src=\"https://c.albss.com/p/l/loader.iife.js\"></script>",
+        "color_scheme": "",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe To Our Emails",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+          }
+        },
+        "email-form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email-form"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "text": {
+          "type": "text",
+          "settings": {
+            "heading": "Our Mission",
+            "subtext": "<p>Empowering people to be healthier through natural, organic and quality food. </p>"
+          }
+        },
+        "image": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/Asset_39_4x_1493b2ba-111f-444e-b17c-e87e423865da.png",
+            "image_width": 170,
+            "alignment": "center"
+          }
+        },
+        "dd531bd2-829d-48b5-ac1c-fa16ad831c6f": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Legal Stuff",
+            "menu": "footer"
+          }
+        }
+      },
+      "block_order": [
+        "text",
+        "image",
+        "dd531bd2-829d-48b5-ac1c-fa16ad831c6f"
+      ],
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "newsletter_enable": true,
+        "newsletter_heading": "Subscribe To Our Emails",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": true,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": false,
+        "margin_top": 0,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": [
+    "custom_footer_w7GU3g",
+    "custom_liquid_BBpHeY",
+    "newsletter",
+    "footer"
+  ]
+}

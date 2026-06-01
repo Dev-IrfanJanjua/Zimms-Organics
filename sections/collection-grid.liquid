@@ -1,0 +1,397 @@
+{% style %}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.section_bg_color }};
+  padding-top: {{ section.settings.desktop_padding_top }}px;
+  padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+}
+
+/* HEADER */
+.section-{{ section.id }} .collections-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+}
+
+.section-{{ section.id }} .collectios-head {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.section-{{ section.id }} .collection-title {
+  color: {{ section.settings.heading_color }};
+}
+
+/* GRID */
+.section-{{ section.id }} .collections-cards {
+  display: grid;
+  grid-template-columns: repeat({{ section.settings.desktop_columns }}, 1fr);
+  gap: 12px;
+}
+
+/* CARD */
+.section-{{ section.id }} .collections-card {
+  position: relative;
+  overflow: hidden;
+}
+
+/* IMAGE WRAPPER */
+.section-{{ section.id }} .collections-card-image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+  aspect-ratio: 0.8;
+}
+
+.section-{{ section.id }} .collections-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+
+/* hover image */
+.section-{{ section.id }} .hover-img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: 0.3s ease;
+}
+
+/* ONLY apply hover effect if class exists */
+.section-{{ section.id }} .collections-card.has-hover-img:hover .hover-img-enabled {
+  opacity: 1;
+}
+
+.section-{{ section.id }} .collections-card.has-hover-img:hover .default-img-enabled {
+  opacity: 0;
+}
+
+/* default state safety */
+.section-{{ section.id }} .hover-img-enabled {
+  opacity: 0;
+}
+
+/* TITLE */
+.section-{{ section.id }} .collections-title {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin: 6px 0 0;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: {{ section.settings.text_color }};
+}
+
+/* ICON */
+
+.section-{{ section.id }} span.collections-title_icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.section-{{ section.id }} .collections-title_icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  .section-{{ section.id }} .collections-cards {
+    grid-template-columns: repeat({{ section.settings.mobile_columns }}, 1fr);
+    gap: 8px;
+  }
+
+  /* last odd item full width */
+  .section-{{ section.id }} .collections-card:last-child:nth-child(odd) {
+    grid-column: span 2;
+  }
+
+  .section-{{ section.id }} .collections-card:last-child:nth-child(odd) .collections-card-image {
+    aspect-ratio: 1.8;
+  }
+
+  .section-template--26780661186840__collection_grid_34JBE8 .collections-wrapper {
+    gap: 24px;
+}
+
+}
+{% endstyle %}
+
+<section class="collections-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="collections-wrapper">
+
+      <!-- HEAD -->
+      <div class="collectios-head">
+
+        {% if section.settings.tag_text != blank %}
+          <div class="collections_tag tag_tag">
+            {% if section.settings.tag_icon != blank %}
+              <div class="tag_icon">
+                {{
+                  section.settings.tag_icon
+                  | image_url: width: 400
+                  | image_tag:
+                    widths: '200,400',
+                    loading: 'lazy',
+                    alt: 'tag icon'
+                }}
+              </div>
+            {% endif %}
+            <span class="tag_text">{{ section.settings.tag_text }}</span>
+          </div>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h2 class="collection-title title_title">
+            {{ section.settings.heading | replace: '<p>', '' | replace: '</p>', '' }}
+          </h2>
+        {% endif %}
+
+      </div>
+
+      <!-- CARDS -->
+      <div class="collections-cards">
+
+        {% for block in section.blocks %}
+          {% assign collection = block.settings.collection %}
+
+          <div class="collections-card {% if block.settings.enable_hover_image and block.settings.hover_image != blank %}has-hover-img{% endif %}" {{ block.shopify_attributes }}>
+
+            <div class="collections-card-image">
+
+              <!-- DEFAULT IMAGE -->
+              {% if block.settings.image != blank %}
+                {{
+                  block.settings.image
+                  | image_url: width: 800
+                  | image_tag:
+                    class: 'default-img-enabled',
+                    loading: 'lazy',
+                    widths: '200,400,600,800',
+                    alt: collection.title
+                }}
+              {% elsif collection.featured_image %}
+                {{
+                  collection.featured_image
+                  | image_url: width: 800
+                  | image_tag:
+                    class: 'default-img-enabled',
+                    loading: 'lazy',
+                    widths: '200,400,600,800',
+                    alt: collection.title
+                }}
+              {% endif %}
+
+              <!-- HOVER IMAGE -->
+              {% if block.settings.enable_hover_image and block.settings.hover_image != blank %}
+                {{
+                  block.settings.hover_image
+                  | image_url: width: 800
+                  | image_tag:
+                    class: 'hover-img hover-img-enabled',
+                    loading: 'lazy',
+                    widths: '200,400,600,800',
+                    alt: collection.title
+                }}
+              {% endif %}
+
+            </div>
+
+            <!-- TITLE -->
+            <a href="{{ collection.url }}" class="collections-title">
+
+              {% if block.settings.custom_title != blank %}
+                {{ block.settings.custom_title }}
+              {% elsif collection != blank %}
+                {{ collection.title }}
+              {% endif %}
+
+              {% if section.settings.title_icon != blank %}
+                <span class="collections-title_icon">
+                  {{
+                    section.settings.title_icon
+                    | image_url: width: 100
+                    | image_tag:
+                      loading: 'lazy',
+                      widths: '50,100',
+                      alt: 'icon'
+                  }}
+                </span>
+              {% endif %}
+
+            </a>
+
+          </div>
+        {% endfor %}
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collections Grid",
+  "settings": [
+
+    {
+      "type": "image_picker",
+      "id": "tag_icon",
+      "label": "Tag Icon"
+    },
+    {
+      "type": "text",
+      "id": "tag_text",
+      "label": "Tag Text"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "title_icon",
+      "label": "Title Icon"
+    },
+
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#111111"
+    },
+
+    {
+      "type": "range",
+      "id": "desktop_columns",
+      "label": "Desktop Columns",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "range",
+      "id": "mobile_columns",
+      "label": "Mobile Columns",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    },
+
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 40
+    }
+
+  ],
+
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "Collection Card",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection",
+          "label": "Collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Override Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "hover_image",
+          "label": "Hover Image"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_hover_image",
+          "label": "Enable Hover Image",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "custom_title",
+          "label": "Custom Title"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Collections Grid",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

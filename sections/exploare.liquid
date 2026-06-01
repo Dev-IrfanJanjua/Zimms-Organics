@@ -1,0 +1,324 @@
+{% style %}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.section_bg_color }};
+  padding-top: {{ section.settings.desktop_padding_top }}px;
+  padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ABS IMAGE */
+.section-{{ section.id }} .explore-abs-image {
+    width: 100%;
+    height: auto;
+}
+
+.section-{{ section.id }} .explore-abs-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* CONTENT */
+.section-{{ section.id }} .explore-wrapper {
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    left: 80px;
+    top: 50%;
+    transform: translatey(-50%);
+    align-items: start;
+}
+
+.section-{{ section.id }} .expore-title {
+  color: {{ section.settings.heading_color }};
+  margin: 12px 0;
+}
+
+.section-{{ section.id }} .explore-subtitle {
+    color: {{ section.settings.text_color }};
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    max-width: 510px;
+    margin: 0;
+}
+
+.section-{{ section.id }} .explore_btn {
+  background-color: {{ section.settings.button_bg_color }};
+  color: {{ section.settings.button_text_color }};
+}
+
+/* TAG COLORS ONLY (NO STYLE CHANGES) */
+.section-{{ section.id }} .tag_tag {
+  color: {{ section.settings.tag_text_color }};
+}
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  .section-{{ section.id }} .explore-wrapper {
+    gap: 24px;
+    left: 16px;
+    transform: unset;
+    align-items: stretch;
+    bottom: 32px;
+    top: auto;
+    width: calc(100% - 32px);
+    right: 0;
+    text-align: center;
+}
+
+.section-{{ section.id }} .tag_tag {
+    justify-content: center;
+}
+
+.section-{{ section.id }} .explore-subtitle {
+    display: none;
+}
+
+.section-{{ section.id }} .expore-title {
+    margin-bottom: 0;
+}
+
+}
+{% endstyle %}
+
+<section class="explore-section section-{{ section.id }}">
+
+  <!-- BACKGROUND IMAGE (desktop + mobile optimized) -->
+  <div class="explore-abs-image">
+
+    {% if section.settings.desktop_image != blank or section.settings.mobile_image != blank %}
+      <picture>
+
+        {% if section.settings.mobile_image != blank %}
+          <source
+            media="(max-width: 768px)"
+            srcset="
+              {{ section.settings.mobile_image | image_url: width: 600 }} 600w,
+              {{ section.settings.mobile_image | image_url: width: 900 }} 900w
+            "
+          >
+        {% endif %}
+
+        {% if section.settings.desktop_image != blank %}
+          <img
+            src="{{ section.settings.desktop_image | image_url: width: 1600 }}"
+            srcset="
+              {{ section.settings.desktop_image | image_url: width: 800 }} 800w,
+              {{ section.settings.desktop_image | image_url: width: 1200 }} 1200w,
+              {{ section.settings.desktop_image | image_url: width: 1600 }} 1600w
+            "
+            sizes="100vw"
+            loading="lazy"
+            alt="{{ section.settings.heading | strip_html | default: 'Explore background' }}"
+          >
+        {% endif %}
+
+      </picture>
+    {% endif %}
+
+  </div>
+
+  <div class="page-width">
+    <div class="explore-wrapper">
+
+      <!-- HEAD -->
+      <div class="explore-head">
+
+        {% if section.settings.tag_text != blank %}
+          <div class="img-text_tag tag_tag">
+
+            {% if section.settings.tag_icon != blank %}
+              <div class="tag_icon">
+                {{
+                  section.settings.tag_icon
+                  | image_url: width: 400
+                  | image_tag:
+                    widths: '200,400',
+                    loading: 'lazy',
+                    alt: 'tag icon'
+                }}
+              </div>
+            {% endif %}
+
+            <span class="tag_text">{{ section.settings.tag_text }}</span>
+
+          </div>
+        {% endif %}
+
+        {% if section.settings.heading != blank %}
+          <h2 class="expore-title title_title">
+            {{
+              section.settings.heading
+              | replace: '<p>', ''
+              | replace: '</p>', ''
+            }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.subtitle != blank %}
+          <p class="explore-subtitle">
+            {{ section.settings.subtitle }}
+          </p>
+        {% endif %}
+
+      </div>
+
+      <!-- BUTTON -->
+      {% if section.settings.button_text != blank and section.settings.button_link != blank %}
+        <a href="{{ section.settings.button_link }}" class="explore_btn btn_btn">
+          {{ section.settings.button_text }}
+        </a>
+      {% endif %}
+
+    </div>
+  </div>
+
+</section>
+
+{% schema %}
+{
+  "name": "Explore Section",
+  "settings": [
+
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Background Image"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "tag_icon",
+      "label": "Tag Icon"
+    },
+    {
+      "type": "text",
+      "id": "tag_text",
+      "label": "Tag Text"
+    },
+
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "Tag Text Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Explore Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

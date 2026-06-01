@@ -1,0 +1,801 @@
+{% style %}
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .section-{{ section.id }} .zims-footer-title {
+    color: {{ section.settings.heading_color }};
+  }
+
+  .section-{{ section.id }} .zims-footer-subtitle {
+    color: {{ section.settings.text_color }};
+    margin: 0;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .section-{{ section.id }} .zims-footer-logo-link {
+    display: inline-block;
+    text-decoration: none;
+    max-width: 373px;
+    width: 100%;
+    height: auto;
+    cursor: pointer;
+  }
+
+  .section-{{ section.id }} .zims-footer-logo-link img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .section-{{ section.id }} .zims-footer-logo-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: {{ section.settings.heading_color }};
+    text-decoration: none;
+  }
+
+  .section-{{ section.id }} .zims-footer-wrapper {
+    display: flex;
+    gap: 40px;
+    align-items: stretch;
+  }
+
+  .section-{{ section.id }} .zims-footer-content {
+    flex: 1 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: space-between;
+    max-width: 47%;
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .zims-footer-head-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .section-{{ section.id }} .zims-footer-head {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .section-{{ section.id }} .news-letter-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    max-width: 600px;
+  }
+
+  .section-{{ section.id }} .news-letter-title {
+    color: {{ section.settings.heading_color }};
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0;
+    letter-spacing: normal;
+  }
+
+  .section-{{ section.id }} .news-letter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .section-{{ section.id }} .newsletter-form__inner {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .section-{{ section.id }} .newsletter-form__label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+  }
+
+  .section-{{ section.id }} .newsletter-form__input {
+    border: 1px solid {{ section.settings.newsletter_input_color }};
+    color: {{ section.settings.text_color }};
+    flex: 1;
+    padding: 16px 20px;
+    border-radius: 4px;
+    background: transparent;
+    outline: none;
+    box-shadow: none;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  .section-{{ section.id }} .newsletter-form__input::placeholder {
+    color: {{ section.settings.text_color }};
+    opacity: 0.6;
+  }
+
+  .section-{{ section.id }} .newsletter-form__button {
+    background-color: {{ section.settings.newsletter_btn_bg }};
+    color: {{ section.settings.newsletter_btn_text_color }};
+    border: 1px solid {{ section.settings.newsletter_btn_bg }};
+    padding: 16px 40px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+  }
+
+  .section-{{ section.id }} .newsletter-form__button:hover {
+    opacity: 0.88;
+  }
+
+  .section-{{ section.id }} .newsletter-form__errors {
+    color: #c0392b;
+    margin-top: 0;
+  }
+
+  .section-{{ section.id }} .newsletter-form__success {
+    color: #27ae60;
+    margin-top: 0;
+  }
+
+  .section-{{ section.id }} .zims-footer-menus {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 40px 0;
+    max-width: calc(100% - (47% + 40px));
+    width: 100%;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .section-{{ section.id }} .zims-footer-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: all 0.3s ease;
+  }
+
+  .section-{{ section.id }} .zims-footer-menu-title {
+    color: {{ section.settings.menu_title_color }};
+    margin: 0;
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+  }
+
+  .section-{{ section.id }} .zims-footer-menu-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .section-{{ section.id }} .zims-footer-menu-links li {
+        line-height: normal;
+    }
+
+  .section-{{ section.id }} .zims-footer-menu-links a {
+    color: {{ section.settings.menu_link_color }};
+    text-decoration: none;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  .section-{{ section.id }} .zims-footer-menu-links a:hover {
+    opacity: 0.75;
+  }
+
+  .section-{{ section.id }} .zims-footer-bottom {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .zims-footer-payment-icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px;
+    align-items: center;
+  }
+
+  .section-{{ section.id }} .zims-footer-payment-icons svg,
+  .section-{{ section.id }} .zims-footer-payment-icons img {
+    height: 24px;
+    width: auto;
+  }
+
+  .section-{{ section.id }} .zims-footer-copyright {
+    color: {{ section.settings.text_color }};
+    font-family: "DM Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+  }
+
+  .section-{{ section.id }} .zims-footer-bottom-mob {
+    display: none;
+  }
+
+  .section-{{ section.id }} .zims-footer-menu-title_icon {
+    display: none;
+  }
+
+  .section-{{ section.id }} .zims-footer-menu-title_icon .zims-accordion-icon {
+    font-size: 1.2rem;
+    line-height: 1;
+    transition: transform 0.3s ease;
+    color: {{ section.settings.menu_title_color }};
+  }
+
+  .section-{{ section.id }} .zims-footer-menu-title_icon .zims-accordion-icon.is-open {
+    transform: rotate(45deg);
+  }
+
+    .section-{{ section.id }} .zims-footer-menu-links-wrap {
+        overflow: hidden;
+        transition: max-height 0.35s ease;
+    }
+
+    .section-{{ section.id }} button.zims-footer-menu-toggle {
+        padding: 0;
+        border: none;
+        text-align: left;
+        background: transparent;
+        margin: 0;
+        box-shadow: none;
+        outline: none;
+    }
+
+    .section-{{ section.id }} button.zims-footer-menu-toggle:hover{
+        background: transparent;
+        opacity: 1;
+    }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} .zims-footer-section {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .section-{{ section.id }} .zims-footer-wrapper {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .section-{{ section.id }} .zims-footer-content {
+        max-width: 100%;
+    }
+
+    .section-{{ section.id }} .zims-footer-head-wrapper {
+        gap: 32px;
+    }
+
+    .section-{{ section.id }} .zims-footer-head {
+        gap: 16px;
+        align-items: center;
+    }
+
+    .section-{{ section.id }} .zims-footer-subtitle {
+        text-align: center;
+    }
+
+    .section-{{ section.id }} .news-letter-wrapper {
+        gap: 24px;
+        max-width: 100%;
+    }
+
+    .section-{{ section.id }} .newsletter-form__inner {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .section-{{ section.id }} .newsletter-form__input {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .section-{{ section.id }} .newsletter-form__button {
+        line-height: 24px;
+    }
+
+    .section-{{ section.id }} .zims-footer-payment-icons {
+        justify-content: center;
+    }
+
+    .section-{{ section.id }} .zims-footer-menus {
+        gap: 0;
+        max-width: 100%;
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+
+    .section-{{ section.id }} .zims-footer-menu-title_icon{
+        display: flex !important;
+    }
+    .section-{{ section.id }} .zims-footer-menu {
+      gap: 0;
+    }
+
+    .section-{{ section.id }} .zims-footer-bottom-desktop {
+      display: none !important;
+    }
+
+    .section-{{ section.id }} .zims-footer-bottom-mob {
+      display: flex !important;
+    }
+
+    li.zims-footer-menu.is-active {
+        gap: 20px;
+    }
+
+    .section-{{ section.id }} button.zims-footer-menu-toggle {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        cursor: pointer;
+        padding-bottom: 20px;
+        border-bottom: 1px solid var(--Deep-Navy, #1A2744);
+    }
+
+  }
+{% endstyle %}
+
+<section class="zims-footer-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="zims-footer-wrapper">
+      <div class="zims-footer-content">
+        <div class="zims-footer-head-wrapper">
+          <div class="zims-footer-head">
+
+            {%- if section.settings.logo != blank or section.settings.store_title != blank -%}
+              <a href="{{ routes.root_url }}" class="zims-footer-logo-link" aria-label="{{ shop.name }}">
+                {%- if section.settings.logo != blank -%}
+                  {{
+                    section.settings.logo
+                    | image_url: width: 1600
+                    | image_tag:
+                      widths: '50,100,150,200,300,400,500,600,800,1000,1200,1400,1600',
+                      loading: 'lazy',
+                      alt: shop.name
+                  }}
+                {%- else -%}
+                  <span class="zims-footer-logo-text">
+                    {%- if section.settings.store_title != blank -%}
+                      {{ section.settings.store_title }}
+                    {%- else -%}
+                      {{ shop.name }}
+                    {%- endif -%}
+                  </span>
+                {%- endif -%}
+              </a>
+            {%- endif -%}
+
+            {%- if section.settings.footer_heading != blank -%}
+              <h2 class="zims-footer-title title_title">
+                {{ section.settings.footer_heading | replace: '<p>', '' | replace: '</p>', '' }}
+              </h2>
+            {%- else -%}
+              <h2 class="zims-footer-title title_title"></h2>
+            {%- endif -%}
+
+            {%- if section.settings.footer_subtitle != blank -%}
+              <p class="zims-footer-subtitle">
+                {{ section.settings.footer_subtitle | replace: '<p>', '' | replace: '</p>', '' }}
+              </p>
+            {%- else -%}
+              <p class="zims-footer-subtitle"></p>
+            {%- endif -%}
+
+          </div>
+
+          <div class="news-letter-wrapper">
+            {%- if section.settings.newsletter_title != blank -%}
+              <h3 class="news-letter-title">{{ section.settings.newsletter_title }}</h3>
+            {%- else -%}
+              <h3 class="news-letter-title"></h3>
+            {%- endif -%}
+
+            <div class="news-letter-form">
+              {%- form 'customer', id: 'footer-newsletter-form' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+
+                {%- if form.errors -%}
+                  <div class="newsletter-form__errors" role="alert">
+                    {%- for error in form.errors -%}
+                      <p>{{ form.errors.messages[error] }}</p>
+                    {%- endfor -%}
+                  </div>
+                {%- endif -%}
+
+                {%- if form.posted_successfully? -%}
+                  <p class="newsletter-form__success" role="status">
+                    {{ 'newsletter.success' | t }}
+                  </p>
+                {%- endif -%}
+                  <div class="newsletter-form__inner">
+                    <label for="footer-newsletter-email" class="newsletter-form__label">
+                      {{ 'newsletter.label' | t }}
+                    </label>
+                    <input
+                      type="email"
+                      id="footer-newsletter-email"
+                      class="newsletter-form__input"
+                      name="contact[email]"
+                      placeholder="{%- if section.settings.newsletter_placeholder != blank -%}{{ section.settings.newsletter_placeholder }}{%- else -%}{{ 'newsletter.placeholder' | t }}{%- endif -%}"
+                      autocorrect="off"
+                      autocapitalize="off"
+                      autocomplete="email"
+                      spellcheck="false"
+                      aria-required="true"
+                      required
+                    >
+                    <button type="submit" class="newsletter-form__button">
+                      {%- if section.settings.newsletter_btn_text != blank -%}
+                        {{ section.settings.newsletter_btn_text }}
+                      {%- else -%}
+                        {{ 'newsletter.button_label' | t }}
+                      {%- endif -%}
+                    </button>
+                  </div>
+              {%- endform -%}
+            </div>
+          </div>
+        </div>
+
+        <div class="zims-footer-bottom zims-footer-bottom-desktop">
+          <div class="zims-footer-payment-icons">
+            {%- for type in shop.enabled_payment_types -%}
+              {{ type | payment_type_svg_tag }}
+            {%- endfor -%}
+          </div>
+          <span class="zims-footer-copyright">
+            {%- if section.settings.copyright_text != blank -%}
+              {{ section.settings.copyright_text }}
+            {%- else -%}
+              &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}
+            {%- endif -%}
+          </span>
+        </div>
+      </div>
+
+      <ul class="zims-footer-menus">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'menu_column' -%}
+            <li class="zims-footer-menu" {{ block.shopify_attributes }}>
+
+              {%- if block.settings.menu_title != blank -%}
+                <button type="button" class="zims-footer-menu-toggle">
+                    <h4 class="zims-footer-menu-title">{{ block.settings.menu_title }}</h4>
+                    <span class="zims-footer-menu-title_icon" style="display: none;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M17.5 10C17.5 10.1658 17.4342 10.3247 17.3169 10.4419C17.1997 10.5592 17.0408 10.625 16.875 10.625H10.625V16.875C10.625 17.0408 10.5592 17.1997 10.4419 17.3169C10.3247 17.4342 10.1658 17.5 10 17.5C9.83424 17.5 9.67527 17.4342 9.55806 17.3169C9.44085 17.1997 9.375 17.0408 9.375 16.875V10.625H3.125C2.95924 10.625 2.80027 10.5592 2.68306 10.4419C2.56585 10.3247 2.5 10.1658 2.5 10C2.5 9.83424 2.56585 9.67527 2.68306 9.55806C2.80027 9.44085 2.95924 9.375 3.125 9.375H9.375V3.125C9.375 2.95924 9.44085 2.80027 9.55806 2.68306C9.67527 2.56585 9.83424 2.5 10 2.5C10.1658 2.5 10.3247 2.56585 10.4419 2.68306C10.5592 2.80027 10.625 2.95924 10.625 3.125V9.375H16.875C17.0408 9.375 17.1997 9.44085 17.3169 9.55806C17.4342 9.67527 17.5 9.83424 17.5 10Z" fill="#1A2744"/>
+                        </svg>
+                    </span>
+                </button>
+                {%- endif -%}
+
+              {%- if block.settings.menu != blank -%}
+                {%- assign nav = linklists[block.settings.menu] -%}
+                {%- if nav.links.size > 0 -%}
+                  <div class="zims-footer-menu-links-wrap">
+                    <ul class="zims-footer-menu-links">
+                      {%- for link in nav.links -%}
+                        <li>
+                          <a href="{{ link.url }}">{{ link.title }}</a>
+                        </li>
+                      {%- endfor -%}
+                    </ul>
+                  </div>
+                {%- endif -%}
+              {%- endif -%}
+
+            </li>
+          {%- endif -%}
+        {%- endfor -%}
+      </ul>
+
+      <div class="zims-footer-bottom zims-footer-bottom-mob" style="display: none">
+        <div class="zims-footer-payment-icons">
+          {%- for type in shop.enabled_payment_types -%}
+            {{ type | payment_type_svg_tag }}
+          {%- endfor -%}
+        </div>
+        <span class="zims-footer-copyright">
+          {%- if section.settings.copyright_text != blank -%}
+            {{ section.settings.copyright_text }}
+          {%- else -%}
+            &copy; {{ 'now' | date: '%Y' }} {{ shop.name }}
+          {%- endif -%}
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  function initFooterAccordion(section) {
+    const items = section.querySelectorAll('.zims-footer-menu');
+
+    items.forEach((item) => {
+      const btn = item.querySelector('.zims-footer-menu-toggle');
+      const wrap = item.querySelector('.zims-footer-menu-links-wrap');
+      const icon = item.querySelector('.zims-footer-menu-title_icon');
+
+      if (!btn || !wrap) return;
+
+      // reset state
+      wrap.style.maxHeight = window.innerWidth <= 768 ? '0px' : 'none';
+
+      btn.addEventListener('click', function () {
+        if (window.innerWidth > 768) return;
+
+        const isOpen = item.classList.contains('is-active');
+
+        // CLOSE ALL FIRST (this is the key fix)
+        section.querySelectorAll('.zims-footer-menu').forEach((el) => {
+          const elWrap = el.querySelector('.zims-footer-menu-links-wrap');
+          const elIcon = el.querySelector('.zims-footer-menu-title_icon');
+
+          el.classList.remove('is-active');
+          if (elWrap) elWrap.style.maxHeight = '0px';
+          if (elIcon) elIcon.classList.remove('is-open');
+        });
+
+        // IF WAS CLOSED → OPEN IT
+        if (!isOpen) {
+          item.classList.add('is-active');
+          wrap.style.maxHeight = wrap.scrollHeight + 'px';
+
+          if (icon) icon.classList.add('is-open');
+        }
+      });
+    });
+  }
+
+  function run() {
+    document.querySelectorAll('.section-{{ section.id }}').forEach(initFooterAccordion);
+  }
+
+  run();
+
+  document.addEventListener('shopify:section:load', run);
+});
+</script> 
+
+{% schema %}
+{
+  "name": "Zims Footer",
+  "tag": "section",
+  "class": "zims-footer",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Logo / Brand"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "text",
+      "id": "store_title",
+      "label": "Store title fallback",
+      "info": "Shown when no logo is set. Defaults to shop name if blank."
+    },
+    {
+      "type": "header",
+      "content": "Heading Content"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_heading",
+      "label": "Footer heading"
+    },
+    {
+      "type": "richtext",
+      "id": "footer_subtitle",
+      "label": "Footer subtitle"
+    },
+    {
+      "type": "header",
+      "content": "Newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_title",
+      "label": "Newsletter title",
+      "default": "Subscribe to our newsletter"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_placeholder",
+      "label": "Email placeholder",
+      "default": "Your email address"
+    },
+    {
+      "type": "text",
+      "id": "newsletter_btn_text",
+      "label": "Button text",
+      "default": "Subscribe"
+    },
+    {
+      "type": "header",
+      "content": "Copyright"
+    },
+    {
+      "type": "text",
+      "id": "copyright_text",
+      "label": "Custom copyright text",
+      "info": "Leave blank to use: © YEAR STORE NAME"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#cccccc"
+    },
+    {
+      "type": "color",
+      "id": "menu_title_color",
+      "label": "Menu title color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "menu_link_color",
+      "label": "Menu link color",
+      "default": "#aaaaaa"
+    },
+    {
+      "type": "color",
+      "id": "newsletter_input_color",
+      "label": "Newsletter input border color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "newsletter_btn_bg",
+      "label": "Newsletter button background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "newsletter_btn_text_color",
+      "label": "Newsletter button text color",
+      "default": "#000000"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop padding top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile padding top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 30
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu_column",
+      "name": "Menu Column",
+      "settings": [
+        {
+          "type": "text",
+          "id": "menu_title",
+          "label": "Column title",
+          "default": "Quick Links"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu",
+          "default": "footer"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zims Footer",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "menu_column"
+        },
+        {
+          "type": "menu_column"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

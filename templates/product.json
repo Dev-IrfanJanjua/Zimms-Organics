@@ -1,0 +1,573 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "bogos_io_free_gift_progressing_bar_view_e4j3XM": {
+          "type": "shopify://apps/bogos-io-free-gift/blocks/progressing-bar-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "settings": {}
+        },
+        "vendor": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "body"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {}
+        },
+        "rating": {
+          "type": "rating",
+          "settings": {}
+        },
+        "price": {
+          "type": "price",
+          "settings": {}
+        },
+        "bogos_io_free_gift_volume_discount_view_YxkeB4": {
+          "type": "shopify://apps/bogos-io-free-gift/blocks/volume-discount-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "settings": {
+            "product": ""
+          }
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": true
+          }
+        },
+        "description": {
+          "type": "description",
+          "settings": {}
+        },
+        "share": {
+          "type": "share",
+          "settings": {
+            "share_label": "Share"
+          }
+        },
+        "custom_liquid_4mPPk3": {
+          "type": "custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"klaviyo-reviews-all\" data-id=\"{{product.id}}\"></div>"
+          }
+        },
+        "klaviyo_reviews_all_reviews_wxVgif": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/all-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        },
+        "klaviyo_reviews_average_rating_etyDmX": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/average-rating/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {
+            "product": "{{product}}"
+          }
+        }
+      },
+      "block_order": [
+        "bogos_io_free_gift_progressing_bar_view_e4j3XM",
+        "vendor",
+        "title",
+        "rating",
+        "price",
+        "bogos_io_free_gift_volume_discount_view_YxkeB4",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description",
+        "share",
+        "custom_liquid_4mPPk3",
+        "klaviyo_reviews_all_reviews_wxVgif",
+        "klaviyo_reviews_average_rating_etyDmX"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "mobile_thumbnails": "hide",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "columns_mobile": "2",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "collapsible-content": {
+      "type": "collapsible-content",
+      "blocks": {
+        "collapsible-row-0": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Origin & Harvest Details",
+            "icon": "map_pin",
+            "row_content": "<p><strong>Produced by a small family farm in Central California</strong></p><p>Zimms Organics sources only the finest olives in California, period. That means working with small family farms who have been purveyors of their craft for decades. We’ve sampled and tried organic extra virgin olive oil from almost every varietal of olive and farm in the state of California. We are very confident in and excited about this year’s harvest and the purveyors that we’ve chosen to partner with. Our partner farms do things the right way. They are great people and of course, they make an amazing organic extra virgin olive oil.<br/><br/><strong>Harvest Date: November 2022</strong></p><p>The FDA says that olive oil is best consumed within 18 months of the harvest date. Quality extra virgin olive oil should be stored in a cool, dark space. The bottle should be dark or painted glass to protect the EVOO from UV light. If stored in optimal conditions, EVOO will only lose a minimal amount of potency and flavor profiles after that 18 month mark.</p>",
+            "page": ""
+          }
+        },
+        "collapsible-row-3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Ingredients",
+            "icon": "leaf",
+            "row_content": "<p><strong>Varietal: 100% Arbosana</strong></p><p>This mild intensity extra virgin olive oil is produced from 100% Arbosana olives grown in Central California. This EVOO has notable aromas of nuttiness, green banana and black pepper, with a full-bodied mouth feel and buttery finish. </p>",
+            "page": ""
+          }
+        },
+        "collapsible-row-1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Flavor Profile",
+            "icon": "serving_dish",
+            "row_content": "<p><strong>Intensity & Flavor Profile: </strong>Medium - Bright, grassy and peppery with a buttery finish</p><p>The intensity of an EVOO relates to the amount of bitterness and peppery notes experienced while tasting. An olive oil that doesn’t tickle or burn the back of your throat is considered mild (low polyphenols - 100-250). A very peppery and bitter olive oil that will likely make you cough from the sensation on the back of your throat is considered strong (350-500+ polyphenols).</p><p><strong>Polyphenols : 311 (mg/kg)</strong></p><p>Polyphenols are like super antioxidant micronutrients found in healthy plant-based foods. These polyphenols give high quality organic extra virgin olive oil their incredible health benefits such as: Heart health, reducing cholesterol levels, lowering blood pressure, hair & skin health, reduces inflammation in the body and <a href=\"https://olivewellnessinstitute.org/extra-virgin-olive-oil/health-benefits-of-extra-virgin-olive-oil/\"><span style=\"text-decoration:underline\">many more</span></a>. The level of polyphenols varies based on region grown, ripeness at harvest, extraction methods, etc.<br/><br/><strong>Acidity (%): 0.47</strong></p><p>Acidity is a main quality parameter set by the International Olive Oil Council for extra virgin olive oil. Olive Oil must have a free fatty acid level below 0.8% to be deemed as extra virgin olive oil. This value is determined by having the EVOO analyzed by a lab for quality assurance.</p>",
+            "page": ""
+          }
+        },
+        "collapsible-row-2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How to Use",
+            "icon": "check_mark",
+            "row_content": "<p><strong>How To Use:</strong></p><p>Try taking a shot of this EVOO with the Mia Glass (link it when we have one) 30 minutes before consuming food in the morning. This may help with gut support / maintenance while repairing your intestinal tract over time (results may vary). The HEAL EVOO also pairs beautifully when drizzled over steak in a chimichurri or when used as the base of a salad dressing. HEAL handles well being cooked in heat because its 311 polyphenols (mg/kg) will protect the EVOO from oxidizing.</p>",
+            "page": ""
+          }
+        },
+        "2df24657-7b85-4b54-95a2-6a5284a32be7": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Pairs Well With",
+            "icon": "apple",
+            "row_content": "<p><strong>Pairs Well With</strong></p><p>Fish</p><p>Steak</p><p>Salad</p><p>Grilled Veggies</p><p>Eggs</p><p>Yogurt</p><p>Ice cream</p><p>Cheese</p>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "collapsible-row-0",
+        "collapsible-row-3",
+        "collapsible-row-1",
+        "collapsible-row-2",
+        "2df24657-7b85-4b54-95a2-6a5284a32be7"
+      ],
+      "disabled": true,
+      "settings": {
+        "caption": "",
+        "heading": "cook details",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "layout": "section",
+        "color_scheme": "background-1",
+        "container_color_scheme": "background-2",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "rich-text-0": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Feature a compelling customer review about your product or brand.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>- CUSTOMER NAME HERE -</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "accent-2",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "multicolumn": {
+      "type": "multicolumn",
+      "blocks": {
+        "column-0": {
+          "type": "column",
+          "settings": {
+            "title": "Multicolumn",
+            "text": "<p>Use a combination of images and text to share information about this product, and your brand. </p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column-1": {
+          "type": "column",
+          "settings": {
+            "title": "Multicolumn",
+            "text": "<p>Consider adding information about your shipping and return policies. </p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column-2": {
+          "type": "column",
+          "settings": {
+            "title": "Multicolumn",
+            "text": "<p>Consider highlighting your environmental  commitments. </p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column-3": {
+          "type": "column",
+          "settings": {
+            "title": "Multicolumn",
+            "text": "<p>Consider describing a money-back guarantee or highlighting your customer service. </p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column-0",
+        "column-1",
+        "column-2",
+        "column-3"
+      ],
+      "disabled": true,
+      "settings": {
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 4,
+        "column_alignment": "center",
+        "background_style": "none",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "accent-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "rich-text-1": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Introduce other complementary products.",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>DESCRIBE HOW TO PAIR PRODUCTS TOGETHER </p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text"
+      ],
+      "disabled": true,
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "image-with-text-0": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "background-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "image-with-text-1": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "background-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "image-with-text-2": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product. Add details on availability, style, or even provide a review.</p>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop now",
+            "button_link": "",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "disabled": true,
+      "settings": {
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "background-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+          }
+        },
+        "email-form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email-form"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "accent-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "1749767241420e011a": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_reviews_all_reviews_NTqqQd": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/all-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_all_reviews_NTqqQd"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "1750710458b73aa116": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_reviews_product_reviews_cLFP3r": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_product_reviews_cLFP3r"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    },
+    "17525297820014d9c9": {
+      "type": "apps",
+      "blocks": {
+        "klaviyo_reviews_product_reviews_qbhKpH": {
+          "type": "shopify://apps/klaviyo-reviews/blocks/product-reviews/db20e365-d984-4ac4-9655-e1588d951ca9",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "klaviyo_reviews_product_reviews_qbhKpH"
+      ],
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "main",
+    "related-products",
+    "collapsible-content",
+    "rich-text-0",
+    "multicolumn",
+    "rich-text-1",
+    "image-with-text-0",
+    "image-with-text-1",
+    "image-with-text-2",
+    "newsletter",
+    "1749767241420e011a",
+    "1750710458b73aa116",
+    "17525297820014d9c9"
+  ]
+}

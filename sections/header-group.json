@@ -1,0 +1,113 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.header.name",
+  "type": "header",
+  "sections": {
+    "announcement-bar": {
+      "type": "announcement-bar",
+      "blocks": {
+        "announcement_3Cj8hQ": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Welcome to our store",
+            "link": ""
+          }
+        },
+        "announcement-bar-0": {
+          "type": "announcement",
+          "disabled": true,
+          "settings": {
+            "text": "Welcome to our store",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "announcement_3Cj8hQ",
+        "announcement-bar-0"
+      ],
+      "settings": {
+        "color_scheme": "",
+        "show_line_separator": true,
+        "show_social": false,
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "enable_country_selector": false,
+        "enable_language_selector": false
+      }
+    },
+    "header": {
+      "type": "header",
+      "custom_css": [],
+      "settings": {
+        "logo_position": "middle-left",
+        "menu": "main-menu",
+        "menu_type_desktop": "dropdown",
+        "sticky_header_type": "on-scroll-up",
+        "show_line_separator": true,
+        "color_scheme": "background-2",
+        "menu_color_scheme": "",
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "mobile_logo_position": "center",
+        "margin_bottom": 0,
+        "padding_top": 20,
+        "padding_bottom": 20
+      }
+    },
+    "custom_liquid_jXJEb3": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<div id=\"airgoods-widget\"></div>\n<script async src=\"https://stack-backend.onrender.com/widget/widget.js?size=Large&backgroundColor=%23fbf7ed&fontColor=%233e4744&buttonColor=%23b55434&buttonFontColor=%23fbf7ed&brandSlug=zimms-organics&brandBannerImageUrl=https%3A%2F%2Fstack-market-inc-bucket.s3.amazonaws.com%2F1712598665389-Airgoods-webp-%252824%2529-copy.webp&brandLogoImageUrl=https%3A%2F%2Fstack-market-inc-bucket.s3.amazonaws.com%2F1712879725868-Asset-78%25402x.webp\"></script>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_EBHHDm": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<div id=\"airgoods-widget\"></div>\n<script async src=\"https://stack-backend.onrender.com/widget/widget.js?size=Large&backgroundColor=%23fbf7ed&fontColor=%233e4744&buttonColor=%23b55434&buttonFontColor=%23fbf7ed&brandSlug=zimms-organics&brandBannerImageUrl=https%3A%2F%2Fstack-market-inc-bucket.s3.amazonaws.com%2F1712598665389-Airgoods-webp-%252824%2529-copy.webp&brandLogoImageUrl=https%3A%2F%2Fstack-market-inc-bucket.s3.amazonaws.com%2F1712879725868-Asset-78%25402x.webp\"></script>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "custom_liquid_fxf7iJ": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "custom_css": [],
+      "settings": {
+        "custom_liquid": "<!-- Google tag (gtag.js) -->\n<script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-11358880616\"></script>\n<script>\n  window.dataLayer = window.dataLayer || [];\n  function gtag(){dataLayer.push(arguments);}\n  gtag('js', new Date());\n\n  gtag('config', 'AW-11358880616');\n</script>",
+        "color_scheme": "",
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "1759350704da7c6692": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "announcement-bar",
+    "header",
+    "custom_liquid_jXJEb3",
+    "custom_liquid_EBHHDm",
+    "custom_liquid_fxf7iJ",
+    "1759350704da7c6692"
+  ]
+}

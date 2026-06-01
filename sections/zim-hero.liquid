@@ -1,0 +1,404 @@
+{% style %}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.section_bg_color }};
+  padding-top: {{ section.settings.desktop_padding_top }}px;
+  padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+  min-height: {{ section.settings.desktop_height }}px;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-{{ section.id }} .zim-hero-media {
+  position: absolute;
+  inset: 0;
+}
+
+.section-{{ section.id }} .zim-hero-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.section-{{ section.id }} .zim-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,{{ section.settings.overlay_opacity | divided_by: 100.0 }});
+  display: block;
+}
+
+.section-{{ section.id }} .zim-hero-content {
+    position: absolute;
+    z-index: 2;
+    min-height: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    gap: 32px;
+    width: calc(100% - 32px);
+}
+
+.section-{{ section.id }} .zim-hero-title {
+    color: {{ section.settings.heading_color }};
+    text-align: center;
+    font-family: Lora;
+    font-size: 62px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 66px;
+    text-transform: capitalize;
+}
+
+.section-{{ section.id }} .zim-hero-subtitle {
+    color: {{ section.settings.text_color }};
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 24px 0 0;
+}
+
+.section-{{ section.id }} .zim-hero-btn {
+    background: {{ section.settings.button_bg_color }};
+    color: {{ section.settings.button_text_color }};
+    max-width: 200px;
+    width: 100%;
+}
+
+.section-{{ section.id }} .zim-hero-footer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-direction: column;
+}
+
+.section-{{ section.id }} .zim-hero-footer-img {
+    width: 100px;
+    height: auto;
+    display: flex;
+}
+
+.section-{{ section.id }} .zim-hero-footer-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.section-{{ section.id }} .zim-hero-footer-text {
+    color: {{ section.settings.text_color }};
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.section-{{ section.id }} .zim-hero-abs-icon {
+    position: absolute;
+    bottom: 30px;
+    z-index: 3;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 52px;
+    width: 100%;
+    height: auto;
+}
+
+.section-{{ section.id }} .zim-hero-abs-icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  .section-{{ section.id }} .zim-hero-wrapper {
+    min-height: {{ section.settings.mobile_height }}px;
+  }
+
+  .section-{{ section.id }} .zim-hero-content {
+        left: 16px;
+        right: 16px;
+        transform: translate(0, -50%);
+        gap: 12px;
+  }
+
+  .section-{{ section.id }} .zim-hero-abs-icon {
+    display: none;
+  }
+
+  .section-{{ section.id }} .zim-hero-subtitle {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 16px 0 12px;
+}
+
+.section-{{ section.id }} .zim-hero-title {
+    font-size: 36px;
+    line-height: 38px;
+}
+
+.section-{{ section.id }} .zim-hero-footer {
+    order: -1;
+}
+
+}
+{% endstyle %}
+
+<section class="zim-hero-section section-{{ section.id }}">
+    {% if section.settings.video != blank %}
+        <div class="zim-hero-media">
+          {{
+            section.settings.video
+            | video_tag:
+              autoplay: true,
+              loop: true,
+              muted: true,
+              controls: false,
+              playsinline: true,
+              preload: 'metadata'
+          }}
+        </div>
+      {% endif %}
+
+      <div class="zim-hero-overlay"></div>
+  <div class="page-width">
+    <div class="zim-hero-wrapper">
+
+      <div class="zim-hero-content">
+        <div class="zim-hero-head">
+            {% if section.settings.heading != blank %}
+              <h1 class="zim-hero-title title_title">
+                {{
+                  section.settings.heading
+                  | replace: '<p>', ''
+                  | replace: '</p>', ''
+                }}
+              </h1>
+            {% endif %}
+    
+            {% if section.settings.subtitle != blank %}
+              <p class="zim-hero-subtitle">
+                {{ section.settings.subtitle }}
+              </p>
+            {% endif %}
+        </div>
+
+        {% if section.settings.button_text != blank and section.settings.button_url != blank %}
+          <a
+            href="{{ section.settings.button_url }}"
+            class="zim-hero-btn btn_btn"
+          >
+            {{ section.settings.button_text }}
+          </a>
+        {% endif %}
+
+        {% if section.settings.footer_text != blank or section.settings.footer_image != blank %}
+          <div class="zim-hero-footer">
+
+            {% if section.settings.footer_image != blank %}
+              <div class="zim-hero-footer-img">
+                {{
+                  section.settings.footer_image
+                  | image_url: width: 200
+                  | image_tag:
+                    widths: '50,100,150,200',
+                    loading: 'lazy',
+                    alt: 'footer image'
+                }}
+              </div>
+            {% endif %}
+
+            {% if section.settings.footer_text != blank %}
+              <span class="zim-hero-footer-text">
+                {{ section.settings.footer_text }}
+              </span>
+            {% endif %}
+
+          </div>
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+  {% if section.settings.icon_image != blank %}
+        <div class="zim-hero-abs-icon">
+            {{
+            section.settings.icon_image
+            | image_url: width: 300
+            | image_tag:
+                widths: '50,100,150,200,300',
+                loading: 'lazy',
+                alt: 'icon'
+            }}
+        </div>
+    {% endif %}
+</section>
+
+{% schema %}
+{
+  "name": "ZIM Hero Video",
+  "class": "section-zim-hero",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button Link"
+    },
+    {
+      "type": "image_picker",
+      "id": "footer_image",
+      "label": "Footer Image"
+    },
+    {
+      "type": "text",
+      "id": "footer_text",
+      "label": "Footer Text"
+    },
+    {
+      "type": "image_picker",
+      "id": "icon_image",
+      "label": "Floating Icon"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "button_bg_color",
+      "label": "Button Background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button Text Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay Opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 30
+    },
+    {
+      "type": "range",
+      "id": "desktop_height",
+      "label": "Desktop Height",
+      "min": 300,
+      "max": 1000,
+      "step": 10,
+      "unit": "px",
+      "default": 700
+    },
+    {
+      "type": "range",
+      "id": "mobile_height",
+      "label": "Mobile Height",
+      "min": 300,
+      "max": 800,
+      "step": 10,
+      "unit": "px",
+      "default": 500
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "ZIM Hero Video",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

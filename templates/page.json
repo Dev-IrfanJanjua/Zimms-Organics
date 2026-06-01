@@ -1,0 +1,246 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    },
+    "e0140419-332a-46ab-9896-0459b7a9e52f": {
+      "type": "image-with-text",
+      "blocks": {
+        "dbdeddb6-5d5e-4dbc-af58-3c11d76900c5": {
+          "type": "caption",
+          "settings": {
+            "caption": "“We need to share our stories to not only heal ourselves, but to help others around us.”",
+            "text_style": "subtitle",
+            "text_size": "large"
+          }
+        },
+        "46cd0301-db21-4bd5-8f9c-07b90005865c": {
+          "type": "heading",
+          "settings": {
+            "heading": "David Zimmerman",
+            "heading_size": "h2"
+          }
+        },
+        "ea8b5e8b-b998-48be-bf81-09fdd7b982df": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Founder, Zimms Organics</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "dbdeddb6-5d5e-4dbc-af58-3c11d76900c5",
+        "46cd0301-db21-4bd5-8f9c-07b90005865c",
+        "ea8b5e8b-b998-48be-bf81-09fdd7b982df"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/ZIMMS-Kodo-FINALS-6_copy.jpg",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 40,
+        "padding_bottom": 36
+      }
+    },
+    "1e18f550-c7bf-46a2-a541-840c273f5091": {
+      "type": "rich-text",
+      "blocks": {
+        "template--17736425505048__1e18f550-c7bf-46a2-a541-840c273f5091-1675451023c76b3bca-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "ABOUT ZIMMS ORGANICS",
+            "heading_size": "h1"
+          }
+        },
+        "template--17736425505048__1e18f550-c7bf-46a2-a541-840c273f5091-1675451023c76b3bca-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>David Zimmerman, the founder of Zimms, started the brand after overcoming a severe Crohn’s Disease diagnosis. He was debilitated after being in and out of hospitals for months, and losing over 70% of the blood in his body overnight. Doctors told him that he would be on medication the rest of his life, but that wasn’t part of his plan. After his body stabilized, he got to work. For years, he researched the human body (and biohacked his own), while learning about the food system in the U.S. He discovered that most chronic conditions (IBS, Crohn’s, Colitis, Diabetes, Heart Disease, etc.) weren’t prevalent before food became industrialized in the mid 1900s. He discovered the healing benefits of high quality organic extra virgin olive oil and its anti-inflammatory properties. He started consuming copious amounts of high quality olive oil and noticed a change in the inflammatory markers in his body. This easy dietary change, plus a myriad of other physical and mental wellness practices that he embraced, helped David get off medication for good (and he’s been off western medication since 2018). He quit his corporate consulting job with BCG, and launched a high end olive oil brand in December 2019, right before COVID hit. David didn’t want his experience to be front center of the brand, because he was still hiding this part of his identity from the world. Sharing this story as the brand ethos was too vulnerable for him, so he launched the brand under a different name.</p><p>After growing the brand into over 80 stores in the U.S, David finally became confident in himself without the shame of the awful condition that he overcame. He was inspired by the confidence and authenticity of the many young people and social influencers that he worked with. Time and honest work helped heal him. This confidence and trust is the core and foundation the brand. In June of 2023 Zimms Organics was reborn.</p>"
+          }
+        },
+        "template--17736425505048__1e18f550-c7bf-46a2-a541-840c273f5091-1675451023c76b3bca-2": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop Now",
+            "button_link": "shopify://collections/frontpage",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "template--17736425505048__1e18f550-c7bf-46a2-a541-840c273f5091-1675451023c76b3bca-0",
+        "template--17736425505048__1e18f550-c7bf-46a2-a541-840c273f5091-1675451023c76b3bca-1",
+        "template--17736425505048__1e18f550-c7bf-46a2-a541-840c273f5091-1675451023c76b3bca-2"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "d5daa9c4-b4c5-47c7-b618-c6d5fb36bc40": {
+      "type": "image-with-text",
+      "blocks": {
+        "efcb0cfe-ea2d-46a1-b7f8-40b5f768af87": {
+          "type": "caption",
+          "settings": {
+            "caption": "",
+            "text_style": "subtitle",
+            "text_size": "large"
+          }
+        },
+        "template--17736425505048__d5daa9c4-b4c5-47c7-b618-c6d5fb36bc40-1675451075f4f3b0fe-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "OLIVE OIL FOR YOUR HEALTH",
+            "heading_size": "h2"
+          }
+        },
+        "6714320b-9680-4f67-8529-6d05b9063417": {
+          "type": "text",
+          "settings": {
+            "text": "<p>The Zimms Organics branding is focused around David’s health and wellness journey. He discovered with his previous brand that the primary customers were interested in the same natural healing benefits that he discovered to heal his body. He wanted to focus the new name and brand design around health and wellness, while having the ability in the future to grow into other healing modalities outside of olive oil as well. We used product design to clearly state what these products are, and what they are used for. We used natural earth tones and a matte paint to give a ceramic feel to the glass bottles. There is a considerable amount of confusion around what high quality olive oil looks like, so we clearly stated directly on the bottle how Zimms EVOO stands out. We visually represented simple and easy to understand graphic elements and illustrations to convey our standards of olive oil directly onto the bottle.</p><h3><strong>Our Standards</strong></h3><ul><li>Certified organic</li><li>Single origin</li><li>Single varietal</li><li>Grown in California</li><li>High polyphenol levels (above 300mg/kg)</li></ul>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "efcb0cfe-ea2d-46a1-b7f8-40b5f768af87",
+        "template--17736425505048__d5daa9c4-b4c5-47c7-b618-c6d5fb36bc40-1675451075f4f3b0fe-0",
+        "6714320b-9680-4f67-8529-6d05b9063417"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/ZIMMS-Kodo-FINALS-12.jpg",
+        "height": "small",
+        "desktop_image_width": "small",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 40,
+        "padding_bottom": 36
+      }
+    },
+    "319c4399-c4e8-4120-b6e1-77f00df79247": {
+      "type": "image-with-text",
+      "blocks": {
+        "35ff0cb2-518b-41ea-83e5-73806bb7ad5b": {
+          "type": "caption",
+          "settings": {
+            "caption": "",
+            "text_style": "subtitle",
+            "text_size": "large"
+          }
+        },
+        "1851c9b9-69db-4224-b9ed-27377fd6102a": {
+          "type": "heading",
+          "settings": {
+            "heading": "WHAT DOES THIS MEAN?",
+            "heading_size": "h2"
+          }
+        },
+        "f8901c95-a5ba-45b3-9a00-c8a413b2a8fb": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Each product comes from one farm and one varietal of olive. Our December 2023 harvests are coming from two very special certified organic family farms  in California. COOK is made from 100% organic Arbequina olives that are grown, harvested and pressed on the farm in Central California. HEAL is also made from 100% Arbequina olives, but the flavor profile is significantly different up in Northern California. These olives are also grown, harvested and pressed on their farm up north. </p><p>David personally vetted numerous farms in the U.S. by speaking with their owners, tasting their oil and requesting lab tests and polyphenol tests for their EVOO’s. Our glass is painted with natural matte tones with organic ink and the bottles actually feel like ceramics in your hands. We wanted to give off the feel of “from the earth”.</p><p></p><p>Learn more about the difference between <a href=\"/blogs/news/cook-versus-heal-bottle-breakdown\" target=\"_blank\" title=\"COOK versus HEAL: bottle breakdown\">COOK and HEAL here</a></p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "35ff0cb2-518b-41ea-83e5-73806bb7ad5b",
+        "1851c9b9-69db-4224-b9ed-27377fd6102a",
+        "f8901c95-a5ba-45b3-9a00-c8a413b2a8fb"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/ZIMMS-Kodo-FINALS-10_cb73732a-370d-4f87-9c51-4ecaec24d36c.jpg",
+        "height": "adapt",
+        "desktop_image_width": "small",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "background-1",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 40,
+        "padding_bottom": 36
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+          }
+        },
+        "email-form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email-form"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "accent-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "e0140419-332a-46ab-9896-0459b7a9e52f",
+    "1e18f550-c7bf-46a2-a541-840c273f5091",
+    "d5daa9c4-b4c5-47c7-b618-c6d5fb36bc40",
+    "319c4399-c4e8-4120-b6e1-77f00df79247",
+    "newsletter"
+  ]
+}
