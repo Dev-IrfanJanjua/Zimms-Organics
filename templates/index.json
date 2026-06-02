@@ -162,94 +162,6 @@
         "mobile_padding_bottom": 40
       }
     },
-    "videos_text_slider_pxV8Rj": {
-      "type": "videos-text-slider",
-      "blocks": {
-        "video_only_QYVWA7": {
-          "type": "video_only",
-          "settings": {
-            "cs_video": "shopify://files/videos/Untitled design.mp4"
-          }
-        },
-        "review_blocks_kt7kt3": {
-          "type": "review_blocks",
-          "settings": {
-            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
-            "title-desc": "Increased the strength and energy",
-            "reviewers-name": "Sofia L",
-            "varified-svg": "shopify://shop_images/Frame_5.svg",
-            "varified-heading": "VERIFIED BUYER"
-          }
-        },
-        "video_only_YkhVjY": {
-          "type": "video_only",
-          "settings": {
-            "cs_video": "shopify://files/videos/Untitled design.mp4"
-          }
-        },
-        "review_blocks_HeqWgw": {
-          "type": "review_blocks",
-          "settings": {
-            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
-            "title-desc": "Increased the strength and energy",
-            "reviewers-name": "Sofia L",
-            "varified-svg": "shopify://shop_images/Frame_5.svg",
-            "varified-heading": "VERIFIED BUYER"
-          }
-        },
-        "video_only_ezc4kY": {
-          "type": "video_only",
-          "settings": {
-            "cs_video": "shopify://files/videos/Untitled design.mp4"
-          }
-        },
-        "review_blocks_VaXxjR": {
-          "type": "review_blocks",
-          "settings": {
-            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
-            "title-desc": "Increased the strength and energy",
-            "reviewers-name": "Sofia L",
-            "varified-svg": "shopify://shop_images/Frame_5.svg",
-            "varified-heading": "VERIFIED BUYER"
-          }
-        }
-      },
-      "block_order": [
-        "video_only_QYVWA7",
-        "review_blocks_kt7kt3",
-        "video_only_YkhVjY",
-        "review_blocks_HeqWgw",
-        "video_only_ezc4kY",
-        "review_blocks_VaXxjR"
-      ],
-      "name": "Clients reviews",
-      "settings": {
-        "bg-color": "#ffffff",
-        "padding_top": 0,
-        "padding_bottom": 110,
-        "mbl_padding_top": 20,
-        "mbl_padding_bottom": 60,
-        "star-image": "shopify://shop_images/Frame_2147241407_3.svg",
-        "reviews-title": "Loved by our community"
-      }
-    },
-    "fet_collection_WVRVMV": {
-      "type": "fet-collection",
-      "name": "Featured Collection Swiper",
-      "settings": {
-        "title": "Heal From the Inside Out",
-        "subtitle": "Wellness isn't one size fits all. Whether you're taking your daily shot, cooking a family meal, or finishing a dish there's a Zimms oil made for that moment.",
-        "collection": "heal",
-        "products_limit": 3,
-        "section_bg": "#ffffff",
-        "media_bg": "#f3f3ec",
-        "view_all_text": "View All",
-        "padding_top": 0,
-        "padding_bottom": 110,
-        "mobile_padding_top": 60,
-        "mobile_padding_bottom": 60
-      }
-    },
     "collection_grid_34JBE8": {
       "type": "collection-grid",
       "blocks": {
@@ -309,7 +221,7 @@
       ],
       "name": "Collections Grid",
       "settings": {
-        "tag_icon": "shopify://shop_images/image_2889_1.png",
+        "tag_icon": "shopify://shop_images/Capa_1.svg",
         "tag_text": "collections",
         "heading": "<p>Meet the Pantry</p>",
         "title_icon": "shopify://shop_images/icon.svg_-_2026-01-06T191027.702_1.svg",
@@ -329,7 +241,7 @@
       "name": "Image With Text",
       "settings": {
         "image": "shopify://shop_images/Frame_2147241350.webp",
-        "tag_icon": "shopify://shop_images/image_2889_1.png",
+        "tag_icon": "shopify://shop_images/image_2910_Vectorized.svg",
         "tag_text": "About us",
         "heading": "<p>A Journey of Healing & Hope</p>",
         "description": "<p>I know what it’s like to face serious health challenges. After being diagnosed with severe Crohn’s disease, I spent months in and out of hospitals and nearly lost my life. Doctors said I would need medication for life, but I knew there had to be another way.<br/><br/>Through years of research and personal experimentation, I discovered the healing power of high-quality organic extra virgin olive oil. By embracing simple dietary and wellness practices, I was able to restore my health and regain control of my life.<br/><br/>This journey inspired me to create Zimms Organics—a brand dedicated to sharing premium olive oil that supports wellness, vitality, and a natural approach to health.</p>",
@@ -346,6 +258,130 @@
         "desktop_padding_bottom": 110,
         "mobile_padding_top": 60,
         "mobile_padding_bottom": 0
+      }
+    },
+    "fet_collection_WVRVMV": {
+      "type": "fet-collection",
+      "name": "Featured Collection Swiper",
+      "settings": {
+        "title": "Heal From the Inside Out",
+        "subtitle": "Wellness isn't one size fits all. Whether you're taking your daily shot, cooking a family meal, or finishing a dish there's a Zimms oil made for that moment.",
+        "collection": "heal",
+        "products_limit": 3,
+        "section_bg": "#ffffff",
+        "media_bg": "#f3f3ec",
+        "view_all_text": "View All",
+        "padding_top": 0,
+        "padding_bottom": 110,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 60
+      }
+    },
+    "videos_text_slider_pxV8Rj": {
+      "type": "videos-text-slider",
+      "blocks": {
+        "review_blocks_dk46DU": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        },
+        "video_only_QYVWA7": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/SaveGram.App_AQP0jN7-dMjwpjmNPZrePTo9sOyWGMZIstSBOlEAmJ_alDQqFPkTF0JCPfB4j69SO1AA3XdkVDOn6Q8EGkODXVgWS6yilHi3dTRXsRw (online-video-cutter.com) (1).mp4"
+          }
+        },
+        "review_blocks_kt7kt3": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        },
+        "video_only_YkhVjY": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/Untitled design.mp4"
+          }
+        },
+        "review_blocks_HeqWgw": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        },
+        "video_only_ezc4kY": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/Untitled design.mp4"
+          }
+        },
+        "review_blocks_VaXxjR": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        },
+        "video_only_4WLEh8": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/Untitled design.mp4"
+          }
+        },
+        "review_blocks_9mbCaw": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        },
+        "video_only_xk6kW8": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/Untitled design.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "review_blocks_dk46DU",
+        "video_only_QYVWA7",
+        "review_blocks_kt7kt3",
+        "video_only_YkhVjY",
+        "review_blocks_HeqWgw",
+        "video_only_ezc4kY",
+        "review_blocks_VaXxjR",
+        "video_only_4WLEh8",
+        "review_blocks_9mbCaw",
+        "video_only_xk6kW8"
+      ],
+      "name": "Clients reviews",
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 110,
+        "mbl_padding_top": 20,
+        "mbl_padding_bottom": 60,
+        "star-image": "shopify://shop_images/Frame_2147241407_3.svg",
+        "reviews-title": "Loved by our community"
       }
     },
     "benefit_section_piGk3N": {

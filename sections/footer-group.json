@@ -89,6 +89,14 @@
         "mobile_padding_bottom": 20
       }
     },
+    "footer_bottom_fgBUnc": {
+      "type": "footer-bottom",
+      "name": "Footer Bottom Image",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Frame_2147241927_1.png",
+        "mobile_image": "shopify://shop_images/Frame_2147241927_2.webp"
+      }
+    },
     "custom_liquid_BBpHeY": {
       "type": "custom-liquid",
       "disabled": true,
@@ -184,6 +192,7 @@
   },
   "order": [
     "custom_footer_w7GU3g",
+    "footer_bottom_fgBUnc",
     "custom_liquid_BBpHeY",
     "newsletter",
     "footer"
