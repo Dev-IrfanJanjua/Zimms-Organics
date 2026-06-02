@@ -1,0 +1,510 @@
+{% style %}
+.section-{{ section.id }} {
+  background: {{ section.settings.section_bg }};
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+
+.fet-col-card-media {
+  background: {{ section.settings.media_bg }};
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 20px;
+  aspect-ratio: 0.8;
+}
+
+.fet-col-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fet-card-tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: absolute;
+    top: 16px;
+    left: 16px;
+}
+
+.fet-card-tags span {
+    padding: 2px 12px;
+    border-radius: 50px;
+    background: #1A2744;
+    color: #FFF;
+    font-family: "DM Sans";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    text-transform: uppercase;
+    min-width: 40px;
+    text-align: center;
+}
+
+.fet-card-tags span:nth-child(2) {
+    background: #B55535;
+}
+
+.fet-col-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.fet-col-card-content {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fet-col-card-title {
+    margin: 0;
+    color: var(--Deep-Navy, #1A2744);
+    font-family: Lora;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.fet-col-card-content a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+    max-width: 70%;
+}
+
+.fet-col-card-prices {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+span.fet-col-card-price {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.fet-col-card-compare-price {
+    text-decoration: line-through;
+    color: var(--Ligth-deep-blue, #485269);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration-line: line-through;
+}
+
+span.fet-col-card-price-tag {
+    color: #C2483F;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.fet-col-head {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+p.fet-col-subtitle {
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 16px 0 0;
+}
+
+.fet-view-all {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.fet-view-all a.btn_btn {
+    background: #1A2744;
+    color: rgba(255, 255, 255, 0.99);
+    max-width: 200px;
+    width: 100%;
+}
+
+.fet-col-card-title-wrapper {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fet-col-card-reviews-start {
+    width: 18px;
+    height: 18px;
+    display: flex;
+}
+
+.fet-col-card-reviews-start img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.fet-col-card-reviews span {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.fet-col-card-reviews span strong{
+    font-weight: bold;
+}
+
+.fet-col-card-reviews {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+p.fet-col-card-subtitle {
+    color: var(--Ligth-deep-blue, #485269);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+}
+
+.fet-col-pagination{
+    display: none;
+}
+
+@media screen and (max-width: 768px){
+
+.section-{{ section.id }}{
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+}
+
+.fet-view-all {
+    display: none;
+}
+
+h2.fet-col-title.title_title {
+    max-width: 307px;
+    margin: 0 auto;
+}
+
+p.fet-col-subtitle {
+    margin: 8px 0 0;
+    letter-spacing: normal;
+}
+
+.fet-col-head {
+    margin-bottom: 24px;
+    padding-right: 16px;
+}
+
+.section-{{ section.id }} .page-width {
+    padding-right: 0;
+}
+
+.fet-col-card-content {
+    margin-top: 16px;
+    gap: 8px;
+}
+
+.fet-col-pagination {
+    display: block;
+    position: static;
+    margin: 0;
+    padding: 0;
+    margin-top: 24px;
+    padding-right: 16px;
+}
+
+.fet-col-pagination span.swiper-pagination-bullet {
+    border: 1px solid var(--Deep-Navy, #1A2744);
+    background: transparent;
+    opacity: 1;
+}
+
+.fet-col-pagination span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    max-width: 20px;
+    width: 100%;
+    border-radius: 10px;
+    background: #1A2744;
+}
+
+}
+
+{% endstyle %}
+
+<section class="fet-collection-section fet-collection-section-{{ section.id }} section-{{ section.id }}">
+  <div class="page-width">
+
+    <div class="fet-collection-wrapper">
+        <!-- Heading -->
+        <div class="fet-col-head">
+          <h2 class="fet-col-title title_title">{{ section.settings.title }}</h2>
+          <p class="fet-col-subtitle">{{ section.settings.subtitle }}</p>
+        </div>
+    
+        <!-- Swiper -->
+        <div class="swiper fet-swiper-{{ section.id }}">
+          <div class="swiper-wrapper">
+    
+            {% if section.settings.collection != blank %}
+              {% for product in section.settings.collection.products limit: section.settings.products_limit %}
+                <div class="swiper-slide">
+    
+                  <div class="fet-col-card">
+    
+                    <!-- Media -->
+                    <div class="fet-col-card-media">
+    
+                      {% if product.featured_image %}
+                        {{ product.featured_image | image_url: width: 1600 | image_tag:
+                            widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                            alt: "Image",
+                            loading: "lazy"
+                        }}
+                      {% endif %}
+    
+                      {% if product.tags.size > 0 %}
+                        <div class="fet-card-tags">
+                            <span>{{ product.tags[0] }}</span>
+
+                            {% if product.tags.size > 1 %}
+                                <span>{{ product.tags[1] }}</span>
+                            {% endif %}
+                        </div>
+                      {% endif %}
+    
+                    </div>
+    
+                    <!-- Content -->
+                    <div class="fet-col-card-content">
+                        <div class="fet-col-card-title-wrapper">
+                            <a href="{{ product.url }}">
+                              <h4 class="fet-col-card-title">
+                                {{ product.title }}
+                              </h4>
+                            </a>
+          
+                            <!-- Fake review block (can be replaced with app later) -->
+                            {% if product.metafields.custom.rating_text != blank %}
+                                <div class="fet-col-card-reviews">
+                                  {% if product.metafields.custom.ratings_star != blank %}
+                                      <div class="fet-col-card-reviews-start">
+                                          {{ product.metafields.custom.ratings_star | image_url: width: 100 | image_tag:
+                                              alt: "image",
+                                              loading: "lazy"
+                                          }}
+                                      </div>
+                                  {% endif %}
+                                  <span>
+                                    {% if product.metafields.custom.rating_text != blank %}
+                                        {{ product.metafields.custom.rating_text | metafield_tag }}
+                                    {% else %}
+                                        4.5
+                                    {% endif %}
+                                </span>
+                                </div>
+                            {% endif %}
+                        </div>
+
+    
+                      <p class="fet-col-card-subtitle">
+                        {{ product.metafields.custom.product_subtitle |default: product.description | strip_html | truncate: 50 }}
+                      </p>
+    
+                      <div class="fet-col-card-prices">
+                        <span class="fet-col-card-price">
+                          {{ product.price | money }}
+                        </span>
+    
+                        {% if product.compare_at_price > product.price %}
+                          <span class="fet-col-card-compare-price">
+                            {{ product.compare_at_price | money }}
+                          </span>
+                        {% endif %}
+                        {% if product.metafields.custom.price_tag != blank %}
+                            <span class="fet-col-card-price-tag">
+                                {{ product.metafields.custom.price_tag }}
+                            </span>
+                        {% endif %}
+                      </div>
+    
+                    </div>
+    
+                  </div>
+    
+                </div>
+              {% endfor %}
+            {% endif %}
+    
+          </div>
+          <div class="swiper-pagination fet-col-pagination"></div>
+        </div>
+    
+        <!-- View All -->
+        {% if section.settings.collection != blank %}
+          <div class="fet-view-all">
+            <a href="{{ section.settings.collection.url }}" class="btn_btn">
+              {{ section.settings.view_all_text }}
+            </a>
+          </div>
+        {% endif %}
+    </div>
+
+  </div>
+</section>
+
+<!-- Swiper Init -->
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const el = document.querySelector('.fet-swiper-{{ section.id }}');
+  if (!el) return;
+
+  new Swiper(el, {
+    slidesPerView: 1.1,
+    spaceBetween: 12,
+
+    breakpoints: {
+      990: { slidesPerView: 3 },
+      spaceBetween: 24
+    },
+
+    loop: true,
+    speed: 1000,
+
+    pagination: {
+      el: '.fet-col-pagination',
+      clickable: true,
+    }
+  });
+
+});
+</script>
+
+{% schema %}
+{
+  "name": "Collection Swiper",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Featured Products"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Best picks for you"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Select Collection"
+    },
+    {
+      "type": "range",
+      "id": "products_limit",
+      "label": "Products Limit",
+      "min": 1,
+      "max": 20,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "color",
+      "id": "section_bg",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "media_bg",
+      "label": "Media Background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "View All Button Text",
+      "default": "View All"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop padding top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop padding bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile padding top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 60
+    }
+  ],
+  "presets": [
+    {
+      "name": "Featured Collection Swiper",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

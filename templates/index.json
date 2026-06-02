@@ -112,6 +112,144 @@
         "mobile_padding_bottom": 0
       }
     },
+    "marquee_hdcrLM": {
+      "type": "marquee",
+      "blocks": {
+        "feature_Q7Vahn": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title": "1,500+ 5-star reviews"
+          }
+        },
+        "feature_EPbhtp": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/image_2911.png",
+            "title": "Featured in all stories"
+          }
+        },
+        "feature_7jihFU": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_2147243376.png",
+            "title": "in select properties"
+          }
+        },
+        "feature_AcjPyG": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/image_2912.png",
+            "title": "As Seen In Magazine"
+          }
+        }
+      },
+      "block_order": [
+        "feature_Q7Vahn",
+        "feature_EPbhtp",
+        "feature_7jihFU",
+        "feature_AcjPyG"
+      ],
+      "name": "Scrolling Feature Icons",
+      "settings": {
+        "title": "Trusted  by",
+        "icon": "shopify://shop_images/Frame_2147241407_3.svg",
+        "mob_title": "1,500+ 5-star reviews",
+        "bg_color": "#ffffff",
+        "padding_top": 60,
+        "padding_bottom": 60,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
+      }
+    },
+    "videos_text_slider_pxV8Rj": {
+      "type": "videos-text-slider",
+      "blocks": {
+        "video_only_QYVWA7": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/Untitled design.mp4"
+          }
+        },
+        "review_blocks_kt7kt3": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        },
+        "video_only_YkhVjY": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/Untitled design.mp4"
+          }
+        },
+        "review_blocks_HeqWgw": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        },
+        "video_only_ezc4kY": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/Untitled design.mp4"
+          }
+        },
+        "review_blocks_VaXxjR": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        }
+      },
+      "block_order": [
+        "video_only_QYVWA7",
+        "review_blocks_kt7kt3",
+        "video_only_YkhVjY",
+        "review_blocks_HeqWgw",
+        "video_only_ezc4kY",
+        "review_blocks_VaXxjR"
+      ],
+      "name": "Clients reviews",
+      "settings": {
+        "bg-color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 110,
+        "mbl_padding_top": 20,
+        "mbl_padding_bottom": 60,
+        "star-image": "shopify://shop_images/Frame_2147241407_3.svg",
+        "reviews-title": "Loved by our community"
+      }
+    },
+    "fet_collection_WVRVMV": {
+      "type": "fet-collection",
+      "name": "Featured Collection Swiper",
+      "settings": {
+        "title": "Heal From the Inside Out",
+        "subtitle": "Wellness isn't one size fits all. Whether you're taking your daily shot, cooking a family meal, or finishing a dish there's a Zimms oil made for that moment.",
+        "collection": "heal",
+        "products_limit": 3,
+        "section_bg": "#ffffff",
+        "media_bg": "#f3f3ec",
+        "view_all_text": "View All",
+        "padding_top": 0,
+        "padding_bottom": 110,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 60
+      }
+    },
     "collection_grid_34JBE8": {
       "type": "collection-grid",
       "blocks": {
@@ -690,154 +828,6 @@
         "accessibility_info": "Slideshow about our brand"
       }
     },
-    "0aef810c-7bfb-4a00-9381-63707226bf22": {
-      "type": "image-with-text",
-      "blocks": {
-        "0a79b969-959a-41ae-986c-10b4bb4fdab6": {
-          "type": "heading",
-          "settings": {
-            "heading": "SIP GLASS",
-            "heading_size": "h0"
-          }
-        },
-        "3d77f08c-72a2-495c-bb63-b1fe45e32189": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Enjoy a shot of HEAL EVOO as part of your morning routine using our custom designed Sip Glass, which holds exactly 1 tablespoon. Click the link below for our specific EVOO shot guide.</p>",
-            "text_style": "body"
-          }
-        },
-        "abed9397-3af6-40c1-871e-10abebbad690": {
-          "type": "button",
-          "settings": {
-            "button_label": "Learn More",
-            "button_link": "shopify://blogs/news/how-to-take-a-proper-evoo-shot-1",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "0a79b969-959a-41ae-986c-10b4bb4fdab6",
-        "3d77f08c-72a2-495c-bb63-b1fe45e32189",
-        "abed9397-3af6-40c1-871e-10abebbad690"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/ZIMMS-Kodo-FINALS-5_77c2b493-2072-42c7-b9eb-2a7c2cd3c4f4.jpg",
-        "height": "large",
-        "desktop_image_width": "medium",
-        "layout": "image_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-4",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "b5f9fc59-06cf-4e6a-a309-62c21b93eb2e": {
-      "type": "image-banner",
-      "blocks": {
-        "template--17736425308440__b5f9fc59-06cf-4e6a-a309-62c21b93eb2e-1675651486fc3edf5d-0": {
-          "type": "heading",
-          "disabled": true,
-          "settings": {
-            "heading": "Image banner",
-            "heading_size": "h1"
-          }
-        },
-        "template--17736425308440__b5f9fc59-06cf-4e6a-a309-62c21b93eb2e-1675651486fc3edf5d-1": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "Give customers details about the banner image(s) or content on the template.",
-            "text_style": "body"
-          }
-        },
-        "template--17736425308440__b5f9fc59-06cf-4e6a-a309-62c21b93eb2e-1675651486fc3edf5d-2": {
-          "type": "buttons",
-          "disabled": true,
-          "settings": {
-            "button_label_1": "Button label",
-            "button_link_1": "",
-            "button_style_secondary_1": false,
-            "button_label_2": "Button label",
-            "button_link_2": "",
-            "button_style_secondary_2": false
-          }
-        }
-      },
-      "block_order": [
-        "template--17736425308440__b5f9fc59-06cf-4e6a-a309-62c21b93eb2e-1675651486fc3edf5d-0",
-        "template--17736425308440__b5f9fc59-06cf-4e6a-a309-62c21b93eb2e-1675651486fc3edf5d-1",
-        "template--17736425308440__b5f9fc59-06cf-4e6a-a309-62c21b93eb2e-1675651486fc3edf5d-2"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/Asset_94.png",
-        "image_overlay_opacity": 0,
-        "image_height": "small",
-        "desktop_content_position": "middle-center",
-        "show_text_box": false,
-        "desktop_content_alignment": "center",
-        "color_scheme": "background-1",
-        "image_behavior": "none",
-        "mobile_content_alignment": "center",
-        "stack_images_on_mobile": true,
-        "show_text_below": true
-      }
-    },
-    "image-with-text-1": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "EXPLORE HEAL",
-            "heading_size": "h0"
-          }
-        },
-        "text": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Our health and wellness inspired EVOO. Best enjoyed by the spoonful or drizzled on your favorite foods. A bright and peppery mouth feel that also handles well cooked in heat.</p>",
-            "text_style": "body"
-          }
-        },
-        "button": {
-          "type": "button",
-          "settings": {
-            "button_label": "Learn More",
-            "button_link": "shopify://collections",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading",
-        "text",
-        "button"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/Screenshot_2023-03-08_at_9.26.03_PM.png",
-        "height": "large",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "",
-        "color_scheme": "scheme-2",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
-        "padding_top": 0,
-        "padding_bottom": 60
-      }
-    },
     "image-with-text-0": {
       "type": "image-with-text",
       "blocks": {
@@ -1040,8 +1030,11 @@
     "featured_collection_TJ3xzC",
     "73200434-1baa-44d4-ab6e-b0fc54ce191d",
     "zim_hero_WDMYaR",
+    "marquee_hdcrLM",
     "collection_grid_34JBE8",
     "img_text_xemLG8",
+    "fet_collection_WVRVMV",
+    "videos_text_slider_pxV8Rj",
     "benefit_section_piGk3N",
     "exploare_RwLaMY",
     "featured-collection-0",
@@ -1052,9 +1045,6 @@
     "eb37db64-1181-4585-8663-718148ca1d8a",
     "image_with_text_bgYBVk",
     "slideshow",
-    "0aef810c-7bfb-4a00-9381-63707226bf22",
-    "b5f9fc59-06cf-4e6a-a309-62c21b93eb2e",
-    "image-with-text-1",
     "image-with-text-0",
     "867a3b69-393c-4985-b325-565039b34207",
     "0dbb173b-fc0f-4f68-98f1-25b31e7e5053",

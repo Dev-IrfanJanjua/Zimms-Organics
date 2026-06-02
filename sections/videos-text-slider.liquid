@@ -1,0 +1,680 @@
+<style>
+    .section-{{ section.id }}-padding {
+        background: {{ section.settings.bg_color }};
+        padding-top: {{ section.settings.padding_top }}px;
+        padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+    .happy-reviews .star-image {
+      max-width: 100%;
+      height: 100%;
+      display: block;
+  }
+  .cs-rating p {
+     color: var(--black, #333);
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    margin:0px;
+  }
+.happy-reviews .star-svg-block {
+    max-width: 90px;
+    height: auto;
+    display: block;
+    margin: 0 0 21px;
+}
+  .happy-reviews .varified-svg {
+      width: 12.6px;
+      height: 12.6px;
+      aspect-ratio: 12.60/12.60;
+      display: block;
+  }
+  .happy-reviews .main-star-svg-total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: auto;
+  }
+  .happy-reviews .reviews-title {
+      margin:0;
+  }
+  .happy-reviews .reviews-title p strong {
+      font-weight: 700;
+  }
+  .happy-reviews .reviews-title p {
+      font-family: Playfair Display !important;
+      font-weight: 400;
+      font-size: 48px;
+      line-height: 100%;
+      letter-spacing: 0;
+      text-align: center;
+      text-transform: capitalize;
+      color: rgba(4, 86, 112, 1);
+      padding: 12px 0 40px;
+      margin:0;
+  }
+video.custom-video-slider {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+}
+  .happy-reviews .main-blok-star-svg-rating {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+  }
+.varified-heading {
+    color: #485269;
+    text-align: center;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: "DM Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1.08px;
+    margin: 0;
+}
+
+.cs_conti.csp-img {
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0;
+    align-items: center;
+    margin: 0 auto;
+    border-radius: 4px;
+    background: #F3F3EC;
+    padding: 24px;
+}
+.video-only-play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.video-only-wrapper {
+    position: relative;
+    aspect-ratio: 0.75;
+    width: 100%;
+}
+.happy-reviews .title-desc {
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: Lora;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    margin: 0 0 28px;
+}
+  .happy-reviews .reviews-info {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+  }
+.happy-reviews .varified-info {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    flex-direction: row-reverse;
+}
+  .happy-reviews .main-reviews-info-varified {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 23px 0 16px;
+  }
+  .happy-reviews .main-bottom-button {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+  }
+  .happy-reviews .strees-low-btn {
+      background: rgba(255, 254, 241, 1);
+      border: 1px solid rgba(4, 86, 112, 1);
+      text-decoration: none;
+      width: 150px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 32px;
+      font-family: Outfit;
+      font-weight: 500;
+      font-size: 12px;
+      line-height: 100%;
+      letter-spacing: 0px;
+      text-align: center;
+      border-radius:20px;
+      color: rgba(4, 86, 112, 1);
+  }
+.happy-reviews .reviewers-name {
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    leading-trim: both;
+    text-edge: cap;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+    text-transform: uppercase;
+    margin: 0 0 14px;
+}
+
+  .happy-reviews .reviews-swipper-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14.21px;
+      margin-top: 40px;
+  }
+  .myreviewsSwiper {
+    padding:32px 0 0;
+  }
+  .happy-reviews .myreviewsSwiper .swiper-slide {
+  transition: 
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+    display: flex;
+    height: auto;
+    will-change: transform;
+    cursor:pointer;
+}
+
+.happy-reviews .myreviewsSwiper .swiper-slide:hover {
+  transform: translateY(-8px) scale(1.01);
+}
+.reviews-description {
+    color: var(--black, #333);
+    text-align: center;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    max-width: 606px;
+    margin: 12px auto 0px;
+}
+.slide-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    opacity:1;
+    width: 30px;
+    height: 30px;
+    cursor:pointer;
+}
+.section-{{ section.id }}-padding  .page-width {
+   padding-right:0px;
+}
+.main-reviews-swipper.testi-grid {
+    position: relative;
+}
+.cs-rating {
+    color: var(--black, #333);
+    font-family: Poppins;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+
+.csp-csng {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+h2.live-heading.csp-img {
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+}
+
+    @media (max-width:768px){
+      
+      .section-{{ section.id }}-padding {
+        padding-top: {{ section.settings.mbl_padding_top }}px;
+        padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+      }
+      .happy-reviews .reviewers-name{
+      font-size: 16px;
+      }
+      .cs_conti.csp-img {
+        border-radius: 8px;
+      }
+      .happy-reviews .title-desc {
+        color: #000;
+        text-align: center;
+        font-size: 20px;
+        font-style: normal;
+        line-height: 24px; 
+      }
+      .happy-reviews .main-star-svg-total {
+      max-width: 100%;
+      gap:0px;
+  }
+.cs-rating p {
+    color: var(--black, #333);
+    font-family: Poppins;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+}
+  .happy-reviews .reviews-title p {
+      font-size: 24px;
+      padding: 12px 0 24px;
+      max-width: 352px;
+      margin: 0 auto;
+  }
+  .happy-reviews .reviews-swipper-btn{
+      margin-top:24px;
+      gap: 11.37px;
+      display:none;
+  }
+  .happy-reviews .slide-btn svg {
+      max-width: 33.52px;
+      height: 33.52px;
+  }
+  .happy-reviews .main-heading p {
+      text-align:center;
+      padding-right: 16px;
+  }
+  .color-scheme-{{ section.id }} {
+               background: #ffffff !important;
+              background-color: #ffffff !important;
+  }
+  .cs-coll  .myreviewsSwiper .swiper-slide {
+          padding:40px 0;
+      }
+      .cs-coll .title-desc {
+            max-width:260px;
+      }
+.live-heading.csp-img {
+    max-width: 282px;
+    margin: 0 auto;
+}
+
+.reviews-description {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    max-width: 606px;
+    margin: 12px auto 0px;
+    color:black;
+}
+.csp-csng {
+  padding-right:16px;
+}
+.myreviewsSwiper {
+    padding-left: 16px;
+}
+
+video.custom-video-slider {
+    border-radius: 8px;
+}
+
+.slide-btn {
+    position: static;
+    top: unset;
+    transform: unset;
+    z-index: 1;
+    opacity: 1;
+    bottom: 0px;
+    
+}
+.gsp-btns {
+    display: flex !important;
+    justify-content: center;
+    gap: 10px;
+    padding:20px 0 0;
+}
+.slide-btn { 
+  width:100%;
+  height:auto;
+}
+.rev-btn {
+    display: flex;
+    align-items: center;
+    gap: 7.273px;
+    justify-content: center;
+    margin: 20px  0 0;
+}
+
+
+
+
+  }
+
+@media (max-width: 768px) {
+    .reviews-description {
+       font-size:13px; 
+    }
+    .slide-btn{
+      width: 35px;
+      height: 35px;
+    }
+     .slide-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit:contain;
+    }
+
+
+    h2.live-heading.csp-img {
+        font-size: 16px;
+    }
+
+}    
+
+</style>
+
+<section class="section-{{ section.id }}-padding color-scheme-{{ section.id }} happy-reviews pdp-section ">
+  <div class="page-widthr">
+    <div class="csp-sec">
+    <div class="main-wrapper-happy-reviews">
+      <div class="csp-csng">
+      <div class="main-star-svg-total csp-img">
+        <img
+          class="star-image"
+          src="{{ section.settings.star-image | img_url: 'master' }}"
+          loading="lazy"
+          alt="Payment methods"
+          width="100%"
+          height="100%"
+        >
+      </div>
+      <h2 class="live-heading csp-img">{{ section.settings['reviews-title'] }}</h2>
+      </div>
+      <div class="main-reviews-swipper  testi-grid">
+        <div class="swiper myreviewsSwiper">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+
+                {% if block.type == 'review_blocks' %}
+                <div class="swiper-slide csp">
+                    <div class="cs_conti csp-img">
+
+                    <img
+                        class="star-svg-block"
+                        src="{{ block.settings.star-svg-block | img_url: 'master' }}"
+                        loading="lazy"
+                        alt=""
+                        role="presentation"
+                        width="100%"
+                        height="100%"
+                    >
+
+                    <div class="title-desc">
+                        {{ block.settings['title-desc'] }}
+                    </div>
+
+                    <div class="reviewers-name">
+                        {{ block.settings['reviewers-name'] }}
+                    </div>
+
+                    <div class="varified-info">
+                        <img
+                        class="varified-svg"
+                        src="{{ block.settings.varified-svg | img_url: 'master' }}"
+                        loading="lazy"
+                        alt="verified"
+                        width="100%"
+                        height="100%"
+                        >
+                        <div class="varified-heading">
+                        {{ block.settings['varified-heading'] }}
+                        </div>
+                    </div>
+
+                    </div>
+                </div>
+                {% endif %}
+
+
+                {% if block.type == 'video_only' %}
+                {% if block.settings.cs_video != blank %}
+                    <div class="swiper-slide">
+                    <div class="video-only-wrapper">
+                        {% assign video_poster = block.settings.cs_video.preview_image | img_url: 'master' %}
+                        {{
+                        block.settings.cs_video
+                        | video_tag: class: 'custom-video-slider', controls: false, muted: false, poster: video_poster
+                        }}
+                        <div class="video-only-play-btn">
+                            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="28" cy="28" r="28" fill="white"/>
+                                <path d="M35.6996 28C35.7001 28.1867 35.6522 28.3704 35.5606 28.5331C35.4691 28.6959 35.3369 28.8322 35.1771 28.9288L25.2716 34.9884C25.1046 35.0907 24.9133 35.1465 24.7175 35.1501C24.5217 35.1537 24.3285 35.105 24.1579 35.009C23.9888 34.9145 23.848 34.7767 23.7499 34.6097C23.6518 34.4427 23.5999 34.2526 23.5996 34.0589V21.941C23.5999 21.7473 23.6518 21.5572 23.7499 21.3902C23.848 21.2233 23.9888 21.0854 24.1579 20.9909C24.3285 20.8949 24.5217 20.8462 24.7175 20.8498C24.9133 20.8534 25.1046 20.9093 25.2716 21.0115L35.1771 27.0711C35.3369 27.1677 35.4691 27.304 35.5606 27.4668C35.6522 27.6295 35.7001 27.8132 35.6996 28Z" fill="#1A2744"/>
+                            </svg>
+                        </div>
+                    </div>
+                    </div>
+                {% endif %}
+                {% endif %}
+
+            {% endfor %}
+            </div>
+          
+        </div>
+
+
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var swiper = new Swiper('.myreviewsSwiper', {
+    speed: 1000,
+    loop: true,
+
+    centeredSlides: true,
+
+    slidesPerView: 4.8,
+    spaceBetween: 16,
+
+    // IMPORTANT FIX
+    watchOverflow: true,
+    observer: true,
+    observeParents: true,
+    resizeObserver: true,
+
+    breakpoints: {
+      0: {
+        slidesPerView: 1.3,
+        spaceBetween: 12,
+        centeredSlides: false, // important fix for desktop
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 16,
+        centeredSlides: false, // important fix for desktop
+      },
+      1080: {
+        slidesPerView: 4.8,
+        spaceBetween: 16,
+      }
+    }
+  });
+});
+
+document.addEventListener("click", function(e) {
+  // Find the video element and its play button
+  const wrapper = e.target.closest(".video-only-wrapper");
+  if (!wrapper) return;
+
+  const video = wrapper.querySelector("video");
+  const playBtn = wrapper.querySelector(".video-only-play-btn");
+  if (!video || !playBtn) return;
+
+  // Check if the click is on video or play button
+  if (e.target === video || e.target.closest(".video-only-play-btn")) {
+    if (video.paused) {
+      video.play();
+      playBtn.style.display = "none";
+    } else {
+      video.pause();
+      playBtn.style.display = "block";
+    }
+  }
+});
+
+</script> 
+
+
+
+{% schema %}
+{
+  "name": "Happymynd amzng rvws",
+  "settings": [
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Desktop Top Padding",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "unit": "px",
+      "label": "Desktop Bottom Padding",
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Top Padding",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "mbl_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Mobile Bottom Padding",
+      "default": 60
+    },
+    {
+      "type": "image_picker",
+      "id": "star-image",
+      "label": "Star Image"
+    },
+    {
+      "type": "text",
+      "id": "reviews-title",
+      "label": "Reviews Title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "review_blocks",
+      "name": "Review Blocks",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "star-svg-block",
+          "label": "Star Image for Review Block"
+        },
+        {
+          "type": "textarea",
+          "id": "title-desc",
+          "label": "Review Description",
+          "default": "This product exceeded my expectations!"
+        },
+        {
+          "type": "text",
+          "id": "reviewers-name",
+          "label": "Reviewer's Name",
+          "default": "John Doe"
+        },
+        {
+          "type": "image_picker",
+          "id": "varified-svg",
+          "label": "Verified Icon"
+        },
+        {
+          "type": "text",
+          "id": "varified-heading",
+          "label": "Verified Heading",
+          "default": "Verified Buyer"
+        }
+      ],
+
+    },
+    {
+        "type": "video_only",
+        "name": "Video Only",
+        "settings": [
+             {
+                "type": "video",
+                "id": "cs_video",
+                "label": "Video"
+            },
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Clients reviews",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

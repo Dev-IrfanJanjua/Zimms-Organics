@@ -1,0 +1,373 @@
+{% style %}
+.sec-{{ section.id }} {
+    overflow: hidden;
+    margin: 0;
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+
+.feature-scroll-container-mf .page-width{
+    overflow: hidden;
+}
+
+.feature-icon-item-mf {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    flex-shrink: 0;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 1px solid #EFEAD6;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.feature-swiper-{{ section.id }} .swiper-slide:last-child {
+    border-right: none;
+}
+
+.feature-icon-item-mf img {
+    max-width: 200px;
+    width: auto;
+    max-height: max-content;
+    flex-shrink: 0;
+    margin-right: 0;
+    display: block;
+    /* margin-right: 48px; */
+}
+
+.feature-icon-item-mf span {
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+    width: 100%;
+    display: block;
+    white-space: normal;
+}
+
+/* newstyle */
+.left-col {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 0 24px;
+}
+.shop-footer .icon {
+    display: inline-block;
+    width: var(--icon-size, 20px);
+    height: var(--icon-size, 20px);
+    vertical-align: middle;
+    fill: none;
+    stroke: white;
+}
+.zz-footer-link.left-con-richtext {
+   padding: 8px 0 0;
+}
+.left-col .zz-footer-title {
+  margin-bottom: 10px;
+}
+.left-col .text-button-large {
+      font-family: "Source Code Pro" !important;
+}
+
+.feature-scroll-wrapper {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+}
+
+h2.feature-scroll-title {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: Lora;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    text-transform: uppercase;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+h2.feature-scroll-title::before,
+h2.feature-scroll-title::after {
+    content: '';
+    width: 16px;
+    height: 2px;
+    background-color: currentColor;
+    display: block;
+    border-radius: 16px;
+}
+
+.feature-swiper-{{ section.id }} {
+    width: 100%;
+    overflow: visible;
+}
+
+.feature-swiper-{{ section.id }} .swiper-wrapper {
+    align-items: stretch;
+}
+
+.feature-swiper-{{ section.id }} .swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 768px) {
+    .feature-icon-item-mf span {
+        font-size: 14px; 
+    }
+    .sec-{{ section.id }} {
+        padding-top: {{ section.settings.mobile_padding_top }}px;
+        padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .left-col .zz-footer-title {
+     font-size: 18px !important; 
+     padding:0px;
+     border: 0px;
+    margin:0 0 10px !important;
+  }
+  .left-col {
+    flex-direction: column;
+    margin:0 0 32px;
+  }
+  .text-button-large {
+     font-size:14px !important;
+  }
+  .zz-footer-link.left-con-richtext {
+     font-size:14px;
+  }
+  .zz-footer-link.left-con-richtext {
+    padding: 0px;
+  }
+
+  .feature-icon-item-mf{
+    border: none;
+  }
+
+  .feature-icon-item-mf img {
+        max-width: 100%;
+    }
+
+.feature-scroll-container-mf .page-width {
+    padding-right: 0;
+}
+
+.feature-scroll-head {
+    padding-right: 16px;
+}
+
+.feature-mob-icon-item {
+    display: flex !important;
+    margin-top: 24px;
+    flex-direction: column;
+    align-items: center;
+    gap: 9px;
+}
+
+.feature-mob-icon-item img {
+    width: 107px;
+    height: auto;
+    display: block;
+}
+
+.feature-mob-icon-item span {
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.swiper-slide.swiper-slide-1 {
+    display: none;
+}
+
+  
+}
+
+{% endstyle %}
+
+<div class="feature-scroll-container-mf fade-in-section sec-{{ section.id }}">
+    <div class="page-width">
+        <div class="feature-scroll-wrapper">
+            <div class="feature-scroll-head">
+                {% if section.settings.title != blank %}
+                    <h2 class="feature-scroll-title">{{ section.settings.title }}</h2>
+                {% endif %}
+                <div class="feature-mob-icon-item" style="display: none;">
+                    {% if section.settings.icon %}
+                      <img src="{{  section.settings.icon | image_url }}" alt="icon" width="200" height="39" loading="eager" fetchpriority="high">
+                    {% endif %}
+                    <span>{{ section.settings.mob_title }}</span>
+                </div>
+            </div>
+            <div class="swiper feature-swiper-{{ section.id }}">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        {% if block.type == 'feature' %}
+                            <div class="swiper-slide swiper-slide-{{ forloop.index }}">
+                                <div class="feature-icon-item-mf">
+                                    {% if block.settings.icon %}
+                                        <img
+                                        src="{{ block.settings.icon | image_url }}"
+                                        alt="{{ block.settings.icon.alt }}"
+                                        width="200"
+                                        height="39"
+                                        loading="eager"
+                                        fetchpriority="high"
+                                        >
+                                    {% endif %}
+                                    <span>{{ block.settings.title }}</span>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const swiperEl = document.querySelector('.feature-swiper-{{ section.id }}');
+
+  if (!swiperEl) return;
+
+  new Swiper(swiperEl, {
+    speed: 1000,
+    slidesPerView: 4,        // adjust as needed
+    spaceBetween: 16,
+    loop: true,
+
+    breakpoints: {
+      0: {
+        slidesPerView: 1.8,
+      },
+      768: {
+        slidesPerView: 3,
+      },
+      1024: {
+        slidesPerView: 4,
+      }
+    },
+  });
+
+});
+</script>
+
+{% schema %}
+{
+  "name": "Scrolling Feature Icons",
+  "tag": "section",
+  "class": "scrolling-feature-icons",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+        "type": "image_picker",
+        "id": "icon",
+        "label": "Icon Mobile"
+    },
+    {
+        "type": "text",
+        "id": "mob_title",
+        "label": "Text"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop padding top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile padding top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile padding bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 10
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Feature Icons",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}      
