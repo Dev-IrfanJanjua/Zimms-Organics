@@ -1,0 +1,328 @@
+{% liquid
+  assign selected_product = all_products[section.settings.product]
+  assign display_image = section.settings.custom_image
+  assign display_title = section.settings.custom_title
+
+  if display_image == blank and selected_product != blank
+    assign display_image = selected_product.featured_image
+  endif
+
+  if display_title == blank and selected_product != blank
+    assign display_title = selected_product.title
+  endif
+%}
+
+<section class="ultimate-bundle-section">
+  <div class="page-width">
+    <div class="ultimate-bundle-wrapper">
+      <div class="ultimate--bundle-image">
+        {% if display_image != blank %}
+          {{ display_image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: display_title }}
+        {% endif %}
+      </div>
+
+      <div class="unltimate-bundle-content">
+        <div class="ultimate-bundle-head">
+          <div class="ultimate-bundle-review">
+            <div class="ultimate-bundle-review-icon">
+              {% if section.settings.review_icon != blank %}
+                {{ section.settings.review_icon | image_url: width: 100 | image_tag: loading: 'lazy' }}
+              {% endif %}
+            </div>
+
+            <p class="ultimate-bundle-review-text">
+              {{ section.settings.review_text }}
+            </p>
+          </div>
+
+          <h2 class="ultimate-bundle-title">
+            {{ display_title }}
+          </h2>
+        </div>
+
+        <div class="ultimate-bundle-include">
+          <h4 class="ultimate-bundle-include_tite">
+            {{ section.settings.include_title }}
+          </h4>
+
+          <ul class="ultimate-bundle-blocks">
+            {% for block in section.blocks %}
+              {% if block.type == 'include' %}
+                <li class="ultimate-bundle-block" {{ block.shopify_attributes }}>
+                  <h3 class="ultimate-bundle-block_title">
+                    {{ block.settings.title }}
+                  </h3>
+
+                  <div class="ultimate-bundle-block_prices">
+                    <p class="ultimate-bundle-block_price_compare">
+                      {{ block.settings.compare_price }}
+                    </p>
+
+                    <p class="ultimate-bundle-block_price_org">
+                      {{ block.settings.price }}
+                    </p>
+                  </div>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="ultimate-bundle-devider"></div>
+
+        <div class="ultimate-bundle-saving">
+          <h4 class="ultimate-bundle-saving_title">
+            {{ section.settings.saving_title }}
+          </h4>
+
+          <ul class="ultimate-bundle-saving_items">
+            <li class="ultimate-bundle-saving_item">
+              <p class="ultimate-bundle-saving_item-text">
+                {{ section.settings.saving_text }}
+              </p>
+
+              <p class="ultimate-bundle-saving_item-tag">
+                {{ section.settings.saving_tag }}
+              </p>
+            </li>
+
+            <li class="ultimate-bundle-saving_item">
+              <p class="ultimate-bundle-saving_item-text">
+                {{ section.settings.total_text }}
+              </p>
+
+              <p class="ultimate-bundle-saving_item-price">
+                {{ section.settings.total_price }}
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <div class="ultimate-bundle-devider"></div>
+
+        <div class="ultimate-bundle_bottom">
+          <div class="ultimate-bundle_bottom-info">
+            <h4 class="ultimate-bundle_bottom-title">
+              {{ section.settings.bottom_title }}
+            </h4>
+
+            <div class="ultimate-bundle_bottom-prices">
+              <p class="ultimate-bundle_bottom_price_compare">
+                {{ section.settings.bottom_compare_price }}
+              </p>
+
+              <p class="ultimate-bundle_bottom_price_org">
+                {{ section.settings.bottom_price }}
+              </p>
+            </div>
+          </div>
+
+          <div class="ultimate-bundle_bottom-btn">
+            {% if section.settings.button_text != blank %}
+              <a
+                href="{{ selected_product.url }}"
+                class="button"
+              >
+                {{ section.settings.button_text }}
+              </a>
+            {% endif %}
+          </div>
+
+          <ul class="ultimate-bundle_bottom-fetures">
+            {% for block in section.blocks %}
+              {% if block.type == 'feature' %}
+                <li class="ultimate-bundle_bottom-feture" {{ block.shopify_attributes }}>
+                  <div class="ultimate-bundle_bottom-feture_icon">
+                    {% if block.settings.icon != blank %}
+                      {{ block.settings.icon | image_url: width: 100 | image_tag: loading: 'lazy' }}
+                    {% endif %}
+                  </div>
+
+                  <p class="ultimate-bundle_bottom-feture_text">
+                    {{ block.settings.text }}
+                  </p>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Ultimate Bundle",
+  "tag": "section",
+  "class": "ultimate-bundle",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "custom_image",
+      "label": "Custom Product Image"
+    },
+    {
+      "type": "text",
+      "id": "custom_title",
+      "label": "Custom Product Title"
+    },
+
+    {
+      "type": "header",
+      "content": "Review"
+    },
+    {
+      "type": "image_picker",
+      "id": "review_icon",
+      "label": "Review Icon"
+    },
+    {
+      "type": "text",
+      "id": "review_text",
+      "label": "Review Text",
+      "default": "4.9/5 Based on 10,000+ Reviews"
+    },
+
+    {
+      "type": "header",
+      "content": "Include Section"
+    },
+    {
+      "type": "text",
+      "id": "include_title",
+      "label": "Include Title",
+      "default": "What's Included"
+    },
+
+    {
+      "type": "header",
+      "content": "Savings Section"
+    },
+    {
+      "type": "text",
+      "id": "saving_title",
+      "label": "Saving Title",
+      "default": "Bundle Savings"
+    },
+    {
+      "type": "text",
+      "id": "saving_text",
+      "label": "Saving Text",
+      "default": "You Save"
+    },
+    {
+      "type": "text",
+      "id": "saving_tag",
+      "label": "Saving Tag",
+      "default": "25% OFF"
+    },
+    {
+      "type": "text",
+      "id": "total_text",
+      "label": "Total Text",
+      "default": "Total"
+    },
+    {
+      "type": "text",
+      "id": "total_price",
+      "label": "Total Price",
+      "default": "$149"
+    },
+
+    {
+      "type": "header",
+      "content": "Bottom Section"
+    },
+    {
+      "type": "text",
+      "id": "bottom_title",
+      "label": "Bottom Title",
+      "default": "Ultimate Bundle"
+    },
+    {
+      "type": "text",
+      "id": "bottom_compare_price",
+      "label": "Bottom Compare Price",
+      "default": "$199"
+    },
+    {
+      "type": "text",
+      "id": "bottom_price",
+      "label": "Bottom Price",
+      "default": "$149"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "Button Text",
+      "default": "Shop Bundle"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "include",
+      "name": "Include Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Product Title"
+        },
+        {
+          "type": "text",
+          "id": "compare_price",
+          "label": "Compare Price"
+        },
+        {
+          "type": "text",
+          "id": "price",
+          "label": "Price"
+        }
+      ]
+    },
+    {
+      "type": "feature",
+      "name": "Feature Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Feature Icon"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Feature Text"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Ultimate Bundle",
+      "blocks": [
+        {
+          "type": "include"
+        },
+        {
+          "type": "include"
+        },
+        {
+          "type": "feature"
+        },
+        {
+          "type": "feature"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

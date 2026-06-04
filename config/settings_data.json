@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/zimms_logo_wide_green.png",
-    "logo_width": 220,
+    "logo": "shopify://shop_images/Mask_group_1.png",
+    "logo_width": 170,
     "favicon": "shopify://shop_images/favicon_8e9be23b-dbf4-4750-9fef-f0d2b2919fb1.png",
     "type_header_font": "archivo_n7",
     "heading_scale": 110,
@@ -303,6 +303,11 @@
           "customJS": "const target = document.querySelector('.cart__footer');\n\nconst observer = new MutationObserver(() => {\n    console.log(\"mutation\");\n    if (document.querySelector('div.si-dual-checkout-verbiage')) {\n        if (window.shipInsureInitialized) {\n            window.cleanupShipInsureElements();\n        }\n    }\n});\n\nif (target) {\n    observer.observe(target, {\n        childList: true,\n        subtree: true\n    });\n}",
           "popupOverride": ""
         }
+      },
+      "1232542678405107163": {
+        "type": "shopify://apps/instafeed/blocks/head-block/c447db20-095d-4a10-9725-b5977662c9d5",
+        "disabled": false,
+        "settings": {}
       }
     },
     "color_schemes": {
