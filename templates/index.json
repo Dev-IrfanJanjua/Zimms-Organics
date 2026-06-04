@@ -109,7 +109,9 @@
         "desktop_padding_top": 0,
         "desktop_padding_bottom": 0,
         "mobile_padding_top": 0,
-        "mobile_padding_bottom": 0
+        "mobile_padding_bottom": 0,
+        "margin_top": -100,
+        "margin_top_mob": -60
       }
     },
     "marquee_hdcrLM": {
@@ -439,6 +441,90 @@
         "mobile_padding_bottom": 0
       }
     },
+    "unltimate_bundle_gUtB89": {
+      "type": "unltimate-bundle",
+      "blocks": {
+        "include_bwkahN": {
+          "type": "include",
+          "settings": {
+            "title": "COOK – Cooking EVOO",
+            "compare_price": "$53",
+            "price": "$53"
+          }
+        },
+        "include_qPCmBD": {
+          "type": "include",
+          "settings": {
+            "title": "HEAL – Finishing EVOO",
+            "compare_price": "$53",
+            "price": "$53"
+          }
+        },
+        "include_FXXJPP": {
+          "type": "include",
+          "settings": {
+            "title": "HEAL+ – High-Polyphenol EVOO",
+            "compare_price": "$53",
+            "price": "$53"
+          }
+        },
+        "feature_9k3iCb": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Check.svg",
+            "text": "Free Shipping"
+          }
+        },
+        "feature_PgyUMF": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Check.svg",
+            "text": "100% Organic"
+          }
+        },
+        "feature_pzrbBj": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Check.svg",
+            "text": "Single Origin"
+          }
+        }
+      },
+      "block_order": [
+        "include_bwkahN",
+        "include_qPCmBD",
+        "include_FXXJPP",
+        "feature_9k3iCb",
+        "feature_PgyUMF",
+        "feature_pzrbBj"
+      ],
+      "name": "Ultimate Bundle",
+      "settings": {
+        "product": "ultimate-trifecta",
+        "custom_image": "shopify://shop_images/Frame_2147241346.png",
+        "custom_title": "<p>The Ultimate Olive Experience</p>",
+        "review_icon": "shopify://shop_images/Frame_36.svg",
+        "review_text": "Over 110,000 five star reviews",
+        "include_title": "What's included",
+        "saving_title": "Bundle savings",
+        "saving_text": "Recycled Gift Box",
+        "saving_tag": "Free",
+        "total_text": "24% Bundle Discount",
+        "total_price": "-$38",
+        "bottom_title": "You pay",
+        "bottom_compare_price": "$199",
+        "bottom_price": "$149",
+        "button_text": "Shop Bundle",
+        "section_bg_color": "#fffffc",
+        "heading_color": "#1a2744",
+        "tag_color": "#1a2744",
+        "card_color": "rgba(0,0,0,0)",
+        "desktop_padding_top": 112,
+        "desktop_padding_bottom": 112,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
+      }
+    },
     "exploare_RwLaMY": {
       "type": "exploare",
       "name": "Explore Section",
@@ -546,54 +632,6 @@
         "enable_quick_add": true,
         "columns_mobile": "2",
         "swipe_on_mobile": false,
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
-    "image_with_text_7maNCk": {
-      "type": "image-with-text",
-      "blocks": {
-        "heading_VD6r6p": {
-          "type": "heading",
-          "settings": {
-            "heading": "INTRODUCING HEAL+",
-            "heading_size": "h1"
-          }
-        },
-        "text_f4hhP3": {
-          "type": "text",
-          "settings": {
-            "text": "<p>HEAL+ contains 100% organic Koroneiki olives, the varietal that helped me get off medication from Crohn's disease. HEAL+ is also our highest polyphenol EVOO yet at <strong>660 mg / kg.</strong></p><p>HEAL+ is super bright, peppery, spicy and packs a serious kick. The high polyphenols provide more antioxidants and health benefits, which is why HEAL+ is best consumed by itself in a shot daily.</p>",
-            "text_style": "body"
-          }
-        },
-        "button_Qix6ak": {
-          "type": "button",
-          "settings": {
-            "button_label": "Learn More",
-            "button_link": "shopify://products/healplus-organic-extra-virgin-olive-oil-400ml",
-            "button_style_secondary": false
-          }
-        }
-      },
-      "block_order": [
-        "heading_VD6r6p",
-        "text_f4hhP3",
-        "button_Qix6ak"
-      ],
-      "disabled": true,
-      "settings": {
-        "image": "shopify://shop_images/IMG_6581.jpg",
-        "height": "large",
-        "desktop_image_width": "medium",
-        "layout": "text_first",
-        "desktop_content_position": "middle",
-        "desktop_content_alignment": "left",
-        "content_layout": "no-overlap",
-        "section_color_scheme": "scheme-1",
-        "color_scheme": "scheme-4",
-        "image_behavior": "none",
-        "mobile_content_alignment": "left",
         "padding_top": 60,
         "padding_bottom": 60
       }
@@ -1101,11 +1139,11 @@
     "fet_collection_WVRVMV",
     "videos_text_slider_pxV8Rj",
     "benefit_section_piGk3N",
+    "unltimate_bundle_gUtB89",
     "exploare_RwLaMY",
     "17805687835ebc8269",
     "featured-collection-0",
     "featured_collection_8BzrLD",
-    "image_with_text_7maNCk",
     "rich-text",
     "multicolumn-1",
     "eb37db64-1181-4585-8663-718148ca1d8a",

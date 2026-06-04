@@ -1,7 +1,7 @@
 {% liquid
-  assign selected_product = all_products[section.settings.product]
+  assign selected_product = section.settings.product
   assign display_image = section.settings.custom_image
-  assign display_title = section.settings.custom_title
+  assign display_title = section.settings.custom_title | replace: '<p>', '' | replace: '</p>', ''
 
   if display_image == blank and selected_product != blank
     assign display_image = selected_product.featured_image
@@ -12,88 +12,273 @@
   endif
 %}
 
-<section class="ultimate-bundle-section">
+{% style %}
+.section-{{ section.id }} {
+    background: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.desktop_padding_top }}px;
+    padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+}
+
+.section-{{ section.id }} .ultimate-bundle-title {
+    color: {{ section.settings.heading_color }};
+    font-family: Lora;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    margin: 12px 0 0;
+}
+
+.section-{{ section.id }} .ultimate-bundle-review-text {
+    color: {{ section.settings.tag_color }};
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+}
+
+.section-{{ section.id }} .ultimate-bundle-block,
+.section-{{ section.id }} .ultimate-bundle-saving,
+.section-{{ section.id }} .ultimate-bundle_bottom {
+    background: {{ section.settings.card_color }};
+}
+
+.ultimate--bundle-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.ultimate-bundle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.ultimate--bundle-image {
+    max-width: 50%;
+    width: 100%;
+}
+
+.unltimate-bundle-content {
+    max-width: calc(100% - (50% + 50px));
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.ultimate-bundle-review {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.ultimate-bundle-review-icon {
+    max-width: 100px;
+    height: auto;
+    width: 100%;
+}
+
+.ultimate-bundle-review-icon img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.ultimate-bundle-include, 
+.ultimate-bundle-saving, 
+.ultimate-bundle_bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+ul.ultimate-bundle-blocks, 
+ul.ultimate-bundle-saving_items {
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.ultimate-bundle_bottom-feture_icon {
+    width: 18px;
+    height: 18px;
+    display: flex;
+    flex-shrink: 0;
+}
+
+.ultimate-bundle_bottom-feture_icon img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+ul.ultimate-bundle_bottom-fetures {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    justify-content: center;
+    gap: 23px;
+}
+
+li.ultimate-bundle_bottom-feture {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+p.ultimate-bundle_bottom-feture_text {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 0;
+}
+
+
+@media screen and (max-width: 768px) {
+
+.section-{{ section.id }} {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+}
+
+}
+
+{% endstyle %}
+
+<section class="ultimate-bundle-section section-{{ section.id }}">
   <div class="page-width">
     <div class="ultimate-bundle-wrapper">
       <div class="ultimate--bundle-image">
         {% if display_image != blank %}
-          {{ display_image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: display_title }}
+          {{
+            display_image
+            | image_url: width: 1600
+            | image_tag:
+              widths: '50,100,150,200,300,400,500,600,800,1000,1200,1400,1600',
+              loading: 'lazy',
+              alt: display_title
+          }}
         {% endif %}
       </div>
 
       <div class="unltimate-bundle-content">
         <div class="ultimate-bundle-head">
-          <div class="ultimate-bundle-review">
-            <div class="ultimate-bundle-review-icon">
+          {% if section.settings.review_icon != blank or section.settings.review_text != blank %}
+            <div class="ultimate-bundle-review">
               {% if section.settings.review_icon != blank %}
-                {{ section.settings.review_icon | image_url: width: 100 | image_tag: loading: 'lazy' }}
+                <div class="ultimate-bundle-review-icon">
+                  {{
+                    section.settings.review_icon
+                    | image_url: width: 200
+                    | image_tag: widths: '50,100,150,200', loading: 'lazy', alt: 'review icon'
+                  }}
+                </div>
+              {% endif %}
+
+              {% if section.settings.review_text != blank %}
+                <p class="ultimate-bundle-review-text">
+                  {{ section.settings.review_text }}
+                </p>
               {% endif %}
             </div>
+          {% endif %}
 
-            <p class="ultimate-bundle-review-text">
-              {{ section.settings.review_text }}
-            </p>
+          {% if display_title != blank %}
+            <h2 class="ultimate-bundle-title">
+              {{ display_title }}
+            </h2>
+          {% endif %}
+        </div>
+
+        {% if section.settings.include_title != blank %}
+          <div class="ultimate-bundle-include">
+            <h4 class="ultimate-bundle-include_tite">
+              {{ section.settings.include_title }}
+            </h4>
+
+            <ul class="ultimate-bundle-blocks">
+              {% for block in section.blocks %}
+                {% if block.type == 'include' %}
+                  <li class="ultimate-bundle-block" {{ block.shopify_attributes }}>
+                    {% if block.settings.title != blank %}
+                      <h3 class="ultimate-bundle-block_title">
+                        {{ block.settings.title }}
+                      </h3>
+                    {% endif %}
+
+                    {% if block.settings.compare_price != blank or block.settings.price != blank %}
+                      <div class="ultimate-bundle-block_prices">
+                        {% if block.settings.compare_price != blank %}
+                          <p class="ultimate-bundle-block_price_compare">
+                            {{ block.settings.compare_price }}
+                          </p>
+                        {% endif %}
+
+                        {% if block.settings.price != blank %}
+                          <p class="ultimate-bundle-block_price_org">
+                            {{ block.settings.price }}
+                          </p>
+                        {% endif %}
+                      </div>
+                    {% endif %}
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
           </div>
-
-          <h2 class="ultimate-bundle-title">
-            {{ display_title }}
-          </h2>
-        </div>
-
-        <div class="ultimate-bundle-include">
-          <h4 class="ultimate-bundle-include_tite">
-            {{ section.settings.include_title }}
-          </h4>
-
-          <ul class="ultimate-bundle-blocks">
-            {% for block in section.blocks %}
-              {% if block.type == 'include' %}
-                <li class="ultimate-bundle-block" {{ block.shopify_attributes }}>
-                  <h3 class="ultimate-bundle-block_title">
-                    {{ block.settings.title }}
-                  </h3>
-
-                  <div class="ultimate-bundle-block_prices">
-                    <p class="ultimate-bundle-block_price_compare">
-                      {{ block.settings.compare_price }}
-                    </p>
-
-                    <p class="ultimate-bundle-block_price_org">
-                      {{ block.settings.price }}
-                    </p>
-                  </div>
-                </li>
-              {% endif %}
-            {% endfor %}
-          </ul>
-        </div>
+        {% endif %}
 
         <div class="ultimate-bundle-devider"></div>
 
         <div class="ultimate-bundle-saving">
-          <h4 class="ultimate-bundle-saving_title">
-            {{ section.settings.saving_title }}
-          </h4>
+          {% if section.settings.saving_title != blank %}
+            <h4 class="ultimate-bundle-saving_title">
+              {{ section.settings.saving_title }}
+            </h4>
+          {% endif %}
 
           <ul class="ultimate-bundle-saving_items">
             <li class="ultimate-bundle-saving_item">
-              <p class="ultimate-bundle-saving_item-text">
-                {{ section.settings.saving_text }}
-              </p>
+              {% if section.settings.saving_text != blank %}
+                <p class="ultimate-bundle-saving_item-text">
+                  {{ section.settings.saving_text }}
+                </p>
+              {% endif %}
 
-              <p class="ultimate-bundle-saving_item-tag">
-                {{ section.settings.saving_tag }}
-              </p>
+              {% if section.settings.saving_tag != blank %}
+                <p class="ultimate-bundle-saving_item-tag">
+                  {{ section.settings.saving_tag }}
+                </p>
+              {% endif %}
             </li>
 
             <li class="ultimate-bundle-saving_item">
-              <p class="ultimate-bundle-saving_item-text">
-                {{ section.settings.total_text }}
-              </p>
+              {% if section.settings.total_text != blank %}
+                <p class="ultimate-bundle-saving_item-text">
+                  {{ section.settings.total_text }}
+                </p>
+              {% endif %}
 
-              <p class="ultimate-bundle-saving_item-price">
-                {{ section.settings.total_price }}
-              </p>
+              {% if section.settings.total_price != blank %}
+                <p class="ultimate-bundle-saving_item-price">
+                  {{ section.settings.total_price }}
+                </p>
+              {% endif %}
             </li>
           </ul>
         </div>
@@ -102,45 +287,54 @@
 
         <div class="ultimate-bundle_bottom">
           <div class="ultimate-bundle_bottom-info">
-            <h4 class="ultimate-bundle_bottom-title">
-              {{ section.settings.bottom_title }}
-            </h4>
+            {% if section.settings.bottom_title != blank %}
+              <h4 class="ultimate-bundle_bottom-title">
+                {{ section.settings.bottom_title }}
+              </h4>
+            {% endif %}
 
             <div class="ultimate-bundle_bottom-prices">
-              <p class="ultimate-bundle_bottom_price_compare">
-                {{ section.settings.bottom_compare_price }}
-              </p>
+              {% if section.settings.bottom_compare_price != blank %}
+                <p class="ultimate-bundle_bottom_price_compare">
+                  {{ section.settings.bottom_compare_price }}
+                </p>
+              {% endif %}
 
-              <p class="ultimate-bundle_bottom_price_org">
-                {{ section.settings.bottom_price }}
-              </p>
+              {% if section.settings.bottom_price != blank %}
+                <p class="ultimate-bundle_bottom_price_org">
+                  {{ section.settings.bottom_price }}
+                </p>
+              {% endif %}
             </div>
           </div>
 
-          <div class="ultimate-bundle_bottom-btn">
-            {% if section.settings.button_text != blank %}
-              <a
-                href="{{ selected_product.url }}"
-                class="button"
-              >
+          {% if section.settings.button_text != blank and selected_product != blank %}
+            <div class="ultimate-bundle_bottom-btn">
+              <a href="{{ selected_product.url }}" class="button">
                 {{ section.settings.button_text }}
               </a>
-            {% endif %}
-          </div>
+            </div>
+          {% endif %}
 
           <ul class="ultimate-bundle_bottom-fetures">
             {% for block in section.blocks %}
               {% if block.type == 'feature' %}
                 <li class="ultimate-bundle_bottom-feture" {{ block.shopify_attributes }}>
-                  <div class="ultimate-bundle_bottom-feture_icon">
-                    {% if block.settings.icon != blank %}
-                      {{ block.settings.icon | image_url: width: 100 | image_tag: loading: 'lazy' }}
-                    {% endif %}
-                  </div>
+                  {% if block.settings.icon != blank %}
+                    <div class="ultimate-bundle_bottom-feture_icon">
+                      {{
+                        block.settings.icon
+                        | image_url: width: 200
+                        | image_tag: widths: '50,100,150,200', loading: 'lazy', alt: 'feature icon'
+                      }}
+                    </div>
+                  {% endif %}
 
-                  <p class="ultimate-bundle_bottom-feture_text">
-                    {{ block.settings.text }}
-                  </p>
+                  {% if block.settings.text != blank %}
+                    <p class="ultimate-bundle_bottom-feture_text">
+                      {{ block.settings.text }}
+                    </p>
+                  {% endif %}
                 </li>
               {% endif %}
             {% endfor %}
@@ -155,27 +349,31 @@
 {
   "name": "Ultimate Bundle",
   "tag": "section",
-  "class": "ultimate-bundle",
+  "class": "ultimate-bundle-section",
   "settings": [
+    {
+      "type": "header",
+      "content": "Product Settings"
+    },
     {
       "type": "product",
       "id": "product",
-      "label": "Product"
+      "label": "Select Product"
     },
     {
       "type": "image_picker",
       "id": "custom_image",
-      "label": "Custom Product Image"
+      "label": "Custom Product Image Override"
     },
     {
-      "type": "text",
+      "type": "richtext",
       "id": "custom_title",
-      "label": "Custom Product Title"
+      "label": "Custom Product Title Override"
     },
 
     {
       "type": "header",
-      "content": "Review"
+      "content": "Review Content"
     },
     {
       "type": "image_picker",
@@ -186,7 +384,7 @@
       "type": "text",
       "id": "review_text",
       "label": "Review Text",
-      "default": "4.9/5 Based on 10,000+ Reviews"
+      "default": "4.9/5 Based On 10,000+ Reviews"
     },
 
     {
@@ -207,25 +405,25 @@
     {
       "type": "text",
       "id": "saving_title",
-      "label": "Saving Title",
+      "label": "Savings Title",
       "default": "Bundle Savings"
     },
     {
       "type": "text",
       "id": "saving_text",
-      "label": "Saving Text",
+      "label": "Savings Text",
       "default": "You Save"
     },
     {
       "type": "text",
       "id": "saving_tag",
-      "label": "Saving Tag",
+      "label": "Savings Tag",
       "default": "25% OFF"
     },
     {
       "type": "text",
       "id": "total_text",
-      "label": "Total Text",
+      "label": "Total Label",
       "default": "Total"
     },
     {
@@ -237,7 +435,7 @@
 
     {
       "type": "header",
-      "content": "Bottom Section"
+      "content": "Bottom Content"
     },
     {
       "type": "text",
@@ -262,6 +460,80 @@
       "id": "button_text",
       "label": "Button Text",
       "default": "Shop Bundle"
+    },
+
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tag_color",
+      "label": "Tag Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "card_color",
+      "label": "Card Background",
+      "default": "#f7f7f7"
+    },
+
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "default": 40
     }
   ],
 
@@ -271,9 +543,9 @@
       "name": "Include Item",
       "settings": [
         {
-          "type": "text",
+          "type": "inline_richtext",
           "id": "title",
-          "label": "Product Title"
+          "label": "Title"
         },
         {
           "type": "text",
@@ -294,26 +566,35 @@
         {
           "type": "image_picker",
           "id": "icon",
-          "label": "Feature Icon"
+          "label": "Icon"
         },
         {
           "type": "text",
           "id": "text",
-          "label": "Feature Text"
+          "label": "Text"
         }
       ]
     }
   ],
 
+  "max_blocks": 20,
+
   "presets": [
     {
       "name": "Ultimate Bundle",
+      "category": "Custom",
       "blocks": [
         {
           "type": "include"
         },
         {
           "type": "include"
+        },
+        {
+          "type": "include"
+        },
+        {
+          "type": "feature"
         },
         {
           "type": "feature"
