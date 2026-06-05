@@ -18,9 +18,13 @@
     flex-shrink: 0;
     flex-direction: column;
     gap: 12px;
-    border-right: 1px solid #EFEAD6;
+    border-right: 1px solid #EFEAD6 !important;
     justify-content: space-between;
     width: 100%;
+}
+
+.feature-icon-item-mf_no-border{
+  border: none !important;
 }
 
 .feature-swiper-{{ section.id }} .swiper-slide:last-child {
@@ -28,13 +32,12 @@
 }
 
 .feature-icon-item-mf img {
-    max-width: 200px;
-    width: auto;
-    max-height: max-content;
+    width: var(--width-desk);
+    /* height: var(--height-desk); */
+    height: auto;
     flex-shrink: 0;
     margin-right: 0;
     display: block;
-    /* margin-right: 48px; */
 }
 
 .feature-icon-item-mf span {
@@ -124,6 +127,14 @@ h2.feature-scroll-title::after {
     justify-content: center;
 }
 
+@media screen and (max-width: 1100px){
+
+  .feature-icon-item-mf{
+    border: none !important;
+  }
+
+}
+
 @media (max-width: 768px) {
     .feature-icon-item-mf span {
         font-size: 14px; 
@@ -158,7 +169,9 @@ h2.feature-scroll-title::after {
   }
 
   .feature-icon-item-mf img {
-        max-width: 100%;
+      width: var(--width-mob);
+      /* height: var(--height-mob); */
+      height: auto;
     }
 
 .feature-scroll-container-mf .page-width {
@@ -222,18 +235,24 @@ h2.feature-scroll-title::after {
                     {% for block in section.blocks %}
                         {% if block.type == 'feature' %}
                             <div class="swiper-slide swiper-slide-{{ forloop.index }}">
-                                <div class="feature-icon-item-mf scroll-trigger animate--slide-in"
+                                <div class="feature-icon-item-mf scroll-trigger animate--slide-in {% if forloop.last %}feature-icon-item-mf_no-border{% endif %}"
                                   data-cascade
                                   style="--animation-order: {{ forloop.index }};"
                                 >
                                     {% if block.settings.icon %}
                                         <img
-                                        src="{{ block.settings.icon | image_url }}"
-                                        alt="{{ block.settings.icon.alt }}"
-                                        width="200"
-                                        height="39"
-                                        loading="eager"
-                                        fetchpriority="high"
+                                          src="{{ block.settings.icon | image_url }}"
+                                          alt="{{ block.settings.icon.alt }}"
+                                          width="200"
+                                          height="39"
+                                          loading="eager"
+                                          fetchpriority="high"
+                                          style="
+                                            --width-desk: {{ block.settings.width }}px;
+                                            --height-desk: {{ block.settings.height }}px;
+                                            --width-mob: {{ block.settings.width_mob }}px;
+                                            --height-mob: {{ block.settings.height_mob }}px;
+                                          "
                                         >
                                     {% endif %}
                                     <span>{{ block.settings.title }}</span>
@@ -258,7 +277,7 @@ document.addEventListener('DOMContentLoaded', function () {
     speed: 1000,
     slidesPerView: 4,        // adjust as needed
     spaceBetween: 16,
-    loop: true,
+    loop: false,
 
     breakpoints: {
       0: {
@@ -267,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function () {
       768: {
         slidesPerView: 3,
       },
-      1024: {
+      1100: {
         slidesPerView: 4,
       }
     },
@@ -362,6 +381,54 @@ document.addEventListener('DOMContentLoaded', function () {
           "type": "text",
           "id": "title",
           "label": "Text"
+        },
+        {
+          "type": "header",
+          "content": "Desktop"
+        },
+        {
+          "type": "range",
+          "id": "width",
+          "label": "Width",
+          "min": 0,
+          "max": 300,
+          "step": 3,
+          "unit": "px",
+          "default": 120
+        },
+        {
+          "type": "range",
+          "id": "height",
+          "label": "height",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "default": 50
+        },
+        {
+          "type": "header",
+          "content": "Mobile"
+        },
+        {
+          "type": "range",
+          "id": "width_mob",
+          "label": "Width",
+          "min": 0,
+          "max": 300,
+          "step": 3,
+          "unit": "px",
+          "default": 120
+        },
+        {
+          "type": "range",
+          "id": "height_mob",
+          "label": "height",
+          "min": 0,
+          "max": 200,
+          "step": 2,
+          "unit": "px",
+          "default": 50
         }
       ]
     }

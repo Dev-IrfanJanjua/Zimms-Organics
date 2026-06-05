@@ -88,6 +88,38 @@
     },
     "zim_hero_WDMYaR": {
       "type": "zim-hero",
+      "blocks": {
+        "icons_UGBjiB": {
+          "type": "icons",
+          "settings": {
+            "icon_image": "shopify://shop_images/image_9_Vectorized.svg"
+          }
+        },
+        "icons_wMcwkm": {
+          "type": "icons",
+          "settings": {
+            "icon_image": "shopify://shop_images/image_9_Vectorized_1.svg"
+          }
+        },
+        "icons_j6WUjM": {
+          "type": "icons",
+          "settings": {
+            "icon_image": "shopify://shop_images/image_9_Vectorized_2.svg"
+          }
+        },
+        "icons_mB8tYe": {
+          "type": "icons",
+          "settings": {
+            "icon_image": "shopify://shop_images/image_9_Vectorized_3.svg"
+          }
+        }
+      },
+      "block_order": [
+        "icons_UGBjiB",
+        "icons_wMcwkm",
+        "icons_j6WUjM",
+        "icons_mB8tYe"
+      ],
       "name": "ZIM Hero Video",
       "settings": {
         "video": "shopify://files/videos/Untitled design.mp4",
@@ -97,7 +129,6 @@
         "button_url": "shopify://collections/frontpage",
         "footer_image": "shopify://shop_images/Frame_2147241407_2.svg",
         "footer_text": "Over 60,000 Verfied Five Star Reviews",
-        "icon_image": "shopify://shop_images/Mask_group_2.webp",
         "section_bg_color": "rgba(0,0,0,0)",
         "heading_color": "#ffffff",
         "text_color": "#ffffff",
@@ -121,28 +152,44 @@
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Frame_2147241407_3.svg",
-            "title": "1,500+ 5-star reviews"
+            "title": "1,500+ 5-star reviews",
+            "width": 150,
+            "height": 40,
+            "width_mob": 99,
+            "height_mob": 36
           }
         },
         "feature_EPbhtp": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/image_2911.png",
-            "title": "Featured in all stories"
+            "title": "Featured in all stories",
+            "width": 150,
+            "height": 40,
+            "width_mob": 99,
+            "height_mob": 36
           }
         },
         "feature_7jihFU": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/Frame_2147243376.png",
-            "title": "in select properties"
+            "title": "in select properties",
+            "width": 270,
+            "height": 50,
+            "width_mob": 201,
+            "height_mob": 36
           }
         },
         "feature_AcjPyG": {
           "type": "feature",
           "settings": {
             "icon": "shopify://shop_images/image_2912.png",
-            "title": "As Seen In Magazine"
+            "title": "As Seen In Magazine",
+            "width": 150,
+            "height": 40,
+            "width_mob": 99,
+            "height_mob": 36
           }
         }
       },
@@ -232,10 +279,10 @@
         "text_color": "#1a2744",
         "desktop_columns": 5,
         "mobile_columns": 2,
-        "desktop_padding_top": 110,
-        "desktop_padding_bottom": 110,
-        "mobile_padding_top": 60,
-        "mobile_padding_bottom": 60
+        "desktop_padding_top": 80,
+        "desktop_padding_bottom": 80,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
       }
     },
     "img_text_xemLG8": {
@@ -249,16 +296,16 @@
         "description": "<p>I know what it’s like to face serious health challenges. After being diagnosed with severe Crohn’s disease, I spent months in and out of hospitals and nearly lost my life. Doctors said I would need medication for life, but I knew there had to be another way.<br/><br/>Through years of research and personal experimentation, I discovered the healing power of high-quality organic extra virgin olive oil. By embracing simple dietary and wellness practices, I was able to restore my health and regain control of my life.<br/><br/>This journey inspired me to create Zimms Organics—a brand dedicated to sharing premium olive oil that supports wellness, vitality, and a natural approach to health.</p>",
         "button_text": "Learn more",
         "button_link": "shopify://pages/about",
-        "section_bg_color": "#ffffff",
+        "section_bg_color": "#fffffc",
         "heading_color": "#1a2744",
         "description_color": "#1a2744",
         "tag_bg_color": "rgba(0,0,0,0)",
         "tag_text_color": "#1a2744",
         "button_bg_color": "rgba(0,0,0,0)",
         "button_text_color": "#1a2744",
-        "desktop_padding_top": 110,
-        "desktop_padding_bottom": 110,
-        "mobile_padding_top": 60,
+        "desktop_padding_top": 80,
+        "desktop_padding_bottom": 80,
+        "mobile_padding_top": 40,
         "mobile_padding_bottom": 0
       }
     },
@@ -270,13 +317,13 @@
         "subtitle": "Wellness isn't one size fits all. Whether you're taking your daily shot, cooking a family meal, or finishing a dish there's a Zimms oil made for that moment.",
         "collection": "heal",
         "products_limit": 3,
-        "section_bg": "#ffffff",
+        "section_bg": "#fffffc",
         "media_bg": "#f3f3ec",
         "view_all_text": "View All",
         "padding_top": 0,
-        "padding_bottom": 110,
-        "mobile_padding_top": 60,
-        "mobile_padding_bottom": 60
+        "padding_bottom": 80,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
       }
     },
     "videos_text_slider_pxV8Rj": {
@@ -379,9 +426,9 @@
       "settings": {
         "bg_color": "#ffffff",
         "padding_top": 0,
-        "padding_bottom": 110,
+        "padding_bottom": 80,
         "mbl_padding_top": 20,
-        "mbl_padding_bottom": 60,
+        "mbl_padding_bottom": 40,
         "star-image": "shopify://shop_images/Frame_2147241407_3.svg",
         "reviews-title": "Loved by our community"
       }
@@ -392,28 +439,28 @@
         "benefit_Aj9rF6": {
           "type": "benefit",
           "settings": {
-            "icon": "shopify://shop_images/Mask_group_2.webp",
+            "icon": "shopify://shop_images/image_9_Vectorized.svg",
             "title": "Grown In California"
           }
         },
         "benefit_Db4mTX": {
           "type": "benefit",
           "settings": {
-            "icon": "shopify://shop_images/Mask_group_2.webp",
+            "icon": "shopify://shop_images/image_9_Vectorized_1.svg",
             "title": "Single Origin"
           }
         },
         "benefit_MUKeCA": {
           "type": "benefit",
           "settings": {
-            "icon": "shopify://shop_images/Mask_group_2.webp",
+            "icon": "shopify://shop_images/image_9_Vectorized_2.svg",
             "title": "Single Varietal"
           }
         },
         "benefit_FJfcEC": {
           "type": "benefit",
           "settings": {
-            "icon": "shopify://shop_images/Mask_group_2.webp",
+            "icon": "shopify://shop_images/image_9_Vectorized_3.svg",
             "title": "Certified Organic"
           }
         }
@@ -433,8 +480,6 @@
         "section_bg_color": "rgba(0,0,0,0)",
         "heading_color": "#ffffff",
         "text_color": "#f3f3ec",
-        "desktop_columns": 4,
-        "mobile_columns": 4,
         "desktop_padding_top": 0,
         "desktop_padding_bottom": 0,
         "mobile_padding_top": 0,
@@ -516,10 +561,10 @@
         "heading_color": "#1a2744",
         "tag_color": "#1a2744",
         "card_color": "rgba(0,0,0,0)",
-        "desktop_padding_top": 110,
-        "desktop_padding_bottom": 110,
-        "mobile_padding_top": 60,
-        "mobile_padding_bottom": 60
+        "desktop_padding_top": 80,
+        "desktop_padding_bottom": 80,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
       }
     },
     "exploare_RwLaMY": {
@@ -528,7 +573,7 @@
       "settings": {
         "desktop_image": "shopify://shop_images/Frame_2147242898.webp",
         "mobile_image": "shopify://shop_images/Frame_2147242898_1.webp",
-        "tag_icon": "shopify://shop_images/image_2889_1.png",
+        "tag_icon": "shopify://shop_images/Frame.svg",
         "tag_text": "Your New Daily Ritual",
         "heading": "<p>Shop your favorite<br/>daily ritual.</p>",
         "subtitle": "Single-serve, cold-pressed HEAL+ shots and crafted for the long game.",

@@ -83,7 +83,7 @@
 
 /* TITLE */
 .section-{{ section.id }} .collections-title {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 4px;
     margin: 6px 0 0;
@@ -121,6 +121,7 @@
   .section-{{ section.id }} .collections-cards {
     grid-template-columns: repeat({{ section.settings.mobile_columns }}, 1fr);
     gap: 8px;
+    width: 100%;
   }
 
   /* last odd item full width */
@@ -134,6 +135,10 @@
 
   .section-template--26780661186840__collection_grid_34JBE8 .collections-wrapper {
     gap: 24px;
+}
+
+.section-{{ section.id }} .collections-title{
+  font-size: 14px;
 }
 
 }

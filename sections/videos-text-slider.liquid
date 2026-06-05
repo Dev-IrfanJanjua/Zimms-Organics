@@ -106,7 +106,7 @@ video.custom-video-slider {
 }
 .video-only-wrapper {
     position: relative;
-    aspect-ratio: 0.75;
+    aspect-ratio: 0.93;
     width: 100%;
 }
 .happy-reviews .title-desc {
@@ -428,7 +428,7 @@ video.custom-video-slider {
             {% for block in section.blocks %}
 
                 {% if block.type == 'review_blocks' %}
-                <div class="swiper-slide csp scroll-trigger animate--slide-in"
+                <div class="swiper-slide csp"
                   data-cascade
                   style="--animation-order: {{ forloop.index }};"
                 >
@@ -474,7 +474,7 @@ video.custom-video-slider {
                 {% if block.type == 'video_only' %}
                 {% if block.settings.cs_video != blank %}
                     <div class="swiper-slide">
-                    <div class="video-only-wrapper scroll-trigger animate--slide-in"
+                    <div class="video-only-wrapper"
                       data-cascade
                       style="--animation-order: {{ forloop.index }};"
                     >
@@ -506,7 +506,7 @@ video.custom-video-slider {
   </div>
 </section>
 
-<script>
+{% comment %} <script>
 document.addEventListener('DOMContentLoaded', function () {
   var swiper = new Swiper('.myreviewsSwiper', {
     speed: 1000,
@@ -514,7 +514,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     centeredSlides: true,
 
-    slidesPerView: 4.8,
+    slidesPerView: 4.5,
     spaceBetween: 16,
 
     // IMPORTANT FIX
@@ -535,7 +535,7 @@ document.addEventListener('DOMContentLoaded', function () {
         centeredSlides: false, // important fix for desktop
       },
       1080: {
-        slidesPerView: 4.8,
+        slidesPerView: 4.5,
         spaceBetween: 16,
       }
     }
@@ -563,7 +563,100 @@ document.addEventListener("click", function(e) {
   }
 });
 
-</script> 
+</script>  {% endcomment %}
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // =========================
+  // SWIPER INIT
+  // =========================
+  var swiper = new Swiper('.myreviewsSwiper', {
+    speed: 1000,
+    loop: true,
+    centeredSlides: true,
+    slidesPerView: 4.5,
+    spaceBetween: 16,
+
+    watchOverflow: true,
+    observer: true,
+    observeParents: true,
+    resizeObserver: true,
+
+    breakpoints: {
+      0: {
+        slidesPerView: 1.3,
+        spaceBetween: 12,
+        centeredSlides: false,
+      },
+      768: {
+        slidesPerView: 3,
+        spaceBetween: 16,
+        centeredSlides: false,
+      },
+      1080: {
+        slidesPerView: 4.5,
+        spaceBetween: 16,
+        centeredSlides: true,
+      }
+    }
+  });
+
+
+  // =========================
+  // FUNCTION: PAUSE ALL VIDEOS
+  // =========================
+  function pauseAllVideosExcept(currentVideo) {
+    document.querySelectorAll(".video-only-wrapper video").forEach(video => {
+      if (video !== currentVideo) {
+        video.pause();
+
+        const btn = video.closest(".video-only-wrapper")?.querySelector(".video-only-play-btn");
+        if (btn) btn.style.display = "block";
+      }
+    });
+  }
+
+
+  // =========================
+  // CLICK HANDLER
+  // =========================
+  document.addEventListener("click", function(e) {
+
+    const wrapper = e.target.closest(".video-only-wrapper");
+    if (!wrapper) return;
+
+    const video = wrapper.querySelector("video");
+    const playBtn = wrapper.querySelector(".video-only-play-btn");
+    if (!video || !playBtn) return;
+
+    // ONLY respond to video or play button click
+    if (e.target === video || e.target.closest(".video-only-play-btn")) {
+
+      // 🔥 pause others first
+      pauseAllVideosExcept(video);
+
+      // toggle current video
+      if (video.paused) {
+        video.play();
+        playBtn.style.display = "none";
+      } else {
+        video.pause();
+        playBtn.style.display = "block";
+      }
+    }
+  });
+
+  swiper.on('slideChange', function () {
+    document.querySelectorAll(".video-only-wrapper video").forEach(video => {
+      video.pause();
+
+      const btn = video.closest(".video-only-wrapper")?.querySelector(".video-only-play-btn");
+      if (btn) btn.style.display = "block";
+    });
+  });
+
+});
+</script>
 
 
 

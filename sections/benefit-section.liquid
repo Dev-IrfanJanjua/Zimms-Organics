@@ -55,8 +55,8 @@
 /* CARDS */
 .section-{{ section.id }} .benefit-cards {
   list-style: none;
-  display: grid;
-  grid-template-columns: repeat({{ section.settings.desktop_columns }}, 1fr);
+  display: flex;
+  justify-content: center;
   gap: clamp(12px, 3vw, 64px);
   padding: 0;
   margin: 0;
@@ -68,7 +68,7 @@
     font-family: "DM Sans";
     font-size: 14px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 400;
     line-height: 14px;
     margin: 12px 0 0;
 }
@@ -256,25 +256,6 @@
       "id": "text_color",
       "label": "Text Color",
       "default": "#555555"
-    },
-
-    {
-      "type": "range",
-      "id": "desktop_columns",
-      "label": "Desktop Columns",
-      "min": 2,
-      "max": 6,
-      "step": 1,
-      "default": 4
-    },
-    {
-      "type": "range",
-      "id": "mobile_columns",
-      "label": "Mobile Columns",
-      "min": 1,
-      "max": 4,
-      "step": 1,
-      "default": 4
     },
 
     {

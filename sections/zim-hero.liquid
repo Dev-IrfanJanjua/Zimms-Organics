@@ -102,15 +102,22 @@
     line-height: 24px;
 }
 
-.section-{{ section.id }} .zim-hero-abs-icon {
+.section-{{ section.id }} .zim-hero-abs-icons{
     position: absolute;
-    bottom: 30px;
+    bottom: 64px;
     z-index: 3;
     left: 50%;
     transform: translateX(-50%);
-    max-width: 52px;
+    display: flex;
+    align-items: center;
+    gap: 54px;
+}
+
+.section-{{ section.id }} .zim-hero-abs-icon {
+    max-width: 60px;
     width: 100%;
     height: auto;
+    flex-shrink: 0;
 }
 
 .section-{{ section.id }} .zim-hero-abs-icon img {
@@ -123,11 +130,8 @@
   .section-{{ section.id }} {
     padding-top: {{ section.settings.mobile_padding_top }}px;
     padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
-    margin-top: {{ section.settings.margin_top_mob }}px;
-  }
-
-  .section-{{ section.id }} .zim-hero-wrapper {
     min-height: {{ section.settings.mobile_height }}px;
+    margin-top: {{ section.settings.margin_top_mob }}px;
   }
 
   .section-{{ section.id }} .zim-hero-content {
@@ -137,8 +141,16 @@
         gap: 12px;
   }
 
+  .section-{{ section.id }} .zim-hero-abs-icons {
+    max-width: 100%;
+    width: 100%;
+    justify-content: center;
+    gap: 12px;
+    bottom: 35px;
+  }
+
   .section-{{ section.id }} .zim-hero-abs-icon {
-    display: none;
+      max-width: 50px;
   }
 
   .section-{{ section.id }} .zim-hero-subtitle {
@@ -236,18 +248,24 @@
 
     </div>
   </div>
-  {% if section.settings.icon_image != blank %}
-        <div class="zim-hero-abs-icon">
-            {{
-            section.settings.icon_image
-            | image_url: width: 300
-            | image_tag:
-                widths: '50,100,150,200,300',
-                loading: 'lazy',
-                alt: 'icon'
-            }}
-        </div>
-    {% endif %}
+  {% if section.blocks.size > 0 %}
+    <div class="zim-hero-abs-icons">
+      {% for block in section.blocks %}
+        {% if block.type == 'icons' and block.settings.icon_image != blank %}
+          <div class="zim-hero-abs-icon">
+              {{
+                block.settings.icon_image
+                | image_url: width: 300
+                | image_tag:
+                    widths: '50,100,150,200,300',
+                    loading: 'lazy',
+                    alt: 'icon'
+              }}
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  {% endif %}
 </section>
 
 {% schema %}
@@ -289,11 +307,6 @@
       "type": "text",
       "id": "footer_text",
       "label": "Footer Text"
-    },
-    {
-      "type": "image_picker",
-      "id": "icon_image",
-      "label": "Floating Icon"
     },
     {
       "type": "color",
@@ -414,6 +427,19 @@
       "step": 2,
       "unit": "px",
       "default": -60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "icons",
+      "name": "Icon",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon_image",
+          "label": "Floating Icon"
+        },
+      ]
     }
   ],
   "presets": [

@@ -1,0 +1,467 @@
+<section class="zims-tabs-section section-{{ section.id }}">
+  {% style %}
+    .section-{{ section.id }} {
+      background-color: {{ section.settings.bg_color }};
+      padding-top: {{ section.settings.padding_top_desktop }}px;
+      padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    }
+
+    .section-{{ section.id }} .zims-tabs-title {
+      color: {{ section.settings.heading_color }};
+      margin: 0;
+    }
+
+    .section-{{ section.id }} .zims-tabs-subtitle {
+        color: {{ section.settings.text_color }};
+        text-align: center;
+        font-family: "DM Sans";
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 22px;
+        margin: 0;
+        letter-spacing: 0;
+    }
+
+    .section-{{ section.id }} .zims-tabs_tabs_nav {
+        border-radius: 4px;
+        background: #F3F3EC;
+        display: grid;
+        height: 51px;
+        padding: 3.5px 3px;
+        align-self: stretch;
+        grid-template-rows: repeat(1,minmax(0,1fr));
+        grid-template-columns: repeat(6,minmax(0,1fr));
+    }
+
+    .section-{{ section.id }} .zims-tab-btn {
+        color: {{ section.settings.tag_color }};
+        padding: 4px 8px;
+        cursor: pointer;
+        transition: 0.3s ease;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.00);
+        background: #F3F3EC;
+        text-align: center;
+        font-family: "DM Sans";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .section-{{ section.id }} .zims-tab-btn:hover{
+        background: #29292355;
+        color: #F3F3EC;
+    }
+
+    .section-{{ section.id }} .zims-tab-btn.active {
+        background: #292923;
+        color: #F3F3EC;
+    }
+
+    .section-{{ section.id }} .zims-tabs_tabs-content-card {
+        display: none;
+        border-radius: 4px;
+        margin-top: 24px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .section-{{ section.id }} .zims-tabs_tabs-content-card.active {
+      display: block;
+    }
+
+    .section-{{ section.id }} .zt_tabs-content-card-content {
+        position: absolute;
+        bottom: 32px;
+        left: 32px;
+        border-radius: 8px;
+        background: {{ section.settings.card_bg }};
+        backdrop-filter: blur(27.5px);
+        right: 32px;
+        padding: 18px;
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+    }
+
+    .section-{{ section.id }} .zt_tabs-content-card-image {
+        height: auto;
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .section-{{ section.id }} .zt_tabs-content-card-image img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+    }
+
+    .section-{{ section.id }} .zt_tabs-content-card-title {
+      color: {{ section.settings.heading_color }};
+    }
+
+    .section-{{ section.id }} .zt_tabs-content-card-desc {
+        color: {{ section.settings.text_color }};
+        font-family: "DM Sans";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        max-width: 50%;
+        width: 100%;
+        letter-spacing: 0;
+    }
+
+    /* MOBILE DROPDOWN */
+    .section-{{ section.id }} .zims-tabs-mobile-select_wrapper{
+        display: none;
+        position: relative;
+    }
+
+    .zims-tabs-mobile-select {
+        width: 100%;
+        border-radius: 8px;
+        border: 0.5px solid #B4B4B4;
+        background: var(--Deep-Navy, #1A2744);
+        padding: 8px 16px;
+        color: var(--white, #FFF);
+        font-family: "DM Sans";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        text-transform: capitalize;
+        outline: none;
+        box-shadow: none;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        transition: all 0.3s ease;
+        position: relative;
+    }
+
+    span.zims-tabs-select-icon {
+        width: 12px;
+        height: 12px;
+        display: block;
+        position: absolute;
+        right: 16px;
+        top: 50%;
+        transform: translatey(-50%);
+    }
+
+    span.zims-tabs-select-icon svg {
+        width: 100%;
+        height: 100%;
+        display: block;
+    }
+
+    .zims-tabs-head {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    @media screen and (max-width: 768px) {
+      .section-{{ section.id }} {
+        padding-top: {{ section.settings.padding_top_mobile }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      }
+
+      .section-{{ section.id }} .zims-tabs_tabs_nav {
+        display: none;
+      }
+
+      .section-{{ section.id }} .zims-tabs-mobile-select_wrapper {
+        display: block;
+      }
+
+        .section-{{ section.id }} .zt_tabs-content-card-content {
+            bottom: 12px;
+            left: 12px;
+            border-radius: 12px;
+            right: 12px;
+            padding: 16px;
+            flex-direction: column;
+        }
+
+        .section-{{ section.id }} .zt_tabs-content-card-title {
+            letter-spacing: -0.72px;
+            font-size: 18px;
+        }
+
+        .section-{{ section.id }} .zt_tabs-content-card-desc {
+            font-size: 14px;
+            line-height: 22px;
+            max-width: 100%;
+        }
+
+        .section-{{ section.id }} .zt_tabs-content-card-image {
+            aspect-ratio: 0.895;
+        }
+
+        .section-{{ section.id }} .zims-tabs_tabs-content-card {
+            border-radius: 8px;
+            margin-top: 16px;
+        }
+
+        .zims-tabs-head {
+            margin-bottom: 32px;
+        }
+
+        .section-{{ section.id }} .zims-tabs-subtitle {
+            font-size: 14px;
+        }
+
+    }
+  {% endstyle %}
+
+  <div class="page-width">
+    <div class="zims-tabs-wrapper">
+
+      <!-- Heading -->
+      <div class="zims-tabs-head">
+        {% if section.settings.title != blank %}
+          <h2 class="zims-tabs-title title_title">
+            {{ section.settings.title | replace: '<p>', '' | replace: '</p>', '' }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.subtitle != blank %}
+          <p class="zims-tabs-subtitle">
+            {{ section.settings.subtitle | replace: '<p>', '' | replace: '</p>', '' }}
+          </p>
+        {% endif %}
+      </div>
+
+      <!-- MOBILE DROPDOWN -->
+      <div class="zims-tabs-mobile-select_wrapper">
+          <select id="zims-tabs-select-{{ section.id }}" name="zims-tabs-select" class="zims-tabs-mobile-select">
+            {% for block in section.blocks %}
+              <option value="{{ block.id }}">{{ block.settings.tab_title }}</option>
+            {% endfor %}
+          </select>
+          <span class="zims-tabs-select-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="7" viewBox="0 0 12 7" fill="none">
+                    <path fill-rule="evenodd" clip-rule="evenodd" d="M11.7225 0.279578C12.0925 0.652349 12.0925 1.25674 11.7225 1.62948L6.66987 6.72041C6.29989 7.0932 5.70014 7.0932 5.33016 6.72041L0.277476 1.62948C-0.0924918 1.25674 -0.0924918 0.652349 0.277476 0.279578C0.647443 -0.0931927 1.24729 -0.0931927 1.61726 0.279578L6.00001 4.69549L10.3828 0.279578C10.7528 -0.0931927 11.3525 -0.0931927 11.7225 0.279578Z" fill="#7C7C7C"/>
+                </svg>
+            </span>
+      </div>
+
+      <!-- NAV -->
+      <div class="zims-tabs_tabs_nav">
+        {% for block in section.blocks %}
+          <button class="zims-tab-btn {% if forloop.first %}active{% endif %}" data-tab="{{ block.id }}">
+            {{ block.settings.tab_title }}
+          </button>
+        {% endfor %}
+      </div>
+
+      <!-- CONTENT -->
+      <div class="zims-tabs_tabs-content">
+        {% for block in section.blocks %}
+          <div class="zims-tabs_tabs-content-card {% if forloop.first %}active{% endif %}" data-tab-content="{{ block.id }}">
+
+            {% if block.settings.image != blank %}
+              <div class="zt_tabs-content-card-image">
+                {{ block.settings.image | image_url: width: 1600 | image_tag:
+                  widths: '50,100,150,200,300,400,500,600,800,1000,1200,1400,1600',
+                  loading: 'lazy',
+                  alt: block.settings.title
+                }}
+              </div>
+            {% endif %}
+
+            <div class="zt_tabs-content-card-content">
+              {% if block.settings.title != blank %}
+                <h3 class="zt_tabs-content-card-title title_title">
+                  {{ block.settings.title }}
+                </h3>
+              {% endif %}
+
+              {% if block.settings.description != blank %}
+                <div class="zt_tabs-content-card-desc">
+                  {{ block.settings.description | replace: '<p>', '' | replace: '</p>', '' }}
+                </div>
+              {% endif %}
+            </div>
+
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      function initZimsTabs(section) {
+        const buttons = section.querySelectorAll(".zims-tab-btn");
+        const cards = section.querySelectorAll(".zims-tabs_tabs-content-card");
+        const select = section.querySelector(".zims-tabs-mobile-select_wrapper");
+
+        function activateTab(id) {
+          buttons.forEach(btn => {
+            btn.classList.toggle("active", btn.dataset.tab === id);
+          });
+
+          cards.forEach(card => {
+            card.classList.toggle("active", card.dataset.tabContent === id);
+          });
+
+          if (select) select.value = id;
+        }
+
+        buttons.forEach(btn => {
+          btn.addEventListener("click", () => {
+            activateTab(btn.dataset.tab);
+          });
+        });
+
+        if (select) {
+          select.addEventListener("change", (e) => {
+            activateTab(e.target.value);
+          });
+        }
+      }
+
+      function destroyAndInit() {
+        document.querySelectorAll(".section-{{ section.id }}").forEach(section => {
+          initZimsTabs(section);
+        });
+      }
+
+      document.addEventListener("DOMContentLoaded", destroyAndInit);
+      document.addEventListener("shopify:section:load", destroyAndInit);
+    })();
+  </script>
+
+</section>
+
+{% schema %}
+{
+  "name": "Zims Tabs Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "tag_color",
+      "label": "Tab Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "card_bg",
+      "label": "Card Background",
+      "default": "#f8f8f8"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "label": "Padding Top (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "label": "Padding Bottom (Desktop)",
+      "min": 0,
+      "max": 200,
+      "step": 2,
+      "default": 110
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "label": "Padding Top (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "label": "Padding Bottom (Mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "default": 60
+    }
+  ],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        {
+          "type": "text",
+          "id": "tab_title",
+          "label": "Tab Title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Card Title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Zims Tabs Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -3519,3 +3519,7 @@ details-disclosure > details {
 }
 
 }
+
+*{
+  letter-spacing: 0;
+}
