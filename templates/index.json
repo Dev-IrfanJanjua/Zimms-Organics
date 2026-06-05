@@ -173,7 +173,7 @@
             "collection": "cook",
             "image": "shopify://shop_images/Default_4.webp",
             "hover_image": "shopify://shop_images/Default_3.webp",
-            "enable_hover_image": true,
+            "enable_hover_image": false,
             "custom_title": "Extra Virgin"
           }
         },
@@ -447,7 +447,7 @@
         "include_bwkahN": {
           "type": "include",
           "settings": {
-            "title": "COOK – Cooking EVOO",
+            "title": "<strong>COOK</strong> – Cooking EVOO",
             "compare_price": "$53",
             "price": "$53"
           }
@@ -455,7 +455,7 @@
         "include_qPCmBD": {
           "type": "include",
           "settings": {
-            "title": "HEAL – Finishing EVOO",
+            "title": "<strong>HEAL</strong> – Finishing EVOO",
             "compare_price": "$53",
             "price": "$53"
           }
@@ -463,7 +463,7 @@
         "include_FXXJPP": {
           "type": "include",
           "settings": {
-            "title": "HEAL+ – High-Polyphenol EVOO",
+            "title": "<strong>HEAL+</strong>  – High-Polyphenol EVOO",
             "compare_price": "$53",
             "price": "$53"
           }
@@ -510,19 +510,16 @@
         "saving_text": "Recycled Gift Box",
         "saving_tag": "Free",
         "total_text": "24% Bundle Discount",
-        "total_price": "-$38",
+        "total_price": "$38",
         "bottom_title": "You pay",
-        "bottom_compare_price": "$199",
-        "bottom_price": "$149",
-        "button_text": "Shop Bundle",
         "section_bg_color": "#fffffc",
         "heading_color": "#1a2744",
         "tag_color": "#1a2744",
         "card_color": "rgba(0,0,0,0)",
-        "desktop_padding_top": 112,
-        "desktop_padding_bottom": 112,
-        "mobile_padding_top": 40,
-        "mobile_padding_bottom": 40
+        "desktop_padding_top": 110,
+        "desktop_padding_bottom": 110,
+        "mobile_padding_top": 60,
+        "mobile_padding_bottom": 60
       }
     },
     "exploare_RwLaMY": {

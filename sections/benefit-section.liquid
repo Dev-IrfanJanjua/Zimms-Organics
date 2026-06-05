@@ -77,6 +77,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    transition: all 0.3s ease;
+}
+
+.section-{{ section.id }} .benefit-card:hover{
+  transform: translatey(-3px) scale(1.01);
 }
 
 /* ICON */
@@ -119,7 +124,7 @@
 }
 {% endstyle %}
 
-<section class="benefit-section section-{{ section.id }}">
+<section class="benefit-section section-{{ section.id }} scroll-trigger animate--slide-in">
 
   <!-- BACKGROUND IMAGE (desktop + mobile fallback safe) -->
   <div class="benefit-image_main-bg">
@@ -172,7 +177,10 @@
         <ul class="benefit-cards">
 
           {% for block in section.blocks %}
-            <li class="benefit-card" {{ block.shopify_attributes }}>
+            <li class="benefit-card scroll-trigger animate--slide-in" {{ block.shopify_attributes }}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            >
 
               {% if block.settings.icon != blank %}
                 <div class="benefit-card_icon">

@@ -3,6 +3,8 @@
   assign display_image = section.settings.custom_image
   assign display_title = section.settings.custom_title | replace: '<p>', '' | replace: '</p>', ''
 
+  assign product_form_id = 'product-form-' | append: section.id
+
   if display_image == blank and selected_product != blank
     assign display_image = selected_product.featured_image
   endif
@@ -10,7 +12,19 @@
   if display_title == blank and selected_product != blank
     assign display_title = selected_product.title
   endif
+
+  assign compare_price = selected_product.compare_at_price
+  assign price = selected_product.price
+
+  if compare_price > price
+    assign savings = compare_price | minus: price | money_without_trailing_zeros
+  else
+    assign savings = section.settings.total_price
+  endif
+
 %}
+
+<script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
 
 {% style %}
 .section-{{ section.id }} {
@@ -63,6 +77,8 @@
 .ultimate--bundle-image {
     max-width: 50%;
     width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .unltimate-bundle-content {
@@ -146,8 +162,149 @@ p.ultimate-bundle_bottom-feture_text {
     font-weight: 400;
     line-height: 24px;
     margin: 0;
+    letter-spacing: normal;
 }
 
+h4.ultimate-bundle-include_tite,
+h4.ultimate-bundle-saving_title {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: Lora;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 0.96px;
+    text-transform: uppercase;
+    margin: 0;
+}
+
+li.ultimate-bundle-block,
+li.ultimate-bundle-saving_item,
+.ultimate-bundle_bottom-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+h3.ultimate-bundle-block_title,
+p.ultimate-bundle-saving_item-text {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+}
+
+.ultimate-bundle-block_prices,
+.ultimate-bundle_bottom-prices {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+p.ultimate-bundle-block_price_compare {
+    color: #485269;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: line-through;
+    margin: 0;
+}
+
+p.ultimate-bundle-block_price_org,
+p.ultimate-bundle-saving_item-price {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+}
+
+p.ultimate-bundle-saving_item-tag {
+    margin: 0;
+    border-radius: 2px;
+    background: var(--Deep-Navy, #1A2744);
+    padding: 0 12px;
+    color: #FFF;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+p.ultimate-bundle_bottom_price_compare {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: line-through;
+    margin: 0;
+}
+
+p.ultimate-bundle_bottom_price_org {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+}
+
+h4.ultimate-bundle_bottom-title {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+}
+
+.ultimate-bundle-devider {
+    display: block !important;
+    height: 1px;
+    background: #E1E1E1;
+    width: 100%;
+}
+
+.ultimate-bundle_bottom-btn .product-form__submit {
+    border-radius: 4px;
+    background: var(--Deep-Navy, #1A2744);
+    padding: 8px 24px;
+    height: 54px;
+    color: #FFFFFC;
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+    transition : all 0.3s ease;
+}
+
+.ultimate-bundle_bottom-btn .product-form__submit:hover{
+  transform: translatey(-3px);
+}
+
+.ultimate-bundle_bottom-btn .product-form__submit:before,
+.ultimate-bundle_bottom-btn .product-form__submit:after {
+  display: none;
+}
 
 @media screen and (max-width: 768px) {
 
@@ -156,11 +313,63 @@ p.ultimate-bundle_bottom-feture_text {
     padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
 }
 
+.ultimate-bundle-wrapper {
+    align-items: start;
+    gap: 24px;
+    flex-direction: column-reverse;
+}
+
+.ultimate--bundle-image {
+    max-width: 100%;
+}
+
+.unltimate-bundle-content {
+    max-width: 100%;
+    gap: 24px;
+}
+
+.section-{{ section.id }} .ultimate-bundle-title {
+    font-size: 32px;
+}
+
+.ultimate-bundle-include, 
+.ultimate-bundle-saving {
+    gap: 24px;
+}
+
+h4.ultimate-bundle-include_tite {
+    font-family: "DM Sans";
+    font-size: 14px;
+    letter-spacing: 1.12px;
+    font-weight: 400;
+}
+
+ul.ultimate-bundle-blocks, 
+ul.ultimate-bundle-saving_items {
+    gap: 16px;
+}
+
+p.ultimate-bundle-saving_item-tag {
+    padding: 0 4px;
+}
+
+.ultimate-bundle_bottom-btn .product-form__submit {
+    height: 44px;
+}
+
+ul.ultimate-bundle_bottom-fetures {
+    gap: 12px;
+}
+
+li.ultimate-bundle_bottom-feture {
+    gap: 5px;
+}
+
 }
 
 {% endstyle %}
 
-<section class="ultimate-bundle-section section-{{ section.id }}">
+<section class="ultimate-bundle-section section-{{ section.id }} scroll-trigger animate--slide-in">
   <div class="page-width">
     <div class="ultimate-bundle-wrapper">
       <div class="ultimate--bundle-image">
@@ -276,7 +485,7 @@ p.ultimate-bundle_bottom-feture_text {
 
               {% if section.settings.total_price != blank %}
                 <p class="ultimate-bundle-saving_item-price">
-                  {{ section.settings.total_price }}
+                  -{{ savings }}
                 </p>
               {% endif %}
             </li>
@@ -294,25 +503,28 @@ p.ultimate-bundle_bottom-feture_text {
             {% endif %}
 
             <div class="ultimate-bundle_bottom-prices">
-              {% if section.settings.bottom_compare_price != blank %}
+              {% if compare_price != blank %}
                 <p class="ultimate-bundle_bottom_price_compare">
-                  {{ section.settings.bottom_compare_price }}
+                   {{ compare_price | money_without_trailing_zeros }}
                 </p>
               {% endif %}
 
-              {% if section.settings.bottom_price != blank %}
+              {% if price != blank %}
                 <p class="ultimate-bundle_bottom_price_org">
-                  {{ section.settings.bottom_price }}
+                   {{ price | money_without_trailing_zeros }}
                 </p>
               {% endif %}
             </div>
           </div>
 
-          {% if section.settings.button_text != blank and selected_product != blank %}
+          {% if selected_product != blank %}
             <div class="ultimate-bundle_bottom-btn">
-              <a href="{{ selected_product.url }}" class="button">
-                {{ section.settings.button_text }}
-              </a>
+                {%- render 'buy-buttons',
+                  block: section,
+                  product: selected_product,
+                  product_form_id: product_form_id,
+                  section_id: section.id
+                -%}
             </div>
           {% endif %}
 
@@ -429,8 +641,9 @@ p.ultimate-bundle_bottom-feture_text {
     {
       "type": "text",
       "id": "total_price",
-      "label": "Total Price",
-      "default": "$149"
+      "label": "Savings Price",
+      "default": "$38",
+      "info": "add saving price if product have now compare price without (-) sign"
     },
 
     {
@@ -442,24 +655,6 @@ p.ultimate-bundle_bottom-feture_text {
       "id": "bottom_title",
       "label": "Bottom Title",
       "default": "Ultimate Bundle"
-    },
-    {
-      "type": "text",
-      "id": "bottom_compare_price",
-      "label": "Bottom Compare Price",
-      "default": "$199"
-    },
-    {
-      "type": "text",
-      "id": "bottom_price",
-      "label": "Bottom Price",
-      "default": "$149"
-    },
-    {
-      "type": "text",
-      "id": "button_text",
-      "label": "Button Text",
-      "default": "Shop Bundle"
     },
 
     {
@@ -501,9 +696,9 @@ p.ultimate-bundle_bottom-feture_text {
       "label": "Desktop Padding Top",
       "min": 0,
       "max": 200,
-      "step": 4,
+      "step": 2,
       "unit": "px",
-      "default": 80
+      "default": 110
     },
     {
       "type": "range",
@@ -511,9 +706,9 @@ p.ultimate-bundle_bottom-feture_text {
       "label": "Desktop Padding Bottom",
       "min": 0,
       "max": 200,
-      "step": 4,
+      "step": 2,
       "unit": "px",
-      "default": 80
+      "default": 110
     },
     {
       "type": "range",
@@ -521,9 +716,9 @@ p.ultimate-bundle_bottom-feture_text {
       "label": "Mobile Padding Top",
       "min": 0,
       "max": 120,
-      "step": 4,
+      "step": 2,
       "unit": "px",
-      "default": 40
+      "default": 60
     },
     {
       "type": "range",
@@ -531,9 +726,9 @@ p.ultimate-bundle_bottom-feture_text {
       "label": "Mobile Padding Bottom",
       "min": 0,
       "max": 120,
-      "step": 4,
+      "step": 2,
       "unit": "px",
-      "default": 40
+      "default": 60
     }
   ],
 

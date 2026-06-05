@@ -35,6 +35,11 @@
 .section-{{ section.id }} .collections-card {
   position: relative;
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.section-{{ section.id }} .collections-card:hover{
+  transform: translatey(-3px) scale(1.01);
 }
 
 /* IMAGE WRAPPER */
@@ -134,7 +139,7 @@
 }
 {% endstyle %}
 
-<section class="collections-section section-{{ section.id }}">
+<section class="collections-section section-{{ section.id }} scroll-trigger animate--slide-in">
   <div class="page-width">
     <div class="collections-wrapper">
 
@@ -173,7 +178,10 @@
         {% for block in section.blocks %}
           {% assign collection = block.settings.collection %}
 
-          <div class="collections-card {% if block.settings.enable_hover_image and block.settings.hover_image != blank %}has-hover-img{% endif %}" {{ block.shopify_attributes }}>
+          <div class="collections-card {% if block.settings.enable_hover_image and block.settings.hover_image != blank %}has-hover-img{% endif %} scroll-trigger animate--slide-in" {{ block.shopify_attributes }} 
+            data-cascade
+            style="--animation-order: {{ forloop.index }};"
+          >
 
             <div class="collections-card-image">
 

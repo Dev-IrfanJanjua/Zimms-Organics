@@ -53,6 +53,11 @@
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.fet-col-card:hover {
+    transform: translatey(-3px) scale(1.01);
 }
 
 .fet-col-card-content {
@@ -258,7 +263,7 @@ p.fet-col-subtitle {
 
 {% endstyle %}
 
-<section class="fet-collection-section fet-collection-section-{{ section.id }} section-{{ section.id }}">
+<section class="fet-collection-section fet-collection-section-{{ section.id }} section-{{ section.id }} scroll-trigger animate--slide-in">
   <div class="page-width">
 
     <div class="fet-collection-wrapper">
@@ -276,7 +281,10 @@ p.fet-col-subtitle {
               {% for product in section.settings.collection.products limit: section.settings.products_limit %}
                 <div class="swiper-slide">
     
-                  <div class="fet-col-card">
+                  <div class="fet-col-card scroll-trigger animate--slide-in"
+                    data-cascade
+                    style="--animation-order: {{ forloop.index }};"
+                  >
     
                     <!-- Media -->
                     <div class="fet-col-card-media">

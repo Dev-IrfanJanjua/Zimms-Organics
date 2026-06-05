@@ -203,7 +203,7 @@ h2.feature-scroll-title::after {
 
 {% endstyle %}
 
-<div class="feature-scroll-container-mf fade-in-section sec-{{ section.id }}">
+<div class="feature-scroll-container-mf fade-in-section sec-{{ section.id }} scroll-trigger animate--slide-in">
     <div class="page-width">
         <div class="feature-scroll-wrapper">
             <div class="feature-scroll-head">
@@ -222,7 +222,10 @@ h2.feature-scroll-title::after {
                     {% for block in section.blocks %}
                         {% if block.type == 'feature' %}
                             <div class="swiper-slide swiper-slide-{{ forloop.index }}">
-                                <div class="feature-icon-item-mf">
+                                <div class="feature-icon-item-mf scroll-trigger animate--slide-in"
+                                  data-cascade
+                                  style="--animation-order: {{ forloop.index }};"
+                                >
                                     {% if block.settings.icon %}
                                         <img
                                         src="{{ block.settings.icon | image_url }}"

@@ -405,7 +405,7 @@ video.custom-video-slider {
 
 </style>
 
-<section class="section-{{ section.id }}-padding color-scheme-{{ section.id }} happy-reviews pdp-section ">
+<section class="section-{{ section.id }}-padding color-scheme-{{ section.id }} happy-reviews pdp-section scroll-trigger animate--slide-in">
   <div class="page-widthr">
     <div class="csp-sec">
     <div class="main-wrapper-happy-reviews">
@@ -428,7 +428,10 @@ video.custom-video-slider {
             {% for block in section.blocks %}
 
                 {% if block.type == 'review_blocks' %}
-                <div class="swiper-slide csp">
+                <div class="swiper-slide csp scroll-trigger animate--slide-in"
+                  data-cascade
+                  style="--animation-order: {{ forloop.index }};"
+                >
                     <div class="cs_conti csp-img">
 
                     <img
@@ -471,7 +474,10 @@ video.custom-video-slider {
                 {% if block.type == 'video_only' %}
                 {% if block.settings.cs_video != blank %}
                     <div class="swiper-slide">
-                    <div class="video-only-wrapper">
+                    <div class="video-only-wrapper scroll-trigger animate--slide-in"
+                      data-cascade
+                      style="--animation-order: {{ forloop.index }};"
+                    >
                         {% assign video_poster = block.settings.cs_video.preview_image | img_url: 'master' %}
                         {{
                         block.settings.cs_video

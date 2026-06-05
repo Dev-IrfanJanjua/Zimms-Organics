@@ -376,7 +376,7 @@
   }
 {% endstyle %}
 
-<section class="zims-footer-section section-{{ section.id }}">
+<section class="zims-footer-section section-{{ section.id }} scroll-trigger animate--slide-in">
   <div class="page-width">
     <div class="zims-footer-wrapper">
       <div class="zims-footer-content">
@@ -497,7 +497,10 @@
       <ul class="zims-footer-menus">
         {%- for block in section.blocks -%}
           {%- if block.type == 'menu_column' -%}
-            <li class="zims-footer-menu" {{ block.shopify_attributes }}>
+            <li class="zims-footer-menu scroll-trigger animate--slide-in" {{ block.shopify_attributes }}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
+            >
 
               {%- if block.settings.menu_title != blank -%}
                 <button type="button" class="zims-footer-menu-toggle">
