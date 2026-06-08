@@ -11,6 +11,24 @@
 
 @font-face {
     font-family: 'DM Sans';
+    src: url({{ 'DMSans18pt-Medium.woff2' | file_url }}) format('woff2'),
+        url({{ 'DMSans18pt-Medium.woff' | file_url }}) format('woff');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Sans';
+    src: url({{ 'DMSans18pt-MediumItalic.woff2' | file_url }}) format('woff2'),
+        url({{ 'DMSans18pt-MediumItalic.woff' | file_url }}) format('woff');
+    font-weight: 500;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'DM Sans';
     src: url({{ 'DMSans-9ptItalic.woff2' | file_url }}) format('woff2'),
         url({{ 'DMSans-9ptItalic.woff' | file_url }}) format('woff');
     font-weight: normal;

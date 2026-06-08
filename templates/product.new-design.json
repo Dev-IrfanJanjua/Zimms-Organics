@@ -121,6 +121,164 @@
         "padding_bottom": 0
       }
     },
+    "videos_text_slider_GMUCk4": {
+      "type": "videos-text-slider",
+      "blocks": {
+        "review_blocks_iMfpRN": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        },
+        "video_only_cwTeJU": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/SaveGram.App_AQP0jN7-dMjwpjmNPZrePTo9sOyWGMZIstSBOlEAmJ_alDQqFPkTF0JCPfB4j69SO1AA3XdkVDOn6Q8EGkODXVgWS6yilHi3dTRXsRw (online-video-cutter.com) (1).mp4"
+          }
+        },
+        "review_blocks_wCewdD": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        },
+        "video_only_H3zHig": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/Untitled design.mp4"
+          }
+        },
+        "review_blocks_zeTE6U": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        },
+        "video_only_LEpjaE": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/Untitled design.mp4"
+          }
+        },
+        "review_blocks_Nx77F7": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        },
+        "video_only_MNUEGX": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/Untitled design.mp4"
+          }
+        },
+        "review_blocks_Fcddy7": {
+          "type": "review_blocks",
+          "settings": {
+            "star-svg-block": "shopify://shop_images/Frame_2147241407_3.svg",
+            "title-desc": "Increased the strength and energy",
+            "reviewers-name": "Sofia L",
+            "varified-svg": "shopify://shop_images/Frame_5.svg",
+            "varified-heading": "VERIFIED BUYER"
+          }
+        },
+        "video_only_mXHhKN": {
+          "type": "video_only",
+          "settings": {
+            "cs_video": "shopify://files/videos/Untitled design.mp4"
+          }
+        }
+      },
+      "block_order": [
+        "review_blocks_iMfpRN",
+        "video_only_cwTeJU",
+        "review_blocks_wCewdD",
+        "video_only_H3zHig",
+        "review_blocks_zeTE6U",
+        "video_only_LEpjaE",
+        "review_blocks_Nx77F7",
+        "video_only_MNUEGX",
+        "review_blocks_Fcddy7",
+        "video_only_mXHhKN"
+      ],
+      "name": "Clients reviews",
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_top": 0,
+        "padding_bottom": 80,
+        "mbl_padding_top": 20,
+        "mbl_padding_bottom": 40,
+        "star-image": "shopify://shop_images/Frame_2147241407_3.svg",
+        "reviews-title": "Loved by our community"
+      }
+    },
+    "inline_image_richtext_kN7QFy": {
+      "type": "inline-image-richtext",
+      "blocks": {
+        "text_q6aDf7": {
+          "type": "text",
+          "settings": {
+            "text": "<p>“Drizzle” is 100% Extra</p>"
+          }
+        },
+        "image_FGPbhy": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/image_1.png"
+          }
+        },
+        "text_AfQPVp": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Virgin finishing oil. It’s made from olives that are picked early,</p>"
+          }
+        },
+        "image_AXV3xB": {
+          "type": "image",
+          "settings": {
+            "image": "shopify://shop_images/OPP_Chocolate.png"
+          }
+        },
+        "text_afJmNC": {
+          "type": "text",
+          "settings": {
+            "text": "<p>when flavor is bold and antioxidants are highest.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_q6aDf7",
+        "image_FGPbhy",
+        "text_AfQPVp",
+        "image_AXV3xB",
+        "text_afJmNC"
+      ],
+      "name": "Inline Image Richtext",
+      "settings": {
+        "background_color": "#f3f3ec",
+        "heading_color": "#1d2a52",
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
+      }
+    },
     "zims_tabs_7Wq3VJ": {
       "type": "zims-tabs",
       "blocks": {
@@ -293,6 +451,177 @@
         "padding_bottom_desktop": 0,
         "padding_top_mobile": 0,
         "padding_bottom_mobile": 0
+      }
+    },
+    "comparison_table_VDMBQ8": {
+      "type": "comparison-table",
+      "blocks": {
+        "competitor_eqPM4q": {
+          "type": "competitor",
+          "settings": {
+            "image": "shopify://shop_images/Other_Manuka.png",
+            "title": "Regular Olive Oil"
+          }
+        },
+        "competitor_NBf6ch": {
+          "type": "competitor",
+          "settings": {
+            "image": "shopify://shop_images/Regular_Honey.png",
+            "title": "Virgin olive oil"
+          }
+        },
+        "feature_3MfnH6": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Olive oil lab testing clean aesthetic",
+            "highlight_icon": "shopify://shop_images/SVG.svg",
+            "competitor_1_icon": "shopify://shop_images/SVG_1.svg",
+            "competitor_2_icon": "shopify://shop_images/SVG_1.svg"
+          }
+        },
+        "feature_L9JjRe": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Premium olive oil quality control laboratory",
+            "highlight_icon": "shopify://shop_images/SVG.svg",
+            "competitor_1_icon": "shopify://shop_images/SVG_2.svg",
+            "competitor_2_icon": "shopify://shop_images/SVG_1.svg"
+          }
+        },
+        "feature_NzCmq7": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Scientist testing olive oil glass beaker minimal",
+            "highlight_icon": "shopify://shop_images/SVG.svg",
+            "competitor_1_icon": "shopify://shop_images/SVG_2.svg",
+            "competitor_2_icon": "shopify://shop_images/SVG_2.svg"
+          }
+        },
+        "feature_fXRTcP": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "High quality extra virgin olive oil golden macro",
+            "highlight_icon": "shopify://shop_images/SVG.svg",
+            "competitor_1_icon": "shopify://shop_images/SVG_2.svg",
+            "competitor_2_icon": "shopify://shop_images/SVG_2.svg"
+          }
+        },
+        "feature_94B996": {
+          "type": "feature",
+          "settings": {
+            "feature_text": "Olive oil lab testing clean aesthetic",
+            "highlight_icon": "shopify://shop_images/SVG.svg",
+            "competitor_1_icon": "shopify://shop_images/SVG_2.svg",
+            "competitor_2_icon": "shopify://shop_images/SVG_2.svg"
+          }
+        }
+      },
+      "block_order": [
+        "competitor_eqPM4q",
+        "competitor_NBf6ch",
+        "feature_3MfnH6",
+        "feature_L9JjRe",
+        "feature_NzCmq7",
+        "feature_fXRTcP",
+        "feature_94B996"
+      ],
+      "name": "Comparison Table",
+      "settings": {
+        "heading": "<p>Why Zimms organics Is Different</p>",
+        "subtitle": "<p>While most oils meet only the minimum standard, ours goes further—independently tested to ensure exceptional purity, freshness, and performance.</p>",
+        "feature_heading": "Features",
+        "highlight_image": "shopify://shop_images/Rectangle_160835.png",
+        "highlight_title": "Zimms organics",
+        "bg_color": "#ffffff",
+        "heading_color": "#111111",
+        "text_color": "#555555",
+        "highlight_bg": "#f7f7f7",
+        "desktop_padding_top": 80,
+        "desktop_padding_bottom": 80,
+        "mobile_padding_top": 40,
+        "mobile_padding_bottom": 40
+      }
+    },
+    "absoulte_text_zNgBTh": {
+      "type": "absoulte-text",
+      "name": "Absolute Text Section",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Frame_2147241389.png",
+        "mobile_image": "shopify://shop_images/Frame_2147241389_1.png",
+        "text": "<p>\"Real healing happens when we honor our bodies with what nature provides. This olive oil saved my life, and now I'm sharing it with the world.\"</p>",
+        "bg_color": "#fffffc",
+        "text_color": "#fffffc",
+        "desktop_font_size": 32,
+        "mobile_font_size": 20,
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
+      }
+    },
+    "faq_section_jKtUWf": {
+      "type": "faq-section",
+      "blocks": {
+        "faq_tBCitw": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I really cancel anytime?",
+            "answer": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur unde cupiditate quis pariatur quaerat itaque molestiae at reprehenderit aut reiciendis!</p>"
+          }
+        },
+        "faq_qRTc3i": {
+          "type": "faq",
+          "settings": {
+            "question": "How is this different from the matcha I already buy?",
+            "answer": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur unde cupiditate quis pariatur quaerat itaque molestiae at reprehenderit aut reiciendis!</p>"
+          }
+        },
+        "faq_w3e4Bk": {
+          "type": "faq",
+          "settings": {
+            "question": "What does it taste like?",
+            "answer": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur unde cupiditate quis pariatur quaerat itaque molestiae at reprehenderit aut reiciendis!</p>"
+          }
+        },
+        "faq_PgY7RN": {
+          "type": "faq",
+          "settings": {
+            "question": "How much caffeine is in each serving?",
+            "answer": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur unde cupiditate quis pariatur quaerat itaque molestiae at reprehenderit aut reiciendis!</p>"
+          }
+        },
+        "faq_4LAnyU": {
+          "type": "faq",
+          "settings": {
+            "question": "When will I notice a difference?",
+            "answer": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur unde cupiditate quis pariatur quaerat itaque molestiae at reprehenderit aut reiciendis!</p>"
+          }
+        },
+        "faq_gXxGyG": {
+          "type": "faq",
+          "settings": {
+            "question": "Does it mix well without a frother?",
+            "answer": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aspernatur unde cupiditate quis pariatur quaerat itaque molestiae at reprehenderit aut reiciendis!</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_tBCitw",
+        "faq_qRTc3i",
+        "faq_w3e4Bk",
+        "faq_PgY7RN",
+        "faq_4LAnyU",
+        "faq_gXxGyG"
+      ],
+      "name": "Image FAQs",
+      "settings": {
+        "heading": "Frequently Asked Questions",
+        "subtitle": "Got questions? We've got answers. Find everything you need to know below.",
+        "bg_color": "#FFFFFC",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mob": 24,
+        "padding_bottom_mob": 24
       }
     },
     "related-products": {
@@ -737,8 +1066,13 @@
   },
   "order": [
     "main",
+    "videos_text_slider_GMUCk4",
+    "inline_image_richtext_kN7QFy",
     "zims_tabs_7Wq3VJ",
     "pairs_section_bfHUjx",
+    "comparison_table_VDMBQ8",
+    "absoulte_text_zNgBTh",
+    "faq_section_jKtUWf",
     "related-products",
     "collapsible-content",
     "rich-text-0",

@@ -1,0 +1,714 @@
+{% liquid
+  assign display_title = section.settings.heading | replace: '<p>', '' | replace: '</p>', ''
+
+  assign display_subtitle = section.settings.subtitle | replace: '<p>', '' | replace: '</p>', ''
+%}
+
+{% style %}
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.desktop_padding_top }}px;
+    padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+  }
+
+  .section-{{ section.id }} .comparison-title {
+    color: {{ section.settings.heading_color }};
+  }
+
+  .section-{{ section.id }} .comparison-subtitle {
+    color: {{ section.settings.text_color }};
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    margin-top: 14px;
+  }
+
+  .comparison-wrapper {
+        display: flex;
+        gap: 40px;
+        align-items: flex-start;
+        position: relative;
+    }
+
+    .comparison-head {
+        max-width: 37.5%;
+        width: 100%;
+        position: sticky;
+        top: 40px;
+    }
+
+  .section-{{ section.id }} .comparison-table {
+    display: flex;
+    max-width: calc(100% - (37.5% + 40px));
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .comparison-table_left {
+    max-width: 50%;
+    flex-shrink: 0;
+    display: flex;
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .comparison-table_right {
+    max-width: 50%;
+    min-width: 0;
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .comparison-table_left-icons-col.highlighted {
+    background: {{ section.settings.highlight_bg }};
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .section-{{ section.id }} .comparison-table_left-icons-col,
+  .section-{{ section.id }} .comparison-table_left-text-col {
+        max-width: 50%;
+        width: 100%;
+    }
+
+  .section-{{ section.id }} img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block
+  }
+
+  .comparison-table_left-icons-col-head_img,
+  .comparison-table_right-icons-col-head_img {
+        max-width: 60px;
+        width: 100%;
+        height: auto;
+    }
+
+    .comparison-table_left-icons-col-icon,
+    .comparison-table_right-icons-col-icon {
+        max-width: 28px;
+        width: 100%;
+        height: auto;
+    }
+
+    .comparison-table-head_head {
+        min-height: 160px;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        align-items: center;
+        justify-content: end;
+        border-bottom: 1px solid var(--Ligth-deep-blue, #485269);
+        padding-bottom: 20px;
+        box-sizing: border-box;
+    }
+
+    .comparison-table_right-icons-col-head {
+        gap: 16px;
+    }
+
+    .comparison-table_left-text-col-head {
+        justify-content: center;
+        align-items: start;
+        border-color: #BABABA;
+    }
+
+    .comparison-table-head_head_title {
+        border-radius: 50px;
+        background: var(--Deep-Navy, #1A2744);
+        padding: 2px 12px;
+        color: var(--white, #FFF);
+        font-family: "DM Sans";
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+        margin: 0;
+    }
+
+    h4.comparison-table_right-icons-col-head_title {
+        background: #F3F3EC;
+        color: #1A2744;
+    }
+
+    .comparison-table-row_block {
+        padding: 10px 8px;
+        min-height: 85px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        border-bottom: 1px solid var(--Ligth-deep-blue, #485269);
+    }
+
+    .comparison-table-row_block_last {
+        border: none;
+    }
+
+    p.comparison-table_left-text-col-text {
+        margin: 0;
+        color: var(--Deep-Navy, #1A2744);
+        font-family: "DM Sans";
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+    }
+
+    .comparison-table_left-icons-col-head {
+        border-color: #0000001A;
+    }
+
+    .comparison-table_left-icons-col-block {
+        border-color: #0000001A;
+    }
+
+    .comparison-table_left-text-col-block {
+        border-color: #BABABA;
+    }
+
+    .swiper-pagination.comparison-table_pagination{
+        display: none;
+    }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .section-{{ section.id }} .comparison-table {
+      max-width: 100%;
+    }
+
+    .section-{{ section.id }} .comparison-table_left {
+        max-width: 65.5%;
+    }
+
+    .section-{{ section.id }} .comparison-table_right {
+        max-width: 33.5%;
+    }
+
+    .comparison-table-head_head {
+        min-height: 130px;
+        padding-bottom: 18px;
+    }
+
+    .comparison-table_left-icons-col-head_img {
+        max-width: 40px;
+    }
+
+    .comparison-table-head_head_title {
+        padding: 1.5px 8px;
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .comparison-table-row_block {
+        padding: 10px 4px;
+    }
+
+    p.comparison-table_left-text-col-text {
+        font-size: 14px;
+        letter-spacing: -0.1px;
+    }
+
+    .comparison-table_left-icons-col-icon, 
+    .comparison-table_right-icons-col-icon {
+        max-width: 26px;
+    }
+
+    .comparison-wrapper {
+        gap: 24px;
+        flex-direction: column;
+    }
+
+    .comparison-head {
+        max-width: 100%;
+        position: static;
+        text-align: center;
+    }
+
+    .section-{{ section.id }} .comparison-subtitle {
+        font-size: 14px;
+        line-height: normal;
+        margin-top: 12px;
+        letter-spacing: 0;
+    }
+
+    .swiper-pagination.comparison-table_pagination {
+        position: sticky;
+        margin: 0;
+        margin-top: -8px;
+        display: block;
+    }
+
+    .swiper-pagination.comparison-table_pagination span.swiper-pagination-bullet {
+        border: 1px solid #1A2744;
+        background: transparent;
+        opacity: 1;
+    }
+
+    .swiper-pagination.comparison-table_pagination span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+        background: #1A2744;
+        max-width: 30px;
+        width: 100%;
+        border-radius: 8px;
+    }
+
+
+  }
+{% endstyle %}
+
+<section class="comparison-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="comparison-wrapper">
+      {% if display_title != blank or display_subtitle != blank %}
+        <div class="comparison-head">
+          {% if display_title != blank %}
+            <h2 class="comparison-title title_title">
+              {{ display_title }}
+            </h2>
+          {% endif %}
+
+          {% if display_subtitle != blank %}
+            <div class="comparison-subtitle">
+              {{ display_subtitle }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div class="comparison-table">
+        <div class="comparison-table_left">
+          <div class="comparison-table_left-text-col">
+            <div class="comparison-table_left-text-col-head comparison-table-head_head">
+
+              {% if section.settings.feature_heading != blank %}
+                <h4 class="comparison-table_left-text-col-head_title comparison-table-head_head_title">
+                  {{ section.settings.feature_heading }}
+                </h4>
+              {% endif %}
+            </div>
+
+            <div class="comparison-table_left-text-col-blocks">
+              {% for block in section.blocks %}
+                {% if block.type == 'feature' %}
+                  <div
+                    class="comparison-table_left-text-col-block {{ forloop.index }} comparison-table-row_block {% if forloop.last %}comparison-table-row_block_last{% endif %} "
+                    {{ block.shopify_attributes }}
+                  >
+                    {% if block.settings.feature_text != blank %}
+                      <p class="comparison-table_left-text-col-text">
+                        {{ block.settings.feature_text }}
+                      </p>
+                    {% endif %}
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+
+          <div class="comparison-table_left-icons-col highlighted">
+            <div class="comparison-table_left-icons-col-head comparison-table-head_head">
+              <div class="comparison-table_left-icons-col-head_img">
+                {% if section.settings.highlight_image != blank %}
+                  {{
+                    section.settings.highlight_image
+                    | image_url: width: 1600
+                    | image_tag:
+                      widths: '50,100,150,200,300,400,500,600,800,1000,1200,1400,1600',
+                      loading: 'lazy',
+                      alt: 'image'
+                  }}
+                {% endif %}
+              </div>
+
+              {% if section.settings.highlight_title != blank %}
+                <h4 class="comparison-table_left-icons-col-head_title comparison-table-head_head_title">
+                  {{ section.settings.highlight_title }}
+                </h4>
+              {% endif %}
+            </div>
+
+            <div class="comparison-table_left-icons-col-blocks">
+              {% for block in section.blocks %}
+                {% if block.type == 'feature' %}
+                  <div class="comparison-table_left-icons-col-block {{ forloop.index }} comparison-table-row_block {% if forloop.last %}comparison-table-row_block_last{% endif %}">
+                    <div class="comparison-table_left-icons-col-icon">
+                      {% if block.settings.highlight_icon != blank %}
+                        {{
+                          block.settings.highlight_icon
+                          | image_url: width: 200
+                          | image_tag: widths: '50,100,150,200', loading: 'lazy', alt: 'image'
+                        }}
+                      {% endif %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+
+        <div class="comparison-table_right">
+          <div class="swiper comparison-swiper">
+            <div class="swiper-wrapper">
+              {% assign competitor_index = 0 %}
+
+              {% for block in section.blocks %}
+                {% if block.type == 'competitor' %}
+                  {% assign competitor_index = competitor_index | plus: 1 %}
+
+                  <div
+                    class="swiper-slide"
+                    {{ block.shopify_attributes }}
+                  >
+                    <div class="comparison-table_right-icons-col">
+                      <div class="comparison-table_right-icons-col-head comparison-table-head_head">
+                        <div class="comparison-table_right-icons-col-head_img">
+                          {% if block.settings.image != blank %}
+                            {{
+                              block.settings.image
+                              | image_url: width: 1600
+                              | image_tag:
+                                widths: '50,100,150,200,300,400,500,600,800,1000,1200,1400,1600',
+                                loading: 'lazy',
+                                alt: 'image'
+                            }}
+                          {% endif %}
+                        </div>
+
+                        {% if block.settings.title != blank %}
+                          <h4 class="comparison-table_right-icons-col-head_title comparison-table-head_head_title">
+                            {{ block.settings.title }}
+                          </h4>
+                        {% endif %}
+                      </div>
+
+                      <div class="comparison-table_right-icons-col-blocks">
+                        {% for feature_block in section.blocks %}
+                          {% if feature_block.type == 'feature' %}
+                            <div class="comparison-table_right-icons-col-block {{ forloop.index }} comparison-table-row_block {% if forloop.last %}comparison-table-row_block_last{% endif %}">
+                              <div class="comparison-table_right-icons-col-icon">
+                                {% case competitor_index %}
+                                  {% when 1 %}
+                                    {% if feature_block.settings.competitor_1_icon != blank %}
+                                      {{
+                                        feature_block.settings.competitor_1_icon
+                                        | image_url: width: 200
+                                        | image_tag: widths: '50,100,150,200', loading: 'lazy', alt: 'image'
+                                      }}
+                                    {% endif %}
+
+                                  {% when 2 %}
+                                    {% if feature_block.settings.competitor_2_icon != blank %}
+                                      {{
+                                        feature_block.settings.competitor_2_icon
+                                        | image_url: width: 200
+                                        | image_tag: widths: '50,100,150,200', loading: 'lazy', alt: 'image'
+                                      }}
+                                    {% endif %}
+
+                                  {% when 3 %}
+                                    {% if feature_block.settings.competitor_3_icon != blank %}
+                                      {{
+                                        feature_block.settings.competitor_3_icon
+                                        | image_url: width: 200
+                                        | image_tag: widths: '50,100,150,200', loading: 'lazy', alt: 'image'
+                                      }}
+                                    {% endif %}
+
+                                  {% when 4 %}
+                                    {% if feature_block.settings.competitor_4_icon != blank %}
+                                      {{
+                                        feature_block.settings.competitor_4_icon
+                                        | image_url: width: 200
+                                        | image_tag: widths: '50,100,150,200', loading: 'lazy', alt: 'image'
+                                      }}
+                                    {% endif %}
+
+                                  {% when 5 %}
+                                    {% if feature_block.settings.competitor_5_icon != blank %}
+                                      {{
+                                        feature_block.settings.competitor_5_icon
+                                        | image_url: width: 200
+                                        | image_tag: widths: '50,100,150,200', loading: 'lazy', alt: 'image'
+                                      }}
+                                    {% endif %}
+                                {% endcase %}
+                              </div>
+                            </div>
+                          {% endif %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper-pagination comparison-table_pagination"></div>
+
+    </div>
+  </div>
+</section>
+
+
+<script>
+(function() {
+
+  const sectionId = '{{ section.id }}';
+  let comparisonSwiper = null;
+
+  function initComparisonSwiper() {
+    const section = document.querySelector('.section-' + sectionId);
+
+    if (!section) return;
+
+    const slider = section.querySelector('.comparison-swiper');
+
+    if (!slider) return;
+
+    if (comparisonSwiper) {
+      comparisonSwiper.destroy(true, true);
+      comparisonSwiper = null;
+    }
+
+    comparisonSwiper = new Swiper(slider, {
+      slidesPerView: 2,
+      spaceBetween: 0,
+      speed: 1000,
+      watchOverflow: true,
+      observer: true,
+      observeParents: true,
+
+      pagination: {
+            el: section.querySelector('.comparison-table_pagination'),
+            clickable: true
+        },
+
+      breakpoints: {
+        0: {
+          slidesPerView: 1
+        },
+        769: {
+          slidesPerView: 2
+        }
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initComparisonSwiper);
+
+  document.addEventListener('shopify:section:load', function(event) {
+    if (event.detail.sectionId === sectionId) {
+      initComparisonSwiper();
+    }
+  });
+
+  document.addEventListener('shopify:section:reorder', function(event) {
+    if (event.detail.sectionId === sectionId) {
+      initComparisonSwiper();
+    }
+  });
+
+  document.addEventListener('shopify:block:select', function(event) {
+    if (event.target.closest('.section-' + sectionId)) {
+      initComparisonSwiper();
+    }
+  });
+
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Comparison Table",
+  "tag": "section",
+  "class": "shopify-section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "richtext",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "feature_heading",
+      "label": "Feature Column Heading",
+      "default": "Features"
+    },
+    {
+      "type": "image_picker",
+      "id": "highlight_image",
+      "label": "Highlighted Product Image"
+    },
+    {
+      "type": "text",
+      "id": "highlight_title",
+      "label": "Highlighted Product Title"
+    },
+
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#111111"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#555555"
+    },
+    {
+      "type": "color",
+      "id": "highlight_bg",
+      "label": "Highlighted Column Background",
+      "default": "#F7F7F7"
+    },
+
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+
+    {
+      "type": "range",
+      "id": "desktop_padding_top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80,
+      "label": "Padding Top"
+    },
+    {
+      "type": "range",
+      "id": "desktop_padding_bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 80,
+      "label": "Padding Bottom"
+    },
+
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40,
+      "label": "Padding Top"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "unit": "px",
+      "default": 40,
+      "label": "Padding Bottom"
+    }
+  ],
+
+  "blocks": [
+    {
+      "type": "competitor",
+      "name": "Competitor",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Competitor Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Competitor Title"
+        }
+      ]
+    },
+
+    {
+      "type": "feature",
+      "name": "Feature Row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "feature_text",
+          "label": "Feature Text"
+        },
+
+        {
+          "type": "image_picker",
+          "id": "highlight_icon",
+          "label": "Highlighted Product Icon"
+        },
+
+        {
+          "type": "image_picker",
+          "id": "competitor_1_icon",
+          "label": "Competitor 1 Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "competitor_2_icon",
+          "label": "Competitor 2 Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "competitor_3_icon",
+          "label": "Competitor 3 Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "competitor_4_icon",
+          "label": "Competitor 4 Icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "competitor_5_icon",
+          "label": "Competitor 5 Icon"
+        }
+      ]
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Comparison Table",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,224 @@
+{% liquid
+  assign display_text = section.settings.text | replace: '<p>', '' | replace: '</p>', ''
+%}
+
+{% style %}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.bg_color }};
+  padding-top: {{ section.settings.padding_top }}px;
+  padding-bottom: {{ section.settings.padding_bottom }}px;
+}
+
+.section-{{ section.id }} .abs-text-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-{{ section.id }} .abs-text_image {
+  width: 100%;
+  line-height: 0;
+}
+
+.section-{{ section.id }} .abs-text_image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.section-{{ section.id }} .abs-text_text {
+    color: {{ section.settings.text_color }};
+    font-size: {{ section.settings.desktop_font_size }}px;
+    position: absolute;
+    max-width: 856px;
+    width: 100%;
+    text-align: center;
+    font-family: Lora;
+    font-style: normal;
+    font-weight: normal;
+    line-height: normal;
+    margin: 0;
+    padding-inline: 50px;
+}
+
+.section-{{ section.id }} .abs-text_image-mobile {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.mobile_padding_top }}px;
+    padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+  }
+
+  .section-{{ section.id }} .abs-text_text {
+    font-size: {{ section.settings.mobile_font_size }}px;
+    max-width: 100%;
+    padding-inline: 16px;
+  }
+
+  .section-{{ section.id }} .abs-text_image-desktop {
+    display: none;
+  }
+
+  .section-{{ section.id }} .abs-text_image-mobile {
+    display: block;
+  }
+
+}
+{% endstyle %}
+
+<section class="abs-text-section section-{{ section.id }}">
+  {% comment %} <div class="page-width"> {% endcomment %}
+
+    <div class="abs-text-wrapper">
+
+      <div class="abs-text_image">
+
+        {% if section.settings.desktop_image != blank or section.settings.mobile_image != blank %}
+
+          {% if section.settings.desktop_image != blank %}
+            <div class="abs-text_image-desktop">
+              {{
+                section.settings.desktop_image
+                | image_url: width: 2000
+                | image_tag:
+                  widths: '50,100,150,200,300,400,500,600,800,1000,1200,1400,1600,2000',
+                  loading: 'lazy',
+                  alt: 'desktop image'
+              }}
+            </div>
+          {% endif %}
+
+          {% if section.settings.mobile_image != blank %}
+            <div class="abs-text_image-mobile">
+              {{
+                section.settings.mobile_image
+                | image_url: width: 1200
+                | image_tag:
+                  widths: '50,100,150,200,300,400,500,600,800,1000,1200',
+                  loading: 'lazy',
+                  alt: 'mobile image'
+              }}
+            </div>
+          {% endif %}
+
+        {% endif %}
+
+      </div>
+
+      {% if display_text != blank %}
+        <p class="abs-text_text">
+          {{ display_text }}
+        </p>
+      {% endif %}
+
+    </div>
+
+  {% comment %} </div> {% endcomment %}
+</section>
+
+{% schema %}
+{
+  "name": "Absolute Text Section",
+  "tag": "section",
+  "class": "shopify-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "desktop_image",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Overlay Text"
+    },
+
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#111111"
+    },
+
+    {
+      "type": "range",
+      "id": "desktop_font_size",
+      "label": "Desktop Font Size",
+      "min": 10,
+      "max": 80,
+      "step": 1,
+      "default": 28
+    },
+    {
+      "type": "range",
+      "id": "mobile_font_size",
+      "label": "Mobile Font Size",
+      "min": 10,
+      "max": 50,
+      "step": 1,
+      "default": 18
+    },
+
+    {
+      "type": "header",
+      "content": "Padding Settings"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Desktop Padding Top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Desktop Padding Bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 2,
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Absolute Text Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

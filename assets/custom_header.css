@@ -21,6 +21,10 @@
     padding: 0;
 }
 
+.index ul.menu-drawer__menu .list-menu__item{
+    color: #000
+}
+
 .header__menu-item:hover {
     color: #000;
 }
@@ -208,6 +212,7 @@ ul.menu-drawer__menu.has-submenu.list-menu {
 
 .header--has-social .menu-drawer__utility-links {
     padding: 20px;
+    background: transparent;
 }
 
 .header--has-social .menu-drawer__utility-links a.menu-drawer__account {

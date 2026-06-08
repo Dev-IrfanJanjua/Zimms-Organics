@@ -1,0 +1,467 @@
+{% style %}
+  .section-{{ section.id }}{
+      background: {{ section.settings.bg_color }};
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+      position: relative;
+  }
+
+  .img-faq-question-before-icon {
+    max-width: 32px;
+    width: 100%;
+    height: 32px;
+}
+
+.img-faqs-wrapper {
+    display: flex;
+    gap: 30px;
+    position: relative;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.img-faqs-head {
+    max-width: 34.4%;
+    width: 100%;
+    position: sticky;
+    top: 40px;
+}
+
+.img-faqs-content {
+    max-width: 54.7%;
+    width: 100%;
+    height: auto;
+}
+
+.img-faqs-blocks {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.img-faq-answer {
+    max-height: 0px;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.img-faq-icon {
+    max-width: 20px;
+    width: 100%;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+span.img-faq-icon-hr {
+    display: block;
+    height: 2px;
+    width: 16px;
+    background-color: #1A2744;
+    position: absolute;
+    top: 50%;
+    transform: translatey(-50%);
+    border-radius: 1px;
+}
+
+span.img-faq-icon-vt {
+    display: block;
+    height: 16px;
+    width: 2px;
+    background-color: #1A2744;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: all 0.8s ease;
+    opacity: 1;
+}
+
+.img-faq-question-inner {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.img-faq-question-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: all 0.5s ease;
+    gap: 10px;
+}
+
+.img-faq-item {
+    padding: 22px 0;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border-bottom: 1px solid #C8C8C8;
+}
+
+span.img-faq-question-text {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: all 0.3s ease;
+}
+
+.img-faq-answer * {
+    margin: 0;
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.img-faq-item.active span.img-faq-icon-vt {
+    transform: rotate(90deg);
+    opacity: 0;
+}
+
+.img-faq-item.active .img-faq-question-wrapper {
+    padding-bottom: 10px;
+}
+
+.img-faq-question-before-icon img {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+  .section-{{ section.id }} .section_bg-image_top,
+  .section-{{ section.id }} .section_bg-image_bottom {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      right: 0;
+      height: 80px;
+  }
+
+  .section-{{ section.id }} .section_bg-image_top{
+    top: -4px; 
+  }
+
+  .section-{{ section.id }} .section_bg-image_bottom{
+    bottom: -3px; 
+  }
+
+  .section-{{ section.id }} .section_bg-image_top img,
+  .section-{{ section.id }} .section_bg-image_bottom img {
+      width: 100%;
+      height: 100% !important;
+      object-fit: cover;
+      display: block;
+  }
+
+  .img-faq-item.active .img-faq-icon {
+    background: #fff;
+}
+
+p.img-faqs-subtitle {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    max-width: 354px;
+    width: 100%;
+    text-align: left;
+    margin: 14px 0 0;
+}
+
+h2.img-faqs-title.title_title {
+    color: #1A2744;
+    text-align: left;
+}
+
+@media screen and (max-width: 767px){
+
+.section-{{ section.id }}{
+    padding-top: {{ section.settings.padding_top_mob }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mob }}px;
+}
+
+.img-faqs-content {
+    max-width: 100%;
+}
+
+.img-faq-item {
+    padding: 16px 0;
+}
+
+.img-faq-question-before-icon {
+    max-width: 24px;
+    height: 24px;
+}
+
+span.img-faq-question-text,
+.img-faq-answer * {
+    font-size: 14px;
+}
+
+.img-faq-question-inner {
+    gap: 8px;
+}
+
+.img-faqs-wrapper {
+    flex-direction: column;
+    gap: 24px;
+}
+
+.img-faqs-head {
+    max-width: 100%;
+    position: static;
+}
+
+h2.img-faqs-title.title_title {
+    text-align: center;
+}
+
+p.img-faqs-subtitle {
+    font-size: 14px;
+    max-width: 100%;
+    text-align: center;
+}
+
+.section-{{ section.id }} .section_bg-image_bottom {
+    bottom: -2px;
+    height: 30px;
+}
+
+.section-{{ section.id }} .section_bg-image_top {
+    top: -3px;
+    height: 30px;
+}
+
+  }
+{% endstyle %}
+
+<section class="img-faqs-section section-{{ section.id }}">
+
+  <div class="page-width">
+
+
+    <div class="img-faqs-wrapper">
+
+        <div class="img-faqs-head">
+            {% if section.settings.heading != blank %}
+                <h2 class="img-faqs-title title_title">{{ section.settings.heading }}</h2>
+            {% endif %}
+            {% if section.settings.subtitle != blank %}
+                <p class="img-faqs-subtitle">{{ section.settings.subtitle }}</p>
+            {% endif %}
+          </div>
+
+      <!-- ===== Content ===== -->
+      <div class="img-faqs-content">
+
+        <div class="img-faqs-blocks">
+
+            {% for block in section.blocks %}
+              <div class="img-faq-item img-faq-item-{{ forloop.index }} " {{ block.shopify_attributes }}>
+                {% if block.settings.question != blank %}
+                  <div class="img-faq-question-wrapper">
+                    <div class="img-faq-question-inner">
+                      {% if block.settings.question_icon_bf != blank %}
+                        <div class="img-faq-question-before-icon">
+                          {{
+                            block.settings.question_icon_bf
+                            | image_url: width: 500
+                            | image_tag:
+                              widths: '50, 100, 150, 200, 250, 300, 400, 500',
+                              alt: 'image',
+                              loading: 'lazy'
+                          }}
+                        </div>
+                      {% endif %}
+                      <span class="img-faq-question-text">{{ block.settings.question }}</span>
+                    </div>
+                    <div class="img-faq-icon">
+                      <span class="img-faq-icon-hr"></span>
+                      <span class="img-faq-icon-vt"></span>
+                    </div>
+                  </div>
+                {% endif %}
+                {% if block.settings.answer != blank %}
+                  <div class="img-faq-answer">
+                    {{ block.settings.answer }}
+                  </div>
+                {% endif %}
+              </div>
+            {% endfor %}
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    initImgFaqs();
+  });
+
+  document.addEventListener('shopify:section:load', () => {
+    initImgFaqs();
+  });
+
+  function initImgFaqs() {
+    const faqSections = document.querySelectorAll('.img-faqs-section');
+
+    faqSections.forEach(section => {
+      const faqItems = section.querySelectorAll('.img-faq-item');
+
+      faqItems.forEach(item => {
+        const question = item.querySelector('.img-faq-question-wrapper');
+        const answer = item.querySelector('.img-faq-answer');
+
+        if (!question || !answer) return;
+
+        /* Respect active class already added in Liquid */
+        if (item.classList.contains('active')) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          answer.style.opacity = '1';
+        } else {
+          answer.style.maxHeight = null;
+          answer.style.opacity = '0';
+        }
+
+        /* Prevent duplicate listeners on section reload */
+        question.onclick = () => {
+          const isActive = item.classList.contains('active');
+
+          /* Close all items */
+          faqItems.forEach(otherItem => {
+            otherItem.classList.remove('active');
+
+            const otherAnswer = otherItem.querySelector('.img-faq-answer');
+            if (otherAnswer) {
+              otherAnswer.style.maxHeight = null;
+              otherAnswer.style.opacity = '0';
+            }
+          });
+
+          /* Re-open clicked item only if it wasn't already active */
+          if (!isActive) {
+            item.classList.add('active');
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            answer.style.opacity = '1';
+          }
+        };
+      });
+    });
+  }
+</script>
+
+{% schema %}
+{
+  "name": "Image FAQs",
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Sub Heading"
+    },
+    {
+      "type": "header",
+      "content": "Section Settings"
+    },
+    {
+      "type": "color_background",
+      "id": "bg_color",
+      "label": "Section Background Color",
+      "default": "#fff"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "label": "Padding Top Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "label": "Padding Bottom Mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 24
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "question_icon_bf",
+          "label": "Question Before Icon"
+        },
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your return policy?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>You can return items within 30 days.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image FAQs",
+      "category": "Custom",
+      "blocks": [
+        { "type": "faq" },
+        { "type": "faq" },
+        { "type": "faq" }
+      ]
+    }
+  ]
+}
+{% endschema %}

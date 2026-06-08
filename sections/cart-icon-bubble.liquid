@@ -5,6 +5,9 @@
     render 'icon-cart'
   endif
 -%}
+<span class="header__icon--cart_text">
+  Cart({{ cart.item_count }})
+</span>
 <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
 {%- if cart != empty -%}
   <div class="cart-count-bubble">
