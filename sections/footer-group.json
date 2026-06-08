@@ -93,8 +93,8 @@
       "type": "footer-bottom",
       "name": "Footer Bottom Image",
       "settings": {
-        "desktop_image": "shopify://shop_images/Frame_2147241486_3.webp",
-        "mobile_image": "shopify://shop_images/Frame_2147241486_2.webp"
+        "desktop_image": "shopify://shop_images/Frame_2147241486_3.png",
+        "mobile_image": "shopify://shop_images/Frame_2147241486_2.png"
       }
     },
     "custom_liquid_BBpHeY": {

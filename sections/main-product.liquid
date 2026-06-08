@@ -84,6 +84,18 @@
             {%- case block.type -%}
               {%- when '@app' -%}
                 {% render block %}
+
+                {% comment %} ===== custom Blocks ====== {% endcomment %}
+
+              {%- when 'money_back' -%}
+                {% render 'pdp-moneyback', block: block, section: section %}
+
+              {%- when 'buy_bundle' -%}
+                {% render 'pdp-buy-bundle', block: block, section: section %}
+
+              {%- when 'faq' -%}
+                {% render 'pdp-faqs-block', block: block, section: section %}
+
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -781,6 +793,93 @@
   "blocks": [
     {
       "type": "@app"
+    },
+    {
+      "type": "money_back",
+      "name": "Money Back",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Money Back Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Money Back Title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Money Back Subtitle"
+        }
+      ]
+    },
+    {
+      "type": "buy_bundle",
+      "name": "Buy Bundle",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Buy Bundle Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Buy Bundle Title"
+        },
+        {
+          "type": "text",
+          "id": "btn",
+          "label": "Buy Bundle Button"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "Buy Bundle Button Link"
+        },
+      ]
+    },
+    {
+      "type": "faq",
+      "name": "FAQ",
+      "settings": [
+        {
+          "type": "text",
+          "id": "faq_question_1",
+          "label": "Question 1"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_answer_1",
+          "label": "Answer 1"
+        },
+
+        {
+          "type": "text",
+          "id": "faq_question_2",
+          "label": "Question 2"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_answer_2",
+          "label": "Answer 2"
+        },
+
+        {
+          "type": "text",
+          "id": "faq_question_3",
+          "label": "Question 3"
+        },
+        {
+          "type": "richtext",
+          "id": "faq_answer_3",
+          "label": "Answer 3"
+        }
+
+        // continue to 10
+      ]
     },
     {
       "type": "text",

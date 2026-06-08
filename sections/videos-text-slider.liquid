@@ -260,29 +260,91 @@ h2.live-heading.csp-img {
     margin: 0;
 }
 
-    @media (max-width:768px){
+.happy-reviews_reviews-img {
+    max-width: 100px;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.happy-reviews_reviews-img img{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+p.happy-reviews_reviews-text {
+    color: var(--black, #333);
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    margin: 0;
+}
+
+.happy-reviews_reviews {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    justify-content: center;
+    margin-bottom: 12px;
+}
+
+h2.happy-reviews_title.title_title {
+    text-align: center;
+}
+
+p.happy-reviews_subtitle {
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    max-width: 520px;
+    width: 100%;
+    margin: 12px auto 0;
+}
+
+.happy-reviews_head {
+    padding: 0 80px;
+}
+
+.swiper-pagination.happy-reviews-pagination {
+    display: none;
+}
+
+@media (max-width:768px){
       
-      .section-{{ section.id }}-padding {
-        padding-top: {{ section.settings.mbl_padding_top }}px;
-        padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
-      }
-      .happy-reviews .reviewers-name{
-      font-size: 16px;
-      }
-      .cs_conti.csp-img {
-        border-radius: 8px;
-      }
-      .happy-reviews .title-desc {
-        color: #000;
-        text-align: center;
-        font-size: 20px;
-        font-style: normal;
-        line-height: 24px; 
-      }
-      .happy-reviews .main-star-svg-total {
-      max-width: 100%;
-      gap:0px;
-  }
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.mbl_padding_top }}px;
+    padding-bottom: {{ section.settings.mbl_padding_bottom }}px;
+}
+.happy-reviews .reviewers-name{
+  font-size: 16px;
+}
+.cs_conti.csp-img {
+    border-radius: 8px;
+}
+.happy-reviews .title-desc {
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    line-height: 24px; 
+}
+.happy-reviews .main-star-svg-total {
+  max-width: 100%;
+  gap:0px;
+}
 .cs-rating p {
     color: var(--black, #333);
     font-family: Poppins;
@@ -378,31 +440,59 @@ video.custom-video-slider {
     margin: 20px  0 0;
 }
 
+.happy-reviews_head {
+    padding: 0 16px;
+}
 
+p.happy-reviews_reviews-text {
+    font-size: 16px;
+}
 
+p.happy-reviews_subtitle {
+    font-size: 14px;
+    line-height: 24px;
+    max-width: 100%;
+}
 
-  }
-
-@media (max-width: 768px) {
-    .reviews-description {
+.reviews-description {
        font-size:13px; 
-    }
-    .slide-btn{
+  }
+  .slide-btn{
       width: 35px;
       height: 35px;
-    }
-     .slide-btn img {
+  }
+  .slide-btn img {
       width: 100%;
       height: 100%;
       object-fit:contain;
-    }
+  }
 
 
-    h2.live-heading.csp-img {
+h2.live-heading.csp-img {
         font-size: 16px;
-    }
+  }
 
-}    
+.swiper-pagination.happy-reviews-pagination {
+    display: block;
+    position: static;
+    margin: 24px 0 0;
+}
+
+.swiper-pagination.happy-reviews-pagination span.swiper-pagination-bullet {
+    border: 1px solid #1A2744;
+    background: transparent;
+    opacity: 1;
+}
+
+.swiper-pagination.happy-reviews-pagination span.swiper-pagination-bullet.swiper-pagination-bullet-active {
+    max-width: 20px;
+    width: 100%;
+    border-radius: 8px;
+    background: #1A2744;
+}
+
+}
+
 
 </style>
 
@@ -410,19 +500,44 @@ video.custom-video-slider {
   <div class="page-widthr">
     <div class="csp-sec">
     <div class="main-wrapper-happy-reviews">
-      <div class="csp-csng">
-      <div class="main-star-svg-total csp-img">
-        <img
-          class="star-image"
-          src="{{ section.settings.star-image | img_url: 'master' }}"
-          loading="lazy"
-          alt="Payment methods"
-          width="100%"
-          height="100%"
-        >
-      </div>
-      <h2 class="live-heading csp-img">{{ section.settings['reviews-title'] }}</h2>
-      </div>
+      {% if section.settings.pdp_page == false %}
+        <div class="csp-csng">
+          <div class="main-star-svg-total csp-img">
+            <img
+              class="star-image"
+              src="{{ section.settings.star-image | img_url: 'master' }}"
+              loading="lazy"
+              alt="Payment methods"
+              width="100%"
+              height="100%"
+            >
+          </div>
+          <h2 class="live-heading csp-img">{{ section.settings['reviews-title'] }}</h2>
+        </div>
+      {% else %}
+          <div class="happy-reviews_head">
+            <div class="happy-reviews_reviews">
+              {% if section.settings.star_image != blank %}
+                <div class="happy-reviews_reviews-img">
+                  {{ section.settings.star_image | image_url: width: 1600 | image_tag:
+                        widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                        alt: "image",
+                        loading: "lazy"
+                    }}
+                </div>
+              {% endif %}
+                {% if section.settings.reviews_text != blank %}
+                  <p class="happy-reviews_reviews-text">{{ section.settings.reviews_text }}</p>
+                {% endif %}
+            </div>
+            {% if section.settings.title != blank %}
+              <h2 class="happy-reviews_title title_title">{{ section.settings.title }}</h2>
+            {% endif %}
+            {% if section.settings.subtitle != blank %}
+              <p class="happy-reviews_subtitle">{{ section.settings.subtitle }}</p>
+            {% endif %}
+          </div>
+      {% endif %}
       <div class="main-reviews-swipper  testi-grid">
         <div class="swiper myreviewsSwiper">
           <div class="swiper-wrapper">
@@ -498,6 +613,9 @@ video.custom-video-slider {
             {% endfor %}
             </div>
           
+            {% if section.settings.pdp_page %}
+              <div class="swiper-pagination happy-reviews-pagination"></div>
+            {% endif %}
         </div>
 
 
@@ -507,64 +625,6 @@ video.custom-video-slider {
   </div>
 </section>
 
-{% comment %} <script>
-document.addEventListener('DOMContentLoaded', function () {
-  var swiper = new Swiper('.myreviewsSwiper', {
-    speed: 1000,
-    loop: true,
-
-    centeredSlides: true,
-
-    slidesPerView: 4.5,
-    spaceBetween: 16,
-
-    // IMPORTANT FIX
-    watchOverflow: true,
-    observer: true,
-    observeParents: true,
-    resizeObserver: true,
-
-    breakpoints: {
-      0: {
-        slidesPerView: 1.3,
-        spaceBetween: 12,
-        centeredSlides: false, // important fix for desktop
-      },
-      768: {
-        slidesPerView: 3,
-        spaceBetween: 16,
-        centeredSlides: false, // important fix for desktop
-      },
-      1080: {
-        slidesPerView: 4.5,
-        spaceBetween: 16,
-      }
-    }
-  });
-});
-
-document.addEventListener("click", function(e) {
-  // Find the video element and its play button
-  const wrapper = e.target.closest(".video-only-wrapper");
-  if (!wrapper) return;
-
-  const video = wrapper.querySelector("video");
-  const playBtn = wrapper.querySelector(".video-only-play-btn");
-  if (!video || !playBtn) return;
-
-  // Check if the click is on video or play button
-  if (e.target === video || e.target.closest(".video-only-play-btn")) {
-    if (video.paused) {
-      video.play();
-      playBtn.style.display = "none";
-    } else {
-      video.pause();
-      playBtn.style.display = "block";
-    }
-  }
-});
-
-</script>  {% endcomment %}
 <script>
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -582,6 +642,11 @@ document.addEventListener('DOMContentLoaded', function () {
     observer: true,
     observeParents: true,
     resizeObserver: true,
+
+    pagination: {
+      el: '.happy-reviews-pagination',
+      clickable: true
+    },
 
     breakpoints: {
       0: {
@@ -666,6 +731,11 @@ document.addEventListener('DOMContentLoaded', function () {
   "name": "Happymynd amzng rvws",
   "settings": [
     {
+      "type": "checkbox",
+      "id": "pdp_page",
+      "label": "PDP Page"
+    },
+    {
       "type": "color",
       "id": "bg_color",
       "label": "Background Color",
@@ -720,7 +790,31 @@ document.addEventListener('DOMContentLoaded', function () {
       "type": "text",
       "id": "reviews-title",
       "label": "Reviews Title"
-    }
+    },
+    {
+      "type": "header",
+      "content": "PDP Only"
+    },
+    {
+      "type": "image_picker",
+      "id": "star_image",
+      "label": "Star Image"
+    },
+    {
+      "type": "text",
+      "id": "reviews_text",
+      "label": "Reviews Text"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sub Title"
+    },
   ],
   "blocks": [
     {

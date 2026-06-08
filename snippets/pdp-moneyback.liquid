@@ -1,0 +1,91 @@
+{% style %}
+
+.pdp-moneyback_icon {
+    max-width: 90px;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.pdp-moneyback_icon img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+h3.pdp-moneyback_title {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0;
+}
+
+p.pdp-moneyback_subtitle {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 130%;
+    margin: 8px 0 0;
+}
+
+.pdp-moneyback {
+    border-radius: 8px;
+    border: 0.8px solid var(--Deep-Navy, #1A2744);
+    background: #F3F3EC;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px;
+}
+
+@media screen and (max-width: 768px){
+
+.pdp-moneyback {
+    gap: 12px;
+}
+
+.pdp-moneyback_icon {
+    max-width: 68px;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+h3.pdp-moneyback_title {
+    font-size: 14px;
+    letter-spacing: -0.1px;
+}
+
+p.pdp-moneyback_subtitle {
+    font-size: 12px;
+    margin: 4px 0 0;
+}
+
+}
+
+{% endstyle %}
+
+<div class="pdp-moneyback" {{ block.shopify_attributes }}>
+    {% if block.settings.icon != blank %}
+    <div class="pdp-moneyback_icon">
+        {{ block.settings.icon | image_url: width: 1600 | image_tag:
+            widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+            alt: "image",
+            loading: "lazy"
+        }}
+    </div>
+    {% endif %}
+    <div class="pdp-moneyback_content">
+        {% if block.settings.title != blank %}
+        <h3 class="pdp-moneyback_title">{{- block.settings.title -}}</h3>
+        {% endif %}
+        {% if block.settings.subtitle != blank %}
+            <p class="pdp-moneyback_subtitle">{{- block.settings.subtitle -}}</p>
+        {% endif %}
+    </div>
+</div>

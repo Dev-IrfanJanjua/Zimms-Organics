@@ -14,10 +14,12 @@
       "blocks": {
         "bogos_io_free_gift_progressing_bar_view_e4j3XM": {
           "type": "shopify://apps/bogos-io-free-gift/blocks/progressing-bar-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "disabled": true,
           "settings": {}
         },
         "vendor": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "{{ product.vendor }}",
             "text_style": "body"
@@ -33,16 +35,19 @@
         },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {}
         },
         "bogos_io_free_gift_volume_discount_view_YxkeB4": {
           "type": "shopify://apps/bogos-io-free-gift/blocks/volume-discount-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
+          "disabled": true,
           "settings": {
             "product": ""
           }
         },
         "variant_picker": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
             "picker_type": "button",
             "swatch_shape": "circle"
@@ -50,21 +55,52 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {}
         },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true,
+            "show_dynamic_checkout": false,
             "show_gift_card_recipient": true
+          }
+        },
+        "money_back_R3nHDF": {
+          "type": "money_back",
+          "settings": {
+            "icon": "shopify://shop_images/Frame_2147229820.svg",
+            "title": "30-Day 100% Money Back Guarantee",
+            "subtitle": "We're so confident you'll love it, take a full 30 days to decide"
+          }
+        },
+        "buy_bundle_gVmnmr": {
+          "type": "buy_bundle",
+          "settings": {
+            "image": "shopify://shop_images/Group_1707482357_1.png",
+            "title": "Can’t Decide What you want?",
+            "btn": "Build your own Bundle",
+            "btn_link": "shopify://products/ultimate-trifecta"
+          }
+        },
+        "faq_wfGtU8": {
+          "type": "faq",
+          "settings": {
+            "faq_question_1": "Benefits",
+            "faq_answer_1": "<p>An authentic Greek extra virgin olive oil made from hand-harvested Koroneiki olives, naturally rich in anti-inflammatory polyphenols and  cold-pressed for full flavor and health benefits. Crafted  for everyday use — this is the olive oil you pour, cook with, and finish your meals with, while still nourishing your gut, heart, and  metabolism.</p><ul><li>Supports digestion and gut comfort</li><li>Promotes healthy cholesterol and heart protection</li><li>Helps reduce everyday inflammation</li><li>Aids metabolism and weight control</li><li>Rich in antioxidants for cellular protection</li><li>Encourages nutrient absorption from meals</li><li>A flavorful way to support long-term health</li></ul>",
+            "faq_question_2": "How To Use",
+            "faq_answer_2": "<p>How To Use</p>",
+            "faq_question_3": "Quality Testing",
+            "faq_answer_3": "<p>Quality Testing</p>"
           }
         },
         "description": {
           "type": "description",
+          "disabled": true,
           "settings": {}
         },
         "share": {
           "type": "share",
+          "disabled": true,
           "settings": {
             "share_label": "Share"
           }
@@ -99,6 +135,9 @@
         "variant_picker",
         "quantity_selector",
         "buy_buttons",
+        "money_back_R3nHDF",
+        "buy_bundle_gVmnmr",
+        "faq_wfGtU8",
         "description",
         "share",
         "custom_liquid_4mPPk3",
@@ -219,13 +258,18 @@
       ],
       "name": "Clients reviews",
       "settings": {
-        "bg_color": "#ffffff",
+        "pdp_page": true,
+        "bg_color": "#fffffc",
         "padding_top": 0,
         "padding_bottom": 80,
-        "mbl_padding_top": 20,
+        "mbl_padding_top": 0,
         "mbl_padding_bottom": 40,
         "star-image": "shopify://shop_images/Frame_2147241407_3.svg",
-        "reviews-title": "Loved by our community"
+        "reviews-title": "Loved by our community",
+        "star_image": "shopify://shop_images/Frame_2147241407.svg",
+        "reviews_text": "500+ Reviews",
+        "title": "Trusted By Over 500,000 customers",
+        "subtitle": "Over 500,000 customers trust us for pure, high-quality olive oil they can feel good about."
       }
     },
     "inline_image_richtext_kN7QFy": {
@@ -354,10 +398,10 @@
         "text_color": "#1e1e1e",
         "tag_color": "#1e1e1e",
         "card_bg": "#f3f3ec",
-        "padding_top_desktop": 110,
-        "padding_bottom_desktop": 110,
-        "padding_top_mobile": 60,
-        "padding_bottom_mobile": 60
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40
       }
     },
     "pairs_section_bfHUjx": {
@@ -620,12 +664,13 @@
         "bg_color": "#FFFFFC",
         "padding_top": 80,
         "padding_bottom": 80,
-        "padding_top_mob": 24,
-        "padding_bottom_mob": 24
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 40
       }
     },
     "related-products": {
       "type": "related-products",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "heading_size": "h2",

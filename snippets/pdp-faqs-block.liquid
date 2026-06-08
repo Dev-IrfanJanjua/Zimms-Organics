@@ -1,0 +1,182 @@
+{% style %}
+
+.pdp-faq-item {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.pdp-faq-item-question {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  padding: 16px 0;
+  text-align: left;
+  height: unset;
+  outline: none;
+  gap: 10px;
+}
+
+p.pdp-faq-item-question_text {
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    font-family: Lora;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    margin: 0;
+}
+
+.pdp-faq-item-question_icons {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.pdp-faq-item-question_icon-plus,
+.pdp-faq-item-question_icon-minus {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .3s ease;
+}
+
+.pdp-faq-item-question_icon-plus svg,
+.pdp-faq-item-question_icon-minus svg{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.pdp-faq-item-question_icon-minus {
+  opacity: 0;
+}
+
+.pdp-faq-item-answer-wrapper {
+  height: 0;
+  overflow: hidden;
+  transition: height .35s ease;
+}
+
+.pdp-faq-item-answer {
+    padding-bottom: 16px;
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.pdp-faq-item-answer * {
+    margin: 0;
+}
+
+.pdp-faq-item-answer ul {
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.pdp-faq-item.active .pdp-faq-item-question_icon-plus {
+  opacity: 0;
+}
+
+.pdp-faq-item.active .pdp-faq-item-question_icon-minus {
+  opacity: 1;
+}
+
+{% endstyle %}
+
+{% assign faq_count = 10 %}
+
+<div class="pdp-faq-items" {{ block.shopify_attributes }}>
+  {% for i in (1..faq_count) %}
+
+    {% assign question_key = 'faq_question_' | append: i %}
+    {% assign answer_key = 'faq_answer_' | append: i %}
+
+    {% assign question = block.settings[question_key] %}
+    {% assign answer = block.settings[answer_key] %}
+
+    {% if question != blank and answer != blank %}
+      <div class="pdp-faq-item {% if forloop.first %}active{% endif %}">
+        {% if question != blank %}
+            <button
+                type="button"
+                class="pdp-faq-item-question"
+                aria-expanded="false"
+            >
+                <p class="pdp-faq-item-question_text">{{ question }}</p>
+
+            <div class="pdp-faq-item-question_icons">
+                <div class="pdp-faq-item-question_icon-plus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M3 10H17" stroke="#1A2744" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M10 3V17" stroke="#1A2744" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+
+                <div class="pdp-faq-item-question_icon-minus">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                        <path d="M3 10H17" stroke="#1A2744" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </div>
+            </button>
+        {% endif %}
+
+        <div class="pdp-faq-item-answer-wrapper">
+            {% if answer != blank %}
+                <div class="pdp-faq-item-answer rte">{{ answer }}</div>
+            {% endif %}
+        </div>
+      </div>
+    {% endif %}
+
+  {% endfor %}
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+  const faqItems = document.querySelectorAll('.pdp-faq-item');
+
+  faqItems.forEach((item) => {
+
+    const trigger = item.querySelector('.pdp-faq-item-question');
+    const content = item.querySelector('.pdp-faq-item-answer-wrapper');
+
+    trigger.addEventListener('click', () => {
+
+      const isActive = item.classList.contains('active');
+
+      faqItems.forEach((faq) => {
+
+        faq.classList.remove('active');
+
+        faq.querySelector('.pdp-faq-item-question')
+          .setAttribute('aria-expanded', 'false');
+
+        faq.querySelector('.pdp-faq-item-answer-wrapper').style.height = '0px';
+      });
+
+      if (!isActive) {
+
+        item.classList.add('active');
+
+        trigger.setAttribute('aria-expanded', 'true');
+
+        content.style.height = content.scrollHeight + 'px';
+      }
+    });
+  });
+});
+</script>
