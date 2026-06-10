@@ -1,0 +1,647 @@
+{% style %}
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .section-{{ section.id }} .progress-wrapper {
+    display: flex;
+    align-items: stretch;
+    gap: 50px;
+    justify-content: space-between;
+  }
+
+  /* LEFT CONTENT */
+  .section-{{ section.id }} .progress-content {
+    max-width: 50%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .section-{{ section.id }} .progress-tag {
+    color: {{ section.settings.tag_color }};
+    background-color: {{ section.settings.tag_bg_color }};
+    display: inline-block;
+    border-radius: 130px;
+    padding: 8px;
+    margin: 0 0 24px;
+    font-family: "DM Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.24px;
+    text-transform: uppercase;
+  }
+
+  .section-{{ section.id }} .progress-head {
+        max-width: 545px;
+        width: 100%;
+    }
+
+  .section-{{ section.id }} .progress-title {
+    color: {{ section.settings.heading_color }};
+  }
+
+  .section-{{ section.id }} .progress-bottom_image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .section-{{ section.id }} .progress-bottom_image {
+        max-width: 146px;
+        width: 100%;
+        height: auto;
+        margin-bottom: 24px;
+    }
+
+  .section-{{ section.id }} .progress-bottom_image .progress-signature {
+    font-family: 'Georgia', cursive;
+    font-size: 32px;
+    font-style: italic;
+    color: {{ section.settings.heading_color }};
+    line-height: 1;
+  }
+
+  .section-{{ section.id }} .progress-bottom-name {
+    color: {{ section.settings.heading_color }};
+    font-family: "DM Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 39px;
+    letter-spacing: 0.07px;
+    margin: 0;
+  }
+
+  .section-{{ section.id }} .progress-bottom-designation {
+    color: {{ section.settings.subtext_color }};
+    font-family: "DM Sans";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 39px;
+    letter-spacing: 0.07px;
+    margin: 0;
+  }
+
+  /* RIGHT TIMELINE */
+  .section-{{ section.id }} .progress-blocks {
+    flex: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  /* The continuous vertical line */
+  .section-{{ section.id }} .progress-blocks::before {
+    background-color: {{ section.settings.line_color }};
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 20px;
+    bottom: 80px;
+    width: 1.5px;
+    z-index: 0;
+  }
+
+  /* Animated fill line */
+  .section-{{ section.id }} .progress-line-fill {
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    width: 1.5px;
+    height: 0%;
+    background-color: {{ section.settings.active_dot_color }};
+    z-index: 1;
+    transition: height 0.1s linear;
+  }
+
+  .section-{{ section.id }} .progress-block-item {
+    position: relative;
+    padding: 0 0 0 30px;
+    transition: all 0.4s ease;
+  }
+
+  .section-{{ section.id }} .progress-block-item:last-child {
+    padding-bottom: 0;
+  }
+
+  /* DOT — positioned at the year label, not block bottom */
+  /* .section-{{ section.id }} .progress-block-item::before, */
+  .section-{{ section.id }} .progress-block-year__icon {
+    content: '';
+    position: absolute;
+    left: -5px;
+    top: -5px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background-color: #ffffff;
+    border: 1px solid {{ section.settings.line_color }};
+    z-index: 2;
+    transition: border-color 0.4s ease, background-color 0.4s ease, transform 0.4s ease;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .section-{{ section.id }} span.progress-block-year__icon svg {
+        display: block;
+        width: 6px;
+        height: 6px;
+    }
+
+  /* Active dot state */
+  /* .section-{{ section.id }} .progress-block-item.is-active::before, */
+  .section-{{ section.id }} .progress-block-item.is-active .progress-block-year__icon{
+    border-color: {{ section.settings.active_dot_color }};
+    background-color: {{ section.settings.active_dot_color }};
+  }
+
+  .section-{{ section.id }} .progress-block-year {
+    color: {{ section.settings.subtext_color }};
+    display: block;
+    margin-bottom: 10px;
+    transition: color 0.4s ease;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+  }
+
+  .section-{{ section.id }} .progress-block-title {
+    color: {{ section.settings.heading_color }};
+    transition: color 0.4s ease;
+    font-family: Lora;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0 0 6px;
+  }
+
+  .section-{{ section.id }} .progress-block-subtitle {
+    color: {{ section.settings.subtext_color }};
+    margin: 0 0 20px;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+  }
+
+
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.mobile_padding_top }}px;
+      padding-bottom: {{ section.settings.mobile_padding_bottom }}px;
+    }
+
+    .section-{{ section.id }} .progress-wrapper {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .section-{{ section.id }} .progress-head,
+    .section-{{ section.id }} .progress-content {
+      max-width: 100%;
+    }
+
+    .section-{{ section.id }} .progress-tag {
+        margin: 0 0 12px;
+    }
+
+    .section-{{ section.id }} .progress-bottom_image {
+        max-width: 100px;
+        margin-bottom: 12px;
+    }
+
+    .section-{{ section.id }} .progress-bottom-name {
+        font-size: 18px;
+        line-height: 22px;
+    }
+    .section-{{ section.id }} .progress-bottom-designation {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .section-{{ section.id }} .progress-subtitle{
+        display: block !important;
+        border-radius: 8px;
+        border-left: 3px solid var(--Deep-Navy, #1A2744);
+        background: #F3F3EC;
+        padding: 12px 20px;
+        margin: 20px 0 0;
+        color: var(--Deep-Navy, #1A2744);
+        font-family: "DM Sans";
+        font-size: 14px;
+        font-style: italic;
+        font-weight: 400;
+        line-height: 20px;
+    }
+
+    .section-{{ section.id }} .progress-blocks::before {
+        bottom: 110px;
+    }
+
+
+  }
+{% endstyle %}
+
+<section class="progress-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="progress-wrapper">
+
+      {%- comment -%} LEFT: Sticky content {%- endcomment -%}
+      <div class="progress-content">
+        <div class="progress-head">
+          {% if section.settings.tag != blank %}
+            <p class="progress-tag">{{ section.settings.tag }}</p>
+          {% endif %}
+          {% if section.settings.heading != blank %}
+            <h2 class="progress-title title_title">
+              {{ section.settings.heading | replace: '<p>', '' | replace: '</p>', '' }}
+            </h2>
+          {% endif %}
+          {% if section.settings.subtitle != blank %}
+              <p class="progress-subtitle" style="display: none;">{{ section.settings.subtitle }}</p>
+            {% endif %}
+        </div>
+
+        <div class="progress-content-bottom">
+          <div class="progress-bottom_image">
+            {% if section.settings.founder_image != blank %}
+              {{ section.settings.founder_image | image_url: width: 200 | image_tag:
+                widths: '50,100,150,200',
+                loading: 'lazy',
+                alt: section.settings.founder_name
+              }}
+            {% elsif section.settings.signature_text != blank %}
+              <div class="progress-signature">{{ section.settings.signature_text }}</div>
+            {% endif %}
+          </div>
+          <div class="progress-bottom-info">
+            {% if section.settings.founder_name != blank %}
+              <p class="progress-bottom-name">{{ section.settings.founder_name }}</p>
+            {% endif %}
+            {% if section.settings.founder_designation != blank %}
+              <p class="progress-bottom-designation">{{ section.settings.founder_designation }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+
+      {%- comment -%} RIGHT: Timeline blocks {%- endcomment -%}
+      <ul class="progress-blocks" id="progressBlocks-{{ section.id }}">
+        <div class="progress-line-fill" id="progressFill-{{ section.id }}"></div>
+
+        {% for block in section.blocks %}
+          {% if block.type == 'timeline_item' %}
+            <li class="progress-block-item" {{ block.shopify_attributes }}>
+                <span class="progress-block-year__icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none">
+                        <circle cx="3" cy="3" r="3" fill="#1A2744"/>
+                    </svg>
+                </span>
+              {% if block.settings.year != blank %}
+                <span class="progress-block-year">{{ block.settings.year }}</span>
+              {% endif %}
+              {% if block.settings.title != blank %}
+                <h4 class="progress-block-title">{{ block.settings.title }}</h4>
+              {% endif %}
+              {% if block.settings.subtitle != blank %}
+                <p class="progress-block-subtitle">{{ block.settings.subtitle }}</p>
+              {% endif %}
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  function initProgressTimeline(sectionId) {
+    var container = document.getElementById('progressBlocks-' + sectionId);
+    if (!container) return;
+
+    var fillBar = document.getElementById('progressFill-' + sectionId);
+    var items = Array.from(container.querySelectorAll('.progress-block-item'));
+    if (!items.length) return;
+
+    function getScrollProgress() {
+      var containerRect = container.getBoundingClientRect();
+      var windowH = window.innerHeight;
+
+      // Total scrollable height of the timeline
+      var totalHeight = container.offsetHeight;
+
+      // How far we've scrolled into the container
+      // Start when top of container hits 80% of viewport, end when bottom hits 20%
+      var startTrigger = windowH * 0.75;
+      var endTrigger = windowH * 0.25;
+
+      var scrolledIn = startTrigger - containerRect.top;
+      var scrollRange = totalHeight + (startTrigger - endTrigger);
+
+      var progress = Math.min(Math.max(scrolledIn / scrollRange, 0), 1);
+      return progress;
+    }
+
+    function getDotTopPercent(item) {
+      var containerTop = container.getBoundingClientRect().top + window.scrollY;
+      var itemTop = item.getBoundingClientRect().top + window.scrollY;
+      var dotOffsetFromItemTop = 10; // matches ::before top: 10px (or 18px when active)
+      var dotAbsTop = itemTop - containerTop + dotOffsetFromItemTop;
+      return (dotAbsTop / container.offsetHeight) * 100;
+    }
+
+    function onScroll() {
+      var progress = getScrollProgress();
+      var fillPercent = progress * 100;
+
+      // Animate the fill bar
+      if (fillBar) {
+        fillBar.style.height = fillPercent + '%';
+      }
+
+      // Activate items whose dot the fill bar has reached
+      items.forEach(function(item) {
+        var dotPercent = getDotTopPercent(item);
+        if (fillPercent >= dotPercent) {
+          item.classList.add('is-active');
+        } else {
+          item.classList.remove('is-active');
+        }
+      });
+    }
+
+    // Throttle for performance
+    var ticking = false;
+    function handleScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(function() {
+          onScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Run once on init
+    onScroll();
+  }
+
+  // Run on DOMContentLoaded
+  document.addEventListener('DOMContentLoaded', function() {
+    initProgressTimeline('{{ section.id }}');
+  });
+
+  // Shopify Theme Editor support
+  document.addEventListener('shopify:section:load', function(e) {
+    if (e.detail && e.detail.sectionId === '{{ section.id }}') {
+      initProgressTimeline('{{ section.id }}');
+    }
+  });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Progress Timeline",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag Label",
+      "default": "THE BEGINNING"
+    },
+    {
+      "type": "richtext",
+      "id": "heading",
+      "label": "Heading",
+      "default": "<p>From Hospital Bed To Healing Shelf</p>"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sub Title"
+    },
+    {
+      "type": "header",
+      "content": "Founder Info"
+    },
+    {
+      "type": "image_picker",
+      "id": "founder_image",
+      "label": "Founder Photo"
+    },
+    {
+      "type": "text",
+      "id": "signature_text",
+      "label": "Signature Text (if no photo)",
+      "default": "David"
+    },
+    {
+      "type": "text",
+      "id": "founder_name",
+      "label": "Founder Name",
+      "default": "David Zimmerman"
+    },
+    {
+      "type": "text",
+      "id": "founder_designation",
+      "label": "Founder Designation",
+      "default": "Founder, Zimms Organics"
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "subtext_color",
+      "label": "Subtext / Body Color",
+      "default": "#6b6b6b"
+    },
+    {
+      "type": "color",
+      "id": "tag_color",
+      "label": "Tag Text ",
+      "default": "#1a1a1a"
+    },
+    {
+      "type": "color",
+      "id": "tag_bg_color",
+      "label": "Tag Background Color",
+      "default": "#f0f0f0"
+    },
+    {
+      "type": "color",
+      "id": "line_color",
+      "label": "Timeline Line Color (inactive)",
+      "default": "#d9d9d9"
+    },
+    {
+      "type": "color",
+      "id": "active_dot_color",
+      "label": "Active Dot & Fill Color",
+      "default": "#f5c842"
+    },
+    {
+      "type": "header",
+      "content": "Spacing — Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Spacing — Mobile"
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_top",
+      "label": "Mobile Padding Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding_bottom",
+      "label": "Mobile Padding Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "timeline_item",
+      "name": "Timeline Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "year",
+          "label": "Year",
+          "default": "2017"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Event Title",
+          "default": "The crisis"
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "Event Description",
+          "default": "Hospitalized with Crohn's disease. Lost 70% of blood. Refused lifelong medication."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Progress Timeline",
+      "category": "Custom",
+      "blocks": [
+        {
+          "type": "timeline_item",
+          "settings": {
+            "year": "2017",
+            "title": "The crisis",
+            "subtitle": "Hospitalized with Crohn's disease. Lost 70% of blood. Refused lifelong medication."
+          }
+        },
+        {
+          "type": "timeline_item",
+          "settings": {
+            "year": "2018",
+            "title": "Off medication",
+            "subtitle": "Discovered the anti-inflammatory power of organic EVOO. Inflammatory markers dropped measurably."
+          }
+        },
+        {
+          "type": "timeline_item",
+          "settings": {
+            "year": "2019",
+            "title": "Launched Herb & Olive",
+            "subtitle": "Quit BCG. Launched a premium olive oil brand. COVID arrived weeks later."
+          }
+        },
+        {
+          "type": "timeline_item",
+          "settings": {
+            "year": "2022",
+            "title": "80+ stores nationwide",
+            "subtitle": "Brand expanded to 80+ stores across the U.S. David's confidence in his story grew."
+          }
+        },
+        {
+          "type": "timeline_item",
+          "settings": {
+            "year": "2023",
+            "title": "Zimms Organics is born",
+            "subtitle": "Renamed to carry David's identity. His name on the bottle is his promise of quality."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,303 @@
+{% style %}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.bg_color }};
+  padding-top: {{ section.settings.padding_top_desktop }}px;
+  padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  position: relative;
+}
+
+/* IMAGE */
+.section-{{ section.id }} .ritual-image {
+    position: relative;
+    height: auto;
+    width: 100%;
+}
+
+.section-{{ section.id }} img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.section-{{ section.id }} .ritual-image-desktop {
+  display: block;
+}
+
+.section-{{ section.id }} .ritual-image-mobile {
+  display: none;
+}
+
+/* CONTENT */
+.section-{{ section.id }} .ritual-content {
+    position: absolute;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    transform: translatey(-50%);
+}
+
+.section-{{ section.id }} .ritual-tag {
+    color: {{ section.settings.tag_color }};
+    border-radius: 130px;
+    border: 0.5px solid var(--Deep-Navy, #1A2744);
+    background: #FFFFFC;
+    padding: 8px 12px;
+    margin: 0 0 16px;
+    font-family: "DM Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+}
+
+.section-{{ section.id }} .ritual-subtitle {
+    color: var(--white, #FFF);
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    max-width: 784px;
+    width: 100%;
+    margin: 16px 0 0;
+}
+
+.section-{{ section.id }} a.ritual-btn.btn_btn {
+    margin-top: 40px;
+    max-width: 220px;
+    width: 100%;
+}
+
+.section-{{ section.id }} .ritual-title {
+  color: {{ section.settings.heading_color }};
+}
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+.section-{{ section.id }} .ritual-content {
+    width: calc(100% - 40px);
+    left: 20px;
+    right: 20px;
+}
+
+.section-{{ section.id }} .ritual-subtitle {
+    font-size: 14px;
+    max-width: 310px;
+    margin: 12px 0 0;
+}
+
+.section-{{ section.id }} a.ritual-btn.btn_btn {
+    margin-top: 16px;
+    max-width: fit-content;
+    width: 100%;
+    font-size: 14px;
+}
+
+  .section-{{ section.id }} .ritual-image-desktop {
+    display: none;
+  }
+
+  .section-{{ section.id }} .ritual-image-mobile {
+    display: block;
+  }
+}
+{% endstyle %}
+
+<section class="ritual-section section-{{ section.id }}">
+  {% comment %} <div class="page-width"> {% endcomment %}
+    <div class="ritual-wrapper">
+
+      <!-- IMAGE -->
+      <div class="ritual-image">
+        {% if section.settings.image_desktop != blank %}
+          <div class="ritual-image-desktop">
+            {{
+              section.settings.image_desktop
+              | image_url: width: 1600
+              | image_tag:
+                widths: '50,100,150,200,300,400,500,600,800,1000,1200,1400,1600',
+                loading: 'eager',
+                alt: 'desktop image'
+            }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.image_mobile != blank %}
+          <div class="ritual-image-mobile">
+            {{
+              section.settings.image_mobile
+              | image_url: width: 800
+              | image_tag:
+                widths: '50,100,150,200,300,400,500,600,800',
+                loading: 'eager',
+                alt: 'mobile image'
+            }}
+          </div>
+        {% endif %}
+      </div>
+
+      <!-- CONTENT -->
+      <div class="ritual-content">
+
+        {% if section.settings.tag != blank %}
+          <p class="ritual-tag">
+            {{ section.settings.tag }}
+          </p>
+        {% endif %}
+
+        {% if section.settings.title != blank %}
+          <h2 class="ritual-title title_title">
+            {{ section.settings.title | replace: '<p>', '' | replace: '</p>', '' }}
+          </h2>
+        {% endif %}
+
+        {% if section.settings.subtitle != blank %}
+          <div class="ritual-subtitle">
+            {{ section.settings.subtitle }}
+          </div>
+        {% endif %}
+
+        {% if section.settings.button_label != blank %}
+          <a href="{{ section.settings.button_link }}" class="ritual-btn btn_btn">
+            {{ section.settings.button_label }}
+          </a>
+        {% endif %}
+
+      </div>
+
+    </div>
+  {% comment %} </div> {% endcomment %}
+</section>
+
+
+{% schema %}
+{
+  "name": "Ritual Section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_desktop",
+      "label": "Desktop Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "Mobile Image"
+    },
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button Link"
+    },
+
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tag_color",
+      "label": "Tag Color",
+      "default": "#666666"
+    },
+
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    },
+
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ritual Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}

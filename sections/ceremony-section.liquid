@@ -1,0 +1,381 @@
+<section class="ceremony-section section-{{ section.id }}">
+  <div class="page-width">
+    <div class="ceremony-wrapper">
+
+      <!-- CONTENT -->
+      <div class="ceremony-content">
+
+        <div class="ceremony-head">
+          {% if section.settings.tag != blank %}
+            <p class="ceremony-tag">{{ section.settings.tag }}</p>
+          {% endif %}
+
+          {% if section.settings.title != blank %}
+            <h2 class="ceremony-title title_title">
+              {{ section.settings.title | replace: '<p>', '' | replace: '</p>', '' }}
+            </h2>
+          {% endif %}
+        </div>
+
+        {% if section.settings.description != blank %}
+          <p class="ceremony-desc">
+            {{ section.settings.description }}
+          </p>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+          <ul class="ceremony-blocks">
+            {% for block in section.blocks %}
+              <li class="ceremony-block-item" {{ block.shopify_attributes }}>
+
+                {% if section.settings.block_icon != blank %}
+                  <div class="ceremony-block-icon">
+                    {{
+                      section.settings.block_icon
+                      | image_url: width: 200
+                      | image_tag:
+                        loading: 'lazy',
+                        alt: 'icon'
+                    }}
+                  </div>
+                {% endif %}
+
+                <div class="ceremony-block-text">
+
+                  {% if block.settings.block_title != blank %}
+                    <h4 class="ceremony-block-title">
+                      {{ block.settings.block_title }}
+                    </h4>
+                  {% endif %}
+
+                  {% if block.settings.block_subtitle != blank %}
+                    <p class="ceremony-block-subtitle">
+                      {{ block.settings.block_subtitle }}
+                    </p>
+                  {% endif %}
+
+                </div>
+
+              </li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+
+      </div>
+
+      <!-- IMAGE -->
+      <div class="ceremony-image">
+
+        {% if section.settings.image != blank %}
+          {{
+            section.settings.image
+            | image_url: width: 1600
+            | image_tag:
+              widths: '50,100,150,200,300,400,500,600,800,1000,1200,1400,1600',
+              loading: 'lazy',
+              alt: 'ceremony image'
+          }}
+        {% endif %}
+
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% style %}
+.section-{{ section.id }} {
+  background-color: {{ section.settings.bg_color }};
+  padding-top: {{ section.settings.padding_top_desktop }}px;
+  padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+}
+
+.section-{{ section.id }} .ceremony-wrapper {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+/* CONTENT */
+.section-{{ section.id }} .ceremony-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.section-{{ section.id }} .ceremony-tag {
+    color: {{ section.settings.tag_color }};
+    border-radius: 130px;
+    background: var(--Deep-Navy, #1A2744);
+    display: inline-block;
+    margin: 0 0 8px;
+    padding: 8px;
+    font-family: "DM Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+}
+
+.section-{{ section.id }} .ceremony-title {
+  color: {{ section.settings.heading_color }};
+}
+
+.section-{{ section.id }} .ceremony-desc {
+    color: {{ section.settings.text_color }};
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 0;
+}
+
+/* BLOCKS */
+.section-{{ section.id }} .ceremony-blocks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.section-{{ section.id }} .ceremony-block-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.section-{{ section.id }} .ceremony-block-icon {
+  width: 20px;
+  height: 20px;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+.section-{{ section.id }} .ceremony-block-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.section-{{ section.id }} h4.ceremony-block-title {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: Lora;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    margin: 0;
+}
+
+.section-{{ section.id }} p.ceremony-block-subtitle {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 12px 0 0;
+}
+
+/* IMAGE */
+.section-{{ section.id }} .ceremony-image {
+    flex: 1;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.section-{{ section.id }} .ceremony-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* MOBILE */
+@media screen and (max-width: 768px) {
+  .section-{{ section.id }} {
+    padding-top: {{ section.settings.padding_top_mobile }}px;
+    padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+  }
+
+  .section-{{ section.id }} .ceremony-wrapper {
+    flex-direction: column;
+  }
+
+.section-{{ section.id }} .ceremony-content {
+    gap: 24px;
+}
+
+.section-{{ section.id }} .ceremony-desc {
+    color: #1a2744;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+}
+
+.section-{{ section.id }} h4.ceremony-block-title {
+    font-size: 18px;
+    line-height: 26px;
+}
+
+.section-{{ section.id }} p.ceremony-block-subtitle {
+    line-height: 20px;
+    margin: 8px 0 0;
+}
+
+.section-{{ section.id }} .ceremony-image {
+    flex: 1;
+    border-radius: 4px;
+    overflow: hidden;
+    aspect-ratio: 1.2;
+}
+
+}
+{% endstyle %}
+
+{% schema %}
+{
+  "name": "Ceremony Section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Right Side Image"
+    },
+
+    {
+      "type": "image_picker",
+      "id": "block_icon",
+      "label": "Block Icon (Same for all items)"
+    },
+
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "bg_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Heading Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tag_color",
+      "label": "Tag Color",
+      "default": "#666666"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color",
+      "default": "#444444"
+    },
+
+    {
+      "type": "header",
+      "content": "Desktop Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    },
+
+    {
+      "type": "header",
+      "content": "Mobile Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 40
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Block Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "block_title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "block_subtitle",
+          "label": "Subtitle"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Ceremony Section",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
