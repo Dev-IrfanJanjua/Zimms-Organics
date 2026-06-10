@@ -33,7 +33,7 @@
     font-size: 12px;
     font-style: normal;
     font-weight: 500;
-    line-height: normal;
+    line-height: 0.7;
     letter-spacing: -0.24px;
     text-transform: uppercase;
   }
@@ -259,7 +259,7 @@
   }
 {% endstyle %}
 
-<section class="progress-section section-{{ section.id }}">
+<section class="progress-section section-{{ section.id }} scroll-trigger animate--slide-in">
   <div class="page-width">
     <div class="progress-wrapper">
 
@@ -308,7 +308,10 @@
 
         {% for block in section.blocks %}
           {% if block.type == 'timeline_item' %}
-            <li class="progress-block-item" {{ block.shopify_attributes }}>
+            <li class="progress-block-item scroll-trigger animate--slide-in" {{ block.shopify_attributes }}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+            >
                 <span class="progress-block-year__icon">
                     <svg xmlns="http://www.w3.org/2000/svg" width="6" height="6" viewBox="0 0 6 6" fill="none">
                         <circle cx="3" cy="3" r="3" fill="#1A2744"/>

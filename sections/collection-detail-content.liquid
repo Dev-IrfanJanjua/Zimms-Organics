@@ -1,0 +1,728 @@
+{% comment %} Product Detail Content Section {% endcomment %}
+
+<style>
+  .pdc-section.section-{{ section.id }} {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  }
+
+  /* ── Layout ── */
+  .section-{{ section.id }} .pdc-inner {
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  /* Image column */
+  .section-{{ section.id }} .pdc-image-col {
+    width: 47%;
+    flex-shrink: 0;
+    position: sticky;
+    top: 80px;
+    height: auto;
+  }
+
+  .section-{{ section.id }} .pdc-image-col img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+    border-radius: {{ section.settings.image_border_radius }}px;
+  }
+
+  /* Content column */
+  .section-{{ section.id }} .pdc-content-col {
+    flex: 1;
+    min-width: 0;
+    background-color: {{ section.settings.content_bg_color }};
+  }
+
+  /* No image → full width */
+  .section-{{ section.id }} .pdc-inner--no-image .pdc-content-col {
+    width: 100%;
+  }
+
+  /* ── Header ── */
+  .section-{{ section.id }} .pdc-header {
+    margin-bottom: 32px;
+  }
+
+  /* title + subtitle side-by-side */
+  .section-{{ section.id }} .pdc-inner--header-left .pdc-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .section-{{ section.id }} .pdc-header__left {
+    flex: 1 1 auto;
+  }
+
+  /* title_title class hook for external auto-style */
+  .section-{{ section.id }} .pdc-title.title_title {
+    color: {{ section.settings.title_color }};
+  }
+
+  .section-{{ section.id }} .pdc-title-line {
+    background-color: {{ section.settings.title_color }};
+    width: 124px;
+    height: 2px;
+    margin: 12px 0;
+    display: block;
+  }
+
+  .section-{{ section.id }} .pdc-subtitle {
+    color: {{ section.settings.subtitle_color }};
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 24px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  /* ── Richtext content styles ── */
+  /* All typography is driven by the richtext editor.
+     We style the base elements so the merchant's content looks correct. */
+
+  .section-{{ section.id }} .pdc-richtext h2,
+  .section-{{ section.id }} .pdc-richtext h3 {
+    color: {{ section.settings.section_heading_color }};
+    font-family: Lora, serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    margin: 48px 0 0;
+    border-bottom: 1px solid #F3F3EC;
+    padding-bottom: 12px;
+  }
+
+  .section-{{ section.id }} .pdc-richtext h2:first-child,
+  .section-{{ section.id }} .pdc-richtext h3:first-child {
+    margin-top: 0;
+  }
+
+  .section-{{ section.id }} .pdc-richtext h4 {
+    color: #2A241D;
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    margin: 24px 0 13px;
+  }
+
+  .section-{{ section.id }} .pdc-richtext strong,
+  .section-{{ section.id }} .pdc-richtext b {
+    color: {{ section.settings.label_color }};
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  .section-{{ section.id }} .pdc-richtext strong {
+        margin: 24px 0 12px;
+        display: inline-block;
+    }
+
+  .section-{{ section.id }} .pdc-richtext p {
+    color: {{ section.settings.body_color }};
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0 0;
+  }
+
+  .section-{{ section.id }} .pdc-richtext ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .section-{{ section.id }} .pdc-richtext ul li {
+    color: {{ section.settings.body_color }};
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+    padding-left: 18px;
+    position: relative;
+  }
+
+  .section-{{ section.id }} .pdc-richtext ul li::before {
+    content: '●';
+    font-size: 15px;
+    color: {{ section.settings.bullet_color }};
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+
+  .section-{{ section.id }} .pdc-richtext a {
+    color: {{ section.settings.title_color }};
+    text-decoration: underline;
+  }
+
+  /* ── Pairs Well With blocks ── */
+  .section-{{ section.id }} .pdc-pairs {
+    margin-top: 48px;
+  }
+
+  .section-{{ section.id }} .pdc-pairs__title {
+    color: {{ section.settings.section_heading_color }};
+    font-family: Lora, serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #F3F3EC;
+  }
+
+  .section-{{ section.id }} .pdc-pairs__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .section-{{ section.id }} .pdc-pairs__item {
+    background-color: {{ section.settings.pairs_item_bg }};
+    border: 1px solid {{ section.settings.pairs_item_border }};
+    border-radius: 4px;
+    padding: 12px 16px;
+    text-align: center;
+    color: {{ section.settings.pairs_item_color }};
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: normal;
+  }
+
+  /* ── Button ── */
+
+  .section-{{ section.id }} .pdc-btn.btn_btn {
+    background-color: {{ section.settings.btn_bg_color }};
+    color: {{ section.settings.btn_text_color }};
+    border: 1px solid {{ section.settings.btn_border_color }};
+    border-radius: {{ section.settings.btn_border_radius }}px;
+    cursor: pointer;
+    font-weight: 500;
+    max-width: 172px;
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .pdc-btn-wrap {
+        max-width: 100%;
+        width: 1000%;
+        text-align: center;
+    }
+
+  .section-{{ section.id }} .pdc-btn.btn_btn:hover {
+    opacity: 0.8;
+  }
+
+  {% comment %} ===== no image style === {% endcomment %}
+
+.section-{{ section.id }} .pdc-inner--header-left .pdc-content-col {
+    padding: 40px;
+    border-radius: 4px;
+    display: flex;
+    gap: 40px;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.section-{{ section.id }} .pdc-inner.pdc-inner--no-image.pdc-inner--header-left {
+    flex-direction: column;
+    align-items: center;
+    gap: 80px;
+}
+
+.section-{{ section.id }} .pdc-inner--header-left .pdc-header {
+    position: sticky;
+    top: 30px;
+    margin: 0 !important;
+    gap: 7px !important;
+    max-width: 400px;
+    width: 100%;
+}
+
+.section-{{ section.id }} .pdc-inner--header-left .pdc-richtext h2, 
+.section-{{ section.id }} .pdc-inner--header-left .pdc-richtext h3 {
+    border-color: #1A274480;
+}
+
+
+
+  @media screen and (max-width: 1140px){
+
+    .section-{{ section.id }} .pdc-pairs__grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+    }
+
+  /* ── Mobile ── */
+  @media screen and (max-width: 768px) {
+    .pdc-section.section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .section-{{ section.id }} .pdc-inner {
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .section-{{ section.id }} .pdc-image-col {
+        width: 100%;
+        position: static;
+        aspect-ratio: 1;
+        height: fit-content;
+    }
+
+    .section-{{ section.id }} .pdc-header {
+        margin-bottom: 20px;
+    }
+
+    .section-{{ section.id }} .pdc-richtext h2, 
+    .section-{{ section.id }} .pdc-richtext h3 {
+        margin: 32px 0 0;
+    }
+
+    .section-{{ section.id }} .pdc-richtext h4 {
+        .section-{{ section.id }} font-size: 14px;
+        margin: 16px 0 12px;
+    }
+
+    .section-{{ section.id }} .pdc-richtext strong {
+        margin: 16px 0 12px;
+    }
+
+    .section-{{ section.id }} .pdc-pairs {
+        margin-top: 32px;
+    }
+
+    .section-{{ section.id }} .pdc-title.title_title {
+      font-size: 32px;
+    }
+
+    .section-{{ section.id }} .pdc-inner--header-left .pdc-header {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .section-{{ section.id }} .pdc-pairs__grid {
+      grid-template-columns: repeat(2, 1fr);
+      margin-top: 16px;
+    }
+
+    {% comment %} === no image stylling ==== {% endcomment %}
+
+    .section-{{ section.id }} .pdc-inner--header-left .pdc-content-col {
+        padding: 40px 12px;
+        flex-direction: column;
+    }
+
+    .section-{{ section.id }} .pdc-inner--header-left .pdc-header {
+        position: static;
+        max-width: 100%;
+    }
+
+    .section-{{ section.id }} .pdc-inner.pdc-inner--no-image.pdc-inner--header-left {
+        gap: 32px;
+    }
+     
+  }
+</style>
+
+<section class="pdc-section section-{{ section.id }}" id="shopify-section-{{ section.id }}">
+  <div class="page-width">
+
+    {%- assign has_image = false -%}
+    {%- if section.settings.image != blank -%}
+      {%- assign has_image = true -%}
+    {%- endif -%}
+
+    {%- assign header_pos = section.settings.header_position -%}
+
+    <div class="pdc-inner{% unless has_image %} pdc-inner--no-image{% endunless %}{% if header_pos == 'left' %} pdc-inner--header-left{% endif %}">
+
+      {%- if has_image -%}
+        <div class="pdc-image-col">
+          {{
+            section.settings.image
+            | image_url: width: 900
+            | image_tag:
+              loading: 'lazy',
+              alt: section.settings.image.alt | escape
+          }}
+        </div>
+      {%- endif -%}
+
+      <div class="pdc-content-col">
+
+        {%- if section.settings.show_title or section.settings.show_subtitle -%}
+          <div class="pdc-header">
+            {%- if header_pos == 'top' -%}
+
+              {%- if section.settings.show_title and section.settings.title != blank -%}
+                <h2 class="pdc-title title_title">{{ section.settings.title }}</h2>
+                <span class="pdc-title-line"></span>
+              {%- endif -%}
+              {%- if section.settings.show_subtitle and section.settings.subtitle != blank -%}
+                <p class="pdc-subtitle">{{ section.settings.subtitle }}</p>
+              {%- endif -%}
+
+            {%- else -%}
+
+              <div class="pdc-header__left">
+                {%- if section.settings.show_title and section.settings.title != blank -%}
+                  <h2 class="pdc-title title_title">{{ section.settings.title }}</h2>
+                  <span class="pdc-title-line"></span>
+                {%- endif -%}
+              </div>
+              {%- if section.settings.show_subtitle and section.settings.subtitle != blank -%}
+                <p class="pdc-subtitle">{{ section.settings.subtitle }}</p>
+              {%- endif -%}
+
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.content != blank -%}
+          <div class="pdc-richtext">
+            {{ section.settings.content }}
+          </div>
+        {%- endif -%}
+
+        {%- assign pair_blocks = section.blocks | where: 'type', 'pair_item' -%}
+        {%- if pair_blocks.size > 0 -%}
+          <div class="pdc-pairs">
+            {%- if section.settings.pairs_title != blank -%}
+              <h3 class="pdc-pairs__title">{{ section.settings.pairs_title }}</h3>
+            {%- endif -%}
+            <div class="pdc-pairs__grid">
+              {%- for block in pair_blocks -%}
+                <div class="pdc-pairs__item" {{ block.shopify_attributes }}>
+                  {{ block.settings.label }}
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        {%- endif -%}
+
+      </div>
+        {%- if section.settings.btn_label != blank and section.settings.btn_url != blank -%}
+          <div class="pdc-btn-wrap">
+            <a href="{{ section.settings.btn_url }}" class="pdc-btn btn_btn">
+              {{ section.settings.btn_label }}
+            </a>
+          </div>
+        {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Detail Content",
+  "tag": "section",
+  "class": "pdc-section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image (leave blank for full-width layout)"
+    },
+    {
+      "type": "range",
+      "id": "image_border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Image Border Radius",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Title & Subtitle"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_title",
+      "label": "Show Title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Cook Details"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_subtitle",
+      "label": "Show Subtitle",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle (tag line)",
+      "default": "CENTRAL CALIFORNIA · 100% ARBEQUINA · HARVEST DEC 2023"
+    },
+    {
+      "type": "select",
+      "id": "header_position",
+      "label": "Title & Subtitle Layout",
+      "options": [
+        { "value": "top", "label": "Stacked (title above subtitle)" },
+        { "value": "left", "label": "Side by side (title left, subtitle right)" }
+      ],
+      "default": "top"
+    },
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "richtext",
+      "id": "content",
+      "label": "Main Content (richtext)",
+      "default": "<h2>Origin & Harvest Details</h2><h4>Produced by a small family farm in Central California</h4><ul><li>Zimms Organics sources only the finest olives in California, period.</li><li>That means working with small family farms who have been purveyors of their craft for decades.</li></ul><p><strong>Harvest Date: December 2023</strong></p><ul><li>The FDA says that olive oil is best consumed within 18 months of the harvest date.</li><li>Quality extra virgin olive oil should be stored in a cool, dark space.</li></ul><h2>Ingredients</h2><p><strong>Varietal: 100% Arbequina Olives</strong></p><ul><li>This mild intensity extra virgin olive oil is produced from 100% Arbequina olives grown in Central California.</li></ul><h2>Flavor Profile</h2><p><strong>Intensity &amp; Flavor Profile: Medium</strong></p><ul><li>Well-rounded, full-bodied mouth feel, with a nutty, black pepper and buttery finish.</li></ul><h2>Polyphenols</h2><p><strong>Acidity (%): 0.28</strong></p><ul><li>Acidity is a main quality parameter set by the International Olive Oil Council for extra virgin olive oil.</li></ul><h2>How To Use</h2><ul><li>Zimms COOK EVOO is meant for… you guessed it.</li><li>COOK handles well with heat because its 349 polyphenols (mg/kg) will protect the EVOO from oxidizing up to around 400–450 F.</li></ul>"
+    },
+    {
+      "type": "header",
+      "content": "Pairs Well With"
+    },
+    {
+      "type": "text",
+      "id": "pairs_title",
+      "label": "Pairs Section Title",
+      "default": "Pairs Well With"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "Read More"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "range",
+      "id": "btn_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Spacing – Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Spacing – Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Colors – Section"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Area Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Colors – Title & Subtitle"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "header",
+      "content": "Colors – Content"
+    },
+    {
+      "type": "color",
+      "id": "section_heading_color",
+      "label": "Section Heading Color (h2/h3)",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "label_color",
+      "label": "Bold / Label Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "body_color",
+      "label": "Body Text Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "bullet_color",
+      "label": "Bullet Dot Color",
+      "default": "#E07B39"
+    },
+    {
+      "type": "header",
+      "content": "Colors – Pairs Well With"
+    },
+    {
+      "type": "color",
+      "id": "pairs_item_bg",
+      "label": "Pair Item Background",
+      "default": "#F5F3EE"
+    },
+    {
+      "type": "color",
+      "id": "pairs_item_border",
+      "label": "Pair Item Border",
+      "default": "#E0DACE"
+    },
+    {
+      "type": "color",
+      "id": "pairs_item_color",
+      "label": "Pair Item Text Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "header",
+      "content": "Colors – Button"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Button Border",
+      "default": "#1A2744"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "pair_item",
+      "name": "Pairs Well With Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Fish"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Detail Content",
+      "blocks": [
+        { "type": "pair_item", "settings": { "label": "Fish" } },
+        { "type": "pair_item", "settings": { "label": "Steak" } },
+        { "type": "pair_item", "settings": { "label": "Salad" } },
+        { "type": "pair_item", "settings": { "label": "Grilled Veggies" } },
+        { "type": "pair_item", "settings": { "label": "Eggs" } },
+        { "type": "pair_item", "settings": { "label": "Yogurt" } },
+        { "type": "pair_item", "settings": { "label": "Ice cream" } },
+        { "type": "pair_item", "settings": { "label": "Cheese" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

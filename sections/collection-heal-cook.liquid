@@ -1,0 +1,646 @@
+{% comment %} Heal and Cook Section {% endcomment %}
+
+<style>
+  .heal-cook-section {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  }
+
+  .heal-cook-section .section-header {
+    margin-bottom: 32px;
+  }
+
+  .heal-cook-section .section-title {
+    color: {{ section.settings.title_color }};
+    font-family: Lora, serif;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    margin: 0 0 12px;
+  }
+
+  .heal-cook-section .section-subtitle {
+    color: {{ section.settings.subtitle_color }};
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0;
+  }
+
+  .heal-cook-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+
+  .heal-cook-card {
+    border-radius: 4px;
+    padding: 40px;
+  }
+
+  .heal-cook-card__eyebrow {
+    font-family: Lora, serif;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0 0 20px;
+  }
+
+  .heal-cook-card__headline {
+    font-family: "DM Sans";
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 0 0 20px;
+  }
+
+  .heal-cook-card__bullets {
+    list-style: none;
+    margin: 0 0 20px;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .heal-cook-card__bullets li {
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .heal-cook-card__bullets li::before,
+  .heal-cook-card__uses-list li::before {
+    content: '●';
+    font-size: 15px;
+    position: absolute;
+    left: 0;
+    top: 0px;
+  }
+
+  .heal-cook-card__divider {
+    border: none;
+    border-top: 1px solid;
+    margin: 20px 0;
+  }
+
+  .heal-cook-card__uses-label {
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
+    letter-spacing: 2.016px;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+
+  .heal-cook-card__uses-list {
+    list-style: none;
+    margin: 0 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .heal-cook-card__uses-list li {
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    padding-left: 20px;
+    position: relative;
+  }
+
+  .heal-cook-card__uses-list li::before {
+    {% comment %} content: '●';
+    font-size: 8px;
+    position: absolute;
+    left: 0;
+    top: 5px; {% endcomment %}
+    color: #d45f35;
+  } 
+
+  .heal-cook-card__badges {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 1px solid #1A274426;
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+
+  .heal-cook-card__badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .heal-cook-card__badge-icon {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border: 1px solid #000000;
+  }
+
+  .heal-cook-card__badge-icon svg {
+    width: 10px;
+    height: 8px;
+  }
+
+  .heal-cook-card__badge-key {
+    font-weight: 600;
+  }
+
+  .heal-cook-card__badge-value {
+    font-weight: 400;
+  }
+
+  @media screen and (max-width: 768px) {
+
+    .heal-cook-section {
+        padding-top: {{ section.settings.padding_top_mob }}px;
+        padding-bottom: {{ section.settings.padding_bottom_mob }}px;
+    }
+
+    .heal-cook-section .section-title {
+        font-size: 18px;
+        line-height: 26px;
+        margin-bottom: 15px;
+    }
+
+    .heal-cook-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .heal-cook-section .section-header {
+        margin-bottom: 24px;
+    }
+
+    .heal-cook-card {
+      padding: 24px 12px;
+    }
+
+    .heal-cook-card__eyebrow {
+        margin: 0 0 15px;
+    }
+
+    .heal-cook-card__headline {
+        font-size: 18px;
+        margin-bottom: 15px;
+    }
+
+    .heal-cook-card__bullets {
+        margin: 0 0 15px;
+    }
+
+    .heal-cook-card__divider {
+        margin: 15px 0 20px;
+    }
+
+    .heal-cook-card__badges {
+        margin-top: 16px;
+    }
+
+
+  }
+</style>
+
+<section class="heal-cook-section" id="shopify-section-{{ section.id }}">
+  <div class="page-width">
+    <div class="section-header">
+      {% if section.settings.title != blank %}
+        <h2 class="section-title">{{ section.settings.title }}</h2>
+      {% endif %}
+      {% if section.settings.subtitle != blank %}
+        <p class="section-subtitle">{{ section.settings.subtitle }}</p>
+      {% endif %}
+    </div>
+
+    <div class="heal-cook-grid">
+      {% for block in section.blocks %}
+        {% if block.type == 'collection_card' %}
+          <div
+            class="heal-cook-card"
+            style="background-color: {{ block.settings.card_bg_color }};"
+            {{ block.shopify_attributes }}
+          >
+            {% if block.settings.eyebrow != blank %}
+              <p
+                class="heal-cook-card__eyebrow"
+                style="color: {{ block.settings.eyebrow_color }};"
+              >{{ block.settings.eyebrow }}</p>
+            {% endif %}
+
+            {% if block.settings.headline != blank %}
+              <h3
+                class="heal-cook-card__headline"
+                style="color: {{ block.settings.headline_color }};"
+              >{{ block.settings.headline }}</h3>
+            {% endif %}
+
+            {% if block.settings.bullet_1 != blank or block.settings.bullet_2 != blank or block.settings.bullet_3 != blank or block.settings.bullet_4 != blank %}
+              <ul
+                class="heal-cook-card__bullets"
+                style="color: {{ block.settings.bullets_color }};"
+              >
+                {% assign bullet_items = block.settings.bullet_1 | append: '|||' | append: block.settings.bullet_2 | append: '|||' | append: block.settings.bullet_3 | append: '|||' | append: block.settings.bullet_4 %}
+                {% assign bullets_array = bullet_items | split: '|||' %}
+                {% for bullet in bullets_array %}
+                  {% unless bullet == blank %}
+                    <li style="--bullet-color: {{ block.settings.bullet_dot_color }}">
+                      <style>
+                        .heal-cook-card__bullets li::before { color: {{ block.settings.bullet_dot_color }}; }
+                      </style>
+                      {{ bullet }}
+                    </li>
+                  {% endunless %}
+                {% endfor %}
+              </ul>
+            {% endif %}
+
+            <hr
+              class="heal-cook-card__divider"
+              style="border-color: {{ block.settings.divider_color }};"
+            >
+
+            {% if block.settings.uses_label != blank %}
+              <p
+                class="heal-cook-card__uses-label"
+                style="color: {{ block.settings.uses_label_color }};"
+              >{{ block.settings.uses_label }}</p>
+            {% endif %}
+
+            {% if block.settings.uses_1 != blank or block.settings.uses_2 != blank %}
+              <ul
+                class="heal-cook-card__uses-list"
+                style="color: {{ block.settings.uses_text_color }};"
+              >
+                {% if block.settings.uses_1 != blank %}
+                  <li>{{ block.settings.uses_1 }}</li>
+                {% endif %}
+                {% if block.settings.uses_2 != blank %}
+                  <li>{{ block.settings.uses_2 }}</li>
+                {% endif %}
+              </ul>
+            {% endif %}
+
+            {% if block.settings.badge_1_key != blank or block.settings.badge_2_key != blank or block.settings.badge_3_key != blank %}
+              <div
+                class="heal-cook-card__badges"
+                style="border-color: {{ block.settings.divider_color }};"
+              >
+                {% for i in (1..3) %}
+                  {% assign key_setting = 'badge_' | append: i | append: '_key' %}
+                  {% assign val_setting = 'badge_' | append: i | append: '_value' %}
+                  {% assign badge_key = block.settings[key_setting] %}
+                  {% assign badge_val = block.settings[val_setting] %}
+                  {% unless badge_key == blank %}
+                    <div class="heal-cook-card__badge" style="color: {{ block.settings.badge_text_color }};">
+                      <span
+                        class="heal-cook-card__badge-icon"
+                        style="background-color: {{ block.settings.badge_icon_bg }};"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="7" viewBox="0 0 9 7" fill="none">
+                            <path d="M0.892578 3.4645L3.17829 5.75021L7.74972 0.893066" stroke="{{ block.settings.badge_icon_color }}" stroke-width="1.78571" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      <span>
+                        <span class="heal-cook-card__badge-key">{{ badge_key }}</span>
+                        {% unless badge_val == blank %}
+                          <span class="heal-cook-card__badge-value"> – {{ badge_val }}</span>
+                        {% endunless %}
+                      </span>
+                    </div>
+                  {% endunless %}
+                {% endfor %}
+              </div>
+            {% endif %}
+
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Heal And Cook",
+  "tag": "section",
+  "class": "heal-cook-section-wrapper",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Heal And Cook"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "All of Zimms Organics products are grown on family farms in California. Each product is single origin and single varietal, meaning that they all come from one place and from one olive. Learn more about each style below."
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "subtitle_color",
+      "label": "Subtitle Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "header",
+      "content": "Spacing Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Spacing Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 16
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_card",
+      "name": "Collection Card",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Card Content"
+        },
+        {
+          "type": "text",
+          "id": "eyebrow",
+          "label": "Eyebrow (e.g. Heal collection)",
+          "default": "Heal collection"
+        },
+        {
+          "type": "text",
+          "id": "headline",
+          "label": "Headline",
+          "default": "A bright, peppery daily ritual."
+        },
+        {
+          "type": "text",
+          "id": "bullet_1",
+          "label": "Bullet 1",
+          "default": "Our health and wellness inspired EVOO."
+        },
+        {
+          "type": "text",
+          "id": "bullet_2",
+          "label": "Bullet 2",
+          "default": "Best enjoyed as a shot in our Sip Glass or drizzled on your favorite foods."
+        },
+        {
+          "type": "text",
+          "id": "bullet_3",
+          "label": "Bullet 3",
+          "default": "A bright and peppery mouth feel that also handles well cooked in heat."
+        },
+        {
+          "type": "text",
+          "id": "bullet_4",
+          "label": "Bullet 4",
+          "default": "Comes in HEAL and HEAL+"
+        },
+        {
+          "type": "text",
+          "id": "uses_label",
+          "label": "Uses Label",
+          "default": "USES"
+        },
+        {
+          "type": "textarea",
+          "id": "uses_1",
+          "label": "Uses Item 1",
+          "default": "Consume daily in our Sip Glass for gut, brain and heart health, as well as its anti-inflammatory properties."
+        },
+        {
+          "type": "textarea",
+          "id": "uses_2",
+          "label": "Uses Item 2",
+          "default": "You can also enjoy HEAL AL & HEAL+ as a finishing oil to elevate the flavor of any dish."
+        },
+        {
+          "type": "text",
+          "id": "badge_1_key",
+          "label": "Badge 1 – Key"
+        },
+        {
+          "type": "text",
+          "id": "badge_1_value",
+          "label": "Badge 1 – Value"
+        },
+        {
+          "type": "text",
+          "id": "badge_2_key",
+          "label": "Badge 2 – Key"
+        },
+        {
+          "type": "text",
+          "id": "badge_2_value",
+          "label": "Badge 2 – Value"
+        },
+        {
+          "type": "text",
+          "id": "badge_3_key",
+          "label": "Badge 3 – Key"
+        },
+        {
+          "type": "text",
+          "id": "badge_3_value",
+          "label": "Badge 3 – Value"
+        },
+        {
+          "type": "header",
+          "content": "Card Colors"
+        },
+        {
+          "type": "color",
+          "id": "card_bg_color",
+          "label": "Card Background",
+          "default": "#F5F3EE"
+        },
+        {
+          "type": "color",
+          "id": "eyebrow_color",
+          "label": "Eyebrow Color",
+          "default": "#1A2744"
+        },
+        {
+          "type": "color",
+          "id": "headline_color",
+          "label": "Headline Color",
+          "default": "#1A2744"
+        },
+        {
+          "type": "color",
+          "id": "bullets_color",
+          "label": "Bullets Text Color",
+          "default": "#1A2744"
+        },
+        {
+          "type": "color",
+          "id": "bullet_dot_color",
+          "label": "Bullet Dot Color",
+          "default": "#E07B39"
+        },
+        {
+          "type": "color",
+          "id": "divider_color",
+          "label": "Divider Color",
+          "default": "#D0CBBC"
+        },
+        {
+          "type": "color",
+          "id": "uses_label_color",
+          "label": "Uses Label Color",
+          "default": "#1A2744"
+        },
+        {
+          "type": "color",
+          "id": "uses_text_color",
+          "label": "Uses Text Color",
+          "default": "#1A2744"
+        },
+        {
+          "type": "color",
+          "id": "badge_text_color",
+          "label": "Badge Text Color",
+          "default": "#1A2744"
+        },
+        {
+          "type": "color",
+          "id": "badge_icon_bg",
+          "label": "Badge Icon Background",
+          "default": "#F0C130"
+        },
+        {
+          "type": "color",
+          "id": "badge_icon_color",
+          "label": "Badge Checkmark Color",
+          "default": "#1A2744"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Heal And Cook",
+      "blocks": [
+        {
+          "type": "collection_card",
+          "settings": {
+            "eyebrow": "Heal collection",
+            "headline": "A bright, peppery daily ritual.",
+            "bullet_1": "Our health and wellness inspired EVOO.",
+            "bullet_2": "Best enjoyed as a shot in our Sip Glass or drizzled on your favorite foods.",
+            "bullet_3": "A bright and peppery mouth feel that also handles well cooked in heat.",
+            "bullet_4": "Comes in HEAL and HEAL+",
+            "uses_label": "USES",
+            "uses_1": "Consume daily in our Sip Glass for gut, brain and heart health, as well as its anti-inflammatory properties.",
+            "uses_2": "You can also enjoy HEAL AL & HEAL+ as a finishing oil to elevate the flavor of any dish."
+          }
+        },
+        {
+          "type": "collection_card",
+          "settings": {
+            "eyebrow": "Cook collection",
+            "headline": "Built for heat & flavor.",
+            "bullet_1": "Our cooking inspired EVOO.",
+            "bullet_2": "A well-rounded flavor profile that perfectly enhances any dish.",
+            "bullet_3": "Enjoy cooking in heat or as a finishing oil.",
+            "uses_label": "USES",
+            "uses_1": "This olive oil works well with heat.",
+            "uses_2": "Cook any of your favorite foods in a pan, oven or even an open flame, and let the olive oil naturally bring out the best flavors of your food.",
+            "badge_1_key": "Single Origin",
+            "badge_1_value": "Central California",
+            "badge_2_key": "Single Varietal",
+            "badge_2_value": "100% Arbequina Olives",
+            "badge_3_key": "Flavor Profile",
+            "badge_3_value": "Grassy, nutty, robust and well balanced."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

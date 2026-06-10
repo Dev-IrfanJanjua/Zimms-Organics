@@ -76,13 +76,16 @@
 
 .section-{{ section.id }} .ait-image {
   flex: 1;
+  height: 476px;
 }
 
+.section-{{ section.id }} .ait-image video,
 .section-{{ section.id }} .ait-image img {
   width: 100%;
   height: 100%;
   display: block;
   border-radius: 8px;
+  object-fit: cover;
 }
 
 @media screen and (max-width: 768px) {
@@ -100,6 +103,10 @@
   .section-{{ section.id }} .ait-image {
     max-width: 100%;
     width: 100%;
+  }
+
+  .section-{{ section.id }} .ait-image{
+    aspect-ratio: 1.2;
   }
 
     .section-{{ section.id }} .ait-title {
@@ -133,7 +140,7 @@
 }
 {% endstyle %}
 
-<section class="about-img-text-section section-{{ section.id }}">
+<section class="about-img-text-section section-{{ section.id }} scroll-trigger animate--slide-in">
   <div class="page-width">
     <div class="about-img-text-wrapper">
       
@@ -165,11 +172,14 @@
         {% if block_count > 0 %}
           <ul class="ait-blocks">
             {% for block in section.blocks %}
-              <li class="ait-block-item" {{ block.shopify_attributes }}>
+              <li class="ait-block-item scroll-trigger animate--slide-in" {{ block.shopify_attributes }}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+                >
                 
                 {% if block.settings.title != blank %}
-                  <h3 class="ait-block-title">
-                    {{ block.settings.title }}
+                  <h3 class="ait-block-title" data-count="{{ block.settings.title }}">
+                    0
                   </h3>
                 {% endif %}
 
@@ -186,22 +196,111 @@
 
       </div>
 
-      {% if section.settings.image != blank %}
+      {% assign video_poster = section.settings.video | img_url: ""   %}
+      {% if section.settings.video != blank %}
         <div class="ait-image">
-          {{
-            section.settings.image
-            | image_url: width: 1600
-            | image_tag:
-              widths: '50,100,150,200,300,400,500,600,800,1000,1200,1400,1600',
-              loading: 'lazy',
-              alt: 'image'
-          }}
+            {{ section.settings.video 
+                | video_tag: class: 'ait_video_video', 
+                controls: false, 
+                muted: true,
+                autoplay: true,
+                loop: true,
+                playsinline: true,
+                poster: video_poster
+                }}
         </div>
       {% endif %}
 
     </div>
   </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', initAitCounters);
+document.addEventListener('shopify:section:load', initAitCounters);
+
+function initAitCounters() {
+  const counters = document.querySelectorAll(
+    '.section-{{ section.id }} .ait-block-title[data-count]'
+  );
+
+  if (!counters.length) return;
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+
+        const counter = entry.target;
+
+        if (counter.dataset.animated === 'true') return;
+
+        counter.dataset.animated = 'true';
+
+        const original = counter.dataset.count.trim();
+
+        const match = original.match(/^([^0-9]*)([\d,.]+)(.*)$/);
+
+        if (!match) {
+          counter.textContent = original;
+          return;
+        }
+
+        const prefix = match[1];
+        const numericPart = match[2];
+        const suffix = match[3];
+
+        const target = parseFloat(
+          numericPart.replace(/,/g, '')
+        );
+
+        if (isNaN(target)) {
+          counter.textContent = original;
+          return;
+        }
+
+        const duration = 2500;
+        const startTime = performance.now();
+
+        function easeOutCubic(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
+
+        function animate(currentTime) {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+
+          const easedProgress = easeOutCubic(progress);
+
+          const currentValue = target * easedProgress;
+
+          counter.textContent =
+            prefix +
+            Math.round(currentValue).toLocaleString() +
+            suffix;
+
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          } else {
+            counter.textContent = original;
+          }
+        }
+
+        requestAnimationFrame(animate);
+
+        observer.unobserve(counter);
+      });
+    },
+    {
+      threshold: 0.3
+    }
+  );
+
+  counters.forEach((counter) => {
+    observer.observe(counter);
+  });
+}
+</script>
 
 {% schema %}
 {
@@ -220,9 +319,9 @@
       "label": "Subheading"
     },
     {
-      "type": "image_picker",
-      "id": "image",
-      "label": "Image"
+      "type": "video",
+      "id": "video",
+      "label": "Video"
     },
     {
       "type": "color",

@@ -1,0 +1,717 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "collection_banner_FMLeKW": {
+      "type": "collection-banner",
+      "name": "Collection Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Frame_2147242608_2.png",
+        "mobile_image": "shopify://shop_images/Frame_2147242608_3.png",
+        "title": "Heal & Cook with Nature",
+        "bg_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
+    "collection_bundle_banner_adTpRP": {
+      "type": "collection-bundle-banner",
+      "name": "Bundle Banner",
+      "settings": {
+        "vertical_alignment": "center",
+        "text_alignment": "left",
+        "section_padding_vertical": 60,
+        "section_padding_horizontal": 0,
+        "section_padding_vertical_mobile": 40,
+        "section_padding_horizontal_mobile": 0,
+        "background_color": "#ffffff",
+        "text_color": "#1a2744",
+        "image": "shopify://shop_images/Group_1707482357_1_1.png",
+        "image_width": 240,
+        "heading": "Can't Decide What you want?",
+        "heading_tag": "h2",
+        "heading_font_size": 32,
+        "heading_line_height": 36,
+        "button_label": "Build Your Own Bundle",
+        "button_link": "",
+        "button_open_new_tab": false,
+        "button_font_size": 16,
+        "button_padding_vertical": 14,
+        "button_padding_horizontal": 24,
+        "button_border_radius": 4,
+        "button_border_width": 0,
+        "button_background_color": "#1a2744",
+        "button_text_color": "#ffffff",
+        "button_border_color": "#1c2b4a",
+        "button_hover_background_color": "#1a2744",
+        "button_hover_text_color": "#ffffff",
+        "button_hover_border_color": "#2e4470",
+        "image_mobile_position": "bottom",
+        "mobile_alignment": "center",
+        "mobile_gap": 28,
+        "image_width_mobile": 260,
+        "heading_font_size_mobile": 28,
+        "heading_line_height_mobile": 36,
+        "button_full_width_mobile": true
+      }
+    },
+    "collection_heal_cook_nXeHJz": {
+      "type": "collection-heal-cook",
+      "blocks": {
+        "collection_card_gt9WRe": {
+          "type": "collection_card",
+          "settings": {
+            "eyebrow": "Heal collection",
+            "headline": "A bright, peppery daily ritual.",
+            "bullet_1": "Our health and wellness inspired EVOO.",
+            "bullet_2": "Best enjoyed as a shot in our Sip Glass or drizzled on your favorite foods.",
+            "bullet_3": "A bright and peppery mouth feel that also handles well cooked in heat.",
+            "bullet_4": "Comes in HEAL and HEAL+",
+            "uses_label": "USES",
+            "uses_1": "Consume daily in our Sip Glass for gut, brain and heart health, as well as its anti-inflammatory properties.",
+            "uses_2": "You can also enjoy HEAL AL & HEAL+ as a finishing oil to elevate the flavor of any dish.",
+            "badge_1_key": "",
+            "badge_1_value": "",
+            "badge_2_key": "",
+            "badge_2_value": "",
+            "badge_3_key": "",
+            "badge_3_value": "",
+            "card_bg_color": "#f3f3ec",
+            "eyebrow_color": "#1a2744",
+            "headline_color": "#1a2744",
+            "bullets_color": "#1a2744",
+            "bullet_dot_color": "#d45f35",
+            "divider_color": "#d9d1c9",
+            "uses_label_color": "#1a2744",
+            "uses_text_color": "#1a2744",
+            "badge_text_color": "#1a2744",
+            "badge_icon_bg": "#f0c130",
+            "badge_icon_color": "#1a2744"
+          }
+        },
+        "collection_card_4r7dXD": {
+          "type": "collection_card",
+          "settings": {
+            "eyebrow": "Cook collection",
+            "headline": "Built for heat & flavor.",
+            "bullet_1": "Our cooking inspired EVOO.",
+            "bullet_2": "A well-rounded flavor profile that perfectly enhances any dish.",
+            "bullet_3": "Enjoy cooking in heat or as a finishing oil.",
+            "bullet_4": "Comes in HEAL and HEAL+",
+            "uses_label": "USES",
+            "uses_1": "This olive oil works well with heat.",
+            "uses_2": "Cook any of your favorite foods in a pan, oven or even an open flame, and let the olive oil naturally bring out the best flavors of your food.",
+            "badge_1_key": "Single Origin",
+            "badge_1_value": "Central California",
+            "badge_2_key": "Single Varietal",
+            "badge_2_value": "100% Arbequina Olives",
+            "badge_3_key": "Flavor Profile",
+            "badge_3_value": "Grassy, nutty, robust and well balanced.",
+            "card_bg_color": "#f3f3ec",
+            "eyebrow_color": "#1a2744",
+            "headline_color": "#1a2744",
+            "bullets_color": "#1a2744",
+            "bullet_dot_color": "#d45f35",
+            "divider_color": "#d9d1c9",
+            "uses_label_color": "#1a2744",
+            "uses_text_color": "#1a2744",
+            "badge_text_color": "#1a2744",
+            "badge_icon_bg": "#ffda1f",
+            "badge_icon_color": "#1a2744"
+          }
+        }
+      },
+      "block_order": [
+        "collection_card_gt9WRe",
+        "collection_card_4r7dXD"
+      ],
+      "name": "Heal And Cook",
+      "settings": {
+        "title": "Heal And Cook",
+        "subtitle": "All of Zimms Organics products are grown on family farms in California. Each product is single origin and single varietal, meaning that they all come from one place and from one olive. Learn more about each style below.",
+        "section_bg_color": "#ffffff",
+        "title_color": "#1a2744",
+        "subtitle_color": "#1a2744",
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mob": 60,
+        "padding_bottom_mob": 16
+      }
+    },
+    "collection_detail_content_gUYMw3": {
+      "type": "collection-detail-content",
+      "blocks": {
+        "pair_item_Xr8TXN": {
+          "type": "pair_item",
+          "settings": {
+            "label": "Fish"
+          }
+        },
+        "pair_item_htEVzr": {
+          "type": "pair_item",
+          "settings": {
+            "label": "Steak"
+          }
+        },
+        "pair_item_YX4xcg": {
+          "type": "pair_item",
+          "settings": {
+            "label": "Salad"
+          }
+        },
+        "pair_item_nLi4B7": {
+          "type": "pair_item",
+          "settings": {
+            "label": "Grilled Veggies"
+          }
+        },
+        "pair_item_MBHEai": {
+          "type": "pair_item",
+          "settings": {
+            "label": "Eggs"
+          }
+        },
+        "pair_item_UibiLQ": {
+          "type": "pair_item",
+          "settings": {
+            "label": "Yogurt"
+          }
+        },
+        "pair_item_tRVEA9": {
+          "type": "pair_item",
+          "settings": {
+            "label": "Ice cream"
+          }
+        },
+        "pair_item_dHnRmr": {
+          "type": "pair_item",
+          "settings": {
+            "label": "Cheese"
+          }
+        }
+      },
+      "block_order": [
+        "pair_item_Xr8TXN",
+        "pair_item_htEVzr",
+        "pair_item_YX4xcg",
+        "pair_item_nLi4B7",
+        "pair_item_MBHEai",
+        "pair_item_UibiLQ",
+        "pair_item_tRVEA9",
+        "pair_item_dHnRmr"
+      ],
+      "name": "Product Detail Content",
+      "settings": {
+        "image": "shopify://shop_images/Frame_2147242745.png",
+        "image_border_radius": 8,
+        "show_title": true,
+        "title": "Cook Details",
+        "show_subtitle": true,
+        "subtitle": "CENTRAL CALIFORNIA · 100% ARBEQUINA · HARVEST DEC 2023",
+        "header_position": "top",
+        "content": "<h2>Origin & Harvest Details</h2><h4>Produced by a small family farm in Central California</h4><ul><li>Zimms Organics sources only the finest olives in California, period.</li><li>That means working with small family farms who have been purveyors of their craft for decades.</li><li>We've sampled and tried organic extra virgin olive oil from almost every varietal of olive and farm in the state of California.</li><li>We are very confident in and excited about this year's harvest and the purveyors that we've chosen to partner with.</li><li>Our partner farms do things the right way. They are great people and of course, they make an amazing organic extra virgin olive oil.</li></ul><p><strong>Harvest Date: December 2023</strong></p><ul><li>The FDA says that olive oil is best consumed within 18 months of the harvest date.</li><li>Quality extra virgin olive oil should be stored in a cool, dark space.</li><li>The bottle should be dark or painted glass to protect the EVOO from UV light.</li><li>If stored in optimal conditions, EVOO will only lose a minimal amount of potency and flavor profiles after that 18 month mark.</li><li>Our bottles are painted with organic matte ink, which completely protects your EVOO from light.</li></ul><h2>Ingredients</h2><p><strong>Varietal: 100% Arbequina Olives</strong></p><ul><li>This mild intensity extra virgin olive oil is produced from 100% Arbequina olives grown in Central California.</li><li>This EVOO has notable aromas of nuttiness, green banana and black pepper, with a full-bodied mouth feel and buttery finish.</li></ul><h2>Flavor Profile</h2><p><strong>Intensity & Flavor Profile: Medium</strong></p><ul><li>Well-rounded, full-bodied mouth feel, with a nutty, black pepper and buttery finish.</li><li>The intensity of an EVOO relates to the amount of bitterness and peppery notes experienced while tasting.</li><li>An olive oil that doesn't tickle or burn the back of your throat is considered mild (low polyphenols – 100–250).</li><li>A very peppery and bitter olive oil that will likely make you cough from the sensation on the back of your throat is considered strong (350–500+ polyphenols).</li></ul><h2>Polyphenols</h2><p><strong>Acidity (%): 0.28</strong></p><ul><li>Acidity is a main quality parameter set by the International Olive Oil Council for extra virgin olive oil.</li><li>Olive Oil must have a free fatty acid level below 0.8% to be deemed as extra virgin olive oil.</li><li>This value is determined by having the EVOO analyzed by a lab for quality assurance.</li></ul><h2>How To Use</h2><ul><li>Zimms COOK EVOO is meant for… you guessed it.</li><li>This EVOO feels like a warm hug in the winter time, which is why it is perfect for your warm dishes.</li><li>COOK has a more full-bodied and well-rounded mouth feel, so it pairs well with your eggs, soups, roasting meats, veggies or really anything your heart desires.</li></ul>",
+        "pairs_title": "Pairs Well With",
+        "btn_label": "Read More",
+        "btn_url": "",
+        "btn_border_radius": 0,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "section_bg_color": "#ffffff",
+        "content_bg_color": "#ffffff",
+        "title_color": "#1A2744",
+        "subtitle_color": "#1A2744",
+        "section_heading_color": "#1A2744",
+        "label_color": "#1A2744",
+        "body_color": "#1A2744",
+        "bullet_color": "#d45f35",
+        "pairs_item_bg": "#f3f3ec",
+        "pairs_item_border": "#f3f3ec",
+        "pairs_item_color": "#1A2744",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#1A2744",
+        "btn_border_color": "#1A2744"
+      }
+    },
+    "collection_detail_content_jnyh3A": {
+      "type": "collection-detail-content",
+      "blocks": {
+        "pair_item_eYkBRr": {
+          "type": "pair_item",
+          "disabled": true,
+          "settings": {
+            "label": "Fish"
+          }
+        },
+        "pair_item_bjHaBP": {
+          "type": "pair_item",
+          "disabled": true,
+          "settings": {
+            "label": "Steak"
+          }
+        },
+        "pair_item_nmCq89": {
+          "type": "pair_item",
+          "disabled": true,
+          "settings": {
+            "label": "Salad"
+          }
+        },
+        "pair_item_VqnF7U": {
+          "type": "pair_item",
+          "disabled": true,
+          "settings": {
+            "label": "Grilled Veggies"
+          }
+        },
+        "pair_item_AQEPek": {
+          "type": "pair_item",
+          "disabled": true,
+          "settings": {
+            "label": "Eggs"
+          }
+        },
+        "pair_item_pR4498": {
+          "type": "pair_item",
+          "disabled": true,
+          "settings": {
+            "label": "Yogurt"
+          }
+        },
+        "pair_item_6WN8XA": {
+          "type": "pair_item",
+          "disabled": true,
+          "settings": {
+            "label": "Ice cream"
+          }
+        },
+        "pair_item_zNeGaA": {
+          "type": "pair_item",
+          "disabled": true,
+          "settings": {
+            "label": "Cheese"
+          }
+        }
+      },
+      "block_order": [
+        "pair_item_eYkBRr",
+        "pair_item_bjHaBP",
+        "pair_item_nmCq89",
+        "pair_item_VqnF7U",
+        "pair_item_AQEPek",
+        "pair_item_pR4498",
+        "pair_item_6WN8XA",
+        "pair_item_zNeGaA"
+      ],
+      "name": "Product Detail Content",
+      "settings": {
+        "image_border_radius": 0,
+        "show_title": true,
+        "title": "Heal Collection",
+        "show_subtitle": true,
+        "subtitle": "Origin · Ingredients · Flavor profile",
+        "header_position": "left",
+        "content": "<h2>Origin & Harvest Details</h2><p><strong>Produced by a small family farm in Central California</strong></p><ul><li>Zimms Organics sources only the finest olives in California, period.</li><li>That means working with small family farms who have been purveyors of their craft for decades.</li></ul><p><strong>Harvest Date: December 2023</strong></p><ul><li>The FDA says that olive oil is best consumed within 18 months of the harvest date.</li><li>Quality extra virgin olive oil should be stored in a cool, dark space.</li><li>The bottle should be dark or painted glass to protect the EVOO from UV light.</li></ul><h2>Ingredients</h2><p><strong>Varietal: 100% Arbequina Olives</strong></p><ul><li>This mild intensity extra virgin olive oil is produced from 100% Arbequina olives grown in Central California.</li><li>This EVOO has notable aromas of nuttiness, green banana and black pepper, with a full-bodied mouth feel and buttery finish.</li></ul><h2>Flavor Profile</h2><p><strong>Intensity & Flavor Profile: Medium</strong></p><ul><li>Well-rounded, full-bodied mouth feel, with a nutty, black pepper and buttery finish.</li><li>The intensity of an EVOO relates to the amount of bitterness and peppery notes experienced while tasting.</li><li>An olive oil that doesn't tickle or burn the back of your throat is considered mild (low polyphenols – 100–250).</li><li>A very peppery and bitter olive oil that will likely make you cough from the sensation on the back of your throat<br/>is considered strong (350–500+ polyphenols).</li></ul><p></p>",
+        "pairs_title": "",
+        "btn_label": "Read More",
+        "btn_url": "#",
+        "btn_border_radius": 4,
+        "padding_top_desktop": 80,
+        "padding_bottom_desktop": 80,
+        "padding_top_mobile": 40,
+        "padding_bottom_mobile": 40,
+        "section_bg_color": "#ffffff",
+        "content_bg_color": "#f3f3ec",
+        "title_color": "#1A2744",
+        "subtitle_color": "#1A2744",
+        "section_heading_color": "#1A2744",
+        "label_color": "#1A2744",
+        "body_color": "#1A2744",
+        "bullet_color": "#d45f35",
+        "pairs_item_bg": "#F5F3EE",
+        "pairs_item_border": "#E0DACE",
+        "pairs_item_color": "#1A2744",
+        "btn_bg_color": "#ffffff",
+        "btn_text_color": "#1A2744",
+        "btn_border_color": "#1A2744"
+      }
+    },
+    "slideshow": {
+      "type": "slideshow",
+      "blocks": {
+        "slide": {
+          "type": "slide",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/olive_tree.jpg",
+            "heading": "{{ collection.title }}",
+            "heading_size": "h0",
+            "subheading": "All of Zimms Organics products are grown on family farms in California. Each product is single origin and single varietal, meaning that they all come from one place and from one olive.",
+            "button_label": "",
+            "link": "",
+            "button_style_secondary": false,
+            "box_align": "middle-left",
+            "show_text_box": true,
+            "text_alignment": "left",
+            "image_overlay_opacity": 10,
+            "color_scheme": "background-2",
+            "text_alignment_mobile": "left"
+          }
+        }
+      },
+      "block_order": [
+        "slide"
+      ],
+      "disabled": true,
+      "settings": {
+        "layout": "full_bleed",
+        "slide_height": "small",
+        "slider_visual": "counter",
+        "auto_rotate": false,
+        "change_slides_speed": 5,
+        "image_behavior": "none",
+        "show_text_below": true,
+        "accessibility_info": ""
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    },
+    "image-with-text-1": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "disabled": true,
+          "settings": {
+            "heading": "heal",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Heal contains a medium-high range polyphenol 100% Arbequina olive from Central California.<br/><br/><strong>Uses</strong> - Consume daily by the spoonful for gut health and anti-inflammatory properties. Use as a finishing oil to elevate the flavor of any dish. Also cooks well in heat.<br/></p><ul><li><strong>Single Origin</strong> - Central California</li><li><strong>Single Varietal</strong> - 100% Arbequina Olives</li><li><strong>Flavor Profile</strong> - Peppery, bright and full bodied.<br/><br/></li></ul>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "disabled": true,
+          "settings": {
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/heal",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Asset_4_4x_97acd46f-30be-4b2c-979f-50605c7aa5db.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "background-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "882c6bec-82d9-4f95-9857-70c74c57fa62": {
+      "type": "collapsible-content",
+      "blocks": {
+        "template--17736425079064__882c6bec-82d9-4f95-9857-70c74c57fa62-1675725293f9779587-0": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "origin & harvest details",
+            "icon": "map_pin",
+            "row_content": "<p><strong>Produced by a small family farm in Central California</strong></p><p>Zimms Organics sources only the finest olives in California, period. That means working with small family farms who have been purveyors of their craft for decades. We’ve sampled and tried organic extra virgin olive oil from almost every varietal of olive and farm in the state of California. We are very confident in and excited about this year’s harvest and the purveyors that we’ve chosen to partner with. Our partner farms do things the right way. They are great people and of course, they make an amazing organic extra virgin olive oil.<br/><br/><strong>Harvest Date: November 2022</strong></p><p>The FDA says that olive oil is best consumed within 18 months of the harvest date. Quality extra virgin olive oil should be stored in a cool, dark space. The bottle should be dark or painted glass to protect the EVOO from UV light. If stored in optimal conditions, EVOO will only lose a minimal amount of potency and flavor profiles after that 18 month mark.</p>",
+            "page": ""
+          }
+        },
+        "template--17736425079064__882c6bec-82d9-4f95-9857-70c74c57fa62-1675725293f9779587-1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "ingredients",
+            "icon": "leaf",
+            "row_content": "<p><strong>Varietal: 100% Arbequina</strong></p><p>This mild intensity extra virgin olive oil is produced from 100% Arbequina olives grown in Central California. This EVOO has notable aromas of grass and black pepper, with a nice full-bodied mouth feel and buttery finish.</p>",
+            "page": ""
+          }
+        },
+        "template--17736425079064__882c6bec-82d9-4f95-9857-70c74c57fa62-1675725293f9779587-2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "flavor profile",
+            "icon": "serving_dish",
+            "row_content": "<p><strong>Intensity & Flavor Profile: </strong>Medium - Bright, grassy and peppery with a buttery finish.</p><p>The intensity of an EVOO relates to the amount of bitterness and peppery notes experienced while tasting. An olive oil that doesn’t tickle or burn the back of your throat is considered mild (low polyphenols - 100-200). A very peppery and bitter olive oil that will likely make you cough from the sensation on the back of your throat is considered strong (350-500+ polyphenols).</p><p><strong>Polyphenols : 311 (mg/kg)</strong></p><p>Polyphenols are like super antioxidant micronutrients found in healthy plant-based foods. These polyphenols give high quality organic extra virgin olive oil their incredible health benefits such as: Heart health, reducing cholesterol levels, lowering blood pressure, hair & skin health, reduces inflammation in the body and <a href=\"https://olivewellnessinstitute.org/extra-virgin-olive-oil/health-benefits-of-extra-virgin-olive-oil/\"><span style=\"text-decoration:underline\">many more</span></a>. The level of polyphenols varies based on region grown, ripeness at harvest, extraction methods, etc.</p><p><strong>Acidity (%): 0.47</strong></p><p>Acidity is a main quality parameter set by the International Olive Oil Council for extra virgin olive oil. Olive Oil must have a free fatty acid level below 0.8% to be deemed as extra virgin olive oil. This value is determined by having the EVOO analyzed by a lab for quality assurance.</p>",
+            "page": ""
+          }
+        },
+        "template--17736425079064__882c6bec-82d9-4f95-9857-70c74c57fa62-1675725293f9779587-3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "how to use",
+            "icon": "check_mark",
+            "row_content": "<p>Try taking a shot of this EVOO with the Mia Glass (link it when we have one) 30 minutes before consuming food in the morning. This may help with gut support / maintenance while repairing your intestinal tract over time (results may vary). The HEAL EVOO also pairs beautifully when drizzled over steak in a chimichurri or when used as the base of a salad dressing. HEAL handles well being cooked in heat because its 311 polyphenols (mg/kg) will protect the EVOO from oxidizing.</p>",
+            "page": ""
+          }
+        },
+        "624554fb-8e25-45f5-9660-517d3885b672": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "pairs well with",
+            "icon": "apple",
+            "row_content": "<ul><li>Shots</li><li>Fish</li><li>Steak</li><li>Grilled chicken</li><li>Salad</li><li>Grilled Veggies</li><li>Eggs</li><li>Yogurt</li><li>Ice cream</li></ul>",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--17736425079064__882c6bec-82d9-4f95-9857-70c74c57fa62-1675725293f9779587-0",
+        "template--17736425079064__882c6bec-82d9-4f95-9857-70c74c57fa62-1675725293f9779587-1",
+        "template--17736425079064__882c6bec-82d9-4f95-9857-70c74c57fa62-1675725293f9779587-2",
+        "template--17736425079064__882c6bec-82d9-4f95-9857-70c74c57fa62-1675725293f9779587-3",
+        "624554fb-8e25-45f5-9660-517d3885b672"
+      ],
+      "disabled": true,
+      "settings": {
+        "caption": "",
+        "heading": "heal details",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "background-1",
+        "container_color_scheme": "background-2",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "disabled": true,
+      "settings": {
+        "products_per_page": 12,
+        "columns_desktop": 4,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": true,
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "columns_mobile": "2",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "4b95fd86-2f85-438c-8eb4-700c80c87766": {
+      "type": "collapsible-content",
+      "blocks": {
+        "template--17736425079064__4b95fd86-2f85-438c-8eb4-700c80c87766-16754529045291f2f3-0": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "template--17736425079064__4b95fd86-2f85-438c-8eb4-700c80c87766-16754529045291f2f3-1": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "template--17736425079064__4b95fd86-2f85-438c-8eb4-700c80c87766-16754529045291f2f3-2": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "template--17736425079064__4b95fd86-2f85-438c-8eb4-700c80c87766-16754529045291f2f3-3": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        },
+        "45d48f38-9d48-4f61-afe6-a88c79f0f760": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Collapsible row",
+            "icon": "check_mark",
+            "row_content": "",
+            "page": ""
+          }
+        }
+      },
+      "block_order": [
+        "template--17736425079064__4b95fd86-2f85-438c-8eb4-700c80c87766-16754529045291f2f3-0",
+        "template--17736425079064__4b95fd86-2f85-438c-8eb4-700c80c87766-16754529045291f2f3-1",
+        "template--17736425079064__4b95fd86-2f85-438c-8eb4-700c80c87766-16754529045291f2f3-2",
+        "template--17736425079064__4b95fd86-2f85-438c-8eb4-700c80c87766-16754529045291f2f3-3",
+        "45d48f38-9d48-4f61-afe6-a88c79f0f760"
+      ],
+      "disabled": true,
+      "settings": {
+        "caption": "",
+        "heading": "Collapsible content",
+        "heading_size": "h1",
+        "heading_alignment": "center",
+        "layout": "none",
+        "color_scheme": "background-1",
+        "container_color_scheme": "background-2",
+        "open_first_collapsible_row": false,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "image-with-text-0": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "shop cook",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Cook contains a medium-high range polyphenol 100% Arbosana olive from Central California.<br/><br/><strong>Uses</strong> - This olive oil works well with heat. Cook any of your favorite foods in a pan, oven or even an open flame, and let the olive oil naturally bring out the best flavors of your food.<br/></p><ul><li><strong>Single Origin</strong> - Central California</li><li><strong>Single Varietal</strong> - 100% Arbosana Olives</li><li><strong>Flavor Profile</strong> - Grassy, nutty, robust and well balanced.</li></ul>",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Shop now",
+            "button_link": "shopify://collections/cook",
+            "button_style_secondary": false
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "button"
+      ],
+      "disabled": true,
+      "settings": {
+        "image": "shopify://shop_images/Asset_3_4x_f7a4a8a5-5ad0-4421-ab22-ec2523798382.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "",
+        "color_scheme": "background-2",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 60
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Subscribe to our emails",
+            "heading_size": "h1"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Be the first to know about new collections and exclusive offers.</p>"
+          }
+        },
+        "email-form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email-form"
+      ],
+      "disabled": true,
+      "settings": {
+        "color_scheme": "accent-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 0
+      }
+    },
+    "17029157064c7dd034": {
+      "type": "apps",
+      "settings": {
+        "include_margins": true
+      }
+    }
+  },
+  "order": [
+    "collection_banner_FMLeKW",
+    "collection_bundle_banner_adTpRP",
+    "collection_heal_cook_nXeHJz",
+    "collection_detail_content_gUYMw3",
+    "collection_detail_content_jnyh3A",
+    "slideshow",
+    "banner",
+    "image-with-text-1",
+    "882c6bec-82d9-4f95-9857-70c74c57fa62",
+    "product-grid",
+    "4b95fd86-2f85-438c-8eb4-700c80c87766",
+    "image-with-text-0",
+    "newsletter",
+    "17029157064c7dd034"
+  ]
+}

@@ -21,9 +21,9 @@
     font-family: "DM Sans";
     font-size: 18px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 500;
     line-height: normal;
-    letter-spacing: 0.9px;
+    letter-spacing: 0;
 }
 
 .section-{{ section.id }} .principles-title {
@@ -105,10 +105,6 @@
     margin-bottom: 24px;
   }
 
-  .section-{{ section.id }} .principles-title {
-        text-align: left;
-    }
-
     .section-{{ section.id }} .principles-subtitle {
         max-width: 100%;
         font-size: 14px;
@@ -123,10 +119,6 @@
     padding: 16px;
     gap: 12px;
   }
-
-  .section-{{ section.id }} .principles-block__icon {
-        margin-bottom: 8px;
-    }
 
     .section-{{ section.id }} .principles-block__title {
         font-size: 18px;
@@ -143,10 +135,14 @@
         line-height: 22px;
     }
 
+    .section-{{ section.id }} .principles-tag{
+        margin: 0;
+    }
+
 }
 {% endstyle %}
 
-<section class="principles-section section-{{ section.id }}">
+<section class="principles-section section-{{ section.id }} scroll-trigger animate--slide-in">
   <div class="page-width">
     <div class="principles-wrapper">
 
@@ -181,8 +177,10 @@
         <ul class="principles-block">
           {% for block in section.blocks %}
             <li
-              class="principles-block-item"
+              class="principles-block-item scroll-trigger animate--slide-in"
               {{ block.shopify_attributes }}
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
             >
 
               {% if block.settings.icon != blank %}

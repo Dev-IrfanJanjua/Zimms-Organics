@@ -43,7 +43,7 @@
       "settings": {
         "heading": "<p>Healed by nature. Bottled with purpose.</p>",
         "subheading": "Born from a near-death health crisis and a refusal to accept a life on  medication. Zimms Organics is one founder's journey from patient to  producer  and the organic olive oil that changed everything.",
-        "image": "shopify://shop_images/Frame_2147242774.png",
+        "video": "shopify://files/videos/Untitled design.mp4",
         "section_bg_color": "#fffffc",
         "heading_color": "#1a2744",
         "text_color": "#1a2744",
@@ -69,7 +69,7 @@
         "desktop_padding_top": 80,
         "desktop_padding_bottom": 80,
         "mobile_padding_top": 40,
-        "mobile_padding_bottom": 40
+        "mobile_padding_bottom": 60
       }
     },
     "progress_section_iF49FY": {
@@ -141,7 +141,7 @@
         "active_dot_color": "#ffda1f",
         "padding_top": 80,
         "padding_bottom": 80,
-        "mobile_padding_top": 40,
+        "mobile_padding_top": 60,
         "mobile_padding_bottom": 40
       }
     },
