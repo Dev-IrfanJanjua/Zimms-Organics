@@ -1,0 +1,396 @@
+{% assign routine_products = product.metafields.custom.routine_products.value %}
+
+{% style %}
+  .pdp-routine-product__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  .pdp-routine-product__image img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1;
+    object-fit: cover;
+    display: block;
+  }
+
+  .pdp-routine-products__grid {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+  }
+
+  .pdp-routine-products {
+        margin: 32px 0 !important;
+    }
+
+  .pdp-routine-product {
+    position: relative;
+  }
+
+  .pdp-routine-product__content {
+    margin-top: 10px;
+  }
+
+  h3.pdp-routine-product__title {
+    color: #000;
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 19px;
+    margin: 0;
+  }
+
+  .pdp-routine-product__price {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .pdp-routine-product__price span.sale-price {
+    color: var(--Deep-Navy, #1a2744);
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    display: block;
+  }
+
+  .pdp-routine-product__price span.compare-price {
+    color: #767676;
+    font-family: 'DM Sans';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration: line-through;
+  }
+
+  p.pdp-routine-product__desc {
+    color: #464646;
+    font-family: 'DM Sans';
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 19px;
+    margin: 2px 0;
+  }
+
+  .pdp-routine-product_input {
+    margin: 0 !important;
+    appearance: none;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  label.pdp-routine-product-label svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    transition: all 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  label.pdp-routine-product-label {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    transition: all 0.3s ease;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    border: 1px solid #000;
+    border-radius: 4px;
+    align-items: center;
+    justify-content: center;
+    box-shadow: none;
+  }
+
+  .pdp-routine-product_input:checked + label.pdp-routine-product-label svg {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  h2.pdp-routine-products__heading {
+    color: #000;
+    font-family: "DM Sans";
+    font-size: 23px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    letter-spacing: -0.5px;
+    text-transform: capitalize;
+    margin: 0;
+    padding: 14px 0;
+}
+
+.pdp-routine_plus-icon {
+    align-self: center;
+    margin-top: -70px;
+}
+
+.pdp-routine_plus-icon svg {
+    width: 22px;
+    height: 22px;
+    display: block;
+}
+
+@media screen and (max-width: 768px){
+
+h2.pdp-routine-products__heading {
+    font-size: 20px;
+}
+
+.pdp-routine-products__grid {
+    flex-direction: column;
+}
+
+.pdp-routine-product {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pdp-routine-product__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    max-width: 100px;
+    height: 100px;
+    flex-shrink: 0;
+    border-bottom: 3px;
+}
+
+.pdp-routine-product__content {
+    margin: 0;
+}
+
+label.pdp-routine-product-label {
+    top: 7px;
+    right: auto;
+    left: 7px;
+    width: 16px;
+    height: 16px;
+}
+
+.pdp-routine_plus-icon {
+    margin: 0;
+}
+
+.pdp-routine_plus-icon svg {
+    width: 16px;
+    height: 16px;
+}
+
+h3.pdp-routine-product__title {
+    font-size: 14px;
+}
+
+p.pdp-routine-product__desc {
+    font-size: 13px;
+}
+
+.pdp-routine-products__add {
+    margin-top: 23px;
+}
+
+}
+
+{% endstyle %}
+
+{% if routine_products != blank %}
+  <div class="pdp-routine-products" {{ block.shopify_attributes }}>
+
+    {% if block.settings.heading != blank %}
+      <h2 class="pdp-routine-products__heading">
+        {{ block.settings.heading }}
+      </h2>
+    {% endif %}
+
+    <div class="pdp-routine-products__grid">
+      {% for routine_product in routine_products %}
+        {% assign first_variant = routine_product.selected_or_first_available_variant %}
+
+        <div
+          class="pdp-routine-product"
+          data-variant-id="{{ first_variant.id }}"
+        >
+          <input
+            class="pdp-routine-product_input"
+            id="pdp-routine-product__input-{{ first_variant.id }}"
+            data-variant-id="{{ first_variant.id }}"
+            data-price="{{ first_variant.price | money_without_trailing_zeros }}"
+            data-comp-price="{{ first_variant.compare_at_price | money_without_trailing_zeros }}"
+            type="checkbox"
+            checked
+          >
+
+          <label for="pdp-routine-product__input-{{ first_variant.id }}" class="pdp-routine-product-label">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+              <rect width="21.4545" height="21.4545" rx="3" fill="black"/>
+              <path d="M4.99219 10.3159L9.08825 14.412L16.4612 7.03906" stroke="white" stroke-width="1.63842"/>
+            </svg>
+          </label>
+
+          <div class="pdp-routine-product__image">
+            {{ routine_product.featured_image | image_url: width: 600 | image_tag }}
+          </div>
+
+          <div class="pdp-routine-product__content">
+            <h3 class="pdp-routine-product__title">{{ routine_product.title }}</h3>
+
+            {% if routine_product.metafields.custom.short_description %}
+              <p class="pdp-routine-product__desc">
+                {{ routine_product.metafields.custom.short_description }}
+              </p>
+            {% endif %}
+
+            <div class="pdp-routine-product__price">
+              <span class="sale-price">
+                {{ first_variant.price | money_without_trailing_zeros }}
+              </span>
+              {% if first_variant.price > first_variant.compare_at_price %}
+                  <span class="compare-price">
+                    {{ first_variant.compare_at_price | money_without_trailing_zeros }}
+                  </span>
+              {% endif %}
+
+            </div>
+          </div>
+        </div>
+        {% unless forloop.last %}
+            <div class="pdp-routine_plus-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
+                    <path d="M20.6165 9.8892H11.5653V0.838068C11.5653 0.375203 11.1901 0 10.7273 0C10.2644 0 9.8892 0.375203 9.8892 0.838068V9.8892H0.838068C0.375203 9.8892 0 10.2644 0 10.7273C0 11.1901 0.375203 11.5653 0.838068 11.5653H9.8892V20.6165C9.8892 21.0793 10.2644 21.4545 10.7273 21.4545C11.1901 21.4545 11.5653 21.0793 11.5653 20.6165V11.5653H20.6165C21.0793 11.5653 21.4545 11.1901 21.4545 10.7273C21.4545 10.2644 21.0793 9.8892 20.6165 9.8892Z" fill="black"/>
+                </svg>
+            </div>
+        {% endunless %}
+      {% endfor %}
+    </div>
+
+    <div class="pdp-routine-products__add">
+      <button
+        type="button"
+        id="pdp-routine-add-btn"
+        class="product-form__submit button button--full-width button--primary"
+        {% if product.selected_or_first_available_variant.available == false %}
+          disabled
+        {% endif %}
+        data-selected-variant-ids=""
+      >
+        <span class="btn-text">{{ 'products.product.add_to_cart' | t }}</span>
+        {%- render 'loading-spinner' -%}
+      </button>
+    </div>
+
+  </div>
+{% endif %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const routineSection = document.querySelector('.pdp-routine-products');
+  if (!routineSection) return;
+
+  const addBtn = routineSection.querySelector('#pdp-routine-add-btn');
+  if (!addBtn) return;
+
+  function syncDebugAttribute() {
+    const checkedInputs = routineSection.querySelectorAll('.pdp-routine-product_input:checked');
+    const ids = Array.from(checkedInputs).map(input => input.dataset.variantId);
+    addBtn.setAttribute('data-selected-variant-ids', ids.join(','));
+  }
+
+  syncDebugAttribute();
+
+  routineSection.querySelectorAll('.pdp-routine-product_input').forEach(function (checkbox) {
+    checkbox.addEventListener('change', syncDebugAttribute);
+  });
+
+  addBtn.addEventListener('click', async function () {
+    const checkedInputs = routineSection.querySelectorAll('.pdp-routine-product_input:checked');
+
+    if (checkedInputs.length === 0) {
+      alert('Please select at least one product.');
+      return;
+    }
+
+    const items = Array.from(checkedInputs).map(input => ({
+      id: parseInt(input.dataset.variantId),
+      quantity: 1
+    }));
+
+    addBtn.disabled = true;
+    const btnText = addBtn.querySelector('.btn-text');
+    if (btnText) btnText.textContent = 'Adding...';
+
+    try {
+      const addResponse = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items: items,
+          sections: ['cart-drawer', 'cart-icon-bubble']
+        })
+      });
+
+      if (!addResponse.ok) {
+        const err = await addResponse.json();
+        throw new Error(err.description || 'Failed to add to cart');
+      }
+
+      const addData = await addResponse.json();
+      const parser = new DOMParser();
+
+      // Step 1: Inject cart drawer HTML FIRST before attempting to open
+      if (addData.sections && addData.sections['cart-drawer']) {
+        const doc = parser.parseFromString(addData.sections['cart-drawer'], 'text/html');
+        const newDrawerInner = doc.querySelector('#CartDrawer');
+        const existingDrawer = document.querySelector('#CartDrawer');
+        if (newDrawerInner && existingDrawer) {
+          existingDrawer.innerHTML = newDrawerInner.innerHTML;
+        }
+      }
+
+      // Step 2: Update cart count bubble
+      if (addData.sections && addData.sections['cart-icon-bubble']) {
+        const doc = parser.parseFromString(addData.sections['cart-icon-bubble'], 'text/html');
+        const newBubble = doc.querySelector('#cart-icon-bubble');
+        const existingBubble = document.getElementById('cart-icon-bubble');
+        if (newBubble && existingBubble) {
+          existingBubble.innerHTML = newBubble.innerHTML;
+        }
+      }
+
+      // Step 3: Open drawer AFTER HTML is fully injected
+      // Delay gives the browser one paint cycle to register the new DOM
+      // before cart-drawer.js tries to find focusable elements
+      setTimeout(function () {
+        const cartDrawer = document.querySelector('cart-drawer');
+        if (cartDrawer && typeof cartDrawer.open === 'function') {
+          // Do NOT pass addBtn — that triggers trapFocus immediately on null DOM
+          cartDrawer.open();
+        }
+      }, 100);
+
+    } catch (err) {
+      console.error('Cart error:', err);
+      alert(err.message || 'Something went wrong. Please try again.');
+    } finally {
+      addBtn.disabled = false;
+      if (btnText) btnText.textContent = 'Add to Cart';
+    }
+  });
+});
+</script>

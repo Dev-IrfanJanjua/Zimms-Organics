@@ -12,6 +12,12 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "tag_7acLNg": {
+          "type": "tag",
+          "settings": {
+            "tag": "<p>Wellness</p>"
+          }
+        },
         "bogos_io_free_gift_progressing_bar_view_e4j3XM": {
           "type": "shopify://apps/bogos-io-free-gift/blocks/progressing-bar-view/0432bba6-720a-4e95-be5a-b868386f7aa6",
           "disabled": true,
@@ -32,6 +38,29 @@
         "rating": {
           "type": "rating",
           "settings": {}
+        },
+        "pdp_rating_MjUhMU": {
+          "type": "pdp_rating",
+          "disabled": true,
+          "settings": {
+            "image": "shopify://shop_images/Frame_2147241407.svg",
+            "text": "<strong>10,500+</strong> 5-Star Reviews"
+          }
+        },
+        "icon_list_t3HhpR": {
+          "type": "icon_list",
+          "settings": {
+            "item_1_icon": "shopify://shop_images/Group.svg",
+            "item_1_text": "Supports Digestion, Cholesterol & Inflammation",
+            "item_2_icon": "shopify://shop_images/Group_1.svg",
+            "item_2_text": "Daily Gut, Heart & Metabolism Support",
+            "item_3_icon": "shopify://shop_images/Group_2.svg",
+            "item_3_text": "Hand-Harvested, Cold-Pressed, Single Origin",
+            "item_4_icon": "shopify://shop_images/Group_5.svg",
+            "item_4_text": "Made for Abundant Daily Use",
+            "item_5_text": "",
+            "item_6_text": ""
+          }
         },
         "price": {
           "type": "price",
@@ -57,6 +86,40 @@
           "type": "quantity_selector",
           "disabled": true,
           "settings": {}
+        },
+        "delivery_options_D3J8Xz": {
+          "type": "delivery_options",
+          "settings": {
+            "heading": "Choose Your Delivery:",
+            "tier1_qty": 1,
+            "tier1_save": "10%",
+            "tier1_price": "$38.00",
+            "tier1_per": "",
+            "tier1_badge": "",
+            "tier1_gift": "",
+            "tier1_gift_price": "",
+            "tier1_gift_colors": "",
+            "tier1_variant": "",
+            "tier2_qty": 2,
+            "tier2_save": "15%",
+            "tier2_price": "$59.98",
+            "tier2_per": "$29.99 / Bottle",
+            "tier2_badge": "Most Popular",
+            "tier2_gift": "Free Spout",
+            "tier2_gift_price": "$10.95",
+            "tier2_gift_colors": "Gold,Black,Silver,Rose Gold",
+            "tier2_variant": "",
+            "tier3_qty": 3,
+            "tier3_save": "20%",
+            "tier3_price": "$59.98",
+            "tier3_per": "$24.99 / Bottle",
+            "tier3_badge": "Best Value",
+            "tier3_gift": "2 Spouts + Sip Glass + Free Shipping",
+            "tier3_gift_price": "",
+            "tier3_gift_colors": "",
+            "tier3_variant": "",
+            "sub_toggle_label": "Save 10% Extra with Automatic Refills"
+          }
         },
         "buy_buttons": {
           "type": "buy_buttons",
@@ -93,6 +156,35 @@
             "faq_answer_3": "<p>Quality Testing</p>"
           }
         },
+        "pdp_routine_products_QiK4HG": {
+          "type": "pdp_routine_products",
+          "settings": {
+            "heading": "Complete Your Routine"
+          }
+        },
+        "testimonial_slider_DfpekF": {
+          "type": "testimonial_slider",
+          "settings": {
+            "title": "Zimms Organic community",
+            "rating_icon": "shopify://shop_images/Frame_22.svg",
+            "buyer_text": "Verified Customer",
+            "slide_1_rating": "4.9",
+            "slide_1_message": "I started taking the HEAL olive oil every morning, and within a couple of weeks I felt a big difference in my digestion. Less bloating, smoother gut, and overall I feel lighter. The quality is clearly premium and worth it.",
+            "slide_1_name": "Sarah M.",
+            "slide_2_rating": "4.9",
+            "slide_2_message": "I’ve used many olive oils before, but this one stands out. The flavor is rich yet smooth, and it doesn’t overpower food. I use it for both cooking and finishing dishes plus knowing it’s organic makes it even better.",
+            "slide_2_name": "Sarah M.",
+            "slide_3_rating": "4.9",
+            "slide_3_message": "I started taking the HEAL olive oil every morning, and within a couple of weeks I felt a big difference in my digestion. Less bloating, smoother gut, and overall I feel lighter. The quality is clearly premium and worth it.",
+            "slide_3_name": "Sarah M.",
+            "slide_4_rating": "",
+            "slide_4_message": "",
+            "slide_4_name": "",
+            "slide_5_rating": "",
+            "slide_5_message": "",
+            "slide_5_name": ""
+          }
+        },
         "description": {
           "type": "description",
           "disabled": true,
@@ -126,18 +218,24 @@
         }
       },
       "block_order": [
+        "tag_7acLNg",
         "bogos_io_free_gift_progressing_bar_view_e4j3XM",
         "vendor",
         "title",
         "rating",
+        "pdp_rating_MjUhMU",
+        "icon_list_t3HhpR",
         "price",
         "bogos_io_free_gift_volume_discount_view_YxkeB4",
         "variant_picker",
         "quantity_selector",
+        "delivery_options_D3J8Xz",
         "buy_buttons",
         "money_back_R3nHDF",
         "buy_bundle_gVmnmr",
         "faq_wfGtU8",
+        "pdp_routine_products_QiK4HG",
+        "testimonial_slider_DfpekF",
         "description",
         "share",
         "custom_liquid_4mPPk3",
@@ -145,6 +243,7 @@
         "klaviyo_reviews_average_rating_etyDmX"
       ],
       "settings": {
+        "cstm_style": true,
         "enable_sticky_info": true,
         "color_scheme": "",
         "media_size": "small",
@@ -152,12 +251,15 @@
         "media_fit": "contain",
         "gallery_layout": "thumbnail_slider",
         "media_position": "left",
-        "image_zoom": "lightbox",
+        "image_zoom": "none",
         "mobile_thumbnails": "hide",
-        "hide_variants": true,
+        "hide_variants": false,
         "enable_video_looping": false,
-        "padding_top": 60,
-        "padding_bottom": 0
+        "padding_top": 40,
+        "padding_bottom": 80,
+        "padding_top_mob": 16,
+        "padding_bottom_mob": 16,
+        "testimonial_title": "Zimms Organic community"
       }
     },
     "videos_text_slider_GMUCk4": {

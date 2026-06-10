@@ -1,0 +1,899 @@
+{% comment %}
+  Delivery Options Widget
+  Block settings: up to 3 tiers configurable in customizer
+{% endcomment %}
+
+{% style %}
+  .delivery-options {
+    font-family: inherit;
+    width: 100%;
+  }
+
+  .delivery-options__heading {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0 0 14px;
+    color: #1a1a1a;
+  }
+
+.delivery-option {
+    position: relative;
+    margin-bottom: 16px;
+    cursor: pointer;
+    background: #fff;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    /* overflow: hidden; */
+    border-radius: 12px;
+    border: 1.5px solid #CECECE;
+}
+
+  .delivery-option:hover {
+    border-color: #aaa;
+  }
+
+  .delivery-option.is-selected {
+    border-color: #1A2744;
+    box-shadow: none;
+    background: #F3F3EC;
+  }
+
+  /* Badge */
+.delivery-option__badge {
+    position: absolute;
+    top: -8px;
+    right: 18px;
+    background: #1A2744;
+    padding: 6px 8px;
+    border-radius: 0 0 5px 5px;
+    text-transform: uppercase;
+    color: #FFF;
+    font-family: "DM Sans";
+    font-size: 11.6px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12px;
+}
+
+.delivery-option__badge:after,
+.delivery-option__badge:before {
+    content: '';
+    position: absolute;
+    top: 0px;
+    width: 8px;
+    height: 8px;
+    background-color: #1A2744;
+}
+
+.delivery-option__badge:before {
+  left: -7px; /* Pulls the wing out to the left */
+  clip-path: polygon(100% 0, 100% 100%, 0 100%);
+}
+
+.delivery-option__badge:after{
+    clip-path: polygon(0 0, 100% 100%, 0 100%);
+    right: -8px;
+}
+
+  /* Always-visible summary row */
+  .delivery-option__summary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+  }
+
+  .delivery-option__radio {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    border-radius: 50%;
+    border: 1.5px solid #CECECE;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+    position: relative;
+    background: transparent;
+    margin: 0;
+  }
+
+.delivery-option__radio:checked {
+    border-color: #1A2744;
+    background: transparent;
+}
+
+  .delivery-option__radio:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #1A2744;
+  }
+
+  .delivery-option__images {
+    display: flex;
+    align-items: center;
+  }
+
+  .delivery-option__images img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 0;
+    border: 1px solid #fff;
+    margin-left: -10px;
+  }
+
+  .delivery-option__images img:first-child {
+    margin-left: 0;
+  }
+
+  .delivery-option__label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+.delivery-option__title {
+    color: #121212;
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 25px;
+    text-transform: uppercase;
+}
+
+.delivery-option__save-tag {
+    color: #1DA000;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22.4px;
+    text-transform: uppercase;
+    margin-left: 8px;
+}
+
+.delivery-option__gift-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.20);
+    background: #FFF;
+    max-width: fit-content;
+    padding: 2px 8px;
+    color: #1A2744;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+}
+
+  .delivery-option__price {
+    text-align: right;
+    flex-shrink: 0;
+  }
+
+.delivery-option__price-main {
+    color: #1A2744;
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-transform: uppercase;
+}
+
+.delivery-option__price-per {
+    color: rgba(26, 39, 68, 0.80);
+    text-align: right;
+    font-family: "DM Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    display: block;
+}
+
+  /* Expandable detail panel */
+  .delivery-option__detail {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                opacity 0.25s ease,
+                padding 0.25s ease;
+    opacity: 0;
+    padding: 0 16px;
+  }
+
+  .delivery-option.is-selected .delivery-option__detail {
+    max-height: 400px;
+    opacity: 1;
+    padding: 0 20px 12px;
+  }
+
+  .delivery-option__detail-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+  }
+
+  .delivery-option__meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  .delivery-option__meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: #444;
+  }
+
+  .delivery-option__meta-item svg {
+    flex-shrink: 0;
+    color: #1a2744;
+  }
+
+.delivery-option__gift-heading {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--black, #292923);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    margin: 0;
+}
+
+  .delivery-option__gift-heading .gift-price-old {
+    font-weight: 400;
+    color: #888;
+    text-decoration: line-through;
+  }
+
+  .delivery-option__gift-heading .gift-price-free {
+    color: #2a9d5c;
+    font-weight: 700;
+  }
+
+  .delivery-option__gift-colors {
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
+
+.gift-color-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1.2px solid #00000033;
+    background: #FFF;
+    padding: 7px;
+    width: 63px;
+    height: 63px;
+}
+
+.gift-color-option:has(input[type="radio"]:checked){
+    border-color: #1A2744;
+}
+
+.gift-color-option input[type="radio"] {
+    display: none;
+}
+
+.gift-color-option__img-wrap {
+    width: 37px;
+    height: 31px;
+    overflow: hidden;
+    transition: border-color 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+span.gift-color-option__img-wrap img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+}
+
+.gift-color-option__name {
+    color: var(--black, #292923);
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 9.474px;
+}
+
+.delivery-option__gift-confirm {
+    margin-top: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #1DA000;
+    background: #F2FFEF;
+}
+
+.delivery-option__gift-confirm img {
+    width: 28px;
+    height: 28px;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+  /* Subscription note */
+.delivery-option__sub-note {
+    display: flex;
+    align-items: center;
+    gap: 34px;
+    flex-wrap: wrap;
+    padding: 16px 0;
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.delivery-option__sub-note-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+}
+
+span.delivery-option__sub-note-item svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+  /* Bottom strip */
+.delivery-options__sub-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 0 0;
+}
+
+.delivery-options__sub-toggle > span {
+    color: var(--Black, #000);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 120%;
+}
+
+  /* Toggle switch */
+  .toggle-switch {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+    position: absolute;
+  }
+
+.toggle-switch__track {
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    background: transparent;
+    transition: background 0.2s ease;
+    cursor: pointer;
+}
+
+.toggle-switch {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    flex-shrink: 0;
+    border-radius: 19.581px;
+    border: 1px solid #CECECE;
+    background: #FFF;
+}
+
+.toggle-switch__thumb {
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #1A2744;
+    transition: transform 0.2s ease;
+    pointer-events: none;
+}
+
+.toggle-switch input:checked ~ .toggle-switch__thumb {
+    transform: translateX(18px);
+}
+
+.delivery-options__heading {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin: 0 0 12px;
+}
+
+.delivery-option__gift-confirm > span {
+    color: #16233D;
+    font-family: "DM Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+p.delivery-option__choose_heading {
+    color: var(--black, #292923);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    margin: 8px 0;
+}
+
+@media screen and (max-width: 768px){
+
+.delivery-option__summary {
+    gap: 8px;
+    padding: 12px;
+}
+
+.delivery-option__radio {
+    display: none;
+}
+
+.delivery-option__title {
+    font-size: 14px;
+    line-height: 18px;
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 8px;
+}
+
+.delivery-option__save-tag {
+    font-size: 10px;
+    line-height: 16.4px;
+    margin-left: 0;
+}
+
+.delivery-option__label {
+    gap: 4px;
+}
+
+.delivery-option__gift-tag {
+    font-size: 11px;
+}
+
+.delivery-option.is-selected .delivery-option__detail {
+    max-height: 600px;
+    padding: 0 12px 16px;
+}
+
+.delivery-option__detail-inner {
+    gap: 12px;
+}
+
+.delivery-option__sub-note {
+    gap: 4px;
+    flex-direction: column;
+    align-items: start;
+}
+
+span.delivery-option__sub-note-item svg {
+    width: 18px;
+    height: 18px;
+    display: block;
+}
+
+.delivery-option__gift-heading {
+    font-size: 14px;
+}
+
+p.delivery-option__choose_heading {
+    margin: 12px 0 8px;
+}
+
+}
+
+
+{% endstyle %}
+
+{%- liquid
+  assign heading = block.settings.heading | default: 'Choose Your Delivery:'
+
+  assign tier1_qty       = block.settings.tier1_qty       | default: 1
+  assign tier1_save      = block.settings.tier1_save      | default: '10%'
+  assign tier1_price     = block.settings.tier1_price     | default: '$38.00'
+  assign tier1_per       = block.settings.tier1_per       | default: ''
+  assign tier1_badge     = block.settings.tier1_badge     | default: ''
+  assign tier1_gift      = block.settings.tier1_gift      | default: ''
+  assign tier1_variant   = block.settings.tier1_variant   | default: ''
+
+  assign tier2_qty       = block.settings.tier2_qty       | default: 2
+  assign tier2_save      = block.settings.tier2_save      | default: '15%'
+  assign tier2_price     = block.settings.tier2_price     | default: '$59.98'
+  assign tier2_per       = block.settings.tier2_per       | default: '$29.99 / Bottle'
+  assign tier2_badge     = block.settings.tier2_badge     | default: 'Most Popular'
+  assign tier2_gift      = block.settings.tier2_gift      | default: 'Free Spout'
+  assign tier2_variant   = block.settings.tier2_variant   | default: ''
+
+  assign tier3_qty       = block.settings.tier3_qty       | default: 3
+  assign tier3_save      = block.settings.tier3_save      | default: '20%'
+  assign tier3_price     = block.settings.tier3_price     | default: '$59.98'
+  assign tier3_per       = block.settings.tier3_per       | default: '$24.99 / Bottle'
+  assign tier3_badge     = block.settings.tier3_badge     | default: 'Best Value'
+  assign tier3_gift      = block.settings.tier3_gift      | default: '2 Spouts + Sip Glass + Free Shipping'
+  assign tier3_variant   = block.settings.tier3_variant   | default: ''
+
+  assign sub_toggle_label = block.settings.sub_toggle_label | default: 'Save 10% Extra with Automatic Refills'
+
+    assign gift_price_key = 'tier' | append: tier_num | append: '_gift_price'
+    assign gift_price = block.settings[gift_price_key]
+
+    assign gift_colors_key = 'tier' | append: tier_num | append: '_gift_colors' 
+    assign gift_colors = block.settings[gift_colors_key] | default: 'Gold,Black,Silver,Rose Gold'
+    assign gift_colors_arr = gift_colors | split: ',' 
+
+
+-%}
+
+<div
+  class="delivery-options"
+  id="delivery-options-{{ block.id }}"
+  data-block-id="{{ block.id }}"
+  data-section-id="{{ section.id }}"
+  data-selected-tier=""
+  data-selected-variant-id=""
+  {{ block.shopify_attributes }}
+>
+  <p class="delivery-options__heading">{{ heading }}</p>
+
+  {%- assign tiers = '1,2,3' | split: ',' -%}
+  {%- for tier_num in tiers -%}
+    {%- liquid
+        assign qty_key   = 'tier' | append: tier_num | append: '_qty'
+        assign save_key  = 'tier' | append: tier_num | append: '_save'
+        assign price_key = 'tier' | append: tier_num | append: '_price'
+        assign per_key   = 'tier' | append: tier_num | append: '_per'
+        assign badge_key = 'tier' | append: tier_num | append: '_badge'
+        assign gift_key  = 'tier' | append: tier_num | append: '_gift'
+        assign variant_key = 'tier' | append: tier_num | append: '_variant'
+
+        assign qty     = block.settings[qty_key] | default: tier_num
+        assign save    = block.settings[save_key]
+        assign price   = block.settings[price_key]
+        assign per     = block.settings[per_key]
+        assign badge   = block.settings[badge_key]
+        assign gift    = block.settings[gift_key]
+        assign variant = block.settings[variant_key]
+
+      if save == blank
+        if tier_num == '1'
+          assign save = tier1_save
+          assign price = tier1_price
+          assign per = tier1_per
+          assign badge = tier1_badge
+          assign gift = tier1_gift
+          assign variant = tier1_variant
+          assign qty = tier1_qty
+        elsif tier_num == '2'
+          assign save = tier2_save
+          assign price = tier2_price
+          assign per = tier2_per
+          assign badge = tier2_badge
+          assign gift = tier2_gift
+          assign variant = tier2_variant
+          assign qty = tier2_qty
+        else
+          assign save = tier3_save
+          assign price = tier3_price
+          assign per = tier3_per
+          assign badge = tier3_badge
+          assign gift = tier3_gift
+          assign variant = tier3_variant
+          assign qty = tier3_qty
+        endif
+      endif
+
+      assign is_default = false
+      if tier_num == '2'
+        assign is_default = true
+      endif
+    -%}
+
+    <div
+      class="delivery-option{% if is_default %} is-selected{% endif %}"
+      data-tier="{{ tier_num }}"
+      data-qty="{{ qty }}"
+      data-price="{{ price }}"
+      data-variant-id="{{ variant }}"
+      data-save="{{ save }}"
+      data-badge="{{ badge }}"
+      data-gift="{{ gift }}"
+    >
+      {%- if badge != blank -%}
+        <span class="delivery-option__badge" data-badge-text="{{ badge }}">{{ badge }}</span>
+      {%- endif -%}
+
+      <label class="delivery-option__summary" for="delivery-tier-{{ block.id }}-{{ tier_num }}">
+        <input
+          class="delivery-option__radio"
+          type="radio"
+          name="delivery-tier-{{ block.id }}"
+          id="delivery-tier-{{ block.id }}-{{ tier_num }}"
+          value="{{ tier_num }}"
+          data-tier="{{ tier_num }}"
+          data-variant-id="{{ variant }}"
+          data-qty="{{ qty }}"
+          data-price="{{ price }}"
+          {% if is_default %}checked{% endif %}
+        >
+
+        <div class="delivery-option__images" data-qty-images="{{ qty }}">
+          {%- for i in (1..qty) -%}
+            {%- if product.featured_image -%}
+              <img
+                src="{{ product.featured_image | image_url: width: 120 }}"
+                alt="{{ product.title }}"
+                width="48"
+                height="48"
+                loading="lazy"
+              >
+            {%- else -%}
+              {% comment %} <img
+                src="{{ 'product-1' | placeholder_svg_tag }}"
+                alt="Product image"
+                width="48"
+                height="48"
+              > {% endcomment %}
+                none
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        <div class="delivery-option__label">
+          <span class="delivery-option__title">
+            BUY {{ qty }}
+            {%- if save != blank -%}
+              <span class="delivery-option__save-tag" data-save="{{ save }}">SAVE {{ save }}</span>
+            {%- endif -%}
+          </span>
+          {%- if gift != blank -%}
+            <span class="delivery-option__gift-tag">
+              🎁 {{ gift }}
+            </span>
+          {%- endif -%}
+        </div>
+
+        <div class="delivery-option__price">
+          <span class="delivery-option__price-main" data-price="{{ price }}">{{ price }}</span>
+          {%- if per != blank -%}
+            <span class="delivery-option__price-per" data-per="{{ per }}">{{ per }}</span>
+          {%- endif -%}
+        </div>
+      </label>
+
+      {%- comment %} Expandable detail panel — only shown when selected {%- endcomment -%}
+      <div class="delivery-option__detail" data-detail-panel="tier-{{ tier_num }}">
+        <div class="delivery-option__detail-inner">
+
+          {%- comment %} Subscription cadence note {%- endcomment -%}
+          <div class="delivery-option__sub-note">
+            <span class="delivery-option__sub-note-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><polyline points="23 20 23 14 17 14"/><path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/></svg>
+              {{ qty }} bottle{%- if qty > 1 -%}s{%- endif -%} delivered every 30 days
+            </span>
+            <span class="delivery-option__sub-note-item">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="10" y1="15" x2="10" y2="12"/><line x1="14" y1="15" x2="14" y2="12"/><line x1="10" y1="9" x2="14" y2="9"/></svg>
+              Pause or cancel at any time
+            </span>
+          </div>
+
+          {%- comment %} Gift/bonus item section — shown if gift text set in customizer {%- endcomment -%}
+          {%- if gift != blank -%}
+            <div class="delivery-option__gift-section" data-gift-section="tier-{{ tier_num }}">
+              <p class="delivery-option__gift-heading">
+                🎁 {{ gift }}
+                {%- if gift_price != blank -%}
+                  <span class="gift-price-old">{{ gift_price }}</span>
+                  <span class="gift-price-free">+Free</span>
+                {%- endif -%}
+              </p>
+
+              {%- comment %} Color variants for gift — customizable via settings {%- endcomment -%}
+              {%- if gift_colors_arr.size > 1 -%}
+                <p class="delivery-option__choose_heading">Choose your color:</p>
+                <div class="delivery-option__gift-colors" data-gift-colors="tier-{{ tier_num }}">
+                  {%- for color in gift_colors_arr -%}
+                    {%- assign color_clean = color | strip -%}
+                    <label
+                      class="gift-color-option"
+                      data-color="{{ color_clean }}"
+                      data-tier="{{ tier_num }}"
+                    >
+                      <input
+                        type="radio"
+                        name="gift-color-tier{{ tier_num }}-{{ block.id }}"
+                        value="{{ color_clean }}"
+                        data-color="{{ color_clean }}"
+                        {% if forloop.first %}checked{% endif %}
+                      >
+                      <span class="gift-color-option__img-wrap">
+                        {%- if product.featured_image -%}
+                          <img
+                            src="{{ product.featured_image | image_url: width: 120 }}"
+                            alt="{{ color_clean }} spout"
+                            width="52"
+                            height="52"
+                            loading="lazy"
+                          >
+                        {%- else -%}
+                          <span style="font-size:10px;text-align:center;padding:4px;color:#888;">{{ color_clean }}</span>
+                        {%- endif -%}
+                      </span>
+                      <span class="gift-color-option__name">{{ color_clean }}</span>
+                    </label>
+                  {%- endfor -%}
+                </div>
+
+                <div class="delivery-option__gift-confirm" data-gift-confirm="tier-{{ tier_num }}">
+                  <span data-confirm-text="tier-{{ tier_num }}">
+                    <span class="confirm-color-name">{{ gift_colors_arr[0] | strip }}</span> {{ gift }} will be added to your cart.
+                  </span>
+                  {%- if product.featured_image -%}
+                    <img
+                      src="{{ product.featured_image | image_url: width: 80 }}"
+                      alt="{{ gift }}"
+                      width="36"
+                      height="36"
+                    >
+                  {%- endif -%}
+                </div>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+        </div>
+      </div>
+    </div>
+  {%- endfor -%}
+
+  {%- if sub_toggle_label != blank -%}
+    <div class="delivery-options__sub-toggle">
+      <span>{{ sub_toggle_label }}</span>
+      <label class="toggle-switch" data-toggle="subscription-{{ block.id }}">
+        <input
+          type="checkbox"
+          id="sub-toggle-{{ block.id }}"
+          data-subscription-toggle="{{ block.id }}"
+          checked
+        >
+        <span class="toggle-switch__track"></span>
+        <span class="toggle-switch__thumb"></span>
+      </label>
+    </div>
+  {%- endif -%}
+
+</div>
+
+<script>
+(function () {
+  const widget = document.getElementById('delivery-options-{{ block.id }}');
+  if (!widget) return;
+
+  const radios = widget.querySelectorAll('.delivery-option__radio');
+  const options = widget.querySelectorAll('.delivery-option');
+
+  function selectTier(tierNum) {
+    // Update wrapper classes
+    options.forEach(function (opt) {
+      const isMatch = opt.dataset.tier === String(tierNum);
+      opt.classList.toggle('is-selected', isMatch);
+    });
+
+    // Update debug attributes on widget root
+    const selectedOption = widget.querySelector('.delivery-option[data-tier="' + tierNum + '"]');
+    if (selectedOption) {
+      widget.setAttribute('data-selected-tier', tierNum);
+      widget.setAttribute('data-selected-variant-id', selectedOption.dataset.variantId || '');
+      widget.setAttribute('data-selected-price', selectedOption.dataset.price || '');
+      widget.setAttribute('data-selected-qty', selectedOption.dataset.qty || '');
+    }
+  }
+
+  // Init: set debug attrs for default selected
+  const defaultChecked = widget.querySelector('.delivery-option__radio:checked');
+  if (defaultChecked) {
+    selectTier(defaultChecked.dataset.tier);
+  }
+
+  // Radio change handler
+  radios.forEach(function (radio) {
+    radio.addEventListener('change', function () {
+      if (this.checked) {
+        selectTier(this.dataset.tier);
+      }
+    });
+  });
+
+  // Clicking the whole card selects it
+  options.forEach(function (opt) {
+    opt.addEventListener('click', function (e) {
+      // Don't re-trigger if clicking a child radio/label directly
+      const radio = opt.querySelector('.delivery-option__radio');
+      if (radio && !radio.checked) {
+        radio.checked = true;
+        radio.dispatchEvent(new Event('change', { bubbles: true }));
+      }
+    });
+  });
+
+  // Gift color selection — update confirm text
+  widget.querySelectorAll('.delivery-option__gift-colors').forEach(function (colorGroup) {
+    colorGroup.addEventListener('change', function (e) {
+      if (e.target.type !== 'radio') return;
+      const tier = e.target.dataset.tier || '';
+      const colorName = e.target.value;
+      const confirmText = widget.querySelector('[data-confirm-text="tier-' + tier + '"] .confirm-color-name');
+      if (confirmText) {
+        confirmText.textContent = colorName;
+      }
+      // Debug attr
+      const giftSection = widget.querySelector('[data-gift-section="tier-' + tier + '"]');
+      if (giftSection) {
+        giftSection.setAttribute('data-selected-color', colorName);
+      }
+    });
+  });
+
+  // Expose selected state globally for other scripts (e.g. add to cart)
+  window['deliveryOptions_{{ block.id }}'] = {
+    getSelected: function () {
+      return {
+        tier: widget.getAttribute('data-selected-tier'),
+        variantId: widget.getAttribute('data-selected-variant-id'),
+        price: widget.getAttribute('data-selected-price'),
+        qty: widget.getAttribute('data-selected-qty')
+      };
+    }
+  };
+})();
+</script>

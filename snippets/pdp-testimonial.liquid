@@ -1,0 +1,237 @@
+{% style %}
+
+.pdp-testimonial-card_reviews-icon {
+    max-width: 90px;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+}
+
+.pdp-testimonial-card_reviews-icon img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+span.pdp-testimonial-card_reviews-text {
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 14.2px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 17px;
+    letter-spacing: -0.43px;
+}
+
+.pdp-testimonial-card_reviews {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+p.pdp-testimonial-card-msg {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 0;
+}
+
+span.pdp-testimonial-card_name {
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    font-family: 'DM Sans';
+    font-size: 14.2px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 17px;
+    letter-spacing: -0.43px;
+}
+
+.pdp-testimonial-card_buyer {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.pdp-testimonial-card_buyer-icon {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+.pdp-testimonial-card_buyer-icon svg{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+span.pdp-testimonial-card_buyer-text {
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    font-family: 'DM Sans';
+    font-size: 14.2px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 17px;
+    letter-spacing: -0.43px;
+}
+
+.pdp-testimonial-card_bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.pdp-testimonial-card {
+    border-radius: 8px;
+    background: #F3F3EC;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+{% endstyle %}
+
+<div class="pdp-testimonial">
+
+  {% if block.settings.title != blank %}
+    <div class="pdp-testimonial-head">
+      <h4 class="pdp-testimonial_title">
+        {{ block.settings.title }}
+      </h4>
+
+        <div class="pdp-testimonial-navigation">
+            <div class="pdp-testimonial-nav pdp-testimonial-nav-prev">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4" height="6" viewBox="0 0 4 6" fill="none">
+                <path d="M0.0767479 3.08927L2.71533 5.72785C2.73985 5.75237 2.76895 5.77181 2.80098 5.78508C2.83301 5.79835 2.86734 5.80518 2.90201 5.80518C2.93668 5.80518 2.97101 5.79835 3.00304 5.78508C3.03507 5.77181 3.06418 5.75237 3.08869 5.72785C3.11321 5.70334 3.13265 5.67423 3.14592 5.6422C3.15919 5.61017 3.16602 5.57584 3.16602 5.54117C3.16602 5.5065 3.15919 5.47217 3.14592 5.44014C3.13265 5.40811 3.11321 5.37901 3.08869 5.35449L0.636457 2.90259L3.08869 0.450685C3.1382 0.401174 3.16602 0.334024 3.16602 0.264005C3.16602 0.193987 3.1382 0.126836 3.08869 0.0773253C3.03918 0.0278147 2.97203 5.21679e-10 2.90201 0C2.83199 -5.21679e-10 2.76484 0.0278147 2.71533 0.0773253L0.0767479 2.71591C0.0522153 2.74041 0.0327532 2.76951 0.0194747 2.80155C0.00619626 2.83358 -0.00063777 2.86791 -0.00063777 2.90259C-0.00063777 2.93726 0.00619626 2.9716 0.0194747 3.00363C0.0327532 3.03566 0.0522153 3.06476 0.0767479 3.08927Z" fill="#1A2744"/>
+                </svg>
+            </div>
+            <div class="pdp-testimonial-nav pdp-testimonial-nav-next">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4" height="6" viewBox="0 0 4 6" fill="none">
+                <path d="M0.0767479 3.08927L2.71533 5.72785C2.73985 5.75237 2.76895 5.77181 2.80098 5.78508C2.83301 5.79835 2.86734 5.80518 2.90201 5.80518C2.93668 5.80518 2.97101 5.79835 3.00304 5.78508C3.03507 5.77181 3.06418 5.75237 3.08869 5.72785C3.11321 5.70334 3.13265 5.67423 3.14592 5.6422C3.15919 5.61017 3.16602 5.57584 3.16602 5.54117C3.16602 5.5065 3.15919 5.47217 3.14592 5.44014C3.13265 5.40811 3.11321 5.37901 3.08869 5.35449L0.636457 2.90259L3.08869 0.450685C3.1382 0.401174 3.16602 0.334024 3.16602 0.264005C3.16602 0.193987 3.1382 0.126836 3.08869 0.0773253C3.03918 0.0278147 2.97203 5.21679e-10 2.90201 0C2.83199 -5.21679e-10 2.76484 0.0278147 2.71533 0.0773253L0.0767479 2.71591C0.0522153 2.74041 0.0327532 2.76951 0.0194747 2.80155C0.00619626 2.83358 -0.00063777 2.86791 -0.00063777 2.90259C-0.00063777 2.93726 0.00619626 2.9716 0.0194747 3.00363C0.0327532 3.03566 0.0522153 3.06476 0.0767479 3.08927Z" fill="#1A2744"/>
+                </svg>
+            </div>
+        </div>
+    </div>
+  {% endif %}
+
+  <div class="swiper pdp-testimonial-swiper">
+    <div class="swiper-wrapper">
+
+      {% for i in (1..5) %}
+
+        {% assign message_key = 'slide_' | append: i | append: '_message' %}
+        {% assign name_key = 'slide_' | append: i | append: '_name' %}
+        {% assign rating_key = 'slide_' | append: i | append: '_rating' %}
+
+        {% assign message = block.settings[message_key] %}
+        {% assign name = block.settings[name_key] %}
+        {% assign rating = block.settings[rating_key] %}
+
+        {% if message != blank %}
+
+          <div class="swiper-slide">
+
+            <div class="pdp-testimonial-card">
+
+              <div class="pdp-testimonial-card_reviews">
+
+                <span class="pdp-testimonial-card_reviews-text">
+                  {{ rating }}
+                </span>
+
+                {% if block.settings.rating_icon != blank %}
+                  <div class="pdp-testimonial-card_reviews-icon">
+                    {{
+                      block.settings.rating_icon
+                      | image_url: width: 500
+                      | image_tag: loading: 'lazy'
+                    }}
+                  </div>
+                {% endif %}
+
+              </div>
+
+              <p class="pdp-testimonial-card-msg">
+                {{ message }}
+              </p>
+
+              <div class="pdp-testimonial-card_bottom">
+
+                <span class="pdp-testimonial-card_name">
+                  {{ name }}
+                </span>
+
+                <div class="pdp-testimonial-card_buyer">
+
+                  <div class="pdp-testimonial-card_buyer-icon">
+                    <!-- Your existing buyer SVG here -->
+                  </div>
+
+                  <span class="pdp-testimonial-card_buyer-text">
+                    {{ block.settings.buyer_text }}
+                  </span>
+
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        {% endif %}
+
+      {% endfor %}
+
+    </div>
+  </div>
+
+  <div class="swiper-pagination pdp-testimonial-pagination"></div>
+
+</div>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+
+  const swiperEl = document.querySelector(".pdp-testimonial-swiper");
+
+  if (!swiperEl) return;
+
+  const testimonial = swiperEl.closest(".pdp-testimonial");
+
+  new Swiper(swiperEl, {
+    slidesPerView: 2.1,
+    spaceBetween: 12,
+    loop: false,
+    speed: 800,
+
+    pagination: {
+      el: testimonial.querySelector(".pdp-testimonial-pagination"),
+      clickable: true
+    },
+
+    breakpoints: {
+      0: {
+          slidesPerView: 1.2
+        },
+      769: {
+          slidesPerView: 2.1,
+        }
+    },
+
+    navigation: {
+      nextEl: testimonial.querySelector(".pdp-testimonial-nav-next"),
+      prevEl: testimonial.querySelector(".pdp-testimonial-nav-prev")
+    }
+  });
+
+});
+</script>

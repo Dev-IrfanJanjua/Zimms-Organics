@@ -1,0 +1,95 @@
+{% style %}
+
+ul.pdp-icon-text-list {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 0;
+    padding: 0;
+    margin: 24px 0 28px !important;
+}
+
+li.pdp-icon-text-list-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pdp-icon-text__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.pdp-icon-text__icon img{
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+span.pdp-icon-text__text {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+}
+
+@media screen and (max-width: 768px){
+
+ul.pdp-icon-text-list {
+    padding: 12px;
+    gap: 8px;
+    margin: 0 0 20px !important;
+}
+
+li.pdp-icon-text-list-item {
+    gap: 8px;
+}
+
+.pdp-icon-text__icon {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+}
+
+span.pdp-icon-text__text {
+    letter-spacing: -0.05px;
+}
+
+}
+
+{% endstyle %}
+
+<ul class="pdp-icon-text-list">
+  {% for i in (1..6) %}
+    {% assign icon_key = 'item_' | append: i | append: '_icon' %}
+    {% assign text_key = 'item_' | append: i | append: '_text' %}
+
+    {% assign icon = block.settings[icon_key] %}
+    {% assign text = block.settings[text_key] %}
+
+    {% if icon != blank or text != blank %}
+      <li class="pdp-icon-text-list-item">
+        <div class="pdp-icon-text__icon">
+          {% if icon != blank %}
+            {{
+              icon
+              | image_url: width: 80
+              | image_tag:
+                loading: 'lazy',
+                widths: '40,80',
+                alt: text
+            }}
+          {% endif %}
+        </div>
+
+        <span class="pdp-icon-text__text">
+          {{ text }}
+        </span>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>

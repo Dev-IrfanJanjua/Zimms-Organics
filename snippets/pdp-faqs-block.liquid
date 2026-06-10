@@ -1,7 +1,7 @@
 {% style %}
 
 .pdp-faq-item {
-  border-bottom: 1px solid #e5e5e5;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.30);
 }
 
 .pdp-faq-item-question {
@@ -80,6 +80,7 @@ p.pdp-faq-item-question_text {
 
 .pdp-faq-item-answer ul {
     padding-top: 16px;
+    padding-left: 6px;
     display: flex;
     flex-direction: column;
     gap: 3px;
@@ -91,6 +92,15 @@ p.pdp-faq-item-question_text {
 
 .pdp-faq-item.active .pdp-faq-item-question_icon-minus {
   opacity: 1;
+}
+
+@media screen and (max-width: 768px){
+
+p.pdp-faq-item-question_text {
+    font-size: 18px;
+    line-height: 26px;
+}
+  
 }
 
 {% endstyle %}
@@ -112,7 +122,7 @@ p.pdp-faq-item-question_text {
             <button
                 type="button"
                 class="pdp-faq-item-question"
-                aria-expanded="false"
+                aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
             >
                 <p class="pdp-faq-item-question_text">{{ question }}</p>
 
@@ -149,6 +159,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const faqItems = document.querySelectorAll('.pdp-faq-item');
 
+  // Open items that already have active class
+  faqItems.forEach((item) => {
+    const content = item.querySelector('.pdp-faq-item-answer-wrapper');
+    const trigger = item.querySelector('.pdp-faq-item-question');
+
+    if (item.classList.contains('active')) {
+      content.style.height = content.scrollHeight + 'px';
+      trigger.setAttribute('aria-expanded', 'true');
+    }
+  });
+
   faqItems.forEach((item) => {
 
     const trigger = item.querySelector('.pdp-faq-item-question');
@@ -159,7 +180,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const isActive = item.classList.contains('active');
 
       faqItems.forEach((faq) => {
-
         faq.classList.remove('active');
 
         faq.querySelector('.pdp-faq-item-question')
@@ -169,7 +189,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       if (!isActive) {
-
         item.classList.add('active');
 
         trigger.setAttribute('aria-expanded', 'true');

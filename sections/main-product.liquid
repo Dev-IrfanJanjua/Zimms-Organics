@@ -1,6 +1,6 @@
 <section
   id="MainProduct-{{ section.id }}"
-  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
+  class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} {% if section.settings.cstm_style %} cstm_product_main-sect {% endif %}"
   data-section="{{ section.id }}"
 >
   {{ 'section-main-product.css' | asset_url | stylesheet_tag }}
@@ -67,9 +67,65 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
-      <div class="grid__item product__media-wrapper{% if section.settings.media_position == 'right' %} medium-hide large-up-hide{% endif %}">
-        {% render 'product-media-gallery', variant_images: variant_images %}
+    <div class=" {% if section.settings.cstm_style %} cstm_product_main {% endif %} product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
+      <div class="grid__item product__media-wrapper {% if section.settings.media_position == 'right' %} medium-hide large-up-hide{% endif %}">
+        {% if section.settings.cstm_style %} 
+          {% for block in section.blocks %}
+            {% if block.type == 'tag' %}
+              <p class="pdp-tag-block pdp-tag-block__mob" style="display: none;">{{ block.settings.tag | strip_html }}</p>
+            {% endif %}
+            {% if block.type == 'title' %}
+              <div class="product__title product__title--mob" style="display: none;" {{ block.shopify_attributes }}>
+                <h1>{{ product.title | escape }}</h1>
+                <a href="{{ product.url }}" class="product__title">
+                  <h2 class="h1">
+                    {{ product.title | escape }}
+                  </h2>
+                </a>
+              </div>
+            {% endif %}
+            {%- if block.type == 'rating' and product.metafields.reviews.rating.value != blank -%}
+              <div class="rating-wrapper rating-wrapper--mob" style="display: none;">
+                {% liquid
+                  assign rating_decimal = 0
+                  assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
+                  if decimal >= 0.3 and decimal <= 0.7
+                    assign rating_decimal = 0.5
+                  elsif decimal > 0.7
+                    assign rating_decimal = 1
+                  endif
+                %}
+                <div
+                  class="rating"
+                  role="img"
+                  aria-label="{{ 'accessibility.star_reviews_info' | t: rating_value: product.metafields.reviews.rating.value, rating_max: product.metafields.reviews.rating.value.scale_max }}"
+                >
+                  <span
+                    aria-hidden="true"
+                    class="rating-star"
+                    style="--rating: {{ product.metafields.reviews.rating.value.rating | floor }}; --rating-max: {{ product.metafields.reviews.rating.value.scale_max }}; --rating-decimal: {{ rating_decimal }};"
+                  ></span>
+                </div>
+                <p class="rating-text caption">
+                  <span aria-hidden="true">
+                    {{- product.metafields.reviews.rating.value }} /
+                    {{ product.metafields.reviews.rating.value.scale_max -}}
+                  </span>
+                </p>
+                <p class="rating-count caption">
+                  <span aria-hidden="true">({{ product.metafields.reviews.rating_count }})</span>
+                  <span class="visually-hidden">
+                    {{- product.metafields.reviews.rating_count }}
+                    {{ 'accessibility.total_reviews' | t -}}
+                  </span>
+                </p>
+              </div>
+            {%- endif -%}
+          {% endfor %}
+          {% render 'cstm-gallery', block: block, section: section, product: product %}
+        {% else %}
+          {% render 'product-media-gallery', variant_images: variant_images %}
+        {% endif %}
       </div>
       <div class="product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <product-info
@@ -87,8 +143,14 @@
 
                 {% comment %} ===== custom Blocks ====== {% endcomment %}
 
+              {%- when 'tag' -%}
+                <p class="pdp-tag-block pdp-tag-block__desk">{{ block.settings.tag | strip_html }}</p>
+
               {%- when 'money_back' -%}
                 {% render 'pdp-moneyback', block: block, section: section %}
+
+              {%- when 'testimonial_slider' -%}
+                {% render 'pdp-testimonial', block: block, section: section %}
 
               {%- when 'buy_bundle' -%}
                 {% render 'pdp-buy-bundle', block: block, section: section %}
@@ -96,6 +158,30 @@
               {%- when 'faq' -%}
                 {% render 'pdp-faqs-block', block: block, section: section %}
 
+              {%- when 'delivery_options' -%}
+                {% render 'delivery-option', block: block, section: section %}
+
+              {%- when 'pdp_routine_products' -%}
+                {% render 'pdp-routine-product', block: block, section: section %}
+
+              {%- when 'icon_list' -%}
+                {% render 'pdp-icon-list', block: block, section: section %}
+
+              {%- when 'pdp_rating' -%}
+                <div class="pdp-rating-block">
+                  {% if block.settings.image != blank %}
+                    <div class="pdp-rating-image">
+                      {{ block.settings.image | image_url: width: 1600 | image_tag:
+                          widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440',
+                          alt: "image",
+                          loading: "lazy"
+                      }}
+                    </div>
+                  {% endif %}
+                  {% if block.settings.text != blank %}
+                    <p class="pdp rating-text">{{ block.settings.text }}</p>
+                  {% endif %}
+                </div>
               {%- when 'text' -%}
                 <p
                   class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
@@ -104,7 +190,7 @@
                   {{- block.settings.text -}}
                 </p>
               {%- when 'title' -%}
-                <div class="product__title" {{ block.shopify_attributes }}>
+                <div class="product__title product__title--desk" {{ block.shopify_attributes }}>
                   <h1>{{ product.title | escape }}</h1>
                   <a href="{{ product.url }}" class="product__title">
                     <h2 class="h1">
@@ -476,7 +562,7 @@
                 -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
-                  <div class="rating-wrapper">
+                  <div class="rating-wrapper rating-wrapper--desk">
                     {% liquid
                       assign rating_decimal = 0
                       assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
@@ -649,6 +735,74 @@
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
+
+                {% assign testimonial_count = 0 %}
+
+                {% for block in section.blocks %}
+                  {% if block.type == 'testimonial_slider' %}
+                    {% assign testimonial_count = testimonial_count | plus: 1 %}
+                  {% endif %}
+                {% endfor %}
+
+                {% comment %} {% if testimonial_count > 1 %}
+
+                  <div class="pdp-testimonial">
+                    <div class="pdp-testimonial-head">
+                      {% if section.settings.testimonial_title != blank %}
+                        <h4 class="pdp-testimonial_title">{{ section.settings.testimonial_title }}</h4>
+                      {% endif %}
+                      <div class="pdp-testimonial-navigation">
+                        <div class="pdp-testimonial-nav pdp-testimonial-nav-prev">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="4" height="6" viewBox="0 0 4 6" fill="none">
+                            <path d="M0.0767479 3.08927L2.71533 5.72785C2.73985 5.75237 2.76895 5.77181 2.80098 5.78508C2.83301 5.79835 2.86734 5.80518 2.90201 5.80518C2.93668 5.80518 2.97101 5.79835 3.00304 5.78508C3.03507 5.77181 3.06418 5.75237 3.08869 5.72785C3.11321 5.70334 3.13265 5.67423 3.14592 5.6422C3.15919 5.61017 3.16602 5.57584 3.16602 5.54117C3.16602 5.5065 3.15919 5.47217 3.14592 5.44014C3.13265 5.40811 3.11321 5.37901 3.08869 5.35449L0.636457 2.90259L3.08869 0.450685C3.1382 0.401174 3.16602 0.334024 3.16602 0.264005C3.16602 0.193987 3.1382 0.126836 3.08869 0.0773253C3.03918 0.0278147 2.97203 5.21679e-10 2.90201 0C2.83199 -5.21679e-10 2.76484 0.0278147 2.71533 0.0773253L0.0767479 2.71591C0.0522153 2.74041 0.0327532 2.76951 0.0194747 2.80155C0.00619626 2.83358 -0.00063777 2.86791 -0.00063777 2.90259C-0.00063777 2.93726 0.00619626 2.9716 0.0194747 3.00363C0.0327532 3.03566 0.0522153 3.06476 0.0767479 3.08927Z" fill="#1A2744"/>
+                          </svg>
+                        </div>
+                        <div class="pdp-testimonial-nav pdp-testimonial-nav-next">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="4" height="6" viewBox="0 0 4 6" fill="none">
+                            <path d="M0.0767479 3.08927L2.71533 5.72785C2.73985 5.75237 2.76895 5.77181 2.80098 5.78508C2.83301 5.79835 2.86734 5.80518 2.90201 5.80518C2.93668 5.80518 2.97101 5.79835 3.00304 5.78508C3.03507 5.77181 3.06418 5.75237 3.08869 5.72785C3.11321 5.70334 3.13265 5.67423 3.14592 5.6422C3.15919 5.61017 3.16602 5.57584 3.16602 5.54117C3.16602 5.5065 3.15919 5.47217 3.14592 5.44014C3.13265 5.40811 3.11321 5.37901 3.08869 5.35449L0.636457 2.90259L3.08869 0.450685C3.1382 0.401174 3.16602 0.334024 3.16602 0.264005C3.16602 0.193987 3.1382 0.126836 3.08869 0.0773253C3.03918 0.0278147 2.97203 5.21679e-10 2.90201 0C2.83199 -5.21679e-10 2.76484 0.0278147 2.71533 0.0773253L0.0767479 2.71591C0.0522153 2.74041 0.0327532 2.76951 0.0194747 2.80155C0.00619626 2.83358 -0.00063777 2.86791 -0.00063777 2.90259C-0.00063777 2.93726 0.00619626 2.9716 0.0194747 3.00363C0.0327532 3.03566 0.0522153 3.06476 0.0767479 3.08927Z" fill="#1A2744"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="swiper pdp-testimonial-swiper">
+                      <div class="swiper-wrapper">
+
+                        {% for block in section.blocks %}
+                          {% if block.type == 'testimonial_slider' %}
+
+                            <div class="swiper-slide" {{ block.shopify_attributes }}>
+                              {% render 'pdp-testimonial', block: block %}
+                            </div>
+
+                          {% endif %}
+                        {% endfor %}
+
+                      </div>
+                    </div>
+                    <div class="swiper-pagination pdp-testimonial-pagination"></div>
+                  </div>
+
+                {% else %}
+
+                  <div class="pdp-testimonial single-testimonial">
+                    <div class="pdp-testimonial-head">
+                      {% if section.settings.testimonial_title != blank %}
+                        <h4 class="pdp-testimonial_title">{{ section.settings.testimonial_title }}</h4>
+                      {% endif %}
+                    </div>
+
+                    {% for block in section.blocks %}
+                      {% if block.type == 'testimonial_slider' %}
+
+                        {% render 'pdp-testimonial', block: block %}
+
+                      {% endif %}
+                    {% endfor %}
+
+                  </div>
+
+                {% endif %} {% endcomment %}
+
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
@@ -795,6 +949,17 @@
       "type": "@app"
     },
     {
+      "type": "tag",
+      "name": "Product Tag",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "tag",
+          "label": "product Tag"
+        }
+      ]
+    },
+    {
       "type": "money_back",
       "name": "Money Back",
       "settings": [
@@ -879,6 +1044,288 @@
         }
 
         // continue to 10
+      ]
+    },
+    {
+      "type": "pdp_rating",
+      "name": "PDP Ratings",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Ratings Image"
+        },
+        {
+          "type": "inline_richtext",
+          "id": "text",
+          "label": "Ratings Text"
+        }
+      ]
+    },
+    {
+      "type": "testimonial_slider",
+      "name": "Testimonial",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Section Title",
+          "default": "What Our Customers Say"
+        },
+        {
+          "type": "image_picker",
+          "id": "rating_icon",
+          "label": "Stars Image"
+        },
+        {
+          "type": "text",
+          "id": "buyer_text",
+          "label": "Buyer Tag Text",
+          "default": "Verified Buyer"
+        },
+
+        {
+          "type": "header",
+          "content": "Slide 1"
+        },
+        {
+          "type": "text",
+          "id": "slide_1_rating",
+          "label": "Rating Text"
+        },
+        {
+          "type": "textarea",
+          "id": "slide_1_message",
+          "label": "Message"
+        },
+        {
+          "type": "text",
+          "id": "slide_1_name",
+          "label": "Name"
+        },
+
+        {
+          "type": "header",
+          "content": "Slide 2"
+        },
+        {
+          "type": "text",
+          "id": "slide_2_rating",
+          "label": "Rating Text"
+        },
+        {
+          "type": "textarea",
+          "id": "slide_2_message",
+          "label": "Message"
+        },
+        {
+          "type": "text",
+          "id": "slide_2_name",
+          "label": "Name"
+        },
+
+        {
+          "type": "header",
+          "content": "Slide 3"
+        },
+        {
+          "type": "text",
+          "id": "slide_3_rating",
+          "label": "Rating Text"
+        },
+        {
+          "type": "textarea",
+          "id": "slide_3_message",
+          "label": "Message"
+        },
+        {
+          "type": "text",
+          "id": "slide_3_name",
+          "label": "Name"
+        },
+
+        {
+          "type": "header",
+          "content": "Slide 4"
+        },
+        {
+          "type": "text",
+          "id": "slide_4_rating",
+          "label": "Rating Text"
+        },
+        {
+          "type": "textarea",
+          "id": "slide_4_message",
+          "label": "Message"
+        },
+        {
+          "type": "text",
+          "id": "slide_4_name",
+          "label": "Name"
+        },
+
+        {
+          "type": "header",
+          "content": "Slide 5"
+        },
+        {
+          "type": "text",
+          "id": "slide_5_rating",
+          "label": "Rating Text"
+        },
+        {
+          "type": "textarea",
+          "id": "slide_5_message",
+          "label": "Message"
+        },
+        {
+          "type": "text",
+          "id": "slide_5_name",
+          "label": "Name"
+        }
+      ]
+    },
+    {
+      "type": "pdp_routine_products",
+      "name": "Routine Products",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Complete Your Routine"
+        }
+      ]
+    },
+    {
+      "type": "delivery_options",
+      "name": "Delivery Options",
+      "settings": [
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Choose Your Delivery:"
+        },
+        {
+          "type": "header",
+          "content": "Tier 1"
+        },
+        { "type": "number", "id": "tier1_qty",        "label": "Quantity",        "default": 1 },
+        { "type": "text",   "id": "tier1_save",       "label": "Save label",      "default": "10%" },
+        { "type": "text",   "id": "tier1_price",      "label": "Price",           "default": "$38.00" },
+        { "type": "text",   "id": "tier1_per",        "label": "Price per unit" },
+        { "type": "text",   "id": "tier1_badge",      "label": "Badge text" },
+        { "type": "text",   "id": "tier1_gift",       "label": "Gift/bonus text" },
+        { "type": "text",   "id": "tier1_gift_price", "label": "Gift original price (e.g. $10.95)" },
+        { "type": "text",   "id": "tier1_gift_colors","label": "Gift color options (comma separated)" },
+        { "type": "text",   "id": "tier1_variant",    "label": "Variant ID" },
+        {
+          "type": "header",
+          "content": "Tier 2"
+        },
+        { "type": "number", "id": "tier2_qty",        "label": "Quantity",        "default": 2 },
+        { "type": "text",   "id": "tier2_save",       "label": "Save label",      "default": "15%" },
+        { "type": "text",   "id": "tier2_price",      "label": "Price",           "default": "$59.98" },
+        { "type": "text",   "id": "tier2_per",        "label": "Price per unit",  "default": "$29.99 / Bottle" },
+        { "type": "text",   "id": "tier2_badge",      "label": "Badge text",      "default": "Most Popular" },
+        { "type": "text",   "id": "tier2_gift",       "label": "Gift/bonus text", "default": "Free Spout" },
+        { "type": "text",   "id": "tier2_gift_price", "label": "Gift original price (e.g. $10.95)", "default": "$10.95" },
+        { "type": "text",   "id": "tier2_gift_colors","label": "Gift color options (comma separated)", "default": "Gold,Black,Silver,Rose Gold" },
+        { "type": "text",   "id": "tier2_variant",    "label": "Variant ID" },
+        {
+          "type": "header",
+          "content": "Tier 3"
+        },
+        { "type": "number", "id": "tier3_qty",        "label": "Quantity",        "default": 3 },
+        { "type": "text",   "id": "tier3_save",       "label": "Save label",      "default": "20%" },
+        { "type": "text",   "id": "tier3_price",      "label": "Price",           "default": "$59.98" },
+        { "type": "text",   "id": "tier3_per",        "label": "Price per unit",  "default": "$24.99 / Bottle" },
+        { "type": "text",   "id": "tier3_badge",      "label": "Badge text",      "default": "Best Value" },
+        { "type": "text",   "id": "tier3_gift",       "label": "Gift/bonus text", "default": "2 Spouts + Sip Glass + Free Shipping" },
+        { "type": "text",   "id": "tier3_gift_price", "label": "Gift original price" },
+        { "type": "text",   "id": "tier3_gift_colors","label": "Gift color options (comma separated)" },
+        { "type": "text",   "id": "tier3_variant",    "label": "Variant ID" },
+        {
+          "type": "header",
+          "content": "Subscription Toggle"
+        },
+        {
+          "type": "text",
+          "id": "sub_toggle_label",
+          "label": "Subscription toggle label",
+          "default": "Save 10% Extra with Automatic Refills"
+        }
+      ]
+    },
+    {
+      "type": "icon_list",
+      "name": "Icon List",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Icon Text Items"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_1_icon",
+          "label": "Item 1 Icon"
+        },
+        {
+          "type": "text",
+          "id": "item_1_text",
+          "label": "Item 1 Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_2_icon",
+          "label": "Item 2 Icon"
+        },
+        {
+          "type": "text",
+          "id": "item_2_text",
+          "label": "Item 2 Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_3_icon",
+          "label": "Item 3 Icon"
+        },
+        {
+          "type": "text",
+          "id": "item_3_text",
+          "label": "Item 3 Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_4_icon",
+          "label": "Item 4 Icon"
+        },
+        {
+          "type": "text",
+          "id": "item_4_text",
+          "label": "Item 4 Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_5_icon",
+          "label": "Item 5 Icon"
+        },
+        {
+          "type": "text",
+          "id": "item_5_text",
+          "label": "Item 5 Text"
+        },
+        {
+          "type": "image_picker",
+          "id": "item_6_icon",
+          "label": "Item 6 Icon"
+        },
+        {
+          "type": "text",
+          "id": "item_6_text",
+          "label": "Item 6 Text"
+        }
       ]
     },
     {
@@ -2227,6 +2674,12 @@
   "settings": [
     {
       "type": "checkbox",
+      "id": "cstm_style",
+      "default": true,
+      "label": "Enable Custom Style"
+    },
+    {
+      "type": "checkbox",
       "id": "enable_sticky_info",
       "default": true,
       "label": "t:sections.main-product.settings.enable_sticky_info.label"
@@ -2388,7 +2841,7 @@
       "id": "padding_top",
       "min": 0,
       "max": 100,
-      "step": 4,
+      "step": 1,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
       "default": 36
@@ -2398,11 +2851,60 @@
       "id": "padding_bottom",
       "min": 0,
       "max": 100,
-      "step": 4,
+      "step": 1,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Top Mobile",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding Bottom Mobile",
+      "default": 36
+    },
+    {
+      "type": "text",
+      "id": "testimonial_title",
+      "label": "Testimonial Block Title",
+      "default": "Zimms Organic community"
     }
   ]
 }
 {% endschema %}
+
+{% if section.settings.cstm_style %}
+
+{{ 'pdp-custom-style.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+.cstm_product_main-sect{
+  padding-top: {{ section.settings.padding_top }}px !important;
+  padding-bottom: {{ section.settings.padding_bottom }}px !important;
+}
+
+@media screen and (max-width: 768px){
+
+.cstm_product_main-sect{
+  padding-top: {{ section.settings.padding_top_mob }}px !important;
+  padding-bottom: {{ section.settings.padding_bottom_mob }}px !important;
+}
+
+}
+
+{% endstyle %}
+
+{% endif %}
