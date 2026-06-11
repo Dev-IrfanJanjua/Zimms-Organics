@@ -97,8 +97,19 @@
 
       {% assign banner_title = section.settings.title %}
 
-      {% if banner_title == blank and collection %}
-        {% assign banner_title = collection.title %}
+      {% if banner_title == blank %}
+  
+        {% if collection %}
+          {% assign banner_title = collection.title %}
+          
+        {% elsif blog %}
+          {% assign banner_title = blog.title %}
+          
+        {% elsif article %}
+          {% assign banner_title = article.title %}
+          
+        {% endif %}
+
       {% endif %}
 
       {% if banner_title != blank %}

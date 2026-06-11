@@ -1,0 +1,220 @@
+{% comment %} Pullquote Section {% endcomment %}
+
+<style>
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  }
+
+  .section-{{ section.id }} .pq-inner {
+    background-color: {{ section.settings.content_bg_color }};
+    border-radius: {{ section.settings.content_border_radius }}px;
+    padding: {{ section.settings.content_padding_v }}px {{ section.settings.content_padding_h }}px;
+    text-align: center;
+  }
+
+  .section-{{ section.id }} .pq-quote {
+    color: {{ section.settings.quote_color }};
+    margin: 0 auto {{ section.settings.gap_quote_attribution }}px;
+    text-align: center;
+    font-family: Lora;
+    font-size: 34px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 42px;
+    letter-spacing: -1.36px;
+    text-transform: capitalize;
+  }
+
+  .section-{{ section.id }} .pq-attribution {
+    color: {{ section.settings.attribution_color }};
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: italic;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.312px;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .section-{{ section.id }} .pq-inner {
+      padding: 16px;
+    }
+
+    .section-{{ section.id }} .pq-quote {
+        font-size: 24px;
+        letter-spacing: -0.96px;
+        line-height: 32px;
+    }
+  }
+</style>
+
+<section class="section-{{ section.id }}" id="shopify-section-{{ section.id }}">
+  <div class="page-width">
+    <div class="pq-inner">
+      {%- if section.settings.quote != blank -%}
+        <p class="pq-quote">{{ section.settings.quote }}</p>
+      {%- endif -%}
+      {%- if section.settings.attribution != blank -%}
+        <p class="pq-attribution">{{ section.settings.attribution }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pullquote",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "textarea",
+      "id": "quote",
+      "label": "Quote",
+      "default": "\"The Polyphenol Content Of Olive Oil Is The Single Most Important Factor Determining Its Health Benefit.\""
+    },
+    {
+      "type": "text",
+      "id": "attribution",
+      "label": "Attribution",
+      "default": "Dr. Mary Flynn, Brown University · Olive Oil Research"
+    },
+    {
+      "type": "range",
+      "id": "gap_quote_attribution",
+      "min": 8,
+      "max": 60,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap: Quote → Attribution",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Content Box"
+    },
+    {
+      "type": "range",
+      "id": "content_border_radius",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Content Border Radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "content_padding_v",
+      "min": 20,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Content Padding (top / bottom)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "content_padding_h",
+      "min": 20,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Content Padding (left / right)",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Spacing – Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Spacing – Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 24
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "content_bg_color",
+      "label": "Content Box Background",
+      "default": "#F5F3EE"
+    },
+    {
+      "type": "color",
+      "id": "quote_color",
+      "label": "Quote Text Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "attribution_color",
+      "label": "Attribution Text Color",
+      "default": "#1A2744"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pullquote"
+    }
+  ]
+}
+{% endschema %}

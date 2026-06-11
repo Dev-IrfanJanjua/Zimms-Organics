@@ -95,6 +95,41 @@
     line-height: 26px;
 }
 
+.section-{{ section.id }} p.principles-block__bottom_line {
+    margin: 0;
+    padding: 20px 0 18px;
+    border-top: 1px solid #1E1E1E1A;
+    color: var(--Deep-Navy, #1A2744);
+    font-family: Lora;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+{% if section.settings.ritual %} 
+
+.ritual-{{ section.id }} .principles-block__subtitle {
+    margin-top: -8px !important;
+    font-size: 18px;
+    line-height: 24px;
+}
+
+.ritual-{{ section.id }} li.principles-block-item {
+    padding: 24px !important;
+}
+
+.ritual-{{ section.id }} .principles-block {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+{% endif %}
+
 @media screen and (max-width: 768px) {
   .section-{{ section.id }} {
     padding-top: {{ section.settings.mobile_padding_top }}px;
@@ -139,10 +174,15 @@
         margin: 0;
     }
 
+    .section-{{ section.id }} p.principles-block__bottom_line {
+      padding: 16px 0 0;
+      font-size: 14px;
+  }
+
 }
 {% endstyle %}
 
-<section class="principles-section section-{{ section.id }} scroll-trigger animate--slide-in">
+<section class="principles-section section-{{ section.id }} scroll-trigger animate--slide-in {% if section.settings.ritual %} ritual-{{ section.id }}{% endif %}">
   <div class="page-width">
     <div class="principles-wrapper">
 
@@ -208,6 +248,12 @@
                 </div>
               {% endif %}
 
+              {% if block.settings.bottom != blank %}
+                <p class="principles-block__bottom_line">
+                  {{ block.settings.bottom }}
+                </p>
+              {% endif %}
+
             </li>
           {% endfor %}
         </ul>
@@ -223,6 +269,11 @@
   "tag": "section",
   "class": "principles-section",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "ritual",
+      "label": "Enable Ritual Page Style"
+    },
     {
       "type": "text",
       "id": "tag",
@@ -340,6 +391,11 @@
           "type": "textarea",
           "id": "subtitle",
           "label": "Subtitle"
+        },
+        {
+          "type": "text",
+          "id": "bottom",
+          "label": "Bottom Line"
         }
       ]
     }

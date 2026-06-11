@@ -9,16 +9,64 @@
  */
 {
   "sections": {
+    "collection_banner_zcPhq7": {
+      "type": "collection-banner",
+      "name": "Collection Banner",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Frame_2147242608_4.png",
+        "mobile_image": "shopify://shop_images/Frame_2147242608_5.png",
+        "title": "The Zimms Library",
+        "bg_color": "#ffffff",
+        "heading_color": "#ffffff",
+        "padding_top_desktop": 0,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 0
+      }
+    },
     "main": {
       "type": "main-blog",
+      "blocks": {
+        "tabs_dbqHYP": {
+          "type": "tabs",
+          "settings": {
+            "label": "All Articles",
+            "url": "shopify://blogs/news"
+          }
+        },
+        "tabs_KXxygm": {
+          "type": "tabs",
+          "settings": {
+            "label": "Zimms Updates",
+            "url": "shopify://blogs/news"
+          }
+        },
+        "tabs_dgLEjN": {
+          "type": "tabs",
+          "settings": {
+            "label": "Cooking recipe",
+            "url": "shopify://blogs/news"
+          }
+        }
+      },
+      "block_order": [
+        "tabs_dbqHYP",
+        "tabs_KXxygm",
+        "tabs_dgLEjN"
+      ],
       "settings": {
+        "cstm_style": true,
+        "title": "Recent blog posts",
+        "subtitle": "Explore expert tips and proven advice to support your weight loss and wellbeing goals. Learn how to create a healthier lifestyle that truly lasts.",
         "layout": "grid",
         "show_image": true,
         "image_height": "medium",
         "show_date": true,
         "show_author": false,
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 80,
+        "padding_bottom": 80,
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 60
       }
     },
     "newsletter": {
@@ -57,6 +105,7 @@
     }
   },
   "order": [
+    "collection_banner_zcPhq7",
     "main",
     "newsletter"
   ]

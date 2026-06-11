@@ -1,6 +1,6 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
-<article class="article-template" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="article-template {% if section.settings.cstm_style %}blog_detail-section {% endif %}" itemscope itemtype="http://schema.org/BlogPosting">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
       {%- when '@app' -%}
@@ -10,7 +10,7 @@
       {%- when 'featured_image' -%}
         {%- if article.image -%}
           <div
-            class="article-template__hero-container{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+            class="article-template__hero-container {% if section.settings.cstm_style %}blog_detail-wrapper {% endif %} {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
             {{ block.shopify_attributes }}
           >
             <div
@@ -87,8 +87,18 @@
 
   <div class="article-template__back element-margin-top center{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
     <a href="{{ blog.url }}" class="article-template__link link animate-arrow">
-      <span class="icon-wrap">{% render 'icon-arrow' %}</span>
+      {% unless section.settings.cstm_style %}
+        <span class="icon-wrap">{% render 'icon-arrow' %}</span>
+      {% endunless %}
       {{ 'blogs.article.back_to_blog' | t: title: blog.title }}
+      {% if section.settings.cstm_style %}
+        <span class="icon-wrap">
+          <svg xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 11 11" fill="none">
+            <path d="M1 10L10 1" stroke="#1A2744" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M2.6875 1H10V8.3125" stroke="#1A2744" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+      {% endif %}
     </a>
   </div>
   {%- if blog.comments_enabled? -%}
@@ -313,6 +323,14 @@
   "name": "t:sections.main-article.name",
   "tag": "section",
   "class": "section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "cstm_style",
+      "label": "Enable Custom Style",
+      "default": true
+    }
+  ],
   "blocks": [
     {
       "type": "@app"
@@ -397,3 +415,138 @@
   ]
 }
 {% endschema %}
+
+
+{% if section.settings.cstm_style %}
+
+{% style %}
+
+main#MainContent:has(.blog_detail-section),
+.section:has(.blog_detail-section){
+  background: #FFFFFC;
+}
+
+.article-template__content {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto !important;
+    padding-top: 80px;
+}
+
+.article-template__content p {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 0;
+}
+
+.article-template__content h6,
+.article-template__content h5,
+.article-template__content h4,
+.article-template__content h3,
+.article-template__content h2 {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: Lora;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    margin: 32px 0 12px;
+}
+
+.article-template__content h1{
+    color: var(--Deep-Navy, #1A2744);
+    font-family: Lora;
+    font-size: 44px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    margin: 32px 0 12px;
+}
+
+.article-template__content li {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    list-style-position: outside;
+}
+
+.article-template__content a {
+    color: #1A2744 !important;
+}
+
+.article-template__link .icon-wrap {
+    display: flex;
+    margin-right: 0;
+    transform: unset;
+    width: 10px;
+    height: 10px;
+}
+
+.article-template__link {
+    gap: 10px;
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    font-family: 'DM Sans';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+    text-transform: uppercase;
+}
+
+.article-template__back {
+    margin: 40px 0 80px !important;
+}
+
+@media screen and (max-width: 768px){
+
+.article-template__back {
+    margin: 24px 0 50px !important;
+}
+
+.article-template__content p,
+.article-template__content li {
+    font-size: 14px;
+    line-height: normal;
+}
+
+.article-template__content h6, 
+.article-template__content h5, 
+.article-template__content h4, 
+.article-template__content h3, 
+.article-template__content h2 {
+    font-size: 18px;
+    line-height: 26px;
+    margin: 24px 0 12px;
+}
+
+.article-template__content {
+    padding-top: 50px;
+}
+
+.article-template__content h1{
+    font-size: 32px;
+    margin: 24px 0 12px;
+}
+
+}
+
+
+
+{% endstyle %}
+
+{% endif %}

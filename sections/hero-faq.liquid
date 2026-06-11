@@ -1,0 +1,737 @@
+{% comment %} Hero + FAQ Accordion Section {% endcomment %}
+
+<style>
+  .section-{{ section.id }} {
+    position: relative;
+    overflow: hidden;
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+    min-height: {{ section.settings.min_height_desktop }}px;
+    display: flex;
+  }
+
+  /* ── Background Image ── */
+  .section-{{ section.id }} .hf-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .section-{{ section.id }} .hf-bg__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .section-{{ section.id }} .hf-bg__overlay {
+    position: absolute;
+    inset: 0;
+    background-color: {{ section.settings.overlay_color }};
+    opacity: {{ section.settings.overlay_opacity | divided_by: 100.0 }};
+  }
+
+  /* ── Inner Layout ── */
+  .section-{{ section.id }} .hf-inner {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+
+  /* ── Left Column ── */
+  .section-{{ section.id }} .hf-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .section-{{ section.id }} .hf-tag.tag_tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    border-radius: 100px;
+    background-color: {{ section.settings.tag_bg_color }};
+    color: {{ section.settings.tag_text_color }};
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .section-{{ section.id }} .hf-title.title_title {
+    color: {{ section.settings.title_color }};
+  }
+
+  .section-{{ section.id }} .hf-subtitle {
+    color: #fff;
+    font-family: "DM Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 0;
+  }
+
+  .section-{{ section.id }} .hf-btn.btn_btn {
+    background-color: {{ section.settings.btn_bg_color }};
+    color: {{ section.settings.btn_text_color }};
+    border: 1px solid {{ section.settings.btn_border_color }};
+    border-radius: {{ section.settings.btn_border_radius }}px;
+    cursor: pointer;
+    max-width: 186px;
+    width: 100%;
+    margin-top: 36px;
+  }
+
+  /* ── Right Column – FAQ ── */
+  .section-{{ section.id }} .hf-faq {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .section-{{ section.id }} .hf-faq__item {
+    background-color: {{ section.settings.faq_bg_color }};
+    border-radius: {{ section.settings.faq_border_radius }}px;
+    margin-bottom: {{ section.settings.faq_gap }}px;
+    overflow: hidden;
+  }
+
+  .section-{{ section.id }} .hf-faq__trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+
+  .section-{{ section.id }} .hf-faq__item.is-open button.hf-faq__trigger {
+        padding-bottom: 12px;
+    }
+
+  .section-{{ section.id }} .hf-faq__index {
+    color: {{ section.settings.faq_index_color }};
+    font-family: "DM Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 24px;
+    flex-shrink: 0;
+  }
+
+  .section-{{ section.id }} .hf-faq__question {
+    color: {{ section.settings.faq_question_color }};
+    font-family: Lora, serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    flex: 1;
+    margin: 0;
+  }
+
+  .section-{{ section.id }} .hf-faq__icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: {{ section.settings.faq_icon_color }};
+    transition: transform 0.35s ease;
+  }
+
+  .section-{{ section.id }} .hf-faq__icon svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+  }
+
+  .section-{{ section.id }} .hf-faq__icon-minus{
+    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    }
+
+    .section-{{ section.id }} .hf-faq__item.is-open .hf-faq__icon-minus{
+        display: block;
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .section-{{ section.id }} .hf-faq__item.is-open .hf-faq__icon-plus{
+        display: none;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+  /* Minus state when open */
+  {% comment %} .section-{{ section.id }} .hf-faq__item.is-open .hf-faq__icon {
+    transform: rotate(45deg);
+  } {% endcomment %}
+
+  /* Answer panel */
+  .section-{{ section.id }} .hf-faq__body {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.38s ease;
+  }
+
+  .section-{{ section.id }} .hf-faq__item.is-open .hf-faq__body {
+    grid-template-rows: 1fr;
+  }
+
+  .section-{{ section.id }} .hf-faq__body-inner {
+    overflow: hidden;
+  }
+
+  .section-{{ section.id }} .hf-faq__answer {
+    color: {{ section.settings.faq_answer_color }};
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26px;
+    letter-spacing: -0.312px;
+    padding: 0 24px 24px;
+    margin: 0;
+  }
+
+  /* ── Mobile ── */
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+      min-height: {{ section.settings.min_height_mobile }}px;
+      align-items: flex-start;
+    }
+
+    .section-{{ section.id }} .hf-bg__img--desktop {
+      display: none;
+    }
+
+    .section-{{ section.id }} .hf-bg__img--mobile {
+      display: block;
+    }
+
+    .section-{{ section.id }} .hf-inner {
+      grid-template-columns: 1fr;
+    }
+
+    .section-{{ section.id }} .hf-title.title_title {
+      font-size: 36px;
+    }
+
+    .section-{{ section.id }} .hf-faq__question {
+      font-size: 18px;
+      line-height: 26px;
+    }
+
+    .section-{{ section.id }} .hf-faq__answer {
+        padding-bottom: 16px;
+        font-size: 14px;
+        line-height: normal;
+    }
+
+    .section-{{ section.id }} .hf-subtitle {
+        font-size: 14px;
+        line-height: 20px;
+        margin-top: -8px;
+    }
+
+    .section-{{ section.id }} .hf-btn.btn_btn {
+        margin-top: 8px;
+    }
+
+    .section-{{ section.id }} .hf-faq__trigger {
+        padding: 16px 24px;
+    }
+
+    .section-{{ section.id }} .hf-faq__index {
+        font-size: 16px;
+    }
+
+  }
+
+  @media screen and (min-width: 769px) {
+    .section-{{ section.id }} .hf-bg__img--mobile {
+      display: none;
+    }
+
+    .section-{{ section.id }} .hf-bg__img--desktop {
+      display: block;
+    }
+  }
+</style>
+
+<section class="section-{{ section.id }}" id="shopify-section-{{ section.id }}">
+
+  <!-- Background Images (HTML element, not CSS background) -->
+  <div class="hf-bg" aria-hidden="true">
+    {%- if section.settings.bg_image_desktop != blank -%}
+      {{
+        section.settings.bg_image_desktop
+        | image_url: width: 2400
+        | image_tag:
+          class: 'hf-bg__img hf-bg__img--desktop',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: ''
+      }}
+    {%- else -%}
+      {{ 'lifestyle-1' | placeholder_svg_tag: 'hf-bg__img hf-bg__img--desktop' }}
+    {%- endif -%}
+
+    {%- if section.settings.bg_image_mobile != blank -%}
+      {{
+        section.settings.bg_image_mobile
+        | image_url: width: 1200
+        | image_tag:
+          class: 'hf-bg__img hf-bg__img--mobile',
+          loading: 'eager',
+          fetchpriority: 'high',
+          alt: ''
+      }}
+    {%- else -%}
+      {%- if section.settings.bg_image_desktop != blank -%}
+        {{
+          section.settings.bg_image_desktop
+          | image_url: width: 1200
+          | image_tag:
+            class: 'hf-bg__img hf-bg__img--mobile',
+            loading: 'eager',
+            alt: ''
+        }}
+      {%- else -%}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'hf-bg__img hf-bg__img--mobile' }}
+      {%- endif -%}
+    {%- endif -%}
+
+    <div class="hf-bg__overlay"></div>
+  </div>
+
+  <div class="page-width">
+    <div class="hf-inner">
+
+      <!-- Left: Hero copy -->
+      <div class="hf-left">
+        {%- if section.settings.tag != blank -%}
+          <span class="hf-tag tag_tag">{{ section.settings.tag }}</span>
+        {%- endif -%}
+
+        {%- if section.settings.title != blank -%}
+          <h2 class="hf-title title_title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+
+        {%- if section.settings.subtitle != blank -%}
+          <p class="hf-subtitle">{{ section.settings.subtitle }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.btn_label != blank and section.settings.btn_url != blank -%}
+          <a href="{{ section.settings.btn_url }}" class="hf-btn btn_btn">
+            {{ section.settings.btn_label }}
+          </a>
+        {%- endif -%}
+      </div>
+
+      <!-- Right: FAQ accordion -->
+      {%- assign faq_blocks = section.blocks | where: 'type', 'faq_item' -%}
+      {%- if faq_blocks.size > 0 -%}
+        <div class="hf-faq" id="hf-faq-{{ section.id }}" role="list">
+          {%- for block in faq_blocks -%}
+            {%- assign idx = forloop.index | prepend: '0' | slice: -2, 2 -%}
+            <div
+              class="hf-faq__item"
+              role="listitem"
+              {{ block.shopify_attributes }}
+            >
+              <button
+                class="hf-faq__trigger"
+                aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}"
+                aria-controls="faq-body-{{ section.id }}-{{ forloop.index }}"
+              >
+                <span class="hf-faq__index">{{ idx }}</span>
+                <span class="hf-faq__question">{{ block.settings.question }}</span>
+                <span class="hf-faq__icon" aria-hidden="true">
+                  <svg class="hf-faq__icon-plus" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="10" y1="3" x2="10" y2="17" stroke-width="1.6" stroke-linecap="round"/>
+                    <line x1="3" y1="10" x2="17" y2="10" stroke-width="1.6" stroke-linecap="round"/>
+                  </svg>
+                    <svg class="hf-faq__icon-minus" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 26 26" fill="none">
+                        <path d="M3.89844 13H22.0984" stroke="#1E1E1E" stroke-width="1.69" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+              </button>
+              <div
+                class="hf-faq__body"
+                id="faq-body-{{ section.id }}-{{ forloop.index }}"
+                role="region"
+              >
+                <div class="hf-faq__body-inner">
+                  {%- if block.settings.answer != blank -%}
+                    <p class="hf-faq__answer">{{ block.settings.answer }}</p>
+                  {%- endif -%}
+                </div>
+              </div>
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var container = document.getElementById('hf-faq-{{ section.id }}');
+    if (!container) return;
+
+    var items = container.querySelectorAll('.hf-faq__item');
+
+    items.forEach(function (item) {
+      var trigger = item.querySelector('.hf-faq__trigger');
+
+      trigger.addEventListener('click', function () {
+        var isOpen = item.classList.contains('is-open');
+
+        // Close all
+        items.forEach(function (el) {
+          el.classList.remove('is-open');
+          el.querySelector('.hf-faq__trigger').setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked if it was closed
+        if (!isOpen) {
+          item.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Hero + FAQ",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Background Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_desktop",
+      "label": "Background Image (Desktop)"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image_mobile",
+      "label": "Background Image (Mobile)",
+      "info": "Falls back to desktop image if left blank"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "min": 0,
+      "max": 90,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay Opacity",
+      "default": 35
+    },
+    {
+      "type": "header",
+      "content": "Left Column Content"
+    },
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Tag Label",
+      "default": "Heal Collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Four Steps. One Intention."
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "A quiet practice before the day begins. Empty stomach. Present mind."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "Shop Heal"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "range",
+      "id": "btn_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Section Size"
+    },
+    {
+      "type": "range",
+      "id": "min_height_desktop",
+      "min": 400,
+      "max": 900,
+      "step": 20,
+      "unit": "px",
+      "label": "Min Height (Desktop)",
+      "default": 540
+    },
+    {
+      "type": "range",
+      "id": "min_height_mobile",
+      "min": 400,
+      "max": 1000,
+      "step": 20,
+      "unit": "px",
+      "label": "Min Height (Mobile)",
+      "default": 700
+    },
+    {
+      "type": "header",
+      "content": "Spacing – Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Spacing – Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Colors – Tag"
+    },
+    {
+      "type": "color",
+      "id": "tag_bg_color",
+      "label": "Tag Background",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "Tag Text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Colors – Hero"
+    },
+    {
+      "type": "color",
+      "id": "overlay_color",
+      "label": "Overlay Color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Colors – Button"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Button Border",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "Colors – FAQ"
+    },
+    {
+      "type": "color",
+      "id": "faq_bg_color",
+      "label": "FAQ Card Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "faq_index_color",
+      "label": "Index Number Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "faq_question_color",
+      "label": "Question Text Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "faq_answer_color",
+      "label": "Answer Text Color",
+      "default": "#1E1E1E"
+    },
+    {
+      "type": "color",
+      "id": "faq_icon_color",
+      "label": "Plus / Minus Icon Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "header",
+      "content": "FAQ Layout"
+    },
+    {
+      "type": "range",
+      "id": "faq_border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "FAQ Card Border Radius",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "faq_gap",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap Between FAQ Cards",
+      "default": 8
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "On empty stomach"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "Take one tablespoon of Zimms first thing. Before coffee, before anything. Let the oil be the first thing your body receives."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero + FAQ",
+      "blocks": [
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "On empty stomach",
+            "answer": "Take one tablespoon of Zimms first thing. Before coffee, before anything. Let the oil be the first thing your body receives."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Wait 15 minutes",
+            "answer": "Allow the polyphenols to absorb. This pause matters — it is the moment the ritual becomes intentional, not habitual."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Zimms heal olive & lemon",
+            "answer": "Allow the polyphenols to absorb. This pause matters — it is the moment the ritual becomes intentional, not habitual."
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Proceed with breakfast",
+            "answer": "Allow the polyphenols to absorb. This pause matters — it is the moment the ritual becomes intentional, not habitual."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

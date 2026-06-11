@@ -1,0 +1,814 @@
+{% comment %} Cooking Collection Feature Section {% endcomment %}
+
+<style>
+  .section-{{ section.id }} {
+    background-color: {{ section.settings.section_bg_color }};
+    padding-top: {{ section.settings.padding_top_desktop }}px;
+    padding-bottom: {{ section.settings.padding_bottom_desktop }}px;
+  }
+
+  /* ── Header Row ── */
+  .section-{{ section.id }} .cc-header {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 40px;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .section-{{ section.id }} .cc-header__left {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .section-{{ section.id }} .cc-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 8px;
+    border-radius: 100px;
+    background-color: {{ section.settings.eyebrow_bg_color }};
+    color: {{ section.settings.eyebrow_text_color }};
+    font-family: "DM Sans", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 16px;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    width: fit-content;
+    margin-bottom: 16px;
+  }
+
+  .section-{{ section.id }} .cc-title.title_title {
+    color: {{ section.settings.title_color }};
+  }
+
+  .section-{{ section.id }} .cc-header__right {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    max-width: 420px;
+  }
+
+  .section-{{ section.id }} .cc-description {
+    color: {{ section.settings.description_color }};
+    font-family: "DM Sans", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 0;
+  }
+
+  .section-{{ section.id }} .cc-btn.btn_btn {
+    background-color: {{ section.settings.btn_bg_color }};
+    color: {{ section.settings.btn_text_color }};
+    border: 1px solid {{ section.settings.btn_border_color }};
+    border-radius: {{ section.settings.btn_border_radius }}px;
+    cursor: pointer;
+    max-width: 186px;
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .cc-btn.btn_btn:hover {
+    opacity: 0.75;
+  }
+
+  /* ── Desktop Grid ── */
+  .section-{{ section.id }} .cc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: {{ section.settings.grid_gap }}px;
+  }
+
+  /* ─── Image Card ─── */
+  .section-{{ section.id }} .cc-card-image {
+    position: relative;
+    border-radius: {{ section.settings.card_border_radius }}px;
+    overflow: hidden;
+    aspect-ratio: {{ section.settings.image_card_ratio }};
+  }
+
+  .section-{{ section.id }} .cc-card-image img,
+  .section-{{ section.id }} .cc-card-image svg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .section-{{ section.id }} .cc-card-image__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.58) 0%, transparent 55%);
+  }
+
+  .section-{{ section.id }} .cc-card-image__content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 37px 24px;
+  }
+
+  .section-{{ section.id }} .cc-card-image__title {
+    color: #fff;
+    font-family: Lora, serif;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 32px;
+    margin: 0 0 8px;
+  }
+
+  .section-{{ section.id }} .cc-card-image__sub {
+    color: #FFFFFC;
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    margin: 0;
+  }
+
+  /* ─── Feature Card ─── */
+  .section-{{ section.id }} .cc-card-feature {
+    border-radius: {{ section.settings.card_border_radius }}px;
+    background-color: {{ section.settings.feature_card_bg_color }};
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px;
+  }
+
+  /* Centered variant (no badge, text centered) */
+  .section-{{ section.id }} .cc-card-feature--centered {
+    align-items: center;
+    text-align: center;
+    aspect-ratio: {{ section.settings.image_card_ratio }};
+  }
+
+  .section-{{ section.id }} .cc-card-feature__top {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .section-{{ section.id }} .cc-card-feature__badge {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: {{ section.settings.badge_bg_color }};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .section-{{ section.id }} .cc-card-feature__badge svg {
+    width: 13px;
+    height: 13px;
+  }
+
+  .section-{{ section.id }} .cc-card-feature__title {
+    color: {{ section.settings.feature_card_title_color }};
+    font-family: 'Lora';
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    margin: 0;
+  }
+
+  /* Centered title is larger */
+  .section-{{ section.id }} .cc-card-feature--centered .cc-card-feature__title {
+    font-size: 24px;
+    line-height: 140%;
+  }
+
+  .section-{{ section.id }} .cc-card-feature__sub {
+    color: {{ section.settings.feature_card_sub_color }};
+    font-family: "DM Sans", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140%;
+    margin: 0;
+    padding-left: 36px;
+  }
+
+  /* Centered sub has no left padding, larger size */
+  .section-{{ section.id }} .cc-card-feature--centered .cc-card-feature__sub {
+    padding-left: 0;
+    font-size: 18px;
+    line-height: 22px;
+  }
+
+.section-{{ section.id }} .cc-block-bottom {
+    border-radius: 8px;
+    background: #F3F3EC;
+    padding: 24px;
+    display: flex;
+    gap: 12px;
+}
+
+.section-{{ section.id }} h4.cc-block-bottom_content-title {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: Lora;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 32px;
+    margin: 0;
+}
+
+.section-{{ section.id }} p.cc-block-bottom_content-subtitle {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 140%;
+    margin: 12px 0 0;
+}
+
+.section-{{ section.id }} .cc-block-bottom_icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    margin-top: 6px;
+}
+
+.section-{{ section.id }} .cc-block-bottom_icon svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.section-{{ section.id }} .cc-card-feature-wrapper,
+.section-{{ section.id }} .cc-card-image-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+  /* ── Mobile ── */
+  @media screen and (max-width: 768px) {
+    .section-{{ section.id }} {
+      padding-top: {{ section.settings.padding_top_mobile }}px;
+      padding-bottom: {{ section.settings.padding_bottom_mobile }}px;
+    }
+
+    .section-{{ section.id }} .cc-title.title_title {
+      font-size: 36px;
+    }
+
+    .section-{{ section.id }} .cc-btn.btn_btn {
+      {% if section.settings.btn_full_width_mobile %}
+        max-width: 100%;
+        text-align: center;
+        display: block;
+        box-sizing: border-box;
+      {% endif %}
+    }
+
+    /* Single column on mobile */
+    .section-{{ section.id }} .cc-grid {
+      grid-template-columns: 1fr;
+      gap: {{ section.settings.grid_gap_mobile }}px;
+    }
+
+    .section-{{ section.id }} .cc-card-feature--centered {
+      aspect-ratio: unset;
+      min-height: 160px;
+      padding: 72px 24px;
+    }
+
+    .section-{{ section.id }} .cc-card-feature--centered .cc-card-feature__title {
+        font-size: 18px;
+    }
+
+    .section-{{ section.id }} .cc-card-feature--centered .cc-card-feature__sub {
+        font-size: 14px;
+        line-height: 22px;
+    }
+
+    .section-{{ section.id }} .cc-header__right {
+        gap: 16px;
+        max-width: 100%;
+    }
+
+    .section-{{ section.id }} .cc-description {
+        font-size: 14px;
+        line-height: normal;
+    }
+
+    .section-{{ section.id }} .cc-card-image__content {
+        padding: 0 6px 24px;
+    }
+
+    .section-{{ section.id }} .cc-card-image__title {
+        font-size: 18px;
+        line-height: 26px;
+        margin: 0px 0 4px;
+    }
+
+    .section-{{ section.id }} .cc-card-image__sub {
+        font-size: 14px;
+        line-height: 150%;
+    }
+
+    .section-{{ section.id }} .cc-block-bottom {
+        padding: 16px;
+    }
+
+    .section-{{ section.id }} h4.cc-block-bottom_content-title {
+        font-size: 18px;
+        line-height: 26px;
+    }
+
+    .section-{{ section.id }} p.cc-block-bottom_content-subtitle {
+        margin: 8px 0 0;
+    }
+
+
+  }
+</style>
+
+<section class="section-{{ section.id }}" id="shopify-section-{{ section.id }}">
+  <div class="page-width">
+
+    {%- if section.settings.eyebrow != blank -%}
+        <span class="cc-eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+    
+    <!-- Header -->
+    <div class="cc-header">
+      <div class="cc-header__left">
+        {%- if section.settings.title != blank -%}
+          <h2 class="cc-title title_title">{{ section.settings.title }}</h2>
+        {%- endif -%}
+      </div>
+
+      <div class="cc-header__right">
+        {%- if section.settings.description != blank -%}
+          <p class="cc-description">{{ section.settings.description }}</p>
+        {%- endif -%}
+        {%- if section.settings.btn_label != blank and section.settings.btn_url != blank -%}
+          <a href="{{ section.settings.btn_url }}" class="cc-btn btn_btn">
+            {{ section.settings.btn_label }}
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    {%- if section.blocks.size > 0 -%}
+      <div class="cc-grid">
+        {%- for block in section.blocks -%}
+
+          {%- if block.type == 'image_card' -%}
+            <div class="cc-card-image-wrapper" {{ block.shopify_attributes }}>
+                <div class="cc-card-image">
+                  {%- if block.settings.image != blank -%}
+                    {{
+                      block.settings.image
+                      | image_url: width: 900
+                      | image_tag:
+                        loading: 'lazy',
+                        alt: block.settings.image.alt | escape
+                    }}
+                  {%- else -%}
+                    {{ 'image' | placeholder_svg_tag }}
+                  {%- endif -%}
+                  <div class="cc-card-image__overlay"></div>
+                  <div class="cc-card-image__content">
+                    {%- if block.settings.title != blank -%}
+                      <p class="cc-card-image__title">{{ block.settings.title }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.subtitle != blank -%}
+                      <p class="cc-card-image__sub">{{ block.settings.subtitle }}</p>
+                    {%- endif -%}
+                  </div>
+                </div>
+                {% if block.settings.bottom_title != blank %}
+                    <div class="cc-block-bottom">
+                        <div class="cc-block-bottom_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <g clip-path="url(#clip0_887_6199)">
+                                    <path d="M10 0.357422C15.3256 0.357422 19.6426 4.6744 19.6426 10C19.6426 15.3256 15.3256 19.6426 10 19.6426C4.6744 19.6426 0.357422 15.3256 0.357422 10C0.357422 4.6744 4.6744 0.357422 10 0.357422Z" fill="#FFDA1F" stroke="black" stroke-width="0.714286"/>
+                                    <path d="M5.71484 10.3574L8.57199 13.2145L14.2863 7.14307" stroke="#1A2744" stroke-width="1.78571" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_887_6199">
+                                    <rect width="20" height="20" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="cc-block-bottom_content">
+                            {% if block.settings.bottom_title != blank %}
+                                <h4 class="cc-block-bottom_content-title">{{ block.settings.bottom_title }}</h4>
+                            {% endif %}
+                            {% if block.settings.bottom_subtitle != blank %}
+                                <p class="cc-block-bottom_content-subtitle">{{ block.settings.bottom_subtitle }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+          {%- elsif block.type == 'feature_card' -%}
+            {%- assign is_centered = false -%}
+            {%- if block.settings.show_badge == false -%}
+              {%- assign is_centered = true -%}
+            {%- endif -%}
+            <div class="cc-card-feature-wrapper">
+                <div
+                  class="cc-card-feature{% if is_centered %} cc-card-feature--centered{% endif %}"
+                  {{ block.shopify_attributes }}
+                >
+                  {%- unless is_centered -%}
+                    <div class="cc-card-feature__top">
+                      <span class="cc-card-feature__badge">
+                        <svg viewBox="0 0 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M2.5 6.5L5.5 9.5L10.5 3.5" stroke="{{ section.settings.badge_check_color }}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                      </span>
+                      <p class="cc-card-feature__title">{{ block.settings.title }}</p>
+                    </div>
+                    {%- if block.settings.subtitle != blank -%}
+                      <p class="cc-card-feature__sub">{{ block.settings.subtitle }}</p>
+                    {%- endif -%}
+                  {%- else -%}
+                    {%- if block.settings.title != blank -%}
+                      <p class="cc-card-feature__title">{{ block.settings.title }}</p>
+                    {%- endif -%}
+                    {%- if block.settings.subtitle != blank -%}
+                      <p class="cc-card-feature__sub">{{ block.settings.subtitle }}</p>
+                    {%- endif -%}
+                  {%- endunless -%}
+                </div>
+                {% if block.settings.bottom_title != blank %}
+                    <div class="cc-block-bottom">
+                        <div class="cc-block-bottom_icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                                <g clip-path="url(#clip0_887_6199)">
+                                    <path d="M10 0.357422C15.3256 0.357422 19.6426 4.6744 19.6426 10C19.6426 15.3256 15.3256 19.6426 10 19.6426C4.6744 19.6426 0.357422 15.3256 0.357422 10C0.357422 4.6744 4.6744 0.357422 10 0.357422Z" fill="#FFDA1F" stroke="black" stroke-width="0.714286"/>
+                                    <path d="M5.71484 10.3574L8.57199 13.2145L14.2863 7.14307" stroke="#1A2744" stroke-width="1.78571" stroke-linecap="round" stroke-linejoin="round"/>
+                                </g>
+                                <defs>
+                                    <clipPath id="clip0_887_6199">
+                                    <rect width="20" height="20" fill="white"/>
+                                    </clipPath>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="cc-block-bottom_content">
+                            {% if block.settings.bottom_title != blank %}
+                                <h4 class="cc-block-bottom_content-title">{{ block.settings.bottom_title }}</h4>
+                            {% endif %}
+                            {% if block.settings.bottom_subtitle != blank %}
+                                <p class="cc-block-bottom_content-subtitle">{{ block.settings.bottom_subtitle }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Cooking Collection Grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Header Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Label",
+      "default": "Cooking Collection"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "At The Table. In Every Dish."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Zimms is your finishing oil, your drizzle, your quiet luxury. Everyday food elevated by one pour."
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "Shop Cook"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "checkbox",
+      "id": "btn_full_width_mobile",
+      "label": "Full Width Button on Mobile",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "btn_border_radius",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "unit": "px",
+      "label": "Button Border Radius",
+      "default": 4
+    },
+    {
+      "type": "header",
+      "content": "Grid Settings"
+    },
+    {
+      "type": "range",
+      "id": "grid_gap",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap Between Cards (Desktop)",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "grid_gap_mobile",
+      "min": 0,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "label": "Gap Between Cards (Mobile)",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "card_border_radius",
+      "min": 0,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Card Border Radius",
+      "default": 8
+    },
+    {
+      "type": "text",
+      "id": "image_card_ratio",
+      "label": "Image Card Aspect Ratio",
+      "default": "3 / 4",
+      "info": "e.g. 3 / 4  |  4 / 5  |  1 / 1"
+    },
+    {
+      "type": "header",
+      "content": "Spacing – Desktop"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_desktop",
+      "min": 0,
+      "max": 160,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Desktop)",
+      "default": 60
+    },
+    {
+      "type": "header",
+      "content": "Spacing – Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mobile",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom (Mobile)",
+      "default": 40
+    },
+    {
+      "type": "header",
+      "content": "Colors – Section"
+    },
+    {
+      "type": "color",
+      "id": "section_bg_color",
+      "label": "Section Background",
+      "default": "#F5F3EE"
+    },
+    {
+      "type": "header",
+      "content": "Colors – Header"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_bg_color",
+      "label": "Eyebrow Background",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "eyebrow_text_color",
+      "label": "Eyebrow Text",
+      "default": "#FFFFFC"
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "Title Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "description_color",
+      "label": "Description Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "header",
+      "content": "Colors – Button"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Button Background",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Button Text",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "btn_border_color",
+      "label": "Button Border",
+      "default": "#1A2744"
+    },
+    {
+      "type": "header",
+      "content": "Colors – Feature Card"
+    },
+    {
+      "type": "color",
+      "id": "feature_card_bg_color",
+      "label": "Feature Card Background",
+      "default": "#EDEAE2"
+    },
+    {
+      "type": "color",
+      "id": "feature_card_title_color",
+      "label": "Feature Card Title Color",
+      "default": "#1A2744"
+    },
+    {
+      "type": "color",
+      "id": "feature_card_sub_color",
+      "label": "Feature Card Subtitle Color",
+      "default": "#1A2744"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "image_card",
+      "name": "Image Card",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "The Finishing Drizzle"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Salads · Pasta · Grains"
+        },
+        {
+          "type": "text",
+          "id": "bottom_title",
+          "label": "Bottom Card Title"
+        },
+        {
+          "type": "text",
+          "id": "bottom_subtitle",
+          "label": "Bottom Card Subtitle"
+        }
+      ]
+    },
+    {
+      "type": "feature_card",
+      "name": "Feature Card",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "show_badge",
+          "label": "Show Badge (uncheck for centered text layout)",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Raw dressings"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "Subtitle",
+          "default": "Whisk with lemon, garlic, herbs"
+        },
+        {
+          "type": "text",
+          "id": "bottom_title",
+          "label": "Bottom Card Title"
+        },
+        {
+          "type": "text",
+          "id": "bottom_subtitle",
+          "label": "Bottom Card Subtitle"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Cooking Collection Grid",
+      "blocks": [
+        {
+          "type": "image_card",
+          "settings": {
+            "title": "The Finishing Drizzle",
+            "subtitle": "Salads · Pasta · Grains"
+          }
+        },
+        {
+          "type": "image_card",
+          "settings": {
+            "title": "Bread & Dipping",
+            "subtitle": "Sea salt · Herbs · Pure"
+          }
+        },
+        {
+          "type": "feature_card",
+          "settings": {
+            "show_badge": false,
+            "title": "Gentle warmth only.",
+            "subtitle": "For best polyphenol preservation, use Zimms at low to medium heat — or after cooking. The ritual of flavour and function, together."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
