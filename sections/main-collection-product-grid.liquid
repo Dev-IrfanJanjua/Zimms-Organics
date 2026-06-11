@@ -26,7 +26,7 @@
   }
 {%- endstyle -%}
 
-<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}">
+<div class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }} {% if section.settings.cstm_style %}cstm_collection-section{% endif %} ">
   {%- paginate collection.products by section.settings.products_per_page -%}
     {% comment %} Sort is the first tabbable element when filter type is vertical {% endcomment %}
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
@@ -134,6 +134,13 @@
         {%- else -%}
           <div class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}">
             <div class="loading-overlay gradient"></div>
+                <div class="collection_tabs">
+              {% for block in section.blocks %}
+                {% if block.type == 'buttons' %}
+                  <a class="collection_tab {% if request.path == block.settings.url.url %}active{% endif %}" href="{{ block.settings.url }}">{{ block.settings.text }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
             <ul
               id="product-grid"
               data-id="{{ section.id }}"
@@ -154,17 +161,21 @@
                     style="--animation-order: {{ forloop.index }};"
                   {% endif %}
                 >
-                  {% render 'card-product',
-                    card_product: product,
-                    media_aspect_ratio: section.settings.image_ratio,
-                    image_shape: section.settings.image_shape,
-                    show_secondary_image: section.settings.show_secondary_image,
-                    show_vendor: section.settings.show_vendor,
-                    show_rating: section.settings.show_rating,
-                    lazy_load: lazy_load,
-                    show_quick_add: section.settings.enable_quick_add,
-                    section_id: section.id
-                  %}
+                  {% if section.settings.cstm_style %}
+                    {% render 'collection-card', section: section, product: product %}
+                  {% else %}
+                    {% render 'card-product',
+                      card_product: product,
+                      media_aspect_ratio: section.settings.image_ratio,
+                      image_shape: section.settings.image_shape,
+                      show_secondary_image: section.settings.show_secondary_image,
+                      show_vendor: section.settings.show_vendor,
+                      show_rating: section.settings.show_rating,
+                      lazy_load: lazy_load,
+                      show_quick_add: section.settings.enable_quick_add,
+                      section_id: section.id
+                    %}
+                  {% endif %}
                 </li>
               {%- endfor -%}
             </ul>
@@ -188,11 +199,17 @@
   "class": "section",
   "settings": [
     {
+      "type": "checkbox",
+      "id": "cstm_style",
+      "label": "Enable Custom Stylling",
+      "default": true
+    },
+    {
       "type": "range",
       "id": "products_per_page",
       "min": 8,
       "max": 24,
-      "step": 4,
+      "step": 1,
       "default": 16,
       "label": "t:sections.main-collection-product-grid.settings.products_per_page.label"
     },
@@ -369,7 +386,7 @@
       "id": "padding_top",
       "min": 0,
       "max": 100,
-      "step": 4,
+      "step": 1,
       "unit": "px",
       "label": "t:sections.all.padding.padding_top",
       "default": 36
@@ -379,11 +396,165 @@
       "id": "padding_bottom",
       "min": 0,
       "max": 100,
-      "step": 4,
+      "step": 1,
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "header",
+      "content": "Padding Mobile"
+    },
+    {
+      "type": "range",
+      "id": "padding_top_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom_mob",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 30
+    }
+  ],
+  "blocks" : [
+    {
+      "type": "buttons",
+      "name": "Button Tabs",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Tab text",
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Tab url",
+        }
+      ]
     }
   ]
 }
 {% endschema %}
+
+{% if section.settings.cstm_style %}
+
+{% style %}
+
+.section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top }}px !important;
+    padding-bottom: {{ section.settings.padding_bottom }}px !important;
+  }
+
+.cstm_collection-section {
+    background: #FFFFFC;
+}
+
+.cstm_collection-section ul#product-grid {
+    margin: 0;
+    gap: 48px 23px;
+}
+
+.cstm_collection-section li.grid__item {
+    max-width: calc(33.3% - 14.9px);
+    width: 100%;
+}
+
+.cstm_collection-section a.pagination__item {
+    color: #1A2744;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.cstm_collection-section a.pagination__item svg.icon {
+    width: 13px;
+    height: 13px;
+}
+
+.collection_tabs {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+a.collection_tab {
+    border-radius: 4px;
+    border: 1px solid var(--Deep-Navy, #1A2744);
+    padding: 10px 21px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--Deep-Navy, #1A2744);
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0;
+    cursor: pointer;
+    min-height: 48px;
+    min-width: 66px;
+}
+
+a.collection_tab.active,
+a.collection_tab:hover{
+  color: #fff;
+  background: #1A2744;
+}
+
+@media screen and (max-width: 768px){
+
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top_mob }}px !important;
+    padding-bottom: {{ section.settings.padding_bottom_mob }}px !important;
+  }
+
+.cstm_collection-section ul#product-grid {
+    margin: 0;
+    gap: 24px 8px;
+}
+
+.cstm_collection-section li.grid__item {
+    max-width: calc(50% - 4px);
+    width: 100%;
+}
+
+.cstm_collection-section .pagination-wrapper {
+    margin-top: 24px;
+}
+
+.collection_tabs {
+    gap: 6px;
+    margin-bottom: 24px;
+    justify-content: center;
+}
+
+a.collection_tab {
+    padding: 4px 12px;
+    font-size: 14px;
+    line-height: 22px;
+    min-height: 38px;
+}
+
+}
+
+{% endstyle %}
+
+{% endif %}

@@ -1,0 +1,239 @@
+{% style %}
+
+.fet-col-card-media {
+  background: {{ section.settings.media_bg }};
+  position: relative;
+  overflow: hidden;
+  border-radius: 4px;
+  aspect-ratio: 0.8;
+}
+
+.fet-col-card-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.fet-col-card {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.fet-col-card:hover {
+    transform: translatey(-3px) scale(1.01);
+}
+
+.fet-col-card-content {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.fet-col-card-title {
+    margin: 0;
+    color: var(--Deep-Navy, #1A2744);
+    font-family: Lora;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.fet-col-card-content a {
+    text-decoration: none;
+    transition: all 0.3s ease;
+    max-width: 70%;
+}
+
+.fet-col-card-prices {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+span.fet-col-card-price {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.fet-col-card-compare-price {
+    text-decoration: line-through;
+    color: var(--Ligth-deep-blue, #485269);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    text-decoration-line: line-through;
+}
+
+span.fet-col-card-price-tag {
+    color: #C2483F;
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.fet-col-card-title-wrapper {
+    display: flex;
+    gap: 4px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.fet-col-card-reviews-start {
+    width: 18px;
+    height: 18px;
+    display: flex;
+}
+
+.fet-col-card-reviews-start img{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.fet-col-card-reviews span {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.fet-col-card-reviews span *{
+  margin: 0;
+}
+
+.fet-col-card-reviews span strong{
+    font-weight: bold;
+}
+
+.fet-col-card-reviews {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+p.fet-col-card-subtitle {
+    color: var(--Ligth-deep-blue, #485269);
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+}
+
+@media screen and (max-width: 768px){
+
+.fet-col-card-content {
+    margin-top: 16px;
+    gap: 8px;
+}
+
+.collection span.fet-col-card-price-tag,
+.collection .fet-col-card-compare-price,
+.collection span.fet-col-card-price{
+    font-size: 14px
+}
+
+}
+
+{% endstyle %}
+
+
+<div
+  class="fet-col-card scroll-trigger animate--slide-in"
+  data-cascade
+  style="--animation-order: {{ forloop.index }};"
+>
+  <!-- Media -->
+  <div class="fet-col-card-media">
+    {% if product.featured_image %}
+      {{
+        product.featured_image
+        | image_url: width: 1600
+        | image_tag: widths: '50, 100, 150, 200, 250, 300, 400, 500,600,1440', alt: 'Image', loading: 'lazy'
+      }}
+    {% endif %}
+
+    {% if product.tags.size > 0 %}
+      <div class="fet-card-tags">
+        <span>{{ product.tags[0] }}</span>
+
+        {% if product.tags.size > 1 %}
+          <span>{{ product.tags[1] }}</span>
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+
+  <!-- Content -->
+  <div class="fet-col-card-content">
+    <div class="fet-col-card-title-wrapper">
+      <a href="{{ product.url }}">
+        <h4 class="fet-col-card-title">
+          {{ product.title }}
+        </h4>
+      </a>
+
+      <!-- Fake review block (can be replaced with app later) -->
+      {% if product.metafields.custom.rating_text != blank %}
+        <div class="fet-col-card-reviews">
+          {% if product.metafields.custom.ratings_star != blank %}
+            <div class="fet-col-card-reviews-start">
+              {{
+                product.metafields.custom.ratings_star
+                | image_url: width: 100
+                | image_tag: alt: 'image', loading: 'lazy'
+              }}
+            </div>
+          {% endif %}
+          <span>
+            {% if product.metafields.custom.rating_text != blank %}
+              {{ product.metafields.custom.rating_text | metafield_tag }}
+            {% else %}
+              4.5
+            {% endif %}
+          </span>
+        </div>
+      {% endif %}
+    </div>
+
+    <p class="fet-col-card-subtitle">
+      {{ product.metafields.custom.product_subtitle | default: product.description | strip_html | truncate: 40 }}
+    </p>
+
+    <div class="fet-col-card-prices">
+      <span class="fet-col-card-price">
+        {{ product.price | money_without_trailing_zeros }}
+      </span>
+
+      {% if product.compare_at_price > product.price %}
+        <span class="fet-col-card-compare-price">
+          {{ product.compare_at_price | money_without_trailing_zeros }}
+        </span>
+      {% endif %}
+      <span class="fet-col-card-price-tag">
+        {% comment %} {{ product.metafields.custom.price_tag }} {% endcomment %}
+        New price
+      </span>
+    </div>
+  </div>
+</div>

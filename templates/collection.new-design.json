@@ -30,7 +30,7 @@
       "settings": {
         "vertical_alignment": "center",
         "text_alignment": "left",
-        "section_padding_vertical": 60,
+        "section_padding_vertical": 84,
         "section_padding_horizontal": 0,
         "section_padding_vertical_mobile": 40,
         "section_padding_horizontal_mobile": 0,
@@ -63,6 +63,57 @@
         "heading_font_size_mobile": 28,
         "heading_line_height_mobile": 36,
         "button_full_width_mobile": true
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "blocks": {
+        "buttons_KUUnGk": {
+          "type": "buttons",
+          "settings": {
+            "text": "ALL",
+            "url": "shopify://collections/all"
+          }
+        },
+        "buttons_wHJkwq": {
+          "type": "buttons",
+          "settings": {
+            "text": "Best Sellers",
+            "url": "shopify://collections/6-pack"
+          }
+        },
+        "buttons_kR6MjD": {
+          "type": "buttons",
+          "settings": {
+            "text": "Bundle Offers",
+            "url": "shopify://collections/build-your-own-6-pack"
+          }
+        }
+      },
+      "block_order": [
+        "buttons_KUUnGk",
+        "buttons_wHJkwq",
+        "buttons_kR6MjD"
+      ],
+      "settings": {
+        "cstm_style": true,
+        "products_per_page": 9,
+        "columns_desktop": 4,
+        "color_scheme": "",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_quick_add": true,
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": false,
+        "columns_mobile": "2",
+        "padding_top": 80,
+        "padding_bottom": 0,
+        "padding_top_mob": 40,
+        "padding_bottom_mob": 0
       }
     },
     "collection_heal_cook_nXeHJz": {
@@ -145,7 +196,7 @@
         "padding_top": 80,
         "padding_bottom": 80,
         "padding_top_mob": 60,
-        "padding_bottom_mob": 16
+        "padding_bottom_mob": 32
       }
     },
     "collection_detail_content_gUYMw3": {
@@ -224,24 +275,38 @@
         "btn_label": "Read More",
         "btn_url": "",
         "btn_border_radius": 0,
-        "padding_top_desktop": 80,
+        "padding_top_desktop": 0,
         "padding_bottom_desktop": 80,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40,
+        "padding_top_mobile": 0,
+        "padding_bottom_mobile": 32,
         "section_bg_color": "#ffffff",
         "content_bg_color": "#ffffff",
-        "title_color": "#1A2744",
-        "subtitle_color": "#1A2744",
-        "section_heading_color": "#1A2744",
-        "label_color": "#1A2744",
-        "body_color": "#1A2744",
+        "title_color": "#1a2744",
+        "subtitle_color": "#1a2744",
+        "section_heading_color": "#1a2744",
+        "label_color": "#1a2744",
+        "body_color": "#1a2744",
         "bullet_color": "#d45f35",
         "pairs_item_bg": "#f3f3ec",
         "pairs_item_border": "#f3f3ec",
-        "pairs_item_color": "#1A2744",
+        "pairs_item_color": "#1a2744",
         "btn_bg_color": "#ffffff",
-        "btn_text_color": "#1A2744",
-        "btn_border_color": "#1A2744"
+        "btn_text_color": "#1a2744",
+        "btn_border_color": "#1a2744"
+      }
+    },
+    "just_image_Gntkp6": {
+      "type": "just-image",
+      "name": "Custom Image",
+      "settings": {
+        "desktop_image": "shopify://shop_images/Frame_2147242745_1.png",
+        "mobile_image": "shopify://shop_images/Frame_2147242745_2.png",
+        "image_alt": "Image",
+        "section_bg_color": "#ffffff",
+        "desktop_padding_top": 0,
+        "desktop_padding_bottom": 0,
+        "mobile_padding_top": 0,
+        "mobile_padding_bottom": 0
       }
     },
     "collection_detail_content_jnyh3A": {
@@ -327,24 +392,24 @@
         "btn_label": "Read More",
         "btn_url": "#",
         "btn_border_radius": 4,
-        "padding_top_desktop": 80,
-        "padding_bottom_desktop": 80,
-        "padding_top_mobile": 40,
-        "padding_bottom_mobile": 40,
+        "padding_top_desktop": 32,
+        "padding_bottom_desktop": 0,
+        "padding_top_mobile": 24,
+        "padding_bottom_mobile": 0,
         "section_bg_color": "#ffffff",
         "content_bg_color": "#f3f3ec",
-        "title_color": "#1A2744",
-        "subtitle_color": "#1A2744",
-        "section_heading_color": "#1A2744",
-        "label_color": "#1A2744",
-        "body_color": "#1A2744",
+        "title_color": "#1a2744",
+        "subtitle_color": "#1a2744",
+        "section_heading_color": "#1a2744",
+        "label_color": "#1a2744",
+        "body_color": "#1a2744",
         "bullet_color": "#d45f35",
-        "pairs_item_bg": "#F5F3EE",
-        "pairs_item_border": "#E0DACE",
-        "pairs_item_color": "#1A2744",
+        "pairs_item_bg": "#f5f3ee",
+        "pairs_item_border": "#e0dace",
+        "pairs_item_color": "#1a2744",
         "btn_bg_color": "#ffffff",
-        "btn_text_color": "#1A2744",
-        "btn_border_color": "#1A2744"
+        "btn_text_color": "#1a2744",
+        "btn_border_color": "#1a2744"
       }
     },
     "slideshow": {
@@ -516,27 +581,6 @@
         "padding_bottom": 36
       }
     },
-    "product-grid": {
-      "type": "main-collection-product-grid",
-      "disabled": true,
-      "settings": {
-        "products_per_page": 12,
-        "columns_desktop": 4,
-        "color_scheme": "",
-        "image_ratio": "portrait",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": true,
-        "enable_quick_add": true,
-        "enable_filtering": false,
-        "filter_type": "horizontal",
-        "enable_sorting": false,
-        "columns_mobile": "2",
-        "padding_top": 60,
-        "padding_bottom": 60
-      }
-    },
     "4b95fd86-2f85-438c-8eb4-700c80c87766": {
       "type": "collapsible-content",
       "blocks": {
@@ -701,14 +745,15 @@
   "order": [
     "collection_banner_FMLeKW",
     "collection_bundle_banner_adTpRP",
+    "product-grid",
     "collection_heal_cook_nXeHJz",
     "collection_detail_content_gUYMw3",
+    "just_image_Gntkp6",
     "collection_detail_content_jnyh3A",
     "slideshow",
     "banner",
     "image-with-text-1",
     "882c6bec-82d9-4f95-9857-70c74c57fa62",
-    "product-grid",
     "4b95fd86-2f85-438c-8eb4-700c80c87766",
     "image-with-text-0",
     "newsletter",
