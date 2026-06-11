@@ -1,4 +1,4 @@
-<section class="ceremony-section section-{{ section.id }}">
+<section class="ceremony-section section-{{ section.id }} scroll-trigger animate--slide-in">
   <div class="page-width">
     <div class="ceremony-wrapper">
 
@@ -26,7 +26,10 @@
         {% if section.blocks.size > 0 %}
           <ul class="ceremony-blocks">
             {% for block in section.blocks %}
-              <li class="ceremony-block-item" {{ block.shopify_attributes }}>
+              <li class="ceremony-block-item scroll-trigger animate--slide-in" {{ block.shopify_attributes }}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+              >
 
                 {% if section.settings.block_icon != blank %}
                   <div class="ceremony-block-icon">

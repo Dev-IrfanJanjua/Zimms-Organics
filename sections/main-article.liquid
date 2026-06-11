@@ -1,6 +1,6 @@
 {{ 'section-blog-post.css' | asset_url | stylesheet_tag }}
 
-<article class="article-template {% if section.settings.cstm_style %}blog_detail-section {% endif %}" itemscope itemtype="http://schema.org/BlogPosting">
+<article class="article-template {% if section.settings.cstm_style %}blog_detail-section {% endif %} scroll-trigger animate--slide-in" itemscope itemtype="http://schema.org/BlogPosting">
   {%- for block in section.blocks -%}
     {%- case block.type -%}
       {%- when '@app' -%}

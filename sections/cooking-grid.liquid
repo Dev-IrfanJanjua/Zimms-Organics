@@ -333,7 +333,7 @@
   }
 </style>
 
-<section class="section-{{ section.id }}" id="shopify-section-{{ section.id }}">
+<section class="section-{{ section.id }}" id="shopify-section-{{ section.id }} scroll-trigger animate--slide-in">
   <div class="page-width">
 
     {%- if section.settings.eyebrow != blank -%}
@@ -366,7 +366,10 @@
         {%- for block in section.blocks -%}
 
           {%- if block.type == 'image_card' -%}
-            <div class="cc-card-image-wrapper" {{ block.shopify_attributes }}>
+            <div class="cc-card-image-wrapper scroll-trigger animate--slide-in" {{ block.shopify_attributes }}
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+            >
                 <div class="cc-card-image">
                   {%- if block.settings.image != blank -%}
                     {{
@@ -421,11 +424,13 @@
             {%- if block.settings.show_badge == false -%}
               {%- assign is_centered = true -%}
             {%- endif -%}
-            <div class="cc-card-feature-wrapper">
+            <div class="cc-card-feature-wrapper scroll-trigger animate--slide-in"
+                data-cascade
+                style="--animation-order: {{ forloop.index }};"
+                {{ block.shopify_attributes }}
+            >
                 <div
-                  class="cc-card-feature{% if is_centered %} cc-card-feature--centered{% endif %}"
-                  {{ block.shopify_attributes }}
-                >
+                  class="cc-card-feature{% if is_centered %} cc-card-feature--centered{% endif %}">
                   {%- unless is_centered -%}
                     <div class="cc-card-feature__top">
                       <span class="cc-card-feature__badge">

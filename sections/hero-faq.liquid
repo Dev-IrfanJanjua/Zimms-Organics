@@ -273,7 +273,7 @@
   }
 </style>
 
-<section class="section-{{ section.id }}" id="shopify-section-{{ section.id }}">
+<section class="section-{{ section.id }} scroll-trigger animate--slide-in" id="shopify-section-{{ section.id }}">
 
   <!-- Background Images (HTML element, not CSS background) -->
   <div class="hf-bg" aria-hidden="true">
@@ -350,8 +350,10 @@
           {%- for block in faq_blocks -%}
             {%- assign idx = forloop.index | prepend: '0' | slice: -2, 2 -%}
             <div
-              class="hf-faq__item"
+              class="hf-faq__item scroll-trigger animate--slide-in"
               role="listitem"
+              data-cascade
+              style="--animation-order: {{ forloop.index }};"
               {{ block.shopify_attributes }}
             >
               <button
