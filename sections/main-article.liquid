@@ -512,6 +512,25 @@ main#MainContent:has(.blog_detail-section),
     margin: 40px 0 80px !important;
 }
 
+.article-template__content img {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    max-height: 470px;
+    object-fit: cover;
+}
+
+.article-template__content a {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+}
+
 @media screen and (max-width: 768px){
 
 .article-template__back {
@@ -541,6 +560,11 @@ main#MainContent:has(.blog_detail-section),
 .article-template__content h1{
     font-size: 32px;
     margin: 24px 0 12px;
+}
+
+.article-template__content a {
+    font-size: 14px;
+    line-height: normal;
 }
 
 }

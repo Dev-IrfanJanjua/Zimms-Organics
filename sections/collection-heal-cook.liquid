@@ -100,7 +100,7 @@
     font-style: normal;
     font-weight: 600;
     line-height: 22px;
-    letter-spacing: 2.016px;
+    letter-spacing: 0px;
     text-transform: uppercase;
     margin: 0 0 12px;
   }
@@ -153,17 +153,12 @@
   .heal-cook-card__badge-icon {
     width: 16px;
     height: 16px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    border: 1px solid #000000;
   }
 
   .heal-cook-card__badge-icon svg {
-    width: 10px;
-    height: 8px;
+    width: 100%;
+    height: 100%;
+    display: block;
   }
 
   .heal-cook-card__badge-key {
@@ -318,10 +313,20 @@
                     <div class="heal-cook-card__badge" style="color: {{ block.settings.badge_text_color }};">
                       <span
                         class="heal-cook-card__badge-icon"
-                        style="background-color: {{ block.settings.badge_icon_bg }};"
                       >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="9" height="7" viewBox="0 0 9 7" fill="none">
+                        {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="9" height="7" viewBox="0 0 9 7" fill="none">
                             <path d="M0.892578 3.4645L3.17829 5.75021L7.74972 0.893066" stroke="{{ block.settings.badge_icon_color }}" stroke-width="1.78571" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg> {% endcomment %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                          <g clip-path="url(#clip0_889_8709)">
+                            <path d="M8 0.357422C12.221 0.357422 15.6426 3.77897 15.6426 8C15.6426 12.221 12.221 15.6426 8 15.6426C3.77897 15.6426 0.357422 12.221 0.357422 8C0.357422 3.77897 3.77897 0.357422 8 0.357422Z" fill="#FFDA1F" stroke="black" stroke-width="0.714286"/>
+                            <path d="M4.57227 8.28578L6.85798 10.5715L11.4294 5.71436" stroke="#1A2744" stroke-width="1.78571" stroke-linecap="round" stroke-linejoin="round"/>
+                          </g>
+                          <defs>
+                            <clipPath id="clip0_889_8709">
+                              <rect width="16" height="16" fill="white"/>
+                            </clipPath>
+                          </defs>
                         </svg>
                       </span>
                       <span>

@@ -71,37 +71,7 @@ h4.pdp-testimonial_title {
     border-radius: 8px;
 }
 
-.pdp-routine-products__add {
-    margin-top: 32px;
-}
 
-.pdp-routine-products__add .product-form__submit {
-    padding: 20px 24px;
-    border-radius: 4px;
-    background: var(--Deep-Navy, #1A2744);
-    transition: all 0.3s ease;
-    margin: 0;
-}
-
-.pdp-routine-products__add .product-form__submit span.btn-text {
-    color: var(--white, #FFF);
-    text-align: center;
-    font-family: "DM Sans";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 20px;
-    text-transform: uppercase;
-}
-
-.pdp-routine-products__add .product-form__submit:hover{
-    transform: scale(1.01);
-}
-
-.pdp-routine-products__add .product-form__submit:before,
-.pdp-routine-products__add .product-form__submit:after{
-    display: none;
-}
 
 .cstm_product_main .product__title h1 {
     color: var(--Deep-Navy, #1A2744);

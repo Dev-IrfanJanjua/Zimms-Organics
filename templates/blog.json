@@ -38,14 +38,14 @@
           "type": "tabs",
           "settings": {
             "label": "Zimms Updates",
-            "url": "shopify://blogs/news"
+            "url": "#"
           }
         },
         "tabs_dgLEjN": {
           "type": "tabs",
           "settings": {
             "label": "Cooking recipe",
-            "url": "shopify://blogs/news"
+            "url": "#"
           }
         }
       },

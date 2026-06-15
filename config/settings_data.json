@@ -118,6 +118,11 @@
     "predictive_search_show_vendor": false,
     "predictive_search_show_price": false,
     "currency_code_enabled": false,
+    "free_shipping_amount": 200,
+    "products": [
+      "cook-organic-extra-virgin-olive-oil-400ml-6-pack",
+      "cook-400ml"
+    ],
     "cart_type": "drawer",
     "show_vendor": true,
     "show_cart_note": false,

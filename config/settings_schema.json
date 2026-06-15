@@ -1417,6 +1417,19 @@
     "name": "t:settings_schema.cart.name",
     "settings": [
       {
+        "type": "number",
+        "id": "free_shipping_amount",
+        "label": "Free Shipping Threshold",
+        "info": "Enter the amount in your store's currency units (e.g. 100 for $100.00 / €100,00 / 100 kr). The bar and message will automatically use your store's money format.",
+        "default": 100
+      },
+      {
+        "type": "product_list",
+        "id": "products",
+        "label": "Cart Products",
+        "info": "Add cart products to show in cart drawer."
+      },
+      {
         "type": "select",
         "id": "cart_type",
         "options": [

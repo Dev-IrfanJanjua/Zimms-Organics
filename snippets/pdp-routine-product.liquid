@@ -1,4 +1,11 @@
-{% assign routine_products = product.metafields.custom.routine_products.value %}
+{% comment %} {% assign routine_products = product.metafields.custom.routine_products.value %} {% endcomment %}
+{% assign products_to_show = blank %}
+
+{% if routine_products != blank %}
+  {% assign products_to_show = routine_products %}
+{% elsif product and product.metafields.custom.routine_products.value != blank %}
+  {% assign products_to_show = product.metafields.custom.routine_products.value %}
+{% endif %}
 
 {% style %}
   .pdp-routine-product__image {
@@ -28,6 +35,7 @@
 
   .pdp-routine-product {
     position: relative;
+    height: auto;
   }
 
   .pdp-routine-product__content {
@@ -53,7 +61,7 @@
   .pdp-routine-product__price span.sale-price {
     color: var(--Deep-Navy, #1a2744);
     font-family: 'DM Sans';
-    font-size: 16px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -145,6 +153,98 @@
     display: block;
 }
 
+.pdp-routine-products__add {
+    margin-top: 32px;
+}
+
+.pdp-routine-products__add .product-form__submit {
+    padding: 20px 24px;
+    border-radius: 4px;
+    background: var(--Deep-Navy, #1A2744);
+    transition: all 0.3s ease;
+    margin: 0;
+}
+
+.pdp-routine-products__add .product-form__submit span.btn-text {
+    color: var(--white, #FFF);
+    text-align: center;
+    font-family: "DM Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+    text-transform: uppercase;
+}
+
+.pdp-routine-products__add .product-form__submit:hover{
+    transform: scale(1.01);
+}
+
+.pdp-routine-products__add .product-form__submit:before,
+.pdp-routine-products__add .product-form__submit:after{
+    display: none;
+}
+
+/* ===== cart drawer stylling ===== */
+
+.drawer__inner h2.pdp-routine-products__heading {
+    color: var(--black-color, #000);
+    font-size: 16px;
+    line-height: 30px;
+    letter-spacing: revert-layer;
+    padding: 0 0 5px;
+}
+
+.drawer__inner h3.pdp-routine-product__title {
+    font-size: 10px;
+    line-height: normal;
+    font-weight: 500;
+}
+
+.drawer__inner p.pdp-routine-product__desc {
+    color: #464646;
+    font-family: 'DM Sans';
+    font-size: 9px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 2px 0;
+    display: none;
+}
+
+.drawer__inner label.pdp-routine-product-label {
+    top: 6px;
+    right: 6px;
+}
+
+.drawer__inner .pdp-routine-products__add {
+    margin-top: 10px;
+}
+
+.drawer__inner .pdp-routine-products {
+    margin: 10px 0 !important;
+}
+
+.drawer__inner .pdp-routine-product__image {
+    max-width: 100px;
+}
+
+.drawer__inner .pdp-routine-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.drawer__inner .pdp-routine-products__add .product-form__submit {
+    padding: 10px 24px;
+    min-height: unset;
+}
+
+.drawer__inner .pdp-routine-products__add .product-form__submit span.btn-text {
+    font-size: 12px;
+    font-weight: 500;
+}
+
 @media screen and (max-width: 768px){
 
 h2.pdp-routine-products__heading {
@@ -206,21 +306,37 @@ p.pdp-routine-product__desc {
     margin-top: 23px;
 }
 
+/* ==== cart drawer ==== */
+
+.drawer__inner .pdp-routine-products {
+    height: 170px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.drawer__inner .pdp-routine-product {
+    align-items: start;
+}
+
 }
 
 {% endstyle %}
 
-{% if routine_products != blank %}
+{% if products_to_show != blank %}
   <div class="pdp-routine-products" {{ block.shopify_attributes }}>
 
     {% if block.settings.heading != blank %}
       <h2 class="pdp-routine-products__heading">
         {{ block.settings.heading }}
       </h2>
+    {% else %}
+      <h2 class="pdp-routine-products__heading">
+        Complete your routine
+      </h2>
     {% endif %}
 
     <div class="pdp-routine-products__grid">
-      {% for routine_product in routine_products %}
+      {% for routine_product in products_to_show %}
         {% assign first_variant = routine_product.selected_or_first_available_variant %}
 
         <div

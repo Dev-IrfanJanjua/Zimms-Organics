@@ -343,6 +343,7 @@ a.blog-main-block:hover{
     font-weight: 500;
     line-height: 140%;
     margin: 0;
+    min-height: 50px;
 }
 
 .card.article-card.card--card {
@@ -481,12 +482,17 @@ p.blog-main-subtitle {
 
 .blog-main_blocks {
     gap: 6px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    margin-right: -16px;
+    padding-right: 16px;
 }
 
 a.blog-main-block {
     min-height: 38px;
     padding: 4px 12px;
     font-size: 12px;
+    flex: 0 0 140px;
 }
 
 }

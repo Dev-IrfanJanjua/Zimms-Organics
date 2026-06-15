@@ -70,7 +70,7 @@
   .section-{{ section.id }} .pdc-title-line {
     background-color: {{ section.settings.title_color }};
     width: 124px;
-    height: 2px;
+    height: 1.5px;
     margin: 12px 0;
     display: block;
   }
@@ -110,7 +110,7 @@
     color: #2A241D;
     font-family: 'DM Sans';
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     line-height: 24px;
     margin: 24px 0 13px;
   }
@@ -146,6 +146,12 @@
     flex-direction: column;
     gap: 10px;
   }
+
+  {% if section.settings.margin_ul %}
+    .pdc-richtext ul:last-of-type {
+        margin-top: 23px;
+    }
+  {% endif %}
 
   .section-{{ section.id }} .pdc-richtext ul li {
     color: {{ section.settings.body_color }};
@@ -341,6 +347,12 @@
     .section-{{ section.id }} .pdc-inner.pdc-inner--no-image.pdc-inner--header-left {
         gap: 32px;
     }
+
+    {% if section.settings.margin_ul %}
+      .pdc-richtext ul:last-of-type {
+          margin-top: 16px;
+      }
+    {% endif %}
      
   }
 </style>
@@ -440,6 +452,11 @@
   "tag": "section",
   "class": "pdc-section-wrapper",
   "settings": [
+    {
+      "type": "checkbox",
+      "id": "margin_ul",
+      "label": "Margin for List"
+    },
     {
       "type": "header",
       "content": "Image"
