@@ -92,6 +92,7 @@ span.fet-col-card-price-tag {
     width: 100%;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .fet-col-card-reviews-start {
@@ -243,6 +244,12 @@ p.rating-count, p.rating-count span {
           {{ product.title }}
         </h4>
       </a>
+
+      <div class="fet-col-card-title-icon" style="display: none;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M7.19531 14.6445L12.1953 9.64453L7.19531 4.64453" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
 
       <!-- Fake review block (can be replaced with app later) -->
         <div class="fet-col-card-reviews">

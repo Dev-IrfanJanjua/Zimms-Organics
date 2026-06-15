@@ -48,12 +48,30 @@
     },
     "header": {
       "type": "header",
+      "blocks": {
+        "mega_menu_hct839": {
+          "type": "mega_menu",
+          "settings": {
+            "menu_handle": "shop",
+            "products": [
+              "cook-400ml",
+              "gold-spout",
+              "heal-400ml-sip-glass-combo"
+            ],
+            "image": "shopify://shop_images/Frame_2147241411_1.png",
+            "title": ""
+          }
+        }
+      },
+      "block_order": [
+        "mega_menu_hct839"
+      ],
       "custom_css": [],
       "settings": {
         "cstm_style": true,
         "logo_position": "middle-left",
         "menu": "header-dev-menu",
-        "menu_type_desktop": "dropdown",
+        "menu_type_desktop": "mega",
         "sticky_header_type": "on-scroll-up",
         "show_line_separator": true,
         "color_scheme": "background-2",

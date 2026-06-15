@@ -1278,3 +1278,37 @@ class ProductRecommendations extends HTMLElement {
 }
 
 customElements.define('product-recommendations', ProductRecommendations);
+
+
+// ==== mega menu hover open ====
+
+document.addEventListener('DOMContentLoaded', () => {
+  const headerMenus = document.querySelectorAll('header-menu');
+
+  headerMenus.forEach((menu) => {
+    const details = menu.querySelector('details');
+    const summary = menu.querySelector('summary');
+
+    if (!details || !summary) return;
+
+    // Only apply hover on desktop
+    if (window.innerWidth < 990) return;
+
+    let hoverTimeout;
+
+    // OPEN on hover
+    menu.addEventListener('mouseenter', () => {
+      clearTimeout(hoverTimeout);
+      details.setAttribute('open', true);
+      summary.setAttribute('aria-expanded', 'true');
+    });
+
+    // CLOSE on leave (with small delay for smooth UX)
+    menu.addEventListener('mouseleave', () => {
+      hoverTimeout = setTimeout(() => {
+        details.removeAttribute('open');
+        summary.setAttribute('aria-expanded', 'false');
+      }, 120);
+    });
+  });
+});

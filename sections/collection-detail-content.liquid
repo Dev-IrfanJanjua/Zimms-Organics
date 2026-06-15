@@ -267,6 +267,14 @@
     border-color: #1A274480;
 }
 
+.heal-cook-btn_hidden {
+  display: none !important;
+}
+
+.heal-cook-btn_hidden.is-visible {
+  display: block !important;
+}
+
 
 
   @media screen and (max-width: 1140px){
@@ -357,7 +365,7 @@
   }
 </style>
 
-<section class="pdc-section section-{{ section.id }} scroll-trigger animate--slide-in" id="shopify-section-{{ section.id }}">
+<section class="pdc-section heal-cook-btn_hidden section-{{ section.id }} scroll-trigger animate--slide-in" id="shopify-section-{{ section.id }}">
   <div class="page-width">
 
     {%- assign has_image = false -%}

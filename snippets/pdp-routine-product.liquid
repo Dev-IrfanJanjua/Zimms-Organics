@@ -400,7 +400,7 @@ p.pdp-routine-product__desc {
       <button
         type="button"
         id="pdp-routine-add-btn"
-        class="product-form__submit button button--full-width button--primary"
+        class="product-form__submit button button--full-width button--primary routine-product-form__submit"
         {% if product.selected_or_first_available_variant.available == false %}
           disabled
         {% endif %}
@@ -414,31 +414,52 @@ p.pdp-routine-product__desc {
   </div>
 {% endif %}
 
-<script>
+{% comment %} <script>
 document.addEventListener('DOMContentLoaded', function () {
-  const routineSection = document.querySelector('.pdp-routine-products');
-  if (!routineSection) return;
 
-  const addBtn = routineSection.querySelector('#pdp-routine-add-btn');
-  if (!addBtn) return;
+  function syncSection(section) {
+    const addBtn = section.querySelector('.routine-product-form__submit');
+    if (!addBtn) return;
 
-  function syncDebugAttribute() {
-    const checkedInputs = routineSection.querySelectorAll('.pdp-routine-product_input:checked');
+    const checkedInputs = section.querySelectorAll('.pdp-routine-product_input:checked');
+
     const ids = Array.from(checkedInputs).map(input => input.dataset.variantId);
+
     addBtn.setAttribute('data-selected-variant-ids', ids.join(','));
   }
 
-  syncDebugAttribute();
+  // initial sync
+  document.querySelectorAll('.pdp-routine-products').forEach(syncSection);
 
-  routineSection.querySelectorAll('.pdp-routine-product_input').forEach(function (checkbox) {
-    checkbox.addEventListener('change', syncDebugAttribute);
+  // checkbox change (event delegation)
+  document.addEventListener('change', function (event) {
+    const checkbox = event.target.closest('.pdp-routine-product_input');
+    if (!checkbox) return;
+
+    const section = checkbox.closest('.pdp-routine-products');
+    if (!section) return;
+
+    syncSection(section);
   });
 
-  addBtn.addEventListener('click', async function () {
+  // add to cart click (event delegation)
+  document.addEventListener('click', async function (event) {
+
+    const addBtn = event.target.closest('.routine-product-form__submit');
+    if (!addBtn) return;
+
+    const routineSection = addBtn.closest('.pdp-routine-products');
+    if (!routineSection) return;
+
+    // ✅ HARD GUARD: prevent double firing
+    if (addBtn.dataset.processing === 'true') return;
+    addBtn.dataset.processing = 'true';
+
     const checkedInputs = routineSection.querySelectorAll('.pdp-routine-product_input:checked');
 
     if (checkedInputs.length === 0) {
       alert('Please select at least one product.');
+      addBtn.dataset.processing = 'false';
       return;
     }
 
@@ -447,16 +468,23 @@ document.addEventListener('DOMContentLoaded', function () {
       quantity: 1
     }));
 
+    // ✅ EXTRA SAFETY: prevent duplicate identical request
+    const payloadKey = JSON.stringify(items);
+    if (window.__routineCartLock === payloadKey) return;
+    window.__routineCartLock = payloadKey;
+
     addBtn.disabled = true;
+
     const btnText = addBtn.querySelector('.btn-text');
     if (btnText) btnText.textContent = 'Adding...';
 
     try {
+
       const addResponse = await fetch('/cart/add.js', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          items: items,
+          items,
           sections: ['cart-drawer', 'cart-icon-bubble']
         })
       });
@@ -469,44 +497,215 @@ document.addEventListener('DOMContentLoaded', function () {
       const addData = await addResponse.json();
       const parser = new DOMParser();
 
-      // Step 1: Inject cart drawer HTML FIRST before attempting to open
-      if (addData.sections && addData.sections['cart-drawer']) {
+      // Update cart drawer
+      if (addData.sections?.['cart-drawer']) {
+
         const doc = parser.parseFromString(addData.sections['cart-drawer'], 'text/html');
-        const newDrawerInner = doc.querySelector('#CartDrawer');
+
+        const newDrawer = doc.querySelector('#CartDrawer');
         const existingDrawer = document.querySelector('#CartDrawer');
-        if (newDrawerInner && existingDrawer) {
-          existingDrawer.innerHTML = newDrawerInner.innerHTML;
+
+        if (newDrawer && existingDrawer) {
+          existingDrawer.innerHTML = newDrawer.innerHTML;
         }
       }
 
-      // Step 2: Update cart count bubble
-      if (addData.sections && addData.sections['cart-icon-bubble']) {
+      // Update cart bubble
+      if (addData.sections?.['cart-icon-bubble']) {
+
         const doc = parser.parseFromString(addData.sections['cart-icon-bubble'], 'text/html');
+
         const newBubble = doc.querySelector('#cart-icon-bubble');
-        const existingBubble = document.getElementById('cart-icon-bubble');
+        const existingBubble = document.querySelector('#cart-icon-bubble');
+
         if (newBubble && existingBubble) {
           existingBubble.innerHTML = newBubble.innerHTML;
         }
       }
 
-      // Step 3: Open drawer AFTER HTML is fully injected
-      // Delay gives the browser one paint cycle to register the new DOM
-      // before cart-drawer.js tries to find focusable elements
+      // open drawer
       setTimeout(function () {
         const cartDrawer = document.querySelector('cart-drawer');
+
         if (cartDrawer && typeof cartDrawer.open === 'function') {
-          // Do NOT pass addBtn — that triggers trapFocus immediately on null DOM
           cartDrawer.open();
         }
       }, 100);
 
+      // reset lock after success
+      window.__routineCartLock = null;
+
     } catch (err) {
       console.error('Cart error:', err);
       alert(err.message || 'Something went wrong. Please try again.');
+      window.__routineCartLock = null;
+
     } finally {
+
       addBtn.disabled = false;
+      addBtn.dataset.processing = 'false';
+
+      const btnText = addBtn.querySelector('.btn-text');
       if (btnText) btnText.textContent = 'Add to Cart';
     }
+
   });
+
+});
+</script> {% endcomment %}
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  // ─── Sync checked variant IDs onto the Add-to-Cart button ──────────────────
+
+  function syncSection(section) {
+    const addBtn = section.querySelector('.routine-product-form__submit');
+    if (!addBtn) return;
+
+    const checkedInputs = section.querySelectorAll('.pdp-routine-product_input:checked');
+    const ids = Array.from(checkedInputs).map(input => input.dataset.variantId);
+    addBtn.setAttribute('data-selected-variant-ids', ids.join(','));
+  }
+
+  // Initial sync for every routine block on the page
+  document.querySelectorAll('.pdp-routine-products').forEach(syncSection);
+
+  // Keep in sync whenever a checkbox changes
+  document.addEventListener('change', function (event) {
+    const checkbox = event.target.closest('.pdp-routine-product_input');
+    if (!checkbox) return;
+    const section = checkbox.closest('.pdp-routine-products');
+    if (section) syncSection(section);
+  });
+
+  // ─── Re-fetch & patch the cart drawer exactly as the theme does ────────────
+  // This mirrors CartItems.onCartUpdate() for the 'CART-DRAWER-ITEMS' branch.
+  // The theme fetches ?section_id=cart-drawer and replaces two selectors:
+  //   • cart-drawer-items   → the line-items list
+  //   • .cart-drawer__footer → subtotal / checkout button
+
+  function refreshCartDrawer() {
+    return fetch(`${routes.cart_url}?section_id=cart-drawer`)
+      .then(response => response.text())
+      .then(responseText => {
+        const html = new DOMParser().parseFromString(responseText, 'text/html');
+        const selectors = ['cart-drawer-items', '.cart-drawer__footer'];
+
+        for (const selector of selectors) {
+          const target = document.querySelector(selector);
+          const source = html.querySelector(selector);
+          if (target && source) {
+            target.replaceWith(source);
+          }
+        }
+      });
+  }
+
+  // ─── Update the cart icon bubble (count badge) ─────────────────────────────
+
+  function refreshCartBubble(sectionsData) {
+    if (!sectionsData?.['cart-icon-bubble']) return;
+
+    const doc = new DOMParser().parseFromString(sectionsData['cart-icon-bubble'], 'text/html');
+    const newBubble      = doc.querySelector('.shopify-section');
+    const existingBubble = document.querySelector('#cart-icon-bubble');
+
+    if (newBubble && existingBubble) {
+      existingBubble.innerHTML = newBubble.innerHTML;
+    }
+  }
+
+  // ─── Open the cart drawer ──────────────────────────────────────────────────
+
+  function openCartDrawer() {
+    const cartDrawer = document.querySelector('cart-drawer');
+    if (cartDrawer && typeof cartDrawer.open === 'function') {
+      cartDrawer.open();
+    }
+  }
+
+  // ─── Add-to-Cart click handler ─────────────────────────────────────────────
+
+  document.addEventListener('click', async function (event) {
+
+    const addBtn = event.target.closest('.routine-product-form__submit');
+    if (!addBtn) return;
+
+    const routineSection = addBtn.closest('.pdp-routine-products');
+    if (!routineSection) return;
+
+    // Guard: prevent double-fire on rapid clicks
+    if (addBtn.dataset.processing === 'true') return;
+    addBtn.dataset.processing = 'true';
+
+    const checkedInputs = routineSection.querySelectorAll('.pdp-routine-product_input:checked');
+
+    if (checkedInputs.length === 0) {
+      alert('Please select at least one product.');
+      addBtn.dataset.processing = 'false';
+      return;
+    }
+
+    const items = Array.from(checkedInputs).map(input => ({
+      id: parseInt(input.dataset.variantId),
+      quantity: 1
+    }));
+
+    // Guard: prevent duplicate identical concurrent request
+    const payloadKey = JSON.stringify(items);
+    if (window.__routineCartLock === payloadKey) return;
+    window.__routineCartLock = payloadKey;
+
+    // Visual feedback
+    addBtn.disabled = true;
+    const btnText = addBtn.querySelector('.btn-text');
+    if (btnText) btnText.textContent = 'Adding...';
+
+    try {
+
+      // ── Step 1: Add items to cart, request the icon bubble section ──────────
+      const addResponse = await fetch('/cart/add.js', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          items,
+          sections: ['cart-icon-bubble']
+        })
+      });
+
+      if (!addResponse.ok) {
+        const err = await addResponse.json();
+        throw new Error(err.description || 'Failed to add to cart');
+      }
+
+      const addData = await addResponse.json();
+
+      // ── Step 2: Update the cart icon bubble ─────────────────────────────────
+      refreshCartBubble(addData.sections);
+
+      // ── Step 3: Re-fetch the full cart drawer section from Shopify ──────────
+      // This is the same network call the theme makes in onCartUpdate().
+      // It guarantees the drawer HTML is 100% fresh from Liquid — no stale state.
+      await refreshCartDrawer();
+
+      // ── Step 4: Open the drawer ─────────────────────────────────────────────
+      openCartDrawer();
+
+      window.__routineCartLock = null;
+
+    } catch (err) {
+      console.error('Routine cart error:', err);
+      alert(err.message || 'Something went wrong. Please try again.');
+      window.__routineCartLock = null;
+
+    } finally {
+      addBtn.disabled = false;
+      addBtn.dataset.processing = 'false';
+      if (btnText) btnText.textContent = 'Add to Cart';
+    }
+
+  });
+
 });
 </script>

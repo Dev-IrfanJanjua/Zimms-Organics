@@ -3524,3 +3524,53 @@ details-disclosure > details {
 h1, h2, h3, h4, h5, .h0, .h1, .h2, .h3, .h4, .h5{
   letter-spacing: 0;
 }
+
+
+main#MainContent {
+    background: #fff;
+}
+
+.shopify-policy__title h1, 
+.shopify-policy__title h2, 
+.shopify-policy__title h3, 
+.shopify-policy__title h4, 
+.shopify-policy__title h5, 
+.shopify-policy__title h6,
+.shopify-policy__body h1, 
+.shopify-policy__body h2, 
+.shopify-policy__body h3, 
+.shopify-policy__body h4, 
+.shopify-policy__body h5, 
+.shopify-policy__body h6 {
+    font-family: Lora;
+    color: #1A2744;
+}
+
+.shopify-policy__body p {
+    font-family: "DM Sans";
+    color: #1A2744;
+}
+
+.shopify-policy__body li {
+    color: var(--Deep-Navy, #1A2744);
+    font-family: "DM Sans";
+    list-style-position: outside;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+  color: var(--Deep-Navy, #1A2744);
+  font-family: Lora;
+}
+
+p,
+span,
+li{
+  color: var(--Deep-Navy, #1A2744);
+  font-family: "DM Sans";
+  list-style-position: outside;
+}

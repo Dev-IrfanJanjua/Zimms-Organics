@@ -169,6 +169,32 @@
     font-weight: 400;
   }
 
+  .section-{{ section.id }} .heal-cook-btn.btn_btn {
+    background-color: {{ section.settings.btn_bg_color }};
+    color: {{ section.settings.btn_text_color }};
+    border: 1px solid {{ section.settings.btn_border_color }};
+    border-radius: {{ section.settings.btn_border_radius }}px;
+    cursor: pointer;
+    font-weight: 500;
+    max-width: 172px;
+    width: 100%;
+  }
+
+  .section-{{ section.id }} .heal-cook-btn-wrap {
+        max-width: 100%;
+        width: 1000%;
+        text-align: center;
+    }
+
+  .section-{{ section.id }} .heal-cook-btn.btn_btn:hover {
+    opacity: 0.8;
+  }
+
+  .section-{{ section.id }} .heal-cook-btn-wrapper{
+    margin-top: 40px;
+    text-align: center;
+  }
+
   @media screen and (max-width: 768px) {
 
     .heal-cook-section {
@@ -220,7 +246,7 @@
   }
 </style>
 
-<section class="heal-cook-section scroll-trigger animate--slide-in" id="shopify-section-{{ section.id }}">
+<section class="section-{{ section.id }} heal-cook-section scroll-trigger animate--slide-in" id="shopify-section-{{ section.id }}">
   <div class="page-width">
     <div class="section-header">
       {% if section.settings.title != blank %}
@@ -345,8 +371,58 @@
         {% endif %}
       {% endfor %}
     </div>
+    {% if section.settings.btn_label != blank %}
+      <div class="heal-cook-btn-wrapper">
+        <a class="heal-cook-btn btn_btn " href="javascript:void(0)">{{ section.settings.btn_label }}</a>
+      </div>
+    {% endif %}
   </div>
 </section>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+  const btn = document.querySelector('.heal-cook-btn');
+  const hiddenSections = document.querySelectorAll('.heal-cook-btn_hidden');
+
+  if (!btn || hiddenSections.length === 0) return;
+
+  const readMoreText = 'Read More';
+  const readLessText = 'Read Less';
+
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+
+    const isVisible = hiddenSections[0].classList.contains('is-visible');
+
+    if (isVisible) {
+      // ❌ HIDE
+      hiddenSections.forEach(function (section) {
+        section.classList.remove('is-visible');
+      });
+
+      btn.textContent = readMoreText;
+
+    } else {
+      // ✅ SHOW
+      hiddenSections.forEach(function (section) {
+        section.classList.add('is-visible');
+      });
+
+      btn.textContent = readLessText;
+
+      // optional smooth scroll
+      hiddenSections[0].scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+
+  });
+
+});
+</script>
 
 {% schema %}
 {
@@ -369,6 +445,12 @@
       "id": "subtitle",
       "label": "Subtitle",
       "default": "All of Zimms Organics products are grown on family farms in California. Each product is single origin and single varietal, meaning that they all come from one place and from one olive. Learn more about each style below."
+    },
+    {
+      "type": "text",
+      "id": "btn_label",
+      "label": "Button Label",
+      "default": "Read More"
     },
     {
       "type": "header",

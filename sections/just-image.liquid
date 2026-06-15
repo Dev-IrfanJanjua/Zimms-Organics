@@ -20,6 +20,14 @@
   display: none;
 }
 
+.heal-cook-btn_hidden {
+  display: none !important;
+}
+
+.heal-cook-btn_hidden.is-visible {
+  display: block !important;
+}
+
 @media screen and (max-width: 768px) {
   .section-{{ section.id }} {
     padding-top: {{ section.settings.mobile_padding_top }}px;
@@ -36,7 +44,7 @@
 }
 {% endstyle %}
 
-<section class="custom-image-section section-{{ section.id }} scroll-trigger animate--slide-in">
+<section class="custom-image-section heal-cook-btn_hidden section-{{ section.id }} scroll-trigger animate--slide-in">
   <div class="page-width">
     <div class="custom-image-wrapper">
 
