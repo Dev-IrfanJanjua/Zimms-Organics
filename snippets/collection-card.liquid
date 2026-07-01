@@ -1,3 +1,5 @@
+{{ 'component-rating.css' | asset_url | stylesheet_tag }}
+
 {% style %}
 
 .fet-col-card-media {
@@ -252,23 +254,8 @@ p.rating-count, p.rating-count span {
       </div>
 
       <!-- Fake review block (can be replaced with app later) -->
+      {%- if product.metafields.reviews.rating.value != blank -%}
         <div class="fet-col-card-reviews">
-          {% comment %} {% if product.metafields.custom.ratings_star != blank %}
-            <div class="fet-col-card-reviews-start">
-              {{
-                product.metafields.custom.ratings_star
-                | image_url: width: 100
-                | image_tag: alt: 'image', loading: 'lazy'
-              }}
-            </div>
-          {% endif %}
-          <span>
-            {% if product.metafields.custom.rating_text != blank %}
-              {{ product.metafields.custom.rating_text | metafield_tag }}
-            {% else %}
-              4.5
-            {% endif %}
-          </span> {% endcomment %}
           {% liquid
             assign rating_decimal = 0
             assign decimal = product.metafields.reviews.rating.value.rating | modulo: 1
@@ -303,6 +290,7 @@ p.rating-count, p.rating-count span {
             </span>
           </p>
         </div>
+      {%- endif -%}
     </div>
 
     <p class="fet-col-card-subtitle">

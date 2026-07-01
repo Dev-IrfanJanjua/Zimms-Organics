@@ -198,7 +198,7 @@
 .drawer__inner h3.pdp-routine-product__title {
     font-size: 10px;
     line-height: normal;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .drawer__inner p.pdp-routine-product__desc {
@@ -226,13 +226,21 @@
 }
 
 .drawer__inner .pdp-routine-product__image {
-    max-width: 100px;
+    width: 100%;
+    border-radius: 4px;
+}
+
+.drawer__inner .pdp-routine-product__image img {
+    height: 150px;
+    border-radius: 4px;
 }
 
 .drawer__inner .pdp-routine-product {
     display: flex;
     flex-direction: column;
     align-items: center;
+    max-width: calc(50% - 8px);
+    width: 100%;
 }
 
 .drawer__inner .pdp-routine-products__add .product-form__submit {
@@ -355,7 +363,7 @@ p.pdp-routine-product__desc {
 
           <label for="pdp-routine-product__input-{{ first_variant.id }}" class="pdp-routine-product-label">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22" fill="none">
-              <rect width="21.4545" height="21.4545" rx="3" fill="black"/>
+              <rect width="22" height="22" rx="3" fill="black"/>
               <path d="M4.99219 10.3159L9.08825 14.412L16.4612 7.03906" stroke="white" stroke-width="1.63842"/>
             </svg>
           </label>

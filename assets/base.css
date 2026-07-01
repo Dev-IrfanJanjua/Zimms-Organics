@@ -3570,7 +3570,6 @@ h6{
 p,
 span,
 li{
-  color: var(--Deep-Navy, #1A2744);
   font-family: "DM Sans";
   list-style-position: outside;
 }

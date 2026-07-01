@@ -5,10 +5,11 @@
 .rating {
   display: inline-block;
   margin: 0;
+  line-height: normal;
 }
 
 .product .rating-star {
-  --letter-spacing: 0.8;
+  --letter-spacing: 0.2;
   --font-size: 1.7;
 }
 
@@ -35,11 +36,13 @@
 
 .rating-star::before {
   content: '★★★★★';
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
     var(--color-rating-star) var(--percent),
     rgba(var(--color-foreground), 0.15) var(--percent)
-  );
+  ); */
+
+  background: #FFDA1F;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
