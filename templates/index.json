@@ -227,7 +227,7 @@
         "collection_hNyjBk": {
           "type": "collection",
           "settings": {
-            "collection": "cook",
+            "collection": "bulk-evoo",
             "image": "shopify://shop_images/Default.webp",
             "enable_hover_image": true,
             "custom_title": "Gifts & Bundles"
@@ -236,7 +236,7 @@
         "collection_mq3djC": {
           "type": "collection",
           "settings": {
-            "collection": "cook",
+            "collection": "independence-day",
             "image": "shopify://shop_images/Default_1.webp",
             "enable_hover_image": true,
             "custom_title": "Flavored"
@@ -254,7 +254,7 @@
         "collection_cGxHJR": {
           "type": "collection",
           "settings": {
-            "collection": "cook",
+            "collection": "free-gold-spout",
             "image": "shopify://shop_images/Default_3.webp",
             "enable_hover_image": false,
             "custom_title": "Kitchen Essentials"
@@ -424,13 +424,17 @@
       ],
       "name": "Clients reviews",
       "settings": {
+        "pdp_page": false,
         "bg_color": "#ffffff",
         "padding_top": 0,
         "padding_bottom": 80,
         "mbl_padding_top": 20,
         "mbl_padding_bottom": 40,
         "star-image": "shopify://shop_images/Frame_2147241407_3.svg",
-        "reviews-title": "Loved by our community"
+        "reviews-title": "Loved by our community",
+        "reviews_text": "",
+        "title": "",
+        "subtitle": ""
       }
     },
     "benefit_section_piGk3N": {
